@@ -54,7 +54,7 @@ export default (Component: ReactClass<*>) =>
                     edges {
                       node {
                         case_id
-                        submitter_id
+                        submitter_donor_id
                         project {
                           project_id
                         }
@@ -70,7 +70,7 @@ export default (Component: ReactClass<*>) =>
                                 acl
                                 state
                                 access
-                                submitter_id
+                                submitter_donor_id
                               }
                             }
                           }
@@ -80,7 +80,7 @@ export default (Component: ReactClass<*>) =>
                             total
                             edges {
                               node {
-                                submitter_id
+                                submitter_donor_id
                                 sample_id
                                 sample_type
                                 sample_type_id
@@ -108,7 +108,7 @@ export default (Component: ReactClass<*>) =>
                                     total
                                     edges {
                                       node {
-                                        submitter_id
+                                        submitter_donor_id
                                         portion_id
                                         portion_number
                                         weight
@@ -118,7 +118,7 @@ export default (Component: ReactClass<*>) =>
                                             total
                                             edges {
                                               node {
-                                                submitter_id
+                                                submitter_donor_id
                                                 analyte_id
                                                 analyte_type
                                                 analyte_type_id
@@ -132,7 +132,7 @@ export default (Component: ReactClass<*>) =>
                                                     total
                                                     edges {
                                                       node {
-                                                        submitter_id
+                                                        submitter_donor_id
                                                         aliquot_id
                                                         source_center
                                                         amount
@@ -152,7 +152,7 @@ export default (Component: ReactClass<*>) =>
                                             total
                                             edges {
                                               node {
-                                                submitter_id
+                                                submitter_donor_id
                                                 slide_id
                                                 percent_tumor_nuclei
                                                 percent_monocyte_infiltration

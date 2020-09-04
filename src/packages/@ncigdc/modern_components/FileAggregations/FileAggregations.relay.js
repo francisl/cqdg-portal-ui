@@ -69,25 +69,25 @@ export default (Component: ReactClass<*>) =>
                         key
                       }
                     }
+                    is_harmonized{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }   
                     experimental_strategy {
                       buckets {
                         doc_count
                         key
                       }
-                    }
-                    workflow_type {
-                      buckets {
-                        doc_count
-                        key
-                      }
-                    }                    
-                    data_format {
+                    }             
+                    file_format {
                       buckets {
                         doc_count
                         key
                       }
                     }
-                    access {
+                    data_access {
                       buckets {
                         doc_count
                         key
@@ -95,6 +95,12 @@ export default (Component: ReactClass<*>) =>
                     }
                     platform {
                       buckets {
+                        doc_count
+                        key
+                      }
+                    }
+                    file_variant_class{
+                      buckets{
                         doc_count
                         key
                       }

@@ -45,7 +45,7 @@ export default (Component: ReactClass<*>) => compose(
                 id
                 ... on FileNode {
                   file_id
-                  submitter_id
+                  submitter_donor_id
                   file_name
                 }
               }
@@ -56,7 +56,7 @@ export default (Component: ReactClass<*>) => compose(
                   project {
                     project_id
                   }
-                  submitter_id
+                  submitter_donor_id
                 }
               }
               projects: hits @include(if: $showProjects) {

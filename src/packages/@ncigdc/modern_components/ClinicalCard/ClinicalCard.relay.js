@@ -64,7 +64,7 @@ must be provided
                     edges {
                       node {
                         case_id
-                        submitter_id
+                        submitter_donor_id
                         project {
                           project_id
                         }
@@ -155,7 +155,7 @@ must be provided
                                 alcohol_history
                                 alcohol_intensity
                                 years_smoked
-                                submitter_id
+                                submitter_donor_id
                                 created_datetime
                                 tobacco_smoking_quit_year
                                 tobacco_smoking_onset_year

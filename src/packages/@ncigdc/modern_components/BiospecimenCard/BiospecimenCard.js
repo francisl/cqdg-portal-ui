@@ -122,10 +122,10 @@ export default compose(
     } = edges[0].node;
     const withTrimmedSubIds = supplementalFiles.map(({ node }) => ({
       ...node,
-      submitter_id: _.trimEnd(node.submitter_id, '_slide_image'),
+      submitter_donor_id: _.trimEnd(node.submitter_donor_id, '_slide_image'),
     }));
     const selectedSlide = _.find(withTrimmedSubIds, {
-      submitter_id: selectedEntity.submitter_id,
+      submitter_donor_id: selectedEntity.submitter_donor_id,
     });
     return (
       <Card
@@ -135,9 +135,9 @@ export default compose(
           <Row style={{ justifyContent: 'space-between' }}>
             <span>Biospecimen</span>
             <DownloadBiospecimenDropdown
-              jsonFilename={`biospecimen.case-${p.submitter_id}-${p.project
+              jsonFilename={`biospecimen.case-${p.submitter_donor_id}-${p.project
                 .project_id}.${timestamp()}.json`}
-              tsvFilename={`biospecimen.case-${p.submitter_id}-${p.project
+              tsvFilename={`biospecimen.case-${p.submitter_donor_id}-${p.project
                 .project_id}.${timestamp()}.tar.gz`}
               filters={caseFilter}
               buttonStyles={visualizingButton}
@@ -207,7 +207,7 @@ export default compose(
           <Column flex="4">
             <EntityPageVerticalTable
               thToTd={[
-                { th: `${foundType} ID`, td: selectedEntity.submitter_id },
+                { th: `${foundType} ID`, td: selectedEntity.submitter_donor_id },
                 {
                   th: `${foundType} UUID`,
                   td: selectedEntity[idFields.find(id => selectedEntity[id])],
@@ -216,7 +216,7 @@ export default compose(
                   .filter(
                     ([key]) =>
                       ![
-                        'submitter_id',
+                        'submitter_donor_id',
                         'expanded',
                         `${foundType}_id`,
                         '__dataID__',

@@ -48,7 +48,7 @@ export default (Component: ReactClass<*>) =>
                       node {
                         acl
                         state
-                        access
+                        data_access
                         file_id
                         file_size
                         cases {

@@ -54,14 +54,14 @@ var ngApp;
                                 "status",
                                 "entity_type",
                                 "entity_id",
-                                "entity_submitter_id",
-                                "submitter_id",
+                                "entity_submitter_donor_id",
+                                "submitter_donor_id",
                                 "classification",
                                 "notes",
                                 "created_datetime",
                                 "project.project_id",
                                 "case_id",
-                                "case_submitter_id",
+                                "case_submitter_donor_id",
                             ]
                         });
                     }]
@@ -1728,9 +1728,9 @@ var ngApp;
                                 "annotations.annotation_id",
                                 "annotations.entity_id",
                                 "tags",
-                                "submitter_id",
+                                "submitter_donor_id",
                                 "archive.archive_id",
-                                "archive.submitter_id",
+                                "archive.submitter_donor_id",
                                 "archive.revision",
                                 "associated_entities.entity_id",
                                 "associated_entities.entity_type",
@@ -1813,7 +1813,7 @@ var ngApp;
                         return ParticipantsService.getParticipant($stateParams["caseId"], {
                             fields: [
                                 "case_id",
-                                "submitter_id",
+                                "submitter_donor_id",
                                 "annotations.annotation_id"
                             ],
                             expand: [
@@ -1834,7 +1834,7 @@ var ngApp;
                                 "samples.portions.analytes.aliquots",
                                 "samples.portions.analytes.aliquots.annotations",
                                 "samples.portions.analytes.annotations",
-                                "samples.portions.submitter_id",
+                                "samples.portions.submitter_donor_id",
                                 "samples.portions.slides",
                                 "samples.portions.annotations",
                                 "samples.portions.center",
@@ -2472,8 +2472,8 @@ var ngApp;
                     },
                     {
                         name: "Entity Barcode",
-                        id: "entity_submitter_id",
-                        td: function (row) { return row.entity_submitter_id; },
+                        id: "entity_submitter_donor_id",
+                        td: function (row) { return row.entity_submitter_donor_id; },
                         sortable: true,
                         hidden: true
                     },
@@ -2517,7 +2517,7 @@ var ngApp;
                     "status",
                     "entity_type",
                     "entity_id",
-                    "entity_submitter_id",
+                    "entity_submitter_donor_id",
                     "notes",
                     "classification",
                     "case_id",
@@ -2645,7 +2645,7 @@ var ngApp;
                     this.biospecimenDataExportExpands =
                         ['samples', 'samples.portions', 'samples.portions.analytes', 'samples.portions.analytes.aliquots',
                             'samples.portions.analytes.aliquots.annotations', 'samples.portions.analytes.annotations',
-                            'samples.portions.submitter_id', 'samples.portions.slides', 'samples.portions.annotations',
+                            'samples.portions.submitter_donor_id', 'samples.portions.slides', 'samples.portions.annotations',
                             'samples.portions.center'];
                     this.biospecimenDataExportFileName = 'biospecimen.cart';
                 }
@@ -3042,7 +3042,7 @@ var ngApp;
                                 ParticipantsService.getParticipant(uuid, {
                                     fields: [
                                         "case_id",
-                                        "submitter_id",
+                                        "submitter_donor_id",
                                         "annotations.annotation_id",
                                         "project.project_id",
                                         "project.name",
@@ -4593,7 +4593,7 @@ var ngApp;
                         this.archiveCount = 0;
                     }
                     _.forEach(file.associated_entities, function (entity) {
-                        var found = BiospecimenService.search(entity.entity_id, _.find(file.cases, { "case_id": entity.case_id }), ['submitter_id', 'sample_id', 'portion_id',
+                        var found = BiospecimenService.search(entity.entity_id, _.find(file.cases, { "case_id": entity.case_id }), ['submitter_donor_id', 'sample_id', 'portion_id',
                             'analyte_id', 'slide_id', 'aliquot_id']);
                         entity.sample_type = (_.first(found) || { sample_type: '--' }).sample_type;
                         entity.annotations = _.filter(file.annotations, function (annotation) {
@@ -4786,9 +4786,9 @@ var ngApp;
                                     "annotations.annotation_id",
                                     "annotations.entity_id",
                                     "tags",
-                                    "submitter_id",
+                                    "submitter_donor_id",
                                     "archive.archive_id",
-                                    "archive.submitter_id",
+                                    "archive.submitter_donor_id",
                                     "archive.revision",
                                     "associated_entities.entity_id",
                                     "associated_entities.entity_type",
@@ -4839,7 +4839,7 @@ var ngApp;
                                     'cases.samples.portions.analytes.aliquots',
                                     'cases.samples.portions.analytes.aliquots.annotations',
                                     'cases.samples.portions.analytes.annotations',
-                                    'cases.samples.portions.submitter_id',
+                                    'cases.samples.portions.submitter_donor_id',
                                     'cases.samples.portions.slides',
                                     'cases.samples.portions.annotations',
                                     'cases.samples.portions.center'
@@ -5967,7 +5967,7 @@ var ngApp;
                     this.biospecimenDataExportExpands =
                         ['samples', 'samples.portions', 'samples.portions.analytes', 'samples.portions.analytes.aliquots',
                             'samples.portions.analytes.aliquots.annotations', 'samples.portions.analytes.annotations',
-                            'samples.portions.submitter_id', 'samples.portions.slides', 'samples.portions.annotations',
+                            'samples.portions.submitter_donor_id', 'samples.portions.slides', 'samples.portions.annotations',
                             'samples.portions.center'];
                     this.biospecimenDataExportFileName = 'biospecimen.project-' + projectId;
                     AnnotationsService.getAnnotations({
@@ -7285,8 +7285,8 @@ var ngApp;
                                         hidden: true
                                     }, {
                                         name: 'Submitter ID',
-                                        id: 'submitter_id',
-                                        td: function (row, $scope) { return row.submitter_id; },
+                                        id: 'submitter_donor_id',
+                                        td: function (row, $scope) { return row.submitter_donor_id; },
                                         sortable: false,
                                         hidden: true
                                     }],
@@ -7298,7 +7298,7 @@ var ngApp;
                                     "project.primary_site",
                                     "project.program.name",
                                     "project.disease_type",
-                                    "submitter_id",
+                                    "submitter_donor_id",
                                     "demographic.gender",
                                     "demographic.race",
                                     "demographic.ethnicity",
@@ -7312,7 +7312,7 @@ var ngApp;
                                 ],
                                 facets: [
                                     { name: "case_id", title: "Case", collapsed: false, facetType: "free-text", placeholder: "UUID, Submitter ID", removable: false },
-                                    { name: "submitter_id", title: "Case Submitter ID Prefix", collapsed: false, facetType: "prefix", placeholder: "e.g. TCGA-DD*", removable: false },
+                                    { name: "submitter_donor_id", title: "Case Submitter ID Prefix", collapsed: false, facetType: "prefix", placeholder: "e.g. TCGA-DD*", removable: false },
                                     { name: "project.primary_site", title: "Primary Site", collapsed: false, facetType: "terms", removable: false, hasValueSearch: true },
                                     { name: "project.program.name", title: "Cancer Program", collapsed: false, facetType: "terms", removable: false },
                                     { name: "project.project_id", title: "Project", collapsed: false, facetType: "terms", removable: false, hasValueSearch: true },
@@ -7580,9 +7580,9 @@ var ngApp;
                         tdClassName: 'id-cell'
                     }, {
                         name: "File Submitter ID",
-                        id: "submitter_id",
-                        toolTipText: function (row) { return row.submitter_id; },
-                        td: function (row) { return row.submitter_id || '--'; },
+                        id: "submitter_donor_id",
+                        toolTipText: function (row) { return row.submitter_donor_id; },
+                        td: function (row) { return row.submitter_donor_id || '--'; },
                         sortable: true,
                         hidden: true,
                         tdClassName: 'id-cell'
@@ -7689,7 +7689,7 @@ var ngApp;
                     "archive.archive_id",
                     "experimental_strategy",
                     "center.name",
-                    "submitter_id",
+                    "submitter_donor_id",
                     "cases.case_id",
                     "cases.project.project_id",
                     "cases.project.name"
@@ -10698,7 +10698,7 @@ var ngApp;
                                 "analyte_ids",
                                 "submitter_analyte_ids",
                                 "case_id",
-                                "submitter_id",
+                                "submitter_donor_id",
                                 "portion_ids",
                                 "submitter_portion_ids",
                                 "sample_ids",
@@ -10709,18 +10709,18 @@ var ngApp;
                                 "data_type",
                                 "clinical.gender",
                                 "samples.sample_id",
-                                "samples.submitter_id",
+                                "samples.submitter_donor_id",
                                 "samples.sample_type",
                                 "samples.portions.portion_id",
-                                "samples.portions.submitter_id",
+                                "samples.portions.submitter_donor_id",
                                 "samples.portions.analytes.analyte_id",
-                                "samples.portions.analytes.submitter_id",
+                                "samples.portions.analytes.submitter_donor_id",
                                 "samples.portions.analytes.analyte_type",
                                 "samples.portions.analytes.aliquots.aliquot_id",
-                                "samples.portions.analytes.aliquots.submitter_id",
+                                "samples.portions.analytes.aliquots.submitter_donor_id",
                                 "annotation_id",
                                 "entity_id",
-                                "entity_submitter_id"
+                                "entity_submitter_donor_id"
                             ]
                         };
                         $scope.activeQuery = true;
@@ -12207,7 +12207,7 @@ var ngApp;
                             this.biospecimenDataExportExpands =
                                 ['samples', 'samples.portions', 'samples.portions.analytes', 'samples.portions.analytes.aliquots',
                                     'samples.portions.analytes.aliquots.annotations', 'samples.portions.analytes.annotations',
-                                    'samples.portions.submitter_id', 'samples.portions.slides', 'samples.portions.annotations',
+                                    'samples.portions.submitter_donor_id', 'samples.portions.slides', 'samples.portions.annotations',
                                     'samples.portions.center'];
                             this.biospecimenDataExportFileName = "biospecimen.case-" + participant.case_id;
                             $scope.$on('displayBioSpecimenDocument', function (event, data) {
@@ -12219,7 +12219,7 @@ var ngApp;
                             if (key.toLowerCase() === "expanded") {
                                 return false;
                             }
-                            if (key.toLowerCase() === "submitter_id") {
+                            if (key.toLowerCase() === "submitter_donor_id") {
                                 return false;
                             }
                             if (key === this.activeBioSpecimenDocType + "_id") {
@@ -12284,7 +12284,7 @@ var ngApp;
                                     BiospecimenService.expandAll(event, participant, expand);
                                 };
                                 var idFields = [
-                                    'submitter_id', 'sample_id', 'portion_id',
+                                    'submitter_donor_id', 'sample_id', 'portion_id',
                                     'analyte_id', 'slide_id', 'aliquot_id'
                                 ];
                                 $scope.search = function (searchTerm, participant) {
@@ -12496,7 +12496,7 @@ var ngApp;
                         BiospecimenService.prototype.stitchPlaceholderChildrenToParents = function (parents) {
                             var self = this;
                             function hasFiles(xs, childTypeSingular) {
-                                return (xs || []).some(function (x) { return x[(childTypeSingular + "_id")] || x.submitter_id; });
+                                return (xs || []).some(function (x) { return x[(childTypeSingular + "_id")] || x.submitter_donor_id; });
                             }
                             (parents || []).forEach(function (parent) {
                                 self.entityTypes.forEach(function (childType) {

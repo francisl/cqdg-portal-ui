@@ -130,7 +130,7 @@ export default (Component: ReactClass<*>) =>
                       node {
                         id
                         case_id
-                        submitter_id
+                        submitter_donor_id
                         project {
                           project_id
                         }
@@ -139,7 +139,7 @@ export default (Component: ReactClass<*>) =>
                             edges {
                               node {
                                 file_id
-                                submitter_id
+                                submitter_donor_id
                               }
                             }
                           }
@@ -156,7 +156,7 @@ export default (Component: ReactClass<*>) =>
                                           hits(first: 99) {
                                             edges {
                                               node {
-                                                submitter_id
+                                                submitter_donor_id
                                                 slide_id
                                                 percent_tumor_nuclei
                                                 percent_monocyte_infiltration

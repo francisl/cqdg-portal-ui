@@ -1065,7 +1065,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "demographic__submitter_id",
+              "name": "demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -1305,7 +1305,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__submitter_id",
+              "name": "samples__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -1545,7 +1545,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__annotations__entity_submitter_id",
+              "name": "samples__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -1629,7 +1629,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__annotations__submitter_id",
+              "name": "samples__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -1653,7 +1653,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__annotations__case_submitter_id",
+              "name": "samples__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -1989,7 +1989,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__analytes__submitter_id",
+              "name": "samples__portions__analytes__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2073,7 +2073,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__analytes__aliquots__submitter_id",
+              "name": "samples__portions__analytes__aliquots__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2217,7 +2217,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__analytes__aliquots__annotations__entity_submitter_id",
+              "name": "samples__portions__analytes__aliquots__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2301,7 +2301,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__analytes__aliquots__annotations__submitter_id",
+              "name": "samples__portions__analytes__aliquots__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2325,7 +2325,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__analytes__aliquots__annotations__case_submitter_id",
+              "name": "samples__portions__analytes__aliquots__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2685,7 +2685,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__analytes__annotations__entity_submitter_id",
+              "name": "samples__portions__analytes__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2769,7 +2769,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__analytes__annotations__submitter_id",
+              "name": "samples__portions__analytes__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2793,7 +2793,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__analytes__annotations__case_submitter_id",
+              "name": "samples__portions__analytes__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2829,7 +2829,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__submitter_id",
+              "name": "samples__portions__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -2997,7 +2997,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__slides__annotations__entity_submitter_id",
+              "name": "samples__portions__slides__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3081,7 +3081,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__slides__annotations__submitter_id",
+              "name": "samples__portions__slides__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3105,7 +3105,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__slides__annotations__case_submitter_id",
+              "name": "samples__portions__slides__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3225,7 +3225,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__slides__submitter_id",
+              "name": "samples__portions__slides__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3369,7 +3369,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__annotations__entity_submitter_id",
+              "name": "samples__portions__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3453,7 +3453,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "samples__portions__annotations__submitter_id",
+              "name": "samples__portions__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3477,7 +3477,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "samples__portions__annotations__case_submitter_id",
+              "name": "samples__portions__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3669,7 +3669,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "annotations__entity_submitter_id",
+              "name": "annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3753,7 +3753,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "annotations__submitter_id",
+              "name": "annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -3777,7 +3777,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "annotations__case_submitter_id",
+              "name": "annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -4065,7 +4065,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "exposures__submitter_id",
+              "name": "exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -4209,7 +4209,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__index_files__submitter_id",
+              "name": "files__index_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -4701,7 +4701,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__downstream_analyses__submitter_id",
+              "name": "files__downstream_analyses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -4845,7 +4845,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__downstream_analyses__output_files__submitter_id",
+              "name": "files__downstream_analyses__output_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -5289,7 +5289,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "files__submitter_id",
+              "name": "files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -5397,7 +5397,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__analysis__input_files__submitter_id",
+              "name": "files__analysis__input_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -5841,7 +5841,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__analysis__submitter_id",
+              "name": "files__analysis__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -5997,7 +5997,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__analysis__metadata__read_groups__submitter_id",
+              "name": "files__analysis__metadata__read_groups__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -6189,7 +6189,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__analysis__metadata__read_groups__read_group_qcs__submitter_id",
+              "name": "files__analysis__metadata__read_groups__read_group_qcs__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -6897,7 +6897,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__archive__submitter_id",
+              "name": "files__archive__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -7185,7 +7185,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "files__metadata_files__submitter_id",
+              "name": "files__metadata_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -8301,7 +8301,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "follow_ups__molecular_tests__submitter_id",
+              "name": "follow_ups__molecular_tests__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -8481,7 +8481,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "follow_ups__submitter_id",
+              "name": "follow_ups__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -8745,7 +8745,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "family_histories__submitter_id",
+              "name": "family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -8769,7 +8769,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -8853,7 +8853,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "diagnoses__submitter_id",
+              "name": "diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -9393,7 +9393,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "diagnoses__treatments__submitter_id",
+              "name": "diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -9921,7 +9921,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "diagnoses__annotations__entity_submitter_id",
+              "name": "diagnoses__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -10005,7 +10005,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "diagnoses__annotations__submitter_id",
+              "name": "diagnoses__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -10029,7 +10029,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "diagnoses__annotations__case_submitter_id",
+              "name": "diagnoses__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -11695,7 +11695,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -12236,7 +12236,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "entity_submitter_id",
+              "name": "entity_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -12320,7 +12320,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -12344,7 +12344,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "case_submitter_id",
+              "name": "case_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -12493,7 +12493,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -12944,7 +12944,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -14445,7 +14445,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -15082,7 +15082,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -15491,7 +15491,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -15836,7 +15836,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -16905,7 +16905,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -17650,7 +17650,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -18548,7 +18548,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -19245,7 +19245,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -19642,7 +19642,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -20051,7 +20051,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -20795,7 +20795,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -21219,7 +21219,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "index_files__submitter_id",
+              "name": "index_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -21711,7 +21711,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "downstream_analyses__submitter_id",
+              "name": "downstream_analyses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -21855,7 +21855,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "downstream_analyses__output_files__submitter_id",
+              "name": "downstream_analyses__output_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -22299,7 +22299,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -22407,7 +22407,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "analysis__input_files__submitter_id",
+              "name": "analysis__input_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -22851,7 +22851,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "analysis__submitter_id",
+              "name": "analysis__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -23007,7 +23007,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "analysis__metadata__read_groups__submitter_id",
+              "name": "analysis__metadata__read_groups__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -23199,7 +23199,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "analysis__metadata__read_groups__read_group_qcs__submitter_id",
+              "name": "analysis__metadata__read_groups__read_group_qcs__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -23907,7 +23907,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "archive__submitter_id",
+              "name": "archive__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -24195,7 +24195,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "metadata_files__submitter_id",
+              "name": "metadata_files__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -24387,7 +24387,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "annotations__entity_submitter_id",
+              "name": "annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -24471,7 +24471,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "annotations__submitter_id",
+              "name": "annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -24495,7 +24495,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "annotations__case_submitter_id",
+              "name": "annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -24867,7 +24867,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__demographic__submitter_id",
+              "name": "cases__demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25107,7 +25107,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__submitter_id",
+              "name": "cases__samples__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25347,7 +25347,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__annotations__entity_submitter_id",
+              "name": "cases__samples__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25431,7 +25431,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__annotations__submitter_id",
+              "name": "cases__samples__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25455,7 +25455,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__annotations__case_submitter_id",
+              "name": "cases__samples__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25791,7 +25791,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__submitter_id",
+              "name": "cases__samples__portions__analytes__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -25875,7 +25875,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__aliquots__submitter_id",
+              "name": "cases__samples__portions__analytes__aliquots__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26019,7 +26019,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__aliquots__annotations__entity_submitter_id",
+              "name": "cases__samples__portions__analytes__aliquots__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26103,7 +26103,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__aliquots__annotations__submitter_id",
+              "name": "cases__samples__portions__analytes__aliquots__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26127,7 +26127,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__aliquots__annotations__case_submitter_id",
+              "name": "cases__samples__portions__analytes__aliquots__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26487,7 +26487,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__annotations__entity_submitter_id",
+              "name": "cases__samples__portions__analytes__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26571,7 +26571,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__annotations__submitter_id",
+              "name": "cases__samples__portions__analytes__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26595,7 +26595,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__analytes__annotations__case_submitter_id",
+              "name": "cases__samples__portions__analytes__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26631,7 +26631,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__submitter_id",
+              "name": "cases__samples__portions__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26799,7 +26799,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__slides__annotations__entity_submitter_id",
+              "name": "cases__samples__portions__slides__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26883,7 +26883,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__slides__annotations__submitter_id",
+              "name": "cases__samples__portions__slides__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -26907,7 +26907,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__slides__annotations__case_submitter_id",
+              "name": "cases__samples__portions__slides__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27027,7 +27027,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__slides__submitter_id",
+              "name": "cases__samples__portions__slides__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27171,7 +27171,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__annotations__entity_submitter_id",
+              "name": "cases__samples__portions__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27255,7 +27255,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__annotations__submitter_id",
+              "name": "cases__samples__portions__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27279,7 +27279,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__samples__portions__annotations__case_submitter_id",
+              "name": "cases__samples__portions__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27471,7 +27471,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__annotations__entity_submitter_id",
+              "name": "cases__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27555,7 +27555,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__annotations__submitter_id",
+              "name": "cases__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27579,7 +27579,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__annotations__case_submitter_id",
+              "name": "cases__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -27867,7 +27867,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__exposures__submitter_id",
+              "name": "cases__exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -28551,7 +28551,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__follow_ups__molecular_tests__submitter_id",
+              "name": "cases__follow_ups__molecular_tests__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -28731,7 +28731,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__follow_ups__submitter_id",
+              "name": "cases__follow_ups__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -28983,7 +28983,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__family_histories__submitter_id",
+              "name": "cases__family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -29007,7 +29007,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "cases__submitter_id",
+              "name": "cases__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -29091,7 +29091,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__diagnoses__submitter_id",
+              "name": "cases__diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -29631,7 +29631,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__diagnoses__treatments__submitter_id",
+              "name": "cases__diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -30159,7 +30159,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__diagnoses__annotations__entity_submitter_id",
+              "name": "cases__diagnoses__annotations__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -30243,7 +30243,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__diagnoses__annotations__submitter_id",
+              "name": "cases__diagnoses__annotations__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -30267,7 +30267,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "cases__diagnoses__annotations__case_submitter_id",
+              "name": "cases__diagnoses__annotations__case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -31275,7 +31275,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "associated_entities__entity_submitter_id",
+              "name": "associated_entities__entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -31508,7 +31508,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -32217,7 +32217,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -32596,7 +32596,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -33388,7 +33388,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -34133,7 +34133,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -34734,7 +34734,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "entity_submitter_id",
+              "name": "entity_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -34818,7 +34818,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -34842,7 +34842,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "case_submitter_id",
+              "name": "case_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -34991,7 +34991,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -35490,7 +35490,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -35851,7 +35851,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "entity_submitter_id",
+              "name": "entity_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -36164,7 +36164,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -36549,7 +36549,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -37282,7 +37282,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -38063,7 +38063,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -38571,7 +38571,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "exposures__submitter_id",
+              "name": "exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -38691,7 +38691,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "diagnoses__submitter_id",
+              "name": "diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -39039,7 +39039,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "diagnoses__treatments__submitter_id",
+              "name": "diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -40551,7 +40551,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "demographic__submitter_id",
+              "name": "demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -40599,7 +40599,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -40827,7 +40827,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "family_histories__submitter_id",
+              "name": "family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -41180,7 +41180,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -41477,7 +41477,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -41856,7 +41856,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -42673,7 +42673,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -43166,7 +43166,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -43503,7 +43503,7 @@
               "deprecationReason": null,
               "description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -44191,7 +44191,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__diagnoses__submitter_id",
+              "name": "case__diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -44539,7 +44539,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__diagnoses__treatments__submitter_id",
+              "name": "case__diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -45007,7 +45007,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__demographic__submitter_id",
+              "name": "case__demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -45043,7 +45043,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__submitter_id",
+              "name": "case__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -46003,7 +46003,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__family_histories__submitter_id",
+              "name": "case__family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -46183,7 +46183,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case__exposures__submitter_id",
+              "name": "case__exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -47601,7 +47601,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -48900,7 +48900,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__exposures__submitter_id",
+              "name": "occurrence__case__exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -49020,7 +49020,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__diagnoses__submitter_id",
+              "name": "occurrence__case__diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -49368,7 +49368,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__diagnoses__treatments__submitter_id",
+              "name": "occurrence__case__diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -49836,7 +49836,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__demographic__submitter_id",
+              "name": "occurrence__case__demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -49872,7 +49872,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__submitter_id",
+              "name": "occurrence__case__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -50100,7 +50100,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__family_histories__submitter_id",
+              "name": "occurrence__case__family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -53130,7 +53130,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -54432,7 +54432,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__exposures__submitter_id",
+              "name": "occurrence__case__exposures__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -54552,7 +54552,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__diagnoses__submitter_id",
+              "name": "occurrence__case__diagnoses__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -54900,7 +54900,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__diagnoses__treatments__submitter_id",
+              "name": "occurrence__case__diagnoses__treatments__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -55368,7 +55368,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__demographic__submitter_id",
+              "name": "occurrence__case__demographic__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -55404,7 +55404,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__submitter_id",
+              "name": "occurrence__case__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -55632,7 +55632,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "occurrence__case__family_histories__submitter_id",
+              "name": "occurrence__case__family_histories__submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -56819,7 +56819,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -57561,7 +57561,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "entity_submitter_id",
+              "name": "entity_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -57597,7 +57597,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -57789,7 +57789,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "case_submitter_id",
+              "name": "case_submitter_donor_id",
               "type": {
                 "kind": "OBJECT",
                 "name": "Aggregations",
@@ -58046,7 +58046,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "entity_submitter_id",
+              "name": "entity_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -58082,7 +58082,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "submitter_id",
+              "name": "submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -58118,7 +58118,7 @@
               "deprecationReason": null,
               "description": "keyword",
               "isDeprecated": false,
-              "name": "case_submitter_id",
+              "name": "case_submitter_donor_id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",

@@ -141,7 +141,7 @@
 
 #### Features
 
-* **annotation:** 747 case submitter_id in table ([570b0f2a](https://github.com/NCI-GDC/portal-ui/commit/570b0f2a), closes [PGDC-747](https://jira.opensciencedatacloud.org/browse/PGDC-747))
+* **annotation:** 747 case submitter_donor_id in table ([570b0f2a](https://github.com/NCI-GDC/portal-ui/commit/570b0f2a), closes [PGDC-747](https://jira.opensciencedatacloud.org/browse/PGDC-747))
 * **app:**
   * 2588 use blue svgs in gdc apps ([98654612](https://github.com/NCI-GDC/portal-ui/commit/98654612), closes [PGDC-2588](https://jira.opensciencedatacloud.org/browse/PGDC-2588))
   * 2393 retry failed api calls once ([d824d182](https://github.com/NCI-GDC/portal-ui/commit/d824d182), closes [PGDC-2393](https://jira.opensciencedatacloud.org/browse/PGDC-2393))
@@ -392,7 +392,7 @@
   * add no js text ([8e069e65](https://github.com/NCI-GDC/portal-ui/commit/8e069e65))
   * 2067 update id search facet text ([1ade49c0](https://github.com/NCI-GDC/portal-ui/commit/1ade49c0), closes [PGDC-2067](https://jira.opensciencedatacloud.org/browse/PGDC-2067))
 * **components:**
-  * file.submitter_id > quicksearch ([6aa13b34](https://github.com/NCI-GDC/portal-ui/commit/6aa13b34), closes [PGDC-1792](https://jira.opensciencedatacloud.org/browse/PGDC-1792))
+  * file.submitter_donor_id > quicksearch ([6aa13b34](https://github.com/NCI-GDC/portal-ui/commit/6aa13b34), closes [PGDC-1792](https://jira.opensciencedatacloud.org/browse/PGDC-1792))
   * search bio id fields in tree ([3afd2127](https://github.com/NCI-GDC/portal-ui/commit/3afd2127))
 * **facets:** use max, min don't show bar graph ([6d0c2a55](https://github.com/NCI-GDC/portal-ui/commit/6d0c2a55), closes [PGDC-2097](https://jira.opensciencedatacloud.org/browse/PGDC-2097))
 * **file:**
@@ -453,7 +453,7 @@
   * loading spinners main views ([5efd8893](https://github.com/NCI-GDC/portal-ui/commit/5efd8893))
   * tooltips where class=truncated-cell ([5c9512e0](https://github.com/NCI-GDC/portal-ui/commit/5c9512e0), closes [PGDC-808](https://jira.opensciencedatacloud.org/browse/PGDC-808))
 * **components:** transition to tab from table ([cd8e5e61](https://github.com/NCI-GDC/portal-ui/commit/cd8e5e61), closes [PGDC-1839](https://jira.opensciencedatacloud.org/browse/PGDC-1839))
-* **facets:** submitter_id facet free search ([7c05815d](https://github.com/NCI-GDC/portal-ui/commit/7c05815d), closes [PGDC-1869](https://jira.opensciencedatacloud.org/browse/PGDC-1869), [PGDC-1908](https://jira.opensciencedatacloud.org/browse/PGDC-1908))
+* **facets:** submitter_donor_id facet free search ([7c05815d](https://github.com/NCI-GDC/portal-ui/commit/7c05815d), closes [PGDC-1869](https://jira.opensciencedatacloud.org/browse/PGDC-1869), [PGDC-1908](https://jira.opensciencedatacloud.org/browse/PGDC-1908))
 * **gql:** add date support to gql ([e306bfbf](https://github.com/NCI-GDC/portal-ui/commit/e306bfbf), closes [PGDC-719](https://jira.opensciencedatacloud.org/browse/PGDC-719))
 * **home:** Modify Bar Chart ([4dbd8532](https://github.com/NCI-GDC/portal-ui/commit/4dbd8532), closes [PGDC-1909](https://jira.opensciencedatacloud.org/browse/PGDC-1909))
 
@@ -952,7 +952,7 @@
 * **range-facets:** display barchart ontop of range facets ([1e1af03b](https://github.com/NCI-GDC/portal-ui/commit/1e1af03b), closes [OICR-853](https://jira.opensciencedatacloud.org/browse/OICR-853))
 * **reports:** hook up reports ([9b9c2dda](https://github.com/NCI-GDC/portal-ui/commit/9b9c2dda), closes [OICR-891](https://jira.opensciencedatacloud.org/browse/OICR-891))
 * **search:**
-  * Add submitter_id as hidden field ([2ce73505](https://github.com/NCI-GDC/portal-ui/commit/2ce73505), closes [OICR-1041](https://jira.opensciencedatacloud.org/browse/OICR-1041))
+  * Add submitter_donor_id as hidden field ([2ce73505](https://github.com/NCI-GDC/portal-ui/commit/2ce73505), closes [OICR-1041](https://jira.opensciencedatacloud.org/browse/OICR-1041))
   * Create summary card w/ tables. ([7c1d8712](https://github.com/NCI-GDC/portal-ui/commit/7c1d8712), closes [OICR-852](https://jira.opensciencedatacloud.org/browse/OICR-852))
   * UI Updates for Data page. ([3629723e](https://github.com/NCI-GDC/portal-ui/commit/3629723e), closes [OICR-807](https://jira.opensciencedatacloud.org/browse/OICR-807))
   * Charts navigate to file tab filtered ([da5e1878](https://github.com/NCI-GDC/portal-ui/commit/da5e1878), closes [OICR-776](https://jira.opensciencedatacloud.org/browse/OICR-776))
@@ -1220,8 +1220,8 @@
 #### Bug Fixes
 
 * **annotation:**
-  * get entity_submitter_id ([f6b37cfd](https://github.com/NCI-GDC/portal-ui/commit/f6b37cfd0e50b3f2a6f9b428775a688f92eb3bba), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
-  * sumbitter_id->entity_submitter_id ([a73eedbb](https://github.com/NCI-GDC/portal-ui/commit/a73eedbb19d0dce2f43fa20dde1496d9e5c39502), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
+  * get entity_submitter_donor_id ([f6b37cfd](https://github.com/NCI-GDC/portal-ui/commit/f6b37cfd0e50b3f2a6f9b428775a688f92eb3bba), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
+  * sumbitter_id->entity_submitter_donor_id ([a73eedbb](https://github.com/NCI-GDC/portal-ui/commit/a73eedbb19d0dce2f43fa20dde1496d9e5c39502), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
   * annotations num on participant pg ([ad219fcb](https://github.com/NCI-GDC/portal-ui/commit/ad219fcb068693d573fabf17ce34c242fc789d76), closes [OICR-418](https://jira.opensciencedatacloud.org/browse/OICR-418))
   * correct project page link ([d486340a](https://github.com/NCI-GDC/portal-ui/commit/d486340ae2f2125889ec795b0c1d0ec939fadf1c), closes [OICR-490](https://jira.opensciencedatacloud.org/browse/OICR-490))
 * **annotations:**
@@ -1471,8 +1471,8 @@
 #### Bug Fixes
 
 * **annotation:**
-  * get entity_submitter_id ([f6b37cfd](https://github.com/NCI-GDC/portal-ui/commit/f6b37cfd0e50b3f2a6f9b428775a688f92eb3bba), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
-  * sumbitter_id->entity_submitter_id ([a73eedbb](https://github.com/NCI-GDC/portal-ui/commit/a73eedbb19d0dce2f43fa20dde1496d9e5c39502), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
+  * get entity_submitter_donor_id ([f6b37cfd](https://github.com/NCI-GDC/portal-ui/commit/f6b37cfd0e50b3f2a6f9b428775a688f92eb3bba), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
+  * sumbitter_id->entity_submitter_donor_id ([a73eedbb](https://github.com/NCI-GDC/portal-ui/commit/a73eedbb19d0dce2f43fa20dde1496d9e5c39502), closes [OICR-558](https://jira.opensciencedatacloud.org/browse/OICR-558))
   * annotations num on participant pg ([ad219fcb](https://github.com/NCI-GDC/portal-ui/commit/ad219fcb068693d573fabf17ce34c242fc789d76), closes [OICR-418](https://jira.opensciencedatacloud.org/browse/OICR-418))
   * correct project page link ([d486340a](https://github.com/NCI-GDC/portal-ui/commit/d486340ae2f2125889ec795b0c1d0ec939fadf1c), closes [OICR-490](https://jira.opensciencedatacloud.org/browse/OICR-490))
 * **annotations:**

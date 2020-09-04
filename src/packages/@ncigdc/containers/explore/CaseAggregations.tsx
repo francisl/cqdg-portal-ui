@@ -126,7 +126,7 @@ export const CaseAggregationsComponent = ({
                       />
             <div>
               <div style={{ fontWeight: 'bold' }}>{x.case_id}</div>
-              <div style={{ fontSize: '80%' }}>{x.submitter_id}</div>
+              <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
               {x.project.project_id}
             </div>
           </Row>

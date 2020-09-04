@@ -21,6 +21,6 @@ export default compose(
   })),
 )(({ node }) => (
   <span>
-    {node.project.project_id} / {node.submitter_id}
+    {node.project.project_id} / {node.submitter_donor_id}
   </span>
 ));

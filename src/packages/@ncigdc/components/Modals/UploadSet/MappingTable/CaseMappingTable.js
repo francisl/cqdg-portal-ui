@@ -29,7 +29,7 @@ const enhance = compose(
     const submittedHeaders = [];
     const matchedCases = Object.entries(
       matched.reduce((acc, hit) => {
-        const caseId = caseMap[hit].submitter_id.toUpperCase();
+        const caseId = caseMap[hit].submitter_donor_id.toUpperCase();
         acc[caseId] = (acc[caseId] || []).concat(hit);
         return acc;
       }, {}),
@@ -130,7 +130,7 @@ export default enhance(
                       key: 'mapped',
                       title: 'Mapped To',
                       subheadings: [
-                        CASE_ID_FIELD_DISPLAY.submitter_id,
+                        CASE_ID_FIELD_DISPLAY.submitter_donor_id,
                         'Project',
                       ],
                       thStyle: { textAlign: 'center' },

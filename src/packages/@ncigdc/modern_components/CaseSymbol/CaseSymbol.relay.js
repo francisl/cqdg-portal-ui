@@ -43,7 +43,7 @@ export default (Component: ReactClass<*>) =>
                   hits(filters: $filters, first: 1) {
                     edges {
                       node {
-                        submitter_id
+                        submitter_donor_id
                         project {
                           project_id
                         }

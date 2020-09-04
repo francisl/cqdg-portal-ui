@@ -24,8 +24,8 @@ const SampleSheetDownloadButton = ({
       'data_category',
       'data_type',
       'cases.project.project_id',
-      'cases.submitter_id',
-      'cases.samples.submitter_id',
+      'cases.submitter_donor_id',
+      'cases.samples.submitter_donor_id',
       'cases.samples.sample_type',
     ]}
     extraParams={{

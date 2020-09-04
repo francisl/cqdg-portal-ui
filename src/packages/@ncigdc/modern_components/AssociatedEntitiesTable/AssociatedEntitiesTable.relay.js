@@ -75,7 +75,7 @@ export default (Component: ReactClass<*>) =>
                             node {
                               case_id
                               entity_id
-                              entity_submitter_id
+                              entity_submitter_donor_id
                               entity_type
                             }
                           }

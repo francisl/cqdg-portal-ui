@@ -287,13 +287,13 @@ function renderSurvivalPlot({
       onMouseEnterDonor: (e, {
         censored,
         project_id,
-        submitter_id,
+        submitter_donor_id,
         survivalEstimate,
         time = 0,
       }) => {
         setTooltip(
           <span>
-            {`Case ID: ${project_id} / ${submitter_id}`}
+            {`Case ID: ${project_id} / ${submitter_donor_id}`}
             <br />
             {`Survival Rate: ${Math.round(survivalEstimate * 100)}%`}
             <br />

@@ -68,7 +68,7 @@ export default compose(
   }) => {
     const {
       case_id: caseId,
-      submitter_id: submitterId,
+      submitter_donor_id: submitterId,
       diagnoses: { hits: { edges: diagnoses = [] } },
       family_histories: { hits: { edges: familyHistories = [] } },
       demographic = {},

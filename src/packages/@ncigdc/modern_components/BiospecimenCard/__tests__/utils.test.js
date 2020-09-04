@@ -6,7 +6,7 @@ import { testBiotree, testAliquot } from '../__fixtures__/biotree.fixture';
 
 const getSubmitterIds = array =>
   array
-    .map(o => (o.node || { submitter_id: '' }).submitter_id)
+    .map(o => (o.node || { submitter_donor_id: '' }).submitter_donor_id)
     .filter(x => x.length);
 describe('match', () => {
   it('should match submitter ids', () => {

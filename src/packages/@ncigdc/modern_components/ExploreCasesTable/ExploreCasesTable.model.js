@@ -88,10 +88,10 @@ const casesTableModel = [
   },
   {
     name: 'Case ID',
-    id: 'submitter_id',
+    id: 'submitter_donor_id',
     downloadable: true,
     th: () => (
-      <Th key="submitter_id" rowSpan="2">
+      <Th key="submitter_donor_id" rowSpan="2">
         Case ID
       </Th>
     ),
@@ -103,7 +103,7 @@ const casesTableModel = [
           merge
           whitelist={['filters']}
         >
-          {node.submitter_id}
+          {node.submitter_donor_id}
         </CaseLink>
       </Td>
     ),

@@ -44,7 +44,7 @@ export default (Component: ReactClass<*>) =>
                     edges {
                       node {
                         case_id
-                        submitter_id
+                        submitter_donor_id
                         primary_site
                         disease_type
                         annotations {

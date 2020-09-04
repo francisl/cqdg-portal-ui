@@ -46,18 +46,18 @@ const presetFacets = [
     type: 'keyword',
   },
   {
+    field: 'is_harmonized',
+    full: 'is_harmonized',
+    type: 'boolean',
+  },
+  {
     field: 'experimental_strategy',
     full: 'experimental_strategy',
     type: 'keyword',
   },
   {
-    field: 'workflow_type',
-    full: 'workflow_type',
-    type: 'keyword',
-  },
-  {
-    field: 'data_format',
-    full: 'data_format',
+    field: 'file_format',
+    full: 'file_format',
     type: 'keyword',
   },
   {
@@ -66,8 +66,8 @@ const presetFacets = [
     type: 'keyword',
   },
   {
-    field: 'access',
-    full: 'access',
+    field: 'data_access',
+    full: 'data_access',
     type: 'keyword',
   },
 ];
@@ -105,11 +105,12 @@ export type TProps = {
   facets: { facets: string },
   parsedFacets: Object,
   aggregations: {
-    access: { buckets: [IBucket] },
+    data_access: { buckets: [IBucket] },
     data_category: { buckets: [IBucket] },
-    data_format: { buckets: [IBucket] },
+    file_format: { buckets: [IBucket] },
     data_type: { buckets: [IBucket] },
     experimental_strategy: { buckets: [IBucket] },
+    is_harmonized: { buckets: [IBucket] },
     workflow_type: { buckets: [IBucket] },
     platform: { buckets: [IBucket] },
   },
@@ -230,7 +231,7 @@ const FileAggregations = ({
 	          />
 	          <div>
 	            <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
-	            <div style={{ fontSize: '80%' }}>{x.submitter_id}</div>
+	            <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
 	            {x.file_name}
 	          </div>
 	        </Row>

@@ -85,7 +85,7 @@ export default compose(
         }
         thToTd={[
           { th: 'Case UUID', td: p.case_id },
-          { th: 'Case ID', td: p.submitter_id },
+          { th: 'Case ID', td: p.submitter_donor_id },
           {
             th: 'Project',
             td: (

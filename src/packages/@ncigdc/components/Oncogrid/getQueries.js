@@ -78,7 +78,7 @@ async function getCases({
         'demographic.race',
         'demographic.ethnicity',
         'case_id',
-        'submitter_id',
+        'submitter_donor_id',
         'project.project_id',
         'summary.data_categories.file_count',
         'summary.data_categories.data_category',

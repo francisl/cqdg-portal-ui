@@ -7,7 +7,7 @@ export const testAliquot = {
   analyte_type_id: null,
   concentration: 0.16,
   source_center: '23',
-  submitter_id: 'TCGA-IR-A3LF-01A-21R-A22V-13',
+  submitter_donor_id: 'TCGA-IR-A3LF-01A-21R-A22V-13',
 };
 export const testBiotree = [
   {
@@ -80,7 +80,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.16,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21R-A22V-13',
                                   },
                                 },
@@ -97,7 +97,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.16,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21R-A22U-07',
                                   },
                                 },
@@ -111,7 +111,7 @@ export const testBiotree = [
                           analyte_type_id: 'R',
                           concentration: 0.16,
                           spectrophotometer_method: 'UV Spec',
-                          submitter_id: 'TCGA-IR-A3LF-01A-21R',
+                          submitter_donor_id: 'TCGA-IR-A3LF-01A-21R',
                           well_number: null,
                         },
                       },
@@ -144,7 +144,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.5,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21W-A23F-09',
                                   },
                                 },
@@ -158,7 +158,7 @@ export const testBiotree = [
                           analyte_type_id: 'W',
                           concentration: null,
                           spectrophotometer_method: null,
-                          submitter_id: 'TCGA-IR-A3LF-01A-21W',
+                          submitter_donor_id: 'TCGA-IR-A3LF-01A-21W',
                           well_number: null,
                         },
                       },
@@ -191,7 +191,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.15,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21D-A232-26',
                                   },
                                 },
@@ -208,7 +208,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.15,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21D-A230-05',
                                   },
                                 },
@@ -225,7 +225,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.15,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21D-A22W-01',
                                   },
                                 },
@@ -242,7 +242,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.07,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-01A-21D-A22X-09',
                                   },
                                 },
@@ -256,7 +256,7 @@ export const testBiotree = [
                           analyte_type_id: 'D',
                           concentration: 0.15,
                           spectrophotometer_method: 'PicoGreen',
-                          submitter_id: 'TCGA-IR-A3LF-01A-21D',
+                          submitter_donor_id: 'TCGA-IR-A3LF-01A-21D',
                           well_number: null,
                         },
                       },
@@ -294,14 +294,14 @@ export const testBiotree = [
                           percent_tumor_nuclei: 60,
                           section_location: 'TOP',
                           slide_id: 'f578963e-0316-49ec-9e39-4b2763520a31',
-                          submitter_id: 'TCGA-IR-A3LF-01A-02-TSB',
+                          submitter_donor_id: 'TCGA-IR-A3LF-01A-02-TSB',
                         },
                       },
                     ],
                     total: 1,
                   },
                 },
-                submitter_id: 'TCGA-IR-A3LF-01A-21',
+                submitter_donor_id: 'TCGA-IR-A3LF-01A-21',
                 weight: 30,
               },
             },
@@ -336,7 +336,7 @@ export const testBiotree = [
                     total: 0,
                   },
                 },
-                submitter_id: 'TCGA-IR-A3LF-01A-11-A40I-20',
+                submitter_donor_id: 'TCGA-IR-A3LF-01A-11-A40I-20',
                 weight: null,
               },
             },
@@ -349,7 +349,7 @@ export const testBiotree = [
       sample_type: 'Primary Tumor',
       sample_type_id: '01',
       shortest_dimension: null,
-      submitter_id: 'TCGA-IR-A3LF-01A',
+      submitter_donor_id: 'TCGA-IR-A3LF-01A',
       time_between_clamping_and_freezing: null,
       time_between_excision_and_freezing: null,
       tissue_type: null,
@@ -428,7 +428,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.08,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-10A-01D-A22X-09',
                                   },
                                 },
@@ -445,7 +445,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.16,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-10A-01D-A22W-01',
                                   },
                                 },
@@ -462,7 +462,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.16,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-10A-01D-A232-26',
                                   },
                                 },
@@ -476,7 +476,7 @@ export const testBiotree = [
                           analyte_type_id: 'D',
                           concentration: 0.16,
                           spectrophotometer_method: 'PicoGreen',
-                          submitter_id: 'TCGA-IR-A3LF-10A-01D',
+                          submitter_donor_id: 'TCGA-IR-A3LF-10A-01D',
                           well_number: null,
                         },
                       },
@@ -509,7 +509,7 @@ export const testBiotree = [
                                     analyte_type_id: null,
                                     concentration: 0.5,
                                     source_center: '23',
-                                    submitter_id:
+                                    submitter_donor_id:
                                       'TCGA-IR-A3LF-10A-01W-A23F-09',
                                   },
                                 },
@@ -523,7 +523,7 @@ export const testBiotree = [
                           analyte_type_id: 'W',
                           concentration: null,
                           spectrophotometer_method: null,
-                          submitter_id: 'TCGA-IR-A3LF-10A-01W',
+                          submitter_donor_id: 'TCGA-IR-A3LF-10A-01W',
                           well_number: null,
                         },
                       },
@@ -544,7 +544,7 @@ export const testBiotree = [
                     total: 0,
                   },
                 },
-                submitter_id: 'TCGA-IR-A3LF-10A-01',
+                submitter_donor_id: 'TCGA-IR-A3LF-10A-01',
                 weight: null,
               },
             },
@@ -557,7 +557,7 @@ export const testBiotree = [
       sample_type: 'Blood Derived Normal',
       sample_type_id: '10',
       shortest_dimension: null,
-      submitter_id: 'TCGA-IR-A3LF-10A',
+      submitter_donor_id: 'TCGA-IR-A3LF-10A',
       time_between_clamping_and_freezing: null,
       time_between_excision_and_freezing: null,
       tissue_type: null,

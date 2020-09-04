@@ -52,7 +52,7 @@ const debouncedPush = debounce((field, value, filters, push) => {
 }, 1000);
 
 const fieldToDisplay = {
-  'files.associated_entities.entity_submitter_id': {
+  'files.associated_entities.entity_submitter_donor_id': {
     name: 'Entity ID',
     placeholder: 'eg. TCGA-13*, *13*, *09',
   },
@@ -69,7 +69,7 @@ export default compose(
   withState(
     'searchField',
     'setSearchField',
-    'files.associated_entities.entity_submitter_id',
+    'files.associated_entities.entity_submitter_donor_id',
   ),
   withPropsOnChange(
     ['location'],
@@ -117,13 +117,13 @@ export default compose(
     ).map(({ node: ae }) => ({
       ...ae,
       case_id: <CaseLink uuid={ae.case_id}>{ae.case_id}</CaseLink>,
-      entity_submitter_id: (
+      entity_submitter_donor_id: (
         <CaseLink
           uuid={ae.case_id}
           query={ae.entity_type !== 'case' ? { bioId: ae.entity_id } : {}}
           deepLink={ae.entity_type !== 'case' ? 'biospecimen' : undefined}
         >
-          {ae.entity_submitter_id}
+          {ae.entity_submitter_donor_id}
         </CaseLink>
       ),
       sample_type: ['sample', 'portion', 'analyte', 'slide', 'aliquot'].some(
@@ -280,7 +280,7 @@ export default compose(
           emptyMessage="No cases or biospecimen found."
           emptyMessageStyle={{ background: '#fff' }}
           headings={[
-            { key: 'entity_submitter_id', title: 'Entity ID' },
+            { key: 'entity_submitter_donor_id', title: 'Entity ID' },
             { key: 'entity_type', title: 'Entity Type' },
             { key: 'sample_type', title: 'Sample Type' },
             { key: 'case_id', title: 'Case UUID' },

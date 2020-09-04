@@ -8,8 +8,8 @@ export const presetFacets = [
   },
   {
     title: 'Case ID',
-    field: 'submitter_id',
-    full: 'cases.submitter_id',
+    field: 'submitter_donor_id',
+    full: 'cases.submitter_donor_id',
     doc_type: 'cases',
     type: 'id',
     placeholder: 'eg. TCGA-DD*, *DD*, TCGA-DD-AAVP',

@@ -52,7 +52,7 @@ const createContainer = Component =>
                   node {
                     score
                     case_id
-                    submitter_id
+                    submitter_donor_id
                     project {
                       project_id
                     }
@@ -77,12 +77,12 @@ const Component = compose(
     style,
   }) => {
     const chartData = cases.hits.edges.map(x => x.node).map(c => ({
-      fullLabel: c.submitter_id,
-      label: c.submitter_id,
+      fullLabel: c.submitter_donor_id,
+      label: c.submitter_donor_id,
       value: c.score,
       tooltip: (
         <span>
-          <b>{c.submitter_id}</b>
+          <b>{c.submitter_donor_id}</b>
           <br />
           Project: {c.project.project_id}
           <br />

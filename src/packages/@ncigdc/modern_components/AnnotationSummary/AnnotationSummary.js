@@ -54,13 +54,13 @@ export default compose(
                 </CaseLink>
               ),
             },
-            { th: 'Entity ID', td: node.entity_submitter_id },
+            { th: 'Entity ID', td: node.entity_submitter_donor_id },
             { th: 'Entity type', td: node.entity_type },
             {
               th: 'Case UUID',
               td: <CaseLink uuid={node.case_id}>{node.case_id}</CaseLink>,
             },
-            { th: 'Case ID', td: node.case_submitter_id },
+            { th: 'Case ID', td: node.case_submitter_donor_id },
             {
               th: 'Project',
               td: (

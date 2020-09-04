@@ -34,14 +34,11 @@ const presetFacets = [
   { title: 'File', field: 'file_id', full: 'file_id', type: 'keyword' },
   { field: 'data_category', full: 'data_category', type: 'keyword' },
   { field: 'data_type', full: 'data_type', type: 'keyword' },
-  {
-    field: 'experimental_strategy',
-    full: 'experimental_strategy',
-    type: 'keyword',
-  },
-  { field: 'data_format', full: 'data_format', type: 'keyword' },
+  { field: 'experimental_strategy', full: 'experimental_strategy', type: 'keyword' },
+  { field: 'file_format', full: 'file_format', type: 'keyword' },
+  { field: 'is_harmonized', full: 'is_harmonized', type: 'boolean' },
   { field: 'platform', full: 'platform', type: 'keyword' },
-  { field: 'access', full: 'access', type: 'keyword' },
+  { field: 'data_access', full: 'data_access', type: 'keyword' },
   { field: 'sample_id', full: 'sample_id', type: 'keyword'}
 ];
 
@@ -104,6 +101,7 @@ export type TProps = {
     data_format: { buckets: [IBucket] },
     data_type: { buckets: [IBucket] },
     experimental_strategy: { buckets: [IBucket] },
+    is_harmonized: { buckets: [IBucket] },
     platform: { buckets: [IBucket] },
     sample_id: { buckets: [IBucket] },
   },
@@ -199,7 +197,7 @@ export const FileAggregationsComponent = (props: TProps) => (
           <FileIcon style={{ paddingRight: '1rem', paddingTop: '1rem' }} />
           <div>
             <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
-            <div style={{ fontSize: '80%' }}>{x.submitter_id}</div>
+            <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
             {x.file_name}
           </div>
         </Row>
@@ -251,21 +249,21 @@ export const FileAggregationsQuery = {
           }
         }
 
-        data_format {
+        file_format {
           buckets {
             doc_count
             key
           }
         }
 
-        access {
+        data_access {
           buckets {
             doc_count
             key
           }
         }
         
-        sample_id {
+        is_harmonized {
         	buckets {
         		doc_count
         		key

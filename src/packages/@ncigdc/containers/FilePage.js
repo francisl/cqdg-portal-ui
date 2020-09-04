@@ -8,7 +8,7 @@ import File from '@ncigdc/components/File';
 
 export type TProps = {
   node: {
-    access: string,
+    data_access: string,
     cases: Array<{
       project: {
         project_id: string,
@@ -17,6 +17,7 @@ export type TProps = {
     data_category: string,
     data_format: string,
     file_id: string,
+    is_harmonized: boolean,
     file_name: string,
     file_size: number,
     platform: string,
@@ -38,12 +39,12 @@ export const FilePageQuery = {
     node: () => Relay.QL`
       fragment on FileNode {
         file_id
-        file_id
         file_name
         file_size
-        access
+        is_harmonized  
+        data_access
         data_category
-        data_format
+        file_format
         data_type
         experimental_strategy
       }

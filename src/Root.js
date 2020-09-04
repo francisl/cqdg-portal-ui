@@ -36,8 +36,8 @@ import features from './features.json';
 //   whyDidYouUpdate(React);
 // }
 
-ReactGA.initialize('UA-124331187-10');
-ReactGA.pageview(window.location.pathname + window.location.search);
+//ReactGA.initialize('UA-124331187-10');
+//ReactGA.pageview(window.location.pathname + window.location.search);
 
 const retryStatusCodes = [
   500,

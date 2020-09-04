@@ -1,0 +1,902 @@
+schema {
+  query: Root
+  mutation: Mutation
+}
+
+type Aggregations {
+  buckets: [Bucket]
+}
+
+type AggsState {
+  timestamp: String
+  state: [AggState]
+}
+
+# ########## QUERY TYPES ###########
+type AggState {
+  field: String
+  type: String @deprecated(reason: "This field is deprecated in favour of client-side deduction of the type using the es mapping and @arranger/mapping-utils/esToAggTypeMap. This computation will already be done with @Arranger/components. Projects created with 0.4.6 will return null for this query")
+  active: Boolean
+  show: Boolean
+}
+
+# ########## INPUT TYPES ###########
+input AggStateInput {
+  field: String
+  active: Boolean
+  show: Boolean
+}
+
+type Bucket {
+  doc_count: Int
+  key: String
+  key_as_string: String
+}
+
+type Case {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseAggregations
+}
+
+type CaseAggregations {
+  age_at_recruitment: NumericAggregations
+  diagnoses__age_at_diagnosis: NumericAggregations
+  diagnoses__icd_category: Aggregations
+  diagnoses__icd_category_keyword: Aggregations
+  diagnoses__icd_code: Aggregations
+  diagnoses__icd_term: Aggregations
+  diagnoses__icd_term_keyword: Aggregations
+  donor_id: Aggregations
+  ethnicity: Aggregations
+  files__data_access: Aggregations
+  files__data_category: Aggregations
+  files__data_type: Aggregations
+  files__file_format: Aggregations
+  files__file_id: Aggregations
+  files__file_name: Aggregations
+  files__file_name_keyword: Aggregations
+  files__file_name_ngrams: Aggregations
+  files__file_size: NumericAggregations
+  files__file_variant_class: Aggregations
+  files__platform: Aggregations
+  files__submitter_biospecimen_id: Aggregations
+  files__variant_class: Aggregations
+  gender: Aggregations
+  phenotypes__hpo_category: Aggregations
+  phenotypes__hpo_category_keyword: Aggregations
+  phenotypes__hpo_code: Aggregations
+  phenotypes__hpo_term: Aggregations
+  phenotypes__hpo_term_keyword: Aggregations
+  study__domain: Aggregations
+  study__name: Aggregations
+  study__population: Aggregations
+  study__short_name: Aggregations
+  study__short_name_keyword: Aggregations
+  study__short_name_ngrams: Aggregations
+  study__study_id: Aggregations
+  study__study_id_keyword: Aggregations
+  submitter_donor_id: Aggregations
+  vital_status: Aggregations
+}
+
+type CaseConnection {
+  total: Int!
+  edges: [CaseEdge]
+}
+
+type CaseDiagnoses {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseDiagnosesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseDiagnosesAggregations
+}
+
+type CaseDiagnosesAggregations {
+  age_at_diagnosis: NumericAggregations
+  icd_category: Aggregations
+  icd_category_keyword: Aggregations
+  icd_code: Aggregations
+  icd_term: Aggregations
+  icd_term_keyword: Aggregations
+}
+
+type CaseDiagnosesConnection {
+  total: Int!
+  edges: [CaseDiagnosesEdge]
+}
+
+type CaseDiagnosesEdge {
+  searchAfter: JSON
+  node: CaseDiagnosesNode
+}
+
+type CaseDiagnosesNode implements Node {
+  id: ID!
+  score: Int
+  age_at_diagnosis: Float
+  icd_category: String
+  icd_category_keyword: String
+  icd_code: String
+  icd_term: String
+  icd_term_keyword: String
+}
+
+type CaseEdge {
+  searchAfter: JSON
+  node: CaseNode
+}
+
+type CaseFiles {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseFilesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseFilesAggregations
+}
+
+type CaseFilesAggregations {
+  data_access: Aggregations
+  data_category: Aggregations
+  data_type: Aggregations
+  file_format: Aggregations
+  file_id: Aggregations
+  file_name: Aggregations
+  file_name_keyword: Aggregations
+  file_name_ngrams: Aggregations
+  file_size: NumericAggregations
+  file_variant_class: Aggregations
+  platform: Aggregations
+  submitter_biospecimen_id: Aggregations
+  variant_class: Aggregations
+}
+
+type CaseFilesConnection {
+  total: Int!
+  edges: [CaseFilesEdge]
+}
+
+type CaseFilesEdge {
+  searchAfter: JSON
+  node: CaseFilesNode
+}
+
+type CaseFilesNode implements Node {
+  id: ID!
+  score: Int
+  data_access: String
+  data_category: String
+  data_type: String
+  file_format: String
+  file_id: String
+  file_name: String
+  file_name_keyword: String
+  file_name_ngrams: String
+  file_size: Float
+  file_variant_class: String
+  platform: String
+  submitter_biospecimen_id: String
+  variant_class: String
+}
+
+type CaseNode implements Node {
+  id: ID!
+  score: Int
+  age_at_recruitment: Float
+  donor_id: String
+  ethnicity: String
+  gender: String
+  submitter_donor_id: String
+  vital_status: String
+  diagnoses: CaseDiagnoses
+  files: CaseFiles
+  phenotypes: CasePhenotypes
+  study: CaseStudy
+}
+
+type CasePhenotypes {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CasePhenotypesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CasePhenotypesAggregations
+}
+
+type CasePhenotypesAggregations {
+  hpo_category: Aggregations
+  hpo_category_keyword: Aggregations
+  hpo_code: Aggregations
+  hpo_term: Aggregations
+  hpo_term_keyword: Aggregations
+}
+
+type CasePhenotypesConnection {
+  total: Int!
+  edges: [CasePhenotypesEdge]
+}
+
+type CasePhenotypesEdge {
+  searchAfter: JSON
+  node: CasePhenotypesNode
+}
+
+type CasePhenotypesNode implements Node {
+  id: ID!
+  score: Int
+  hpo_category: String
+  hpo_category_keyword: String
+  hpo_code: String
+  hpo_term: String
+  hpo_term_keyword: String
+}
+
+type CaseStudy {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseStudyConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseStudyAggregations
+}
+
+type CaseStudyAggregations {
+  domain: Aggregations
+  name: Aggregations
+  population: Aggregations
+  short_name: Aggregations
+  short_name_keyword: Aggregations
+  short_name_ngrams: Aggregations
+  study_id: Aggregations
+  study_id_keyword: Aggregations
+}
+
+type CaseStudyConnection {
+  total: Int!
+  edges: [CaseStudyEdge]
+}
+
+type CaseStudyEdge {
+  searchAfter: JSON
+  node: CaseStudyNode
+}
+
+type CaseStudyNode implements Node {
+  id: ID!
+  score: Int
+  domain: String
+  name: String
+  population: String
+  short_name: String
+  short_name_keyword: String
+  short_name_ngrams: String
+  study_id: String
+  study_id_keyword: String
+}
+
+type Column {
+  show: Boolean
+  type: String
+  sortable: Boolean
+  canChangeShow: Boolean
+  query: String
+  jsonPath: String
+  id: String
+  field: String
+  accessor: String
+}
+
+# ########## INPUT TYPES ###########
+input ColumnInput {
+  show: Boolean
+  type: String
+  sortable: Boolean
+  canChangeShow: Boolean
+  query: String
+  jsonPath: String
+  id: String
+  field: String
+  accessor: String
+}
+
+# ########## QUERY TYPES ###########
+type ColumnSort {
+  id: String
+  desc: Boolean
+}
+
+input ColumnSortInput {
+  id: String
+  desc: Boolean
+}
+
+type ColumnsState {
+  state: ColumnState
+  timestamp: String
+}
+
+type ColumnsStates {
+  index: String
+  states: [ColumnsState]
+}
+
+type ColumnState {
+  type: String
+  keyField: String
+  defaultSorted: [ColumnSort]
+  columns: [Column]
+}
+
+input ColumnStateInput {
+  type: String
+  keyField: String
+  defaultSorted: [ColumnSortInput]
+  columns: [ColumnInput]
+}
+
+scalar Date
+
+enum EsRefresh {
+  TRUE
+  FALSE
+  WAIT_FOR
+}
+
+type File {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FileConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FileAggregations
+}
+
+type FileAggregations {
+  biospecimen__anatomic_location: Aggregations
+  biospecimen__icd_term: Aggregations
+  biospecimen__icd_term_keyword: Aggregations
+  biospecimen__is_cancer: Aggregations
+  biospecimen__sample_type: Aggregations
+  biospecimen__submitter_biospecimen_id: Aggregations
+  biospecimen__tissue_source: Aggregations
+  biospecimen__tumor_normal_designation: Aggregations
+  biospecimen__type: Aggregations
+  cases__age_at_recruitment: NumericAggregations
+  cases__ethnicity: Aggregations
+  cases__gender: Aggregations
+  cases__submitter_donor_id: Aggregations
+  cases__vital_status: Aggregations
+  data_access: Aggregations
+  data_category: Aggregations
+  data_type: Aggregations
+  diagnoses__age_at_diagnosis: NumericAggregations
+  diagnoses__icd_category: Aggregations
+  diagnoses__icd_category_keyword: Aggregations
+  diagnoses__icd_code: Aggregations
+  diagnoses__icd_term: Aggregations
+  diagnoses__icd_term_keyword: Aggregations
+  experimental_strategy: Aggregations
+  file_format: Aggregations
+  file_id: Aggregations
+  file_name: Aggregations
+  file_name_keyword: Aggregations
+  file_name_ngrams: Aggregations
+  file_size: NumericAggregations
+  file_variant_class: Aggregations
+  is_harmonized: Aggregations
+  phenotypes__hpo_category: Aggregations
+  phenotypes__hpo_category_keyword: Aggregations
+  phenotypes__hpo_code: Aggregations
+  phenotypes__hpo_term: Aggregations
+  phenotypes__hpo_term_keyword: Aggregations
+  platform: Aggregations
+  study__domain: Aggregations
+  study__name: Aggregations
+  study__population: Aggregations
+  study__short_name: Aggregations
+  study__short_name_keyword: Aggregations
+  study__short_name_ngrams: Aggregations
+  study__study_id: Aggregations
+  study__study_id_keyword: Aggregations
+}
+
+type FileBiospecimen {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FileBiospecimenConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FileBiospecimenAggregations
+}
+
+type FileBiospecimenAggregations {
+  anatomic_location: Aggregations
+  icd_term: Aggregations
+  icd_term_keyword: Aggregations
+  is_cancer: Aggregations
+  sample_type: Aggregations
+  submitter_biospecimen_id: Aggregations
+  tissue_source: Aggregations
+  tumor_normal_designation: Aggregations
+  type: Aggregations
+}
+
+type FileBiospecimenConnection {
+  total: Int!
+  edges: [FileBiospecimenEdge]
+}
+
+type FileBiospecimenEdge {
+  searchAfter: JSON
+  node: FileBiospecimenNode
+}
+
+type FileBiospecimenNode implements Node {
+  id: ID!
+  score: Int
+  anatomic_location: String
+  icd_term: String
+  icd_term_keyword: String
+  is_cancer: Boolean
+  sample_type: String
+  submitter_biospecimen_id: String
+  tissue_source: String
+  tumor_normal_designation: String
+  type: String
+}
+
+type FileCases {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FileCasesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FileCasesAggregations
+}
+
+type FileCasesAggregations {
+  age_at_recruitment: NumericAggregations
+  ethnicity: Aggregations
+  gender: Aggregations
+  submitter_donor_id: Aggregations
+  vital_status: Aggregations
+}
+
+type FileCasesConnection {
+  total: Int!
+  edges: [FileCasesEdge]
+}
+
+type FileCasesEdge {
+  searchAfter: JSON
+  node: FileCasesNode
+}
+
+type FileCasesNode implements Node {
+  id: ID!
+  score: Int
+  age_at_recruitment: Float
+  ethnicity: String
+  gender: String
+  submitter_donor_id: String
+  vital_status: String
+}
+
+type FileConnection {
+  total: Int!
+  edges: [FileEdge]
+}
+
+type FileDiagnoses {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FileDiagnosesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FileDiagnosesAggregations
+}
+
+type FileDiagnosesAggregations {
+  age_at_diagnosis: NumericAggregations
+  icd_category: Aggregations
+  icd_category_keyword: Aggregations
+  icd_code: Aggregations
+  icd_term: Aggregations
+  icd_term_keyword: Aggregations
+}
+
+type FileDiagnosesConnection {
+  total: Int!
+  edges: [FileDiagnosesEdge]
+}
+
+type FileDiagnosesEdge {
+  searchAfter: JSON
+  node: FileDiagnosesNode
+}
+
+type FileDiagnosesNode implements Node {
+  id: ID!
+  score: Int
+  age_at_diagnosis: Float
+  icd_category: String
+  icd_category_keyword: String
+  icd_code: String
+  icd_term: String
+  icd_term_keyword: String
+}
+
+type FileEdge {
+  searchAfter: JSON
+  node: FileNode
+}
+
+type FileNode implements Node {
+  id: ID!
+  score: Int
+  data_access: String
+  data_category: String
+  data_type: String
+  experimental_strategy: String
+  file_format: String
+  file_id: String
+  file_name: String
+  file_name_keyword: String
+  file_name_ngrams: String
+  file_size: Float
+  file_variant_class: String
+  is_harmonized: Boolean
+  platform: String
+  biospecimen: FileBiospecimen
+  cases: FileCases
+  diagnoses: FileDiagnoses
+  phenotypes: FilePhenotypes
+  study: FileStudy
+}
+
+type FilePhenotypes {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FilePhenotypesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FilePhenotypesAggregations
+}
+
+type FilePhenotypesAggregations {
+  hpo_category: Aggregations
+  hpo_category_keyword: Aggregations
+  hpo_code: Aggregations
+  hpo_term: Aggregations
+  hpo_term_keyword: Aggregations
+}
+
+type FilePhenotypesConnection {
+  total: Int!
+  edges: [FilePhenotypesEdge]
+}
+
+type FilePhenotypesEdge {
+  searchAfter: JSON
+  node: FilePhenotypesNode
+}
+
+type FilePhenotypesNode implements Node {
+  id: ID!
+  score: Int
+  hpo_category: String
+  hpo_category_keyword: String
+  hpo_code: String
+  hpo_term: String
+  hpo_term_keyword: String
+}
+
+type FileSize {
+  value: Float
+}
+
+type FileStudy {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  aggsState: AggsState
+  columnsState: ColumnsState
+  matchBoxState: MatchBoxState
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): FileStudyConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): FileStudyAggregations
+}
+
+type FileStudyAggregations {
+  domain: Aggregations
+  name: Aggregations
+  population: Aggregations
+  short_name: Aggregations
+  short_name_keyword: Aggregations
+  short_name_ngrams: Aggregations
+  study_id: Aggregations
+  study_id_keyword: Aggregations
+}
+
+type FileStudyConnection {
+  total: Int!
+  edges: [FileStudyEdge]
+}
+
+type FileStudyEdge {
+  searchAfter: JSON
+  node: FileStudyNode
+}
+
+type FileStudyNode implements Node {
+  id: ID!
+  score: Int
+  domain: String
+  name: String
+  population: String
+  short_name: String
+  short_name_keyword: String
+  short_name_ngrams: String
+  study_id: String
+  study_id_keyword: String
+}
+
+# The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+scalar JSON
+
+type MatchBoxField {
+  displayName: String
+  field: String
+  isActive: Boolean
+  keyField: String
+  searchFields: [String]
+}
+
+type MatchBoxState {
+  state: [MatchBoxField]
+  timestamp: String
+}
+
+type MatchBoxStates {
+  index: String
+  states: [MatchBoxState]
+}
+
+enum Missing {
+  first
+  last
+}
+
+enum Mode {
+  avg
+  max
+  min
+  sum
+}
+
+type Mutation {
+  saveSet(type: ProjectType!, userId: String, sqon: JSON!, path: String!, sort: [Sort], refresh: EsRefresh): Set
+}
+
+interface Node {
+  id: ID!
+}
+
+type NumericAggregations {
+  stats: Stats
+  histogram(interval: Float): Aggregations
+}
+
+enum Order {
+  asc
+  desc
+}
+
+enum ProjectType {
+  Case
+  File
+  sets
+}
+
+type QueryResults {
+  total: Int
+  hits: [Node]
+}
+
+type Root {
+  node(id: ID!): Node
+  viewer: Root
+  query(query: String, types: [String]): QueryResults
+  Case: Case
+  File: File
+  sets: sets
+}
+
+type Set {
+  setId: String
+  createdAt: Date
+  ids: [String]
+  path: String
+  size: Int
+  sqon: JSON
+  type: String
+  userId: String
+}
+
+type sets {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): setsConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): setsAggregations
+}
+
+type setsAggregations {
+  userId: Aggregations
+  sqon: Aggregations
+  ids: Aggregations
+  setId: Aggregations
+  type: Aggregations
+  path: Aggregations
+  size: NumericAggregations
+  createdAt: NumericAggregations
+}
+
+type setsConnection {
+  total: Int!
+  edges: [setsEdge]
+}
+
+type setsEdge {
+  searchAfter: JSON
+  node: setsNode
+}
+
+type setsNode implements Node {
+  id: ID!
+  score: Int
+  userId: String
+  sqon: JSON
+  ids: [String]
+  setId: String
+  type: String
+  path: String
+  size: Float
+  createdAt: String
+}
+
+input Sort {
+  field: String!
+  order: Order
+  mode: Mode
+  missing: Missing
+}
+
+type Stats {
+  max: Float
+  min: Float
+  count: Int
+  avg: Float
+  sum: Float
+}

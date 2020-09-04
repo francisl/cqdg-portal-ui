@@ -61,11 +61,11 @@ const annotationsTableModel = [
   },
   {
     name: 'Case ID',
-    id: 'case_submitter_id',
+    id: 'case_submitter_donor_id',
     downloadable: true,
     sortable: true,
     th: () => (
-      <Th key="case_submitter_id" rowSpan="2">
+      <Th key="case_submitter_donor_id" rowSpan="2">
         Case ID
       </Th>
     ),
@@ -73,13 +73,13 @@ const annotationsTableModel = [
       <Td>
         <CaseLink
           uuid={node.case_id}
-          id={`row-${index}-case_submitter_id-link`}
+          id={`row-${index}-case_submitter_donor_id-link`}
           merge
           whitelist={['filters']}
         >
-          {node.case_submitter_id}
+          {node.case_submitter_donor_id}
         </CaseLink>
-        <ForTsvExport>{node.case_submitter_id}</ForTsvExport>
+        <ForTsvExport>{node.case_submitter_donor_id}</ForTsvExport>
       </Td>
     ),
   },
@@ -148,11 +148,11 @@ const annotationsTableModel = [
   },
   {
     name: 'Entity ID',
-    id: 'entity_submitter_id',
+    id: 'entity_submitter_donor_id',
     sortable: true,
     downloadable: true,
     th: () => (
-      <Th key="entity_submitter_id" rowSpan="2">
+      <Th key="entity_submitter_donor_id" rowSpan="2">
         Entity ID
       </Th>
     ),
@@ -163,9 +163,9 @@ const annotationsTableModel = [
           query={node.entity_type !== 'case' ? { bioId: node.entity_id } : {}}
           deepLink={node.entity_type !== 'case' ? 'biospecimen' : undefined}
         >
-          {node.entity_submitter_id}
+          {node.entity_submitter_donor_id}
         </CaseLink>
-        <ForTsvExport>{node.entity_submitter_id}</ForTsvExport>
+        <ForTsvExport>{node.entity_submitter_donor_id}</ForTsvExport>
       </Td>
     ),
   },

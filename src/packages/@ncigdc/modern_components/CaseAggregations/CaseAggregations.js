@@ -32,12 +32,17 @@ export type TProps = {
   facets: { facets: string },
   parsedFacets: Object,
   aggregations: {
-    cases__demographics__sex: { buckets: [IBucket] },
-    cases__demographics__age: { buckets: [IBucket] },
-    cases__samples__tissue_type: { buckets: [IBucket] },
-    cases__samples__sample_type: { buckets: [IBucket] },
-    cases__samples__sample_id: { buckets: [IBucket] },
-    cases__provider: { buckets: [IBucket] },
+    study__short_name_keyword: { buckets: [IBucket] },
+    study__study_id_keyword: { buckets: [IBucket] },
+    study__domain: { buckets: [IBucket] },
+    gender: { buckets: [IBucket] },
+    ethnicity: { buckets: [IBucket] },
+    age_at_recruitment: { buckets: [IBucket] },
+    diagnoses__age_at_diagnosis: { buckets: [IBucket] },
+    vital_status: { buckets: [IBucket] },
+    diagnoses__icd_category_keyword: { buckets: [IBucket] },
+    phenotypes__hpo_category_keyword: { buckets: [IBucket] },
+    phenotypes__hpo_term_keyword: { buckets: [IBucket] },
   },
   setAutocomplete: Function,
   theme: Object,
@@ -61,52 +66,75 @@ export type TProps = {
 
 const presetFacets = [
   {
-    title: 'Sex',
-    field: 'cases.demographics.sex',
-    full: 'cases.demographics.sex',
+    title: 'Study Name',
+    field: 'study.short_name_keyword',
+    full: 'study.short_name_keyword',
     type: 'keyword',
   },
   {
-    title: 'Age',
-    field: 'cases.demographics.age',
-    full: 'cases.demographics.age',
+    title: 'Study Id',
+    field: 'study.study_id_keyword',
+    full: 'study.study_id_keyword',
     type: 'keyword',
   },
   {
-	  title: 'Tissue Type',
-	  field: 'cases.samples.tissue_type',
-	  full: 'cases.samples.tissue_type',
+	  title: 'Study Domain',
+	  field: 'study.domain',
+	  full: 'study.domain',
 	  type: 'keyword',
   },
   {
-	  title: 'Sample Type',
-	  field: 'cases.samples.sample_type',
-	  full: 'cases.samples.sample_type',
-	  type: 'keyword',
-  },
-  {
-	  title: 'Participant ID',
-	  field: 'cases.samples.participant_id',
-	  full: 'cases.samples.participant_id',
+	  title: 'Gender',
+	  field: 'gender',
+	  full: 'gender',
 	  type: 'terms',
   },
   {
-	  title: 'Tissue Source',
-	  field: 'cases.tissue_source',
-	  full: 'cases.tissue_source',
+	  title: 'Ethnicity',
+	  field: 'ethnicity',
+	  full: 'ethnicity',
 	  type: 'keyword',
   },
   {
-	  title: 'Protocol',
-	  field: 'protocol',
-	  full: 'protocol',
+	  title: 'Age at recruitment',
+	  field: 'age_at_recruitment',
+	  full: 'age_at_recruitment',
 	  type: 'keyword'
+  },
+  {
+    title: 'Age at diagnosis',
+    field: 'diagnoses.age_at_diagnosis',
+    full: 'diagnoses.age_at_diagnosis',
+    type: 'keyword'
+  },
+  {
+    title: 'Vital Status',
+    field: 'vital_status',
+    full: 'vital_status',
+    type: 'keyword'
+  },
+  {
+    title: 'ICD Category',
+    field: 'diagnoses.icd_category_keyword',
+    full: 'diagnoses.icd_category_keyword',
+    type: 'keyword'
+  },
+  {
+    title: 'HPO Category',
+    field: 'phenotypes.hpo_category_keyword',
+    full: 'phenotypes.hpo_category_keyword',
+    type: 'keyword'
+  },
+  {
+    title: 'HPO Term',
+    field: 'phenotypes.hpo_term_keyword',
+    full: 'phenotypes.hpo_term_keyword',
+    type: 'keyword'
   }
-
 ];
 
 const presetFacetFields = presetFacets.map(x => x.field);
-const entityType = 'Files';
+const entityType = 'Cases';
 
 const enhance = compose(
   setDisplayName('RepoCaseAggregations'),
@@ -213,7 +241,7 @@ const CaseAggregationsComponent = (props: TProps) => (
 	                    />
 	          <div>
 	            <div style={{ fontWeight: 'bold' }}>{x.case_id}</div>
-	            <div style={{ fontSize: '80%' }}>{x.submitter_id}</div>
+	            <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
 	            {x.project.project_id}
 	          </div>
 	        </Row>

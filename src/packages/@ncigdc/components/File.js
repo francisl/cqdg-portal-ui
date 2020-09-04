@@ -63,7 +63,7 @@ export const getSlide = caseNode => {
   );
   const slideImageIds = caseNode.files.hits.edges.map(({ node }) => ({
     file_id: node.file_id,
-    submitter_id: _.trimEnd(node.submitter_id, '_slide_image'),
+    submitter_donor_id: _.trimEnd(node.submitter_donor_id, '_slide_image'),
   }));
   let slides = portions.reduce(
     (acc, { slides }) => [...acc, ...slides.hits.edges.map(p => p.node)],
@@ -72,7 +72,7 @@ export const getSlide = caseNode => {
   return _.head(
     slideImageIds.map(id => {
       const matchBySubmitter = _.find(slides, {
-        submitter_id: id.submitter_id,
+        submitter_donor_id: id.submitter_donor_id,
       });
       return { ...id, ...matchBySubmitter };
     })
@@ -140,7 +140,7 @@ const File = ({
 }) => {
   const archiveComponent = node.archive.archive_id ? (
     <span>
-      {node.archive.submitter_id || '--'} - rev {node.archive.revision} &nbsp; (<RepositoryFilesLink
+      {node.archive.submitter_donor_id || '--'} - rev {node.archive.revision} &nbsp; (<RepositoryFilesLink
         query={{
           filters: makeFilter([
             {

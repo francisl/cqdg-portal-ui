@@ -50,17 +50,17 @@ export const validateSsms = validate(SSM_ID_FIELDS, ssmMap, 'ssm', 'ssms');
 
 export const CASE_ID_FIELD_DISPLAY = {
   case_id: 'Case UUID',
-  submitter_id: 'Case ID',
+  submitter_donor_id: 'Case ID',
   'samples.sample_id': 'Sample UUID',
-  'samples.submitter_id': 'Sample ID',
+  'samples.submitter_donor_id': 'Sample ID',
   'samples.portions.portion_id': 'Portion UUID',
-  'samples.portions.submitter_id': 'Portion ID',
+  'samples.portions.submitter_donor_id': 'Portion ID',
   'samples.portions.slides.slide_id': 'Slide UUID',
-  'samples.portions.slides.submitter_id': 'Slide ID',
+  'samples.portions.slides.submitter_donor_id': 'Slide ID',
   'samples.portions.analytes.analyte_id': 'Analyte UUID',
-  'samples.portions.analytes.submitter_id': 'Analyte ID',
+  'samples.portions.analytes.submitter_donor_id': 'Analyte ID',
   'samples.portions.analytes.aliquots.aliquot_id': 'Aliquot UUID',
-  'samples.portions.analytes.aliquots.submitter_id': 'Aliquot ID',
+  'samples.portions.analytes.aliquots.submitter_donor_id': 'Aliquot ID',
 };
 export const CASE_ID_FIELDS = Object.keys(CASE_ID_FIELD_DISPLAY);
 export const caseMap = {};

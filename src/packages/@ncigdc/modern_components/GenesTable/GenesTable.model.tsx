@@ -46,7 +46,7 @@ export interface ISelectedSurvivalDataProps {
         censored: boolean;
         time: number;
         survivalEstimate: number;
-        submitter_id: string;
+        submitter_donor_id: string;
       }>;
       meta: { id: number };
     }>;

@@ -77,7 +77,7 @@ const CaseAggregations = ({
             />
           <div>
             <div style={{ fontWeight: 'bold' }}>{caseItem.case_id}</div>
-            <div style={{ fontSize: '80%' }}>{caseItem.submitter_id}</div>
+            <div style={{ fontSize: '80%' }}>{caseItem.submitter_donor_id}</div>
             {caseItem.project.project_id}
           </div>
         </Row>

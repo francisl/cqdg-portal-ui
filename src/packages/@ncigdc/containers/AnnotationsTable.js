@@ -113,7 +113,7 @@ export const AnnotationsTableQuery = {
             id
             annotation_id
             case_id
-            case_submitter_id
+            case_submitter_donor_id
             project {
               project_id
               program {
@@ -122,7 +122,7 @@ export const AnnotationsTableQuery = {
             }
             entity_type
             entity_id
-            entity_submitter_id
+            entity_submitter_donor_id
             category
             classification
             created_datetime

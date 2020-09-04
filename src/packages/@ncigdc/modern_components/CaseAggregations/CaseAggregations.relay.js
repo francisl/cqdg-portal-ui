@@ -40,6 +40,25 @@ export default (Component: ReactClass<*>) =>
       },
     ),
   )((props: Object) => {
+
+    /*
+
+
+                    age_at_recruitment{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    diagnoses__age_at_diagnosis{
+                      buckets{
+                        doc_counts
+                        key
+                      }
+                    }
+     */
+
+
     return (
       <Query
         parentProps={props}
@@ -51,53 +70,65 @@ export default (Component: ReactClass<*>) =>
             $filters: JSON
           ) {
             viewer {
-              File { 
+              Case { 
                   aggregations(
                     filters: $filters
                     aggregations_filter_themselves: false
                   ) {
-                    protocol {
-                      buckets {
+                    study__short_name_keyword{
+                      buckets{
                         doc_count
                         key
                       }
                     }
-                    cases__tissue_source {
-                    	buckets {
-                    		doc_count
-                    		key
-                    	}
-                    }
-                    cases__demographics__sex {
-                      buckets {
+                    study__study_id_keyword{
+                      buckets{
                         doc_count
                         key
                       }
                     }
-    		  		cases__demographics__age {
-    		  			buckets {
-    		  				doc_count
-    		  				key
-    		  			}
-    		  		}
-                    cases__samples__tissue_type {
-                    	buckets {
-                    		doc_count
-                    		key
-                    	}
+                    study__domain{
+                      buckets{
+                        doc_count
+                        key
+                      }
                     }
-		    		cases__samples__sample_type {
-		    			buckets {
-		    		  		doc_count
-		    		  		key
-		    		  	}
-		    		},
-		    		cases__samples__participant_id {
-		    			buckets {
-		    				doc_count
-		    				key
-		    			}
-		    		}
+                    gender{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    ethnicity{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    vital_status{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    diagnoses__icd_category_keyword{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    phenotypes__hpo_category_keyword{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
+                    phenotypes__hpo_term_keyword{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }                        		  		
                   }
                 }
               }

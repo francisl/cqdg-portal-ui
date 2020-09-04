@@ -35,20 +35,20 @@ const filesTableModel = [
   },
   {
     name: 'Access',
-    id: 'access',
+    id: 'data_access',
     sortable: true,
     downloadable: true,
     th: () => <Th>Access</Th>,
     td: ({ node }) => (
       <Td>
-        {node.access === 'open' && <i className="fa fa-unlock-alt" />}
-        {node.access === 'controlled' && <i className="fa fa-lock" />}
+        {node.data_access === 'open' && <i className="fa fa-unlock-alt" />}
+        {node.data_access === 'controlled' && <i className="fa fa-lock" />}
         <span
           style={{
             marginLeft: '0.3rem',
           }}
         >
-          {node.access}
+          {node.data_access}
         </span>
       </Td>
     ),
@@ -131,9 +131,9 @@ const filesTableModel = [
   },
   {
     name: 'Data Format',
-    id: 'data_format',
+    id: 'file_format',
     th: () => <Th>Data Format</Th>,
-    td: ({ node }) => <Td>{node.data_format || '--'}</Td>,
+    td: ({ node }) => <Td>{node.file_format || '--'}</Td>,
     sortable: true,
     downloadable: true,
   },
@@ -143,8 +143,18 @@ const filesTableModel = [
     th: () => <ThNum>File Size</ThNum>,
     td: ({ node }) => (
       <TdNum>
-        <FileSize bytes={node.file_size} />
+        <FileSize bytes={node.file_size * 1000000} />
       </TdNum>
+    ),
+    sortable: true,
+    downloadable: true,
+  },
+  {
+    name: 'Harmonized',
+    id: 'is_harmonized',
+    th: () => <Th>Harmonized</Th>,
+    td: ({ node }) => (
+      <Td style={{ textAlign: 'center' }}>{node.is_harmonized ? "true" : "false"}</Td>
     ),
     sortable: true,
     downloadable: true,
@@ -181,7 +191,7 @@ const filesTableModel = [
     downloadable: true,
     hidden: true,
   },
-  {
+/*  {
     name: 'Workflow Type',
     id: 'workflow_type',
     th: () => <Th>Workflow Type</Th>,
@@ -189,7 +199,7 @@ const filesTableModel = [
     sortable: true,
     downloadable: true,
     hidden: true,
-  },
+  },*/
   {
     name: 'Platform',
     id: 'platform',
@@ -200,11 +210,10 @@ const filesTableModel = [
     hidden: false,
   },
   {
-	  name: 'Participant ID',
-	  id: 'participant_id',
-	  th: () => <Th>Participant ID</Th>,
-	  td: ({ node }) => <Td>{node.cases.samples.participant_id ? 
-			  node.cases.samples.participant_id.join(", ") : '--'}</Td>,
+	  name: 'Number of donors',
+	  id: 'cases.hits.edges.submitter_donor_id',
+	  th: () => <Th>Number of donors</Th>,
+	  td: ({ node }) => <Td style={{ textAlign: 'center' }}>{node.cases.hits.total}</Td>,
 	  sortable: true,
 	  downloadable: true,
 	  hidden: false,

@@ -36,7 +36,7 @@ export default compose(withTheme)(({ isLoading, projectId, viewer }) => {
         'samples.portions.analytes.aliquots',
         'samples.portions.analytes.aliquots.annotations',
         'samples.portions.analytes.annotations',
-        'samples.portions.submitter_id',
+        'samples.portions.submitter_donor_id',
         'samples.portions.slides',
         'samples.portions.annotations',
         'samples.portions.center',

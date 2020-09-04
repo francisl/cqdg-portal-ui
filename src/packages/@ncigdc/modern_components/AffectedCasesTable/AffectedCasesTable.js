@@ -107,7 +107,7 @@ const createContainer = Component =>
                     primary_site
                     score
                     case_id
-                    submitter_id
+                    submitter_donor_id
                     demographic {
                       gender
                       days_to_death
@@ -229,7 +229,7 @@ const Component = compose(
               downloadFields={[
                 'case_id',
                 'primary_site',
-                'submitter_id',
+                'submitter_donor_id',
                 'demographic.gender',
                 'summary.data_categories.data_category',
                 'summary.data_categories.file_count',
@@ -248,7 +248,7 @@ const Component = compose(
           tableId="most-affected-cases-table"
           headings={[
             { key: 'id', title: 'Case UUID', style: { display: 'none' } },
-            { key: 'submitter_id', title: 'Case ID' },
+            { key: 'submitter_donor_id', title: 'Case ID' },
             { key: 'project_id', title: 'Project' },
             { key: 'primary_site', title: 'Site' },
             { key: 'gender', title: 'Gender' },
@@ -343,8 +343,8 @@ const Component = compose(
                   return {
                     ...c,
                     id: <ForTsvExport>{c.case_id}</ForTsvExport>,
-                    submitter_id: (
-                      <CaseLink uuid={c.case_id}>{c.submitter_id}</CaseLink>
+                    submitter_donor_id: (
+                      <CaseLink uuid={c.case_id}>{c.submitter_donor_id}</CaseLink>
                     ),
                     project_id: c.project.project_id,
                     primary_site: c.primary_site,

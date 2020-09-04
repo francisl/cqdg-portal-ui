@@ -45,8 +45,8 @@ export default (Component: ReactClass<*>) =>
                     node {
                       annotation_id
                       entity_id
-                      entity_submitter_id
-                      case_submitter_id
+                      entity_submitter_donor_id
+                      case_submitter_donor_id
                       entity_type
                       case_id
                       project {

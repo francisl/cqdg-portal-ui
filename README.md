@@ -1,17 +1,5 @@
-<p align="center">
-	<a href="https://portal.gdc.cancer.gov/">
-		<img src="http://i.imgur.com/b6arSwT.png" width="456" alt="GDC Data Portal">
-	</a>
-</p>
-<p align="center">
-  <b>#react #relay #redux #recompose #flow #jest #d3</b>
-</p>
-<p align="center">
-	<a href="https://travis-ci.org/NCI-GDC/portal-ui">
-		<img src="https://travis-ci.org/KPMP/portal-ui.svg?branch=develop"
-			 alt="Build Status">
-	</a>
-</p>
+# Derived from: 
+## git@github.com:KPMP/portal-ui.git 
 
 - [Technologies](#technologies)
 - [Installation](#installation)

@@ -67,7 +67,7 @@ export default (Component: ReactClass<*>) =>
                         case_id
                         primary_site
                         disease_type
-                        submitter_id
+                        submitter_donor_id
                         project {
                           project_id
                           program {

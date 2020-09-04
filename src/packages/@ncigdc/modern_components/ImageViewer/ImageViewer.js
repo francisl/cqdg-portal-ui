@@ -30,14 +30,14 @@ export const getSlides = caseNode => {
   );
   const slideImageIds = caseNode.files.hits.edges.map(({ node }) => ({
     file_id: node.file_id,
-    submitter_id: _.trimEnd(node.submitter_id, '_slide_image'),
+    submitter_donor_id: _.trimEnd(node.submitter_donor_id, '_slide_image'),
   }));
   let slides = portions.reduce(
     (acc, { slides }) => [...acc, ...slides.hits.edges.map(p => p.node)],
     [],
   );
   return slideImageIds.map(id => {
-    const matchBySubmitter = _.find(slides, { submitter_id: id.submitter_id });
+    const matchBySubmitter = _.find(slides, { submitter_donor_id: id.submitter_donor_id });
     return { ...id, ...matchBySubmitter };
   });
 };
@@ -74,7 +74,7 @@ export default compose(
     componentDidMount(): void {
       if (
         JSON.stringify(this.props.query.filters || {}).includes(
-          'cases.submitter_id',
+          'cases.submitter_donor_id',
         )
       ) {
         this.props.setShowSearchInput(true);
@@ -154,7 +154,7 @@ export default compose(
             {showSearchInput && (
               <Row style={{ width: '200px' }}>
                 <ExactMatchFacet
-                  fieldNoDoctype="submitter_id"
+                  fieldNoDoctype="submitter_donor_id"
                   doctype="cases"
                   placeholder="eg. TCGA-DD*, *DD*, TCGA-DD-AAVP"
                 />
@@ -174,7 +174,7 @@ export default compose(
                 id: caseNode.case_id,
                 text: (
                   <div style={{ fontSize: '1rem' }}>
-                    {`${caseNode.submitter_id} - ${caseNode.project
+                    {`${caseNode.submitter_donor_id} - ${caseNode.project
                       .project_id}`}
                   </div>
                 ),

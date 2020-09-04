@@ -392,7 +392,7 @@ export const IS_DEV = process.env.NODE_ENV === 'development';
 export const CLINICAL_FIELD_BLACKLIST = [
   'state',
   'score',
-  'submitter_id',
+  'submitter_donor_id',
   'demographic_id',
   'updated_datetime',
   'diagnosis_id',

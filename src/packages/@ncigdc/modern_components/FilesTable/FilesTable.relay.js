@@ -60,17 +60,21 @@ export default (Component: ReactClass<*>) =>
                         file_id
                         file_name
                         file_size
-                        access
+                        data_access
                         data_category
-                        workflow_type
-                        data_format
+                        file_format
                         data_type
                         experimental_strategy
                         platform
-                        package_id
-                        cases {
-                          samples {
-                            participant_id
+                        is_harmonized
+                        cases{
+                          hits{
+                            total
+                            edges{
+                              node{
+                                submitter_donor_id
+                              }
+                            }
                           }
                         }
                       }
