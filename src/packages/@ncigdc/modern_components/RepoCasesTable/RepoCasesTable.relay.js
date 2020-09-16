@@ -18,15 +18,15 @@ export default (Component: React.Class<*>) =>
     withRouter,
     withPropsOnChange(
       ['location', 'defaultFilters'],
-      ({ location, defaultFilters = null, defaultSize = 10 }) => {
+      ({ location, filters = null, defaultSize = 10 }) => {
         const q = parse(location.search);
+
         return {
           variables: {
             cases_offset: parseIntParam(q.cases_offset, 0),
             cases_size: parseIntParam(q.cases_size, 20),
             cases_sort: parseJSONParam(q.cases_sort, null),
-            filters: parseFilterParam(q.filters, defaultFilters),
-            score: 'annotations.annotation_id',
+            filters: parseFilterParam(q.filters, filters),
           },
         };
       },
@@ -45,65 +45,71 @@ export default (Component: React.Class<*>) =>
             $cases_offset: Int
             $cases_sort: [Sort]
             $filters: JSON
-            $score: String
           ) {
-            viewer {
-              repository {
-                cases {
+              viewer{
+                Case{
                   hits(
-                    score: $score
-                    first: $cases_size
-                    offset: $cases_offset
-                    sort: $cases_sort
-                    filters: $filters
-                  ) {
+                      first: $cases_size
+                      offset: $cases_offset
+                      sort: $cases_sort
+                      filters: $filters
+                    ){
                     total
-                    edges {
-                      node {
+                    edges{
+                      node{
                         id
-                        case_id
-                        primary_site
-                        disease_type
                         submitter_donor_id
-                        project {
-                          project_id
-                          program {
-                            name
+                        gender
+                        ethnicity
+                        vital_status
+                        age_at_recruitment
+                        study{
+                          hits(first: 1){
+                            edges{
+                              node{
+                                study_id
+                                short_name_keyword
+                                domain
+                                population
+                              }
+                            }
                           }
                         }
-                        annotations {
-                          hits(first: 1) {
+                        
+                        diagnoses{
+                          hits(first: 99){
                             total
-                            edges {
-                              node {
-                                annotation_id
-                              }
-                            }
-                          }
-                        }
-                        demographic {
-                          gender
-                          ethnicity
-                          race
-                          days_to_death
-                          vital_status
-                        }
-                        diagnoses {
-                          hits(first: 99) {
-                            edges {
-                              node {
-                                primary_diagnosis
+                            edges{
+                              node{
                                 age_at_diagnosis
+                                icd_category_keyword
+                                icd_term
                               }
                             }
                           }
                         }
-                        summary {
-                          data_categories {
-                            file_count
-                            data_category
+                        
+                        phenotypes{
+                          hits(first: 99){
+                            total
+                            edges{
+                              node{
+                                hpo_term
+                              }
+                            }
                           }
-                          file_count
+                        }
+                        
+                        files{
+                          hits(first: 99){
+                            total
+                            edges{
+                              node{
+                                data_type
+                                data_category
+                              }
+                            }
+                          }
                         }
                       }
                     }
@@ -111,7 +117,6 @@ export default (Component: React.Class<*>) =>
                 }
               }
             }
-          }
         `}
       />
     );

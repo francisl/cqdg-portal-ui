@@ -38,19 +38,23 @@ export default (Component: ReactClass<*>) =>
         query={graphql`
           query CaseSymbol_relayQuery($filters: JSON) {
             viewer {
-              repository {
-                cases {
+                Case {
                   hits(filters: $filters, first: 1) {
                     edges {
                       node {
                         submitter_donor_id
-                        project {
-                          project_id
+                        study{
+                          hits(first: 1){
+                            edges{
+                              node{
+                                study_id
+                              }
+                            }
+                          }
                         }
                       }
                     }
                   }
-                }
               }
             }
           }

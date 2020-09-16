@@ -38,31 +38,12 @@ export default (Component: ReactClass<*>) =>
         query={graphql`
           query CaseSummary_relayQuery($filters: JSON) {
             viewer {
-              repository {
-                cases {
+                Case {
                   hits(first: 1, filters: $filters) {
                     edges {
                       node {
-                        case_id
+                        donor_id
                         submitter_donor_id
-                        primary_site
-                        disease_type
-                        annotations {
-                          hits(first: 20) {
-                            total
-                            edges {
-                              node {
-                                annotation_id
-                              }
-                            }
-                          }
-                        }
-                        summary {
-                          experimental_strategies {
-                            experimental_strategy
-                            file_count
-                          }
-                        }
                         files {
                           hits(first: 99) {
                             total
@@ -70,27 +51,27 @@ export default (Component: ReactClass<*>) =>
                               node {
                                 file_id
                                 data_type
-                                acl
-                                state
-                                access
+                                data_access
                                 file_id
                                 file_size
                               }
                             }
                           }
                         }
-                        project {
-                          project_id
-                          name
-                          program {
-                            name
+                        study {
+                          hits(first: 1){
+                            edges{
+                              node{
+                                name
+                                short_name_keyword
+                              }
+                            }
                           }
                         }
                       }
                     }
                   }
                 }
-              }
             }
           }
         `}

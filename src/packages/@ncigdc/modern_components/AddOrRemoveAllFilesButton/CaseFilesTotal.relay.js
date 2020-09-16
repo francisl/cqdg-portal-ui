@@ -43,7 +43,6 @@ export default (Component: ReactClass<*>) =>
                   hits(first: 1, filters: $filters) {
                     edges {
                       node {
-                        id
                         files {
                           hits(first: 0) {
                             total

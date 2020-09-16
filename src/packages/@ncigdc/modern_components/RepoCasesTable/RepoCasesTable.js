@@ -21,14 +21,14 @@ export default compose(
   connect(state => ({ tableColumns: state.tableColumns.cases })),
   branch(
     ({ viewer }) =>
-      !viewer.repository.cases.hits ||
-      !viewer.repository.cases.hits.edges.length,
+      !viewer.Case.hits ||
+      !viewer.Case.hits.edges.length,
     renderComponent(() => <div>No results found</div>)
   ),
   withSelectIds
 )(
   ({
-    viewer: { repository: { cases: { hits } } },
+    viewer: { Case: { hits } },
     entityType = 'cases',
     tableColumns,
     variables,
@@ -74,8 +74,8 @@ export default compose(
             RemoveFromSetButton={RemoveFromRepositoryCaseSetButton}
             idField="cases.case_id"
             selectedIds={selectedIds}
-            downloadClinical
-            downloadBiospecimen
+            false
+            false
           />
         </Row>
         <div style={{ overflowX: 'auto' }}>

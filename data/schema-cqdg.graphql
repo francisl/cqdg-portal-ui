@@ -136,8 +136,7 @@ type CaseDiagnosesEdge {
   node: CaseDiagnosesNode
 }
 
-type CaseDiagnosesNode implements Node {
-  id: ID!
+type CaseDiagnosesNode {
   score: Int
   age_at_diagnosis: Float
   icd_category: String
@@ -197,8 +196,7 @@ type CaseFilesEdge {
   node: CaseFilesNode
 }
 
-type CaseFilesNode implements Node {
-  id: ID!
+type CaseFilesNode {
   score: Int
   data_access: String
   data_category: String
@@ -267,8 +265,7 @@ type CasePhenotypesEdge {
   node: CasePhenotypesNode
 }
 
-type CasePhenotypesNode implements Node {
-  id: ID!
+type CasePhenotypesNode {
   score: Int
   hpo_category: String
   hpo_category_keyword: String

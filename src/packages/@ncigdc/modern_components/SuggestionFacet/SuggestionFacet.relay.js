@@ -51,10 +51,16 @@ export default (Component: ReactClass<*>) => compose(
               }
               cases: hits @include(if: $showCases) {
                 id
-                ... on Case {
-                  case_id
-                  project {
-                    project_id
+                ... on CaseNode {
+                  donor_id
+                  study {
+                    hits(first: 1){
+                        edges{
+                            node{
+                                study_id
+                            }
+                        }
+                    }
                   }
                   submitter_donor_id
                 }

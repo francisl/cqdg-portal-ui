@@ -1,26 +1,19 @@
 // @flow
 import React from 'react';
-import { parse } from 'query-string';
+import {parse} from 'query-string';
 import Column from '@ncigdc/uikit/Flex/Column';
 import Row from '@ncigdc/uikit/Flex/Row';
 import ST from '@ncigdc/modern_components/SsmsTable';
 import GdcDataIcon from '@ncigdc/theme/icons/GdcData';
 import ExploreLink from '@ncigdc/components/Links/ExploreLink';
-import ClinicalCard from '@ncigdc/modern_components/ClinicalCard';
-import CaseSummary from '@ncigdc/modern_components/CaseSummary';
 import AddOrRemoveAllFilesButton from '@ncigdc/modern_components/AddOrRemoveAllFilesButton';
-import { makeFilter } from '@ncigdc/utils/filters';
-import {
-  CaseCountsDataCategory,
-  CaseCountsExpStrategy,
-} from '@ncigdc/modern_components/CaseCounts';
-import BiospecimenCard from '@ncigdc/modern_components/BiospecimenCard';
+import {makeFilter} from '@ncigdc/utils/filters';
 import FullWidthLayout from '@ncigdc/components/Layouts/FullWidthLayout';
 import createCaseSummary from '@ncigdc/modern_components/CaseSummary/CaseSummary.relay';
 import Exists from '@ncigdc/modern_components/Exists';
 import CaseSymbol from '@ncigdc/modern_components/CaseSymbol';
 import HasSsms from '@ncigdc/modern_components/HasSsms';
-import { AWG } from '@ncigdc/utils/constants';
+import {AWG} from '@ncigdc/utils/constants';
 
 const SsmsTable = createCaseSummary(
   ({
@@ -78,23 +71,24 @@ export default ({
               style={{ width: 'auto' }}
             />
           </Row>
-          <CaseSummary caseId={caseId} />
-          <Row style={{ flexWrap: 'wrap' }} spacing={'2rem'}>
-            <span style={{ ...styles.column, marginBottom: '2rem', flex: 1 }}>
-              <CaseCountsDataCategory caseId={caseId} />
-            </span>
-            <span style={{ ...styles.column, marginBottom: '2rem', flex: 1 }}>
-              <CaseCountsExpStrategy caseId={caseId} />
-            </span>
-          </Row>
+          {/*<CaseSummary caseId={caseId} />*/}
 
-          <Row id="clinical" style={{ flexWrap: 'wrap' }} spacing="2rem">
-            <ClinicalCard caseId={caseId} />
-          </Row>
+          {/*<Row style={{ flexWrap: 'wrap' }} spacing={'2rem'}>*/}
+          {/*  <span style={{ ...styles.column, marginBottom: '2rem', flex: 1 }}>*/}
+          {/*    <CaseCountsDataCategory caseId={caseId} />*/}
+          {/*  </span>*/}
+          {/*  <span style={{ ...styles.column, marginBottom: '2rem', flex: 1 }}>*/}
+          {/*    <CaseCountsExpStrategy caseId={caseId} />*/}
+          {/*  </span>*/}
+          {/*</Row>*/}
 
-          <Row id="biospecimen" style={{ flexWrap: 'wrap' }} spacing="2rem">
-            <BiospecimenCard caseId={caseId} bioId={query.bioId} />
-          </Row>
+          {/*<Row id="clinical" style={{ flexWrap: 'wrap' }} spacing="2rem">*/}
+          {/*  <ClinicalCard caseId={caseId} />*/}
+          {/*</Row>*/}
+
+          {/*<Row id="biospecimen" style={{ flexWrap: 'wrap' }} spacing="2rem">*/}
+          {/*  <BiospecimenCard caseId={caseId} bioId={query.bioId} />*/}
+          {/*</Row>*/}
           {!AWG && (
             <HasSsms caseId={caseId}>
               <Column style={{ ...styles.card, marginTop: '2rem' }}>

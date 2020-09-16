@@ -518,11 +518,12 @@ type CartSummaryCasesCount {
   doc_count: Int
 }
 
-type Case implements Node {
+#type Case implements Node {
+type Case {
   #-------- START CQDG
+    mapping: JSON
     extended(fields: [String]): JSON
     hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseConnection
-    files: CaseFiles
     aggregations(
       filters: JSON
       include_missing: Boolean
@@ -534,8 +535,6 @@ type Case implements Node {
       aggregations_filter_themselves: Boolean
     ): CaseAggregations
   #-------- END CQDG
-
-  id: ID!
 
   # keyword
   updated_datetime: String
@@ -622,44 +621,199 @@ type Case implements Node {
   score: Int
 }
 
+#-------- CQDG START
+type CaseNode implements Node {
+  id: ID!
+  score: Int
+  age_at_recruitment: Float
+  donor_id: String
+  ethnicity: String
+  gender: String
+  submitter_donor_id: String
+  vital_status: String
+  diagnoses: CaseDiagnoses
+  files: CaseFiles
+  phenotypes: CasePhenotypes
+  study: CaseStudy
+}
+
+type CaseDiagnoses {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseDiagnosesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseDiagnosesAggregations
+}
+
+type CaseDiagnosesAggregations {
+  age_at_diagnosis: NumericAggregations
+  icd_category: Aggregations
+  icd_category_keyword: Aggregations
+  icd_code: Aggregations
+  icd_term: Aggregations
+  icd_term_keyword: Aggregations
+}
+
+type CaseDiagnosesConnection {
+  total: Int!
+  edges: [CaseDiagnosesEdge]
+}
+
+type CaseDiagnosesEdge {
+  searchAfter: JSON
+  node: CaseDiagnosesNode
+}
+
+type CaseDiagnosesNode {
+  score: Int
+  age_at_diagnosis: Float
+  icd_category: String
+  icd_category_keyword: String
+  icd_code: String
+  icd_term: String
+  icd_term_keyword: String
+}
+
+type CasePhenotypesConnection {
+  total: Int!
+  edges: [CasePhenotypesEdge]
+}
+
+type CasePhenotypesEdge {
+  searchAfter: JSON
+  node: CasePhenotypesNode
+}
+
+type CasePhenotypesNode {
+  score: Int
+  hpo_category: String
+  hpo_category_keyword: String
+  hpo_code: String
+  hpo_term: String
+  hpo_term_keyword: String
+}
+
+type CaseStudyConnection {
+  total: Int!
+  edges: [CaseStudyEdge]
+}
+
+type CaseStudyEdge {
+  searchAfter: JSON
+  node: CaseStudyNode
+}
+
+type CaseStudyNode {
+  score: Int
+  domain: String
+  name: String
+  population: String
+  short_name: String
+  short_name_keyword: String
+  short_name_ngrams: String
+  study_id: String
+  study_id_keyword: String
+}
+
+type CasePhenotypes {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CasePhenotypesConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CasePhenotypesAggregations
+}
+
+type CaseStudy {
+  mapping: JSON
+  extended(fields: [String]): JSON
+  hits(score: String, offset: Int, sort: [Sort], filters: JSON, before: String, after: String, first: Int, last: Int, searchAfter: JSON): CaseStudyConnection
+  aggregations(
+    filters: JSON
+    include_missing: Boolean
+
+    # Should term aggregations be affected by queries that contain filters on
+    # their field. For example if a query is filtering primary_site by Blood
+    # should the term aggregation on primary_site return all values or just Blood.
+    # Set to False for UIs that allow users to select multiple values of an aggregation.
+    aggregations_filter_themselves: Boolean
+  ): CaseStudyAggregations
+}
+
+type CaseStudyAggregations {
+  domain: Aggregations
+  name: Aggregations
+  population: Aggregations
+  short_name: Aggregations
+  short_name_keyword: Aggregations
+  short_name_ngrams: Aggregations
+  study_id: Aggregations
+  study_id_keyword: Aggregations
+}
+
+type CasePhenotypesAggregations {
+  hpo_category: Aggregations
+  hpo_category_keyword: Aggregations
+  hpo_code: Aggregations
+  hpo_term: Aggregations
+  hpo_term_keyword: Aggregations
+}
+
 type CaseAggregations {
   #-------- CQDG START
-    age_at_recruitment: Aggregations
-    diagnoses__age_at_diagnosis: Aggregations
-    diagnoses__icd_category: Aggregations
-    diagnoses__icd_category_keyword: Aggregations
-    diagnoses__icd_code: Aggregations
-    diagnoses__icd_term: Aggregations
-    diagnoses__icd_term_keyword: Aggregations
-    ethnicity: Aggregations
-    files__data_access: Aggregations
-    files__data_category: Aggregations
-    files__data_type: Aggregations
-    files__file_format: Aggregations
-    files__file_id: Aggregations
-    files__file_name: Aggregations
-    files__file_name_keyword: Aggregations
-    files__file_name_ngrams: Aggregations
-    files__file_variant_class: Aggregations
-    files__platform: Aggregations
-    files__submitter_biospecimen_id: Aggregations
-    files__variant_class: Aggregations
-    gender: Aggregations
-    phenotypes__hpo_category: Aggregations
-    phenotypes__hpo_category_keyword: Aggregations
-    phenotypes__hpo_code: Aggregations
-    phenotypes__hpo_term: Aggregations
-    phenotypes__hpo_term_keyword: Aggregations
-    study__domain: Aggregations
-    study__name: Aggregations
-    study__population: Aggregations
-    study__short_name: Aggregations
-    study__short_name_keyword: Aggregations
-    study__short_name_ngrams: Aggregations
-    study__study_id: Aggregations
-    study__study_id_keyword: Aggregations
-    submitter_donor_id: Aggregations
-    vital_status: Aggregations
+  age_at_recruitment: NumericAggregations
+  #diagnoses__age_at_diagnosis: NumericAggregations
+  diagnoses__icd_category: Aggregations
+  diagnoses__icd_category_keyword: Aggregations
+  diagnoses__icd_code: Aggregations
+  diagnoses__icd_term: Aggregations
+  diagnoses__icd_term_keyword: Aggregations
+  donor_id: Aggregations
+  ethnicity: Aggregations
+  files__data_access: Aggregations
+  files__data_category: Aggregations
+  files__data_type: Aggregations
+  files__file_format: Aggregations
+  files__file_id: Aggregations
+  files__file_name: Aggregations
+  files__file_name_keyword: Aggregations
+  files__file_name_ngrams: Aggregations
+  files__file_size: NumericAggregations
+  files__file_variant_class: Aggregations
+  files__platform: Aggregations
+  files__submitter_biospecimen_id: Aggregations
+  files__variant_class: Aggregations
+  gender: Aggregations
+  phenotypes__hpo_category: Aggregations
+  phenotypes__hpo_category_keyword: Aggregations
+  phenotypes__hpo_code: Aggregations
+  phenotypes__hpo_term: Aggregations
+  phenotypes__hpo_term_keyword: Aggregations
+  study__domain: Aggregations
+  study__name: Aggregations
+  study__population: Aggregations
+  study__short_name: Aggregations
+  study__short_name_keyword: Aggregations
+  study__short_name_ngrams: Aggregations
+  study__study_id: Aggregations
+  study__study_id_keyword: Aggregations
+  submitter_donor_id: Aggregations
+  vital_status: Aggregations
   #-------- CQGD END
 
 
@@ -2735,13 +2889,14 @@ type CaseEdge {
   cursor: String!
 
   # The item at the end of the edge
-  node: Case
+  node: CaseNode
 }
 
-type CaseFile implements Node {
-  id: ID!
+type CaseFile {
   acl: [String]
   tags: [String]
+
+  data_access: String
 
   # keyword
   origin: String

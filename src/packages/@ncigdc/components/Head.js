@@ -9,7 +9,7 @@ const Head = ({ title }) => (
       name="description"
       />
     <title>{capitalize(title) || 'Repository'}</title>
-    <link href="%PUBLIC_URL%/favicon.ico" rel="icon" />
+    <link href="/favicon.ico" rel="icon" />
   </Helmet>
 );
 

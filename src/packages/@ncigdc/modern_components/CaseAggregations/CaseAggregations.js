@@ -1,28 +1,20 @@
 /* @flow */
 import React from 'react';
 import _ from 'lodash';
-import {
-  compose,
-  withState,
-  setDisplayName,
-  withPropsOnChange,
-} from 'recompose';
+import {compose, setDisplayName, withPropsOnChange, withState,} from 'recompose';
 
 import Modal from '@ncigdc/uikit/Modal';
-import SuggestionFacet from '@ncigdc/modern_components/SuggestionFacet';
-import { Row } from '@ncigdc/uikit/Flex';
 import FacetSelection from '@ncigdc/modern_components/FacetSelection';
 import FacetWrapper from '@ncigdc/components/FacetWrapper';
 import UploadSetButton from '@ncigdc/components/UploadSetButton';
-import { withTheme } from '@ncigdc/theme';
-import CaseIcon from '@ncigdc/theme/icons/Case';
+import {withTheme} from '@ncigdc/theme';
 import withFacetSelection from '@ncigdc/utils/withFacetSelection';
 import escapeForRelay from '@ncigdc/utils/escapeForRelay';
 import tryParseJSON from '@ncigdc/utils/tryParseJSON';
 import FacetHeader from '@ncigdc/components/Aggregations/FacetHeader';
-import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
+import {UploadCaseSet} from '@ncigdc/components/Modals/UploadSet';
 
-import { IBucket } from '@ncigdc/components/Aggregations/types';
+import {IBucket} from '@ncigdc/components/Aggregations/types';
 import features from '../../../../features';
 
 export type TProps = {
@@ -71,12 +63,12 @@ const presetFacets = [
     full: 'study.short_name_keyword',
     type: 'keyword',
   },
-  {
+  /*{
     title: 'Study Id',
     field: 'study.study_id_keyword',
     full: 'study.study_id_keyword',
     type: 'keyword',
-  },
+  },*/
   {
 	  title: 'Study Domain',
 	  field: 'study.domain',
@@ -207,7 +199,7 @@ const CaseAggregationsComponent = (props: TProps) => (
 	        />
 	    </Modal>
     }
-    {props.userSelectedFacets.map(facet => (
+    {props.userSelectedFacets && props.userSelectedFacets.map(facet => (
     		<FacetWrapper
     		aggregation={props.parsedFacets[facet.field]}
     		facet={facet}
@@ -228,30 +220,30 @@ const CaseAggregationsComponent = (props: TProps) => (
 	      title="Case"
 	      />
     }
-    { features.searchByCaseId &&
-	    <SuggestionFacet
-	      collapsed={props.caseIdCollapsed}
-	      doctype="cases"
-	      dropdownItem={x => (
-	        <Row>
-	          <CaseIcon style={{
-	            paddingRight: '1rem',
-	            paddingTop: '1rem',
-	          }}
-	                    />
-	          <div>
-	            <div style={{ fontWeight: 'bold' }}>{x.case_id}</div>
-	            <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
-	            {x.project.project_id}
-	          </div>
-	        </Row>
-	      )}
-	      fieldNoDoctype="case_id"
-	      placeholder="e.g. TCGA-A5-A0G2, 432fe4a9-2..."
-	      queryType="case"
-	      title="Case"
-	      />
-    }
+    {/*{ features.searchByCaseId &&*/}
+	  {/*  <SuggestionFacet*/}
+	  {/*    collapsed={props.caseIdCollapsed}*/}
+	  {/*    doctype="cases"*/}
+	  {/*    dropdownItem={x => (*/}
+	  {/*      <Row>*/}
+	  {/*        <CaseIcon style={{*/}
+	  {/*          paddingRight: '1rem',*/}
+	  {/*          paddingTop: '1rem',*/}
+	  {/*        }}*/}
+	  {/*                  />*/}
+	  {/*        <div>*/}
+	  {/*          <div style={{ fontWeight: 'bold' }}>{x.case_id}</div>*/}
+	  {/*          <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>*/}
+	  {/*          {x.project.project_id}*/}
+	  {/*        </div>*/}
+	  {/*      </Row>*/}
+	  {/*    )}*/}
+	  {/*    fieldNoDoctype="case_id"*/}
+	  {/*    placeholder="e.g. TCGA-A5-A0G2, 432fe4a9-2..."*/}
+	  {/*    queryType="case"*/}
+	  {/*    title="Case"*/}
+	  {/*    />*/}
+    {/*}*/}
     { features.uploadCaseSet &&
 	    <UploadSetButton
 	      defaultQuery={{
@@ -270,11 +262,11 @@ const CaseAggregationsComponent = (props: TProps) => (
 	      Upload Case Set
 	    </UploadSetButton>
     }
-    {_.reject(presetFacets, { full: 'cases.case_id' }).map(facet => (
+    {_.reject(presetFacets, { full: 'donor_id' }).map(facet => (
       <FacetWrapper
         additionalProps={facet.additionalProps}
         aggregation={
-          props.viewer.File.aggregations[
+          props.viewer.Case.aggregations[
             escapeForRelay(facet.field)
         ]
         }
