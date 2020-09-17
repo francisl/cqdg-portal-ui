@@ -94,6 +94,7 @@ Relay.injectNetworkLayer(
           }
 
           const { json } = res;
+
           const { user } = window.store.getState().auth;
 
           if (user) {

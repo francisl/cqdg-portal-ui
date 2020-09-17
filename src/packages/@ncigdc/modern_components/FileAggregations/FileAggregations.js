@@ -48,7 +48,7 @@ const presetFacets = [
   {
     field: 'is_harmonized',
     full: 'is_harmonized',
-    type: 'boolean',
+    type: 'keyword',
   },
   {
     field: 'experimental_strategy',
@@ -69,7 +69,7 @@ const presetFacets = [
     field: 'data_access',
     full: 'data_access',
     type: 'keyword',
-  },
+  }
 ];
 
 const presetFacetFields = presetFacets.map(x => x.field);

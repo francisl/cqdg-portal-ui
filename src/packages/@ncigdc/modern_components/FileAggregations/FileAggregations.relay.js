@@ -73,6 +73,7 @@ export default (Component: ReactClass<*>) =>
                       buckets{
                         doc_count
                         key
+                        key_as_string
                       }
                     }   
                     experimental_strategy {

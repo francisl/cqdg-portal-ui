@@ -79,7 +79,7 @@ const presetFacets = [
 	  title: 'Gender',
 	  field: 'gender',
 	  full: 'gender',
-	  type: 'terms',
+	  type: 'keyword',
   },
   {
 	  title: 'Ethnicity',
@@ -91,13 +91,13 @@ const presetFacets = [
 	  title: 'Age at recruitment',
 	  field: 'age_at_recruitment',
 	  full: 'age_at_recruitment',
-	  type: 'keyword'
+	  type: 'long'
   },
   {
     title: 'Age at diagnosis',
     field: 'diagnoses.age_at_diagnosis',
     full: 'diagnoses.age_at_diagnosis',
-    type: 'keyword'
+    type: 'long'
   },
   {
     title: 'Vital Status',

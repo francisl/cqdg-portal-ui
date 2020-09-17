@@ -1,9 +1,9 @@
 import ArrangeColumnsButton from '@ncigdc/components/ArrangeColumnsButton';
 import DownloadBiospecimenDropdown from '@ncigdc/modern_components/DownloadBiospecimenDropdown';
-import DownloadButton from '@ncigdc/components/DownloadButton';
+// import DownloadButton from '@ncigdc/components/DownloadButton';
 import DownloadClinicalDropdown from '@ncigdc/modern_components/DownloadClinicalDropdown';
 import DownloadTableToTsvButton from '@ncigdc/components/DownloadTableToTsvButton';
-import pluralize from '@ncigdc/utils/pluralize';
+// import pluralize from '@ncigdc/utils/pluralize';
 import React from 'react';
 import SetActions from '@ncigdc/components/SetActions';
 import timestamp from '@ncigdc/utils/timestamp';
@@ -15,7 +15,7 @@ import { mergeQuery } from '@ncigdc/utils/filters';
 import { parseFilterParam } from '@ncigdc/utils/uri';
 import { Row } from '@ncigdc/uikit/Flex';
 import { parseJSONParam, stringifyJSONParam } from '@ncigdc/utils/uri';
-import { Tooltip } from '@ncigdc/uikit/Tooltip';
+// import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import { visualizingButton } from '@ncigdc/theme/mixins';
 import { withTheme } from '@ncigdc/theme';
 import SortTableButton, {
@@ -185,24 +185,24 @@ const TableActions: React.SFC<IProps> = ({
           selectedIds={selectedIds}
         />
       )}
-      {downloadable && (
-        <Tooltip Component={downloadTooltip}>
-          <DownloadButton
-            filters={
-              currentFilters || parseFilterParam((query || {}).filters, {})
-            }
-            disabled={!total}
-            filename={`${pluralize(displayType, total)}.${timestamp()}.json`}
-            endpoint={endpoint}
-            fields={downloadFields}
-            style={{...visualizingButton, ...styles.actionButtonStyles}}
-            size={total}
-            inactiveText="JSON"
-            activeText="JSON"
-            showIcon={false}
-          />
-        </Tooltip>
-      )}
+      {/*{downloadable && (*/}
+      {/*  <Tooltip Component={downloadTooltip}>*/}
+      {/*    <DownloadButton*/}
+      {/*      filters={*/}
+      {/*        currentFilters || parseFilterParam((query || {}).filters, {})*/}
+      {/*      }*/}
+      {/*      disabled={!total}*/}
+      {/*      filename={`${pluralize(displayType, total)}.${timestamp()}.json`}*/}
+      {/*      endpoint={endpoint}*/}
+      {/*      fields={downloadFields}*/}
+      {/*      style={{...visualizingButton, ...styles.actionButtonStyles}}*/}
+      {/*      size={total}*/}
+      {/*      inactiveText="JSON"*/}
+      {/*      activeText="JSON"*/}
+      {/*      showIcon={false}*/}
+      {/*    />*/}
+      {/*  </Tooltip>*/}
+      {/*)}*/}
       {downloadable && tsvSelector &&
         tsvFilename && (
           <DownloadTableToTsvButton

@@ -10,7 +10,7 @@ const PortalQuery = {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Root {
-        File { hits { total} }
+        File { hits { total } }
       }
     `,
   },

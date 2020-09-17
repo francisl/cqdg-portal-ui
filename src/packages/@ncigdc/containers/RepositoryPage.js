@@ -137,7 +137,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                   text: `Files (${fileCount.toLocaleString()})`,
                   component: !!props.viewer.File.hits.total ? (
                     <div>
-                      <FilesTable downloadable={false} />
+                      <FilesTable />
                     </div>
                   ) : (
                     <NoResultsMessage>
@@ -148,7 +148,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                {
                  id: 'cases',
                  text: `Cases (${caseCount.toLocaleString()})`,
-                 component: !!props.viewer.File.hits.total ? (
+                 component: !!props.viewer.Case.hits.total ? (
                    <div>
                      {/*<RepoCasesPies*/}
                      {/*  aggregations={props.viewer.File.pies}*/}

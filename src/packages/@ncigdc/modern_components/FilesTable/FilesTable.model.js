@@ -29,7 +29,7 @@ const filesTableModel = [
         }
       </Td>
     ),
-    sortable: true,
+    sortable: false,
     downloadable: true,
     hidden: true,
   },
@@ -55,21 +55,21 @@ const filesTableModel = [
   },
   {
     name: 'File Name',
-    id: 'file_name',
+    id: 'file_name_keyword',
     sortable: true,
     downloadable: true,
     th: () => <Th>File Name</Th>,
     td: ({ node }) => (
       <Td>
-        <CopyToClipboardButton text={node.file_name} />
+        <CopyToClipboardButton text={node.file_name_keyword} />
         {features.fileLinking ? (
             <FileLink
                 uuid={node.file_id}
                 style={{whiteSpace: 'pre-line', wordBreak: 'break-all'}}
             >
-              {node.file_name}
+              {node.file_name_keyword}
             </FileLink>
-        ) : (node.file_name)
+        ) : (node.file_name_keyword)
         }
       </Td>
     ),
@@ -214,7 +214,7 @@ const filesTableModel = [
 	  id: 'cases.hits.edges.submitter_donor_id',
 	  th: () => <Th>Number of donors</Th>,
 	  td: ({ node }) => <Td style={{ textAlign: 'center' }}>{node.cases.hits.total}</Td>,
-	  sortable: true,
+	  sortable: false,
 	  downloadable: true,
 	  hidden: false,
   },

@@ -145,11 +145,16 @@ const casesTableModel = [
     th: () => <Th rowSpan="2">Diagnosis ICD Term</Th>,
     td: ({ node }) => {
       // Use diagnosis with minimum age
-      const age = Math.min.apply(Math, node.diagnoses.hits.edges.map(function(obj) { return obj.node.age_at_diagnosis; }))
-      const result = node.diagnoses.hits.edges.find(function(obj){ return obj.node.age_at_diagnosis === age; })
+      if(node){
+        const age = Math.min.apply(Math, node.diagnoses.hits.edges.map(function(obj) { return obj.node.age_at_diagnosis; }))
+        const result = node.diagnoses.hits.edges.find(function(obj){ return obj.node.age_at_diagnosis === age; })
 
+        return (
+          <Td>{result && result.node ? result.node.icd_term : '--'}</Td>
+        );
+      }
       return (
-        <Td>{node.diagnoses ? result.node.icd_term : '--'}</Td>
+        <Td>--</Td>
       );
     },
   },

@@ -84,14 +84,14 @@ export default compose(
   connect(store => ({ notifications: store.bannerNotification })),
   lifecycle({
     componentDidMount(): void {
-    Cookies.get(FIRST_TIME_KEY) || this.props.dispatch(setModal(	
-        <AtlasContentNote	
-          onClose={() => {	
-            Cookies.set(FIRST_TIME_KEY, true);	
-          }}	
-          />,	
-        false,	
-    ));
+    // Cookies.get(FIRST_TIME_KEY) || this.props.dispatch(setModal(
+    //     <AtlasContentNote
+    //       onClose={() => {
+    //         Cookies.set(FIRST_TIME_KEY, true);
+    //       }}
+    //       />,
+    //     false,
+    // ));
       let lastPathname = this.props.location.pathname;
       this.removeListen = this.props.history.listen(location => {
         if (location.pathname !== lastPathname) {

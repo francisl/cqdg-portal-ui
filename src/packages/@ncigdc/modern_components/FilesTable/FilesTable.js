@@ -86,17 +86,18 @@ export default compose(
             sortOptions={tableInfo.filter(x => x.sortable)}
             tsvSelector="#repository-files-table"
             tsvFilename={`repository-files-table.${timestamp()}.tsv`}
+
           />
         </Row>
         <div style={{ overflowX: 'auto' }}>
           <Table
             id="repository-files-table"
             headings={[
-              (
-                <Th key="download_column">
-                  
-                </Th>
-              ),
+              // (
+              //   <Th key="download_column">
+              //
+              //   </Th>
+              // ),
               ...tableInfo.map(x => (
                 <x.th key={x.id} hits={hits} canAddToCart={canAddToCart} />
               )),
@@ -106,13 +107,13 @@ export default compose(
                 {hits.edges.map((e, i) => (
                   <Tr key={e.node.id} index={i}>
                     {[
-                      <Td key="download">
-                          <DownloadFileSingle
-                              activeText=""
-                              file={e.node}
-                              inactiveText=""
-                          />
-                      </Td>,
+                      // <Td key="download">
+                      //     <DownloadFileSingle
+                      //         activeText=""
+                      //         file={e.node}
+                      //         inactiveText=""
+                      //     />
+                      // </Td>,
                       ...tableInfo
                         .filter(x => x.td)
                         .map(x => (

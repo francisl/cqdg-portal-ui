@@ -2909,6 +2909,8 @@ type CaseFile {
 
   # The name (or part of a name) of a file (of any type).
   file_name: String
+  file_name_keyword: String
+  file_name_ngrams: String
 
   # A project-specific identifier for a node. This property is the calling
   # card/nickname/alias for a unit of submission. It can be used in place of the
@@ -5468,6 +5470,8 @@ type FileNode implements Node {
 
   # keyword
   file_name: String
+  file_name_keyword: String
+  file_name_ngrams: String
 
   is_harmonized: Boolean
 
