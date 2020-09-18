@@ -81,6 +81,7 @@ const enhance = compose(
 );
 
 export const RepositoryPageComponent = (props: TProps) => {
+
   const fileCount = props.viewer.File.hits.total;
   const caseCount = props.viewer.Case.hits.total;
   /*const fileSize = props.viewer.cart_summary.aggregations.fs.value;*/
@@ -178,18 +179,19 @@ export const RepositoryPageQuery = {
     files_offset: null,
     files_size: null,
     files_sort: null,
-    filters: null,
+    fileFilters: null,
+    caseFilters: null,
   },
   fragments: {
     viewer: () => Relay.QL`
       fragment on Root {
           File {
-            hits(first: $files_size offset: $files_offset, filters: $filters, sort: $files_sort) {
+            hits(first: $files_size offset: $files_offset, filters: $fileFilters, sort: $files_sort) {
               total
             }
           }
           Case {
-              hits(first: $files_size offset: $files_offset, filters: $filters, sort: $files_sort) {
+              hits(first: $files_size offset: $files_offset, filters: $caseFilters, sort: $files_sort) {
                   total
               }
           }
@@ -202,5 +204,22 @@ const RepositoryPage = Relay.createContainer(
   enhance(RepositoryPageComponent),
   RepositoryPageQuery,
 );
+
+export const repoPageCaseToFileFiltersMapping:Map = new Map([
+  ["gender", "cases.gender"],
+  ["ethnicity", "cases.ethnicity"],
+  ["age_at_recruitment", "cases.age_at_recruitment"],
+  ["vital_status", "cases.vital_status"]
+])
+
+export const repoPageFileToCaseFiltersMapping:Map = new Map([
+  ["data_category", "files.data_category"],
+  ["data_type", "files.data_type"],
+  ["file_format", "files.file_format"],
+  ["data_access", "files.data_access"],
+  ["platform", "files.platform"],
+  ["experimental_strategy", "files.experimental_strategy"],
+  ["is_harmonized", "files.is_harmonized"]
+])
 
 export default RepositoryPage;

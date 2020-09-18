@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { parse } from 'query-string';
 
 import { handleStateChange } from '@ncigdc/dux/relayProgress';
-import RepositoryPage from '@ncigdc/containers/RepositoryPage';
+import RepositoryPage, {repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping} from '@ncigdc/containers/RepositoryPage';
 import {
   parseIntParam,
   parseFilterParam,
@@ -15,6 +15,7 @@ import {
 } from '@ncigdc/utils/uri';
 
 import { viewerQuery } from './queries';
+import {mapFilter} from "../utils/filters";
 
 class RepositoryRoute extends Relay.Route {
   static routeName = 'RepositoryRoute';
@@ -24,6 +25,12 @@ class RepositoryRoute extends Relay.Route {
   static prepareParams = ({ location: { search } }) => {
     const q = parse(search);
 
+    let fileFilters = parseFilterParam(q.filters, null)
+    let caseFilters = parseFilterParam(q.filters, null)
+
+    mapFilter(fileFilters, repoPageCaseToFileFiltersMapping)
+    mapFilter(caseFilters, repoPageFileToCaseFiltersMapping)
+
     return {
       cases_offset: parseIntParam(q.cases_offset, 0),
       cases_size: parseIntParam(q.cases_size, 20),
@@ -31,7 +38,8 @@ class RepositoryRoute extends Relay.Route {
       files_offset: parseIntParam(q.files_offset, 0),
       files_size: parseIntParam(q.files_size, 20),
       files_sort: parseJSONParam(q.files_sort, null),
-      filters: parseFilterParam(q.filters, null),
+      caseFilters: caseFilters,
+      fileFilters: fileFilters
     };
   };
 }

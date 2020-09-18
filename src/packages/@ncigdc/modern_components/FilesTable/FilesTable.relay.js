@@ -12,6 +12,8 @@ import {
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 import Query from '@ncigdc/modern_components/Query';
+import {mapFilter} from "../../utils/filters";
+import {repoPageCaseToFileFiltersMapping} from "../../containers/RepositoryPage";
 
 export default (Component: ReactClass<*>) =>
   compose(
@@ -31,6 +33,10 @@ export default (Component: ReactClass<*>) =>
       },
     ),
   )((props: Object) => {
+    if(props && props.variables && props.variables.filters){
+      mapFilter(props.variables.filters, repoPageCaseToFileFiltersMapping)
+    }
+
     return (
       <Query
         parentProps={props}

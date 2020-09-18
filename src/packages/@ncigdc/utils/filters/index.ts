@@ -293,6 +293,18 @@ export const getFilterValue = ({
   dotField: string;
 }) => currentFilters.find(f => f.content.field === dotField);
 
+
+export const mapFilter = (filters:IGroupFilter, originDestinationMap:Map<string, string>) => {
+  if(filters && filters.content){
+    filters.content.forEach((filter:any) => {
+
+      if(filter.content && filter.content.field && originDestinationMap.has(filter.content.field)){
+        filter.content.field = originDestinationMap.get(filter.content.field)
+      }
+    })
+  }
+}
+
 type TMakeFilter = (
   fields: Array<{ field: string; value: string | string[] }>
 ) => IGroupFilter | null;
