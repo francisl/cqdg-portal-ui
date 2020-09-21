@@ -8,6 +8,8 @@ import { parse } from 'query-string';
 import Query from '@ncigdc/modern_components/Query';
 import { parseFilterParam } from '@ncigdc/utils/uri';
 import withRouter from '@ncigdc/utils/withRouter';
+import {mapFilter} from "../../utils/filters";
+import {repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping} from "../../containers/RepositoryPage";
 
 const entityType = 'Files';
 export default (Component: ReactClass<*>) =>
@@ -40,24 +42,9 @@ export default (Component: ReactClass<*>) =>
       },
     ),
   )((props: Object) => {
-
-    /*
-
-
-                    age_at_recruitment{
-                      buckets{
-                        doc_count
-                        key
-                      }
-                    }
-                    diagnoses__age_at_diagnosis{
-                      buckets{
-                        doc_counts
-                        key
-                      }
-                    }
-     */
-
+    if(props && props.variables && props.variables.filters){
+      mapFilter(props.variables.filters, repoPageFileToCaseFiltersMapping)
+    }
 
     return (
       <Query
