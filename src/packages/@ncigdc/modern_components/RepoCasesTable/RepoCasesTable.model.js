@@ -1,20 +1,23 @@
 // @flow
 import React from 'react';
 import _ from 'lodash';
-import {RepositoryCasesLink, RepositoryFilesLink,} from '@ncigdc/components/Links/RepositoryLink';
+import { RepositoryCasesLink, RepositoryFilesLink } from '@ncigdc/components/Links/RepositoryLink';
 import ProjectLink from '@ncigdc/components/Links/ProjectLink';
 import CaseLink from '@ncigdc/components/Links/CaseLink';
-import {Td, TdNum, Th, ThNum} from '@ncigdc/uikit/Table';
-import {makeFilter} from '@ncigdc/utils/filters';
+import {
+  Td, TdNum, Th, ThNum,
+} from '@ncigdc/uikit/Table';
+import { makeFilter } from '@ncigdc/utils/filters';
 import ageDisplay from '@ncigdc/utils/ageDisplay';
 import withRouter from '@ncigdc/utils/withRouter';
-import {createDataCategoryColumns,} from '@ncigdc/tableModels/utils';
+import { createDataCategoryColumns } from '@ncigdc/tableModels/utils';
+import t from '@ncigdc/locales/intl';
 
 const youngestDiagnosis = (
   p: { age_at_diagnosis: number },
   c: { age_at_diagnosis: number },
 ): { age_at_diagnosis: number } =>
-  c.age_at_diagnosis < p.age_at_diagnosis ? c : p;
+  (c.age_at_diagnosis < p.age_at_diagnosis ? c : p);
 
 const dataCategoryColumns = createDataCategoryColumns({
   title: 'Available Files per Data Category',
@@ -30,20 +33,23 @@ const dataCategoryColumns = createDataCategoryColumns({
 });
 
 const FilesLink = ({ node, fields = [], children }) =>
-  children === '0' ? (
+  (children === '0' ? (
     <span>0</span>
   ) : (
     <RepositoryFilesLink
       query={{
         filters: makeFilter([
-          { field: 'study.study_id', value: [node.case_id] },
+          {
+            field: 'study.study_id',
+            value: [node.case_id],
+          },
           ...fields,
         ]),
       }}
-    >
+      >
       {children}
     </RepositoryFilesLink>
-  );
+  ));
 
 const getProjectIdFilter = projects =>
   makeFilter([
@@ -54,7 +60,7 @@ const getProjectIdFilter = projects =>
   ]);
 
 const casesTableModel = [
-  //...dataCategoryColumns,
+  // ...dataCategoryColumns,
   {
     name: 'Study',
     id: 'study.study_id',
@@ -130,9 +136,9 @@ const casesTableModel = [
     td: ({ node }) => {
       // PLA - What if 2 diagnosis on the same year?
       // Use diagnosis with minimum age
-      const age = Math.min.apply(Math, node.diagnoses.hits.edges.map(function(obj) { return obj.node.age_at_diagnosis; }))
+      const age = Math.min.apply(Math, node.diagnoses.hits.edges.map((obj) => { return obj.node.age_at_diagnosis; }));
       return (
-        <Td>{node.diagnoses ? /*ageDisplay(age)*/ age : '--'}</Td>
+        <Td>{node.diagnoses ? /* ageDisplay(age) */ age : '--'}</Td>
       );
     },
   },
@@ -145,9 +151,9 @@ const casesTableModel = [
     th: () => <Th rowSpan="2">Diagnosis ICD Term</Th>,
     td: ({ node }) => {
       // Use diagnosis with minimum age
-      if(node){
-        const age = Math.min.apply(Math, node.diagnoses.hits.edges.map(function(obj) { return obj.node.age_at_diagnosis; }))
-        const result = node.diagnoses.hits.edges.find(function(obj){ return obj.node.age_at_diagnosis === age; })
+      if (node) {
+        const age = Math.min.apply(Math, node.diagnoses.hits.edges.map((obj) => { return obj.node.age_at_diagnosis; }));
+        const result = node.diagnoses.hits.edges.find((obj) => { return obj.node.age_at_diagnosis === age; });
 
         return (
           <Td>{result && result.node ? result.node.icd_term : '--'}</Td>
@@ -175,7 +181,7 @@ const casesTableModel = [
     hidden: true,
     th: () => <Th rowSpan="2">Number of Files</Th>,
     td: ({ node }) => <Td>{node.files && node.files.hits ? node.files.hits.total : 0}</Td>,
-  }
+  },
 ];
 
 export default casesTableModel;

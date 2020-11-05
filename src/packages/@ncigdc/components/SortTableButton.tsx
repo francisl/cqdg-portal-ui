@@ -8,11 +8,14 @@ import React from 'react';
 import styled from '@ncigdc/theme/styled';
 import withRouter from '@ncigdc/utils/withRouter';
 import { compose, setDisplayName, withReducer } from 'recompose';
-import { find, get, isEqual, xorWith } from 'lodash';
+import {
+  find, get, isEqual, xorWith,
+} from 'lodash';
 import { ITheme, withTheme } from '@ncigdc/theme';
 import { Row } from '@ncigdc/uikit/Flex';
 import { SortIcon } from '@ncigdc/theme/icons';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
+import t from '@ncigdc/locales/intl';
 
 const RadioRow = styled(Row, {
   padding: '0.3rem 0.6rem',
@@ -122,7 +125,7 @@ type TGenerateInitialState = (
   p: ICSortTableButtonProps
 ) => ISortTableButtonState;
 const generateInitialState: TGenerateInitialState = ({ initialState }) =>
-  initialState ? initialState : { sortSelection: [] };
+  (initialState || { sortSelection: [] });
 
 const SortTableButton = compose<ICSortTableButtonProps, ISortTableButtonProps>(
   withReducer<
@@ -137,30 +140,34 @@ const SortTableButton = compose<ICSortTableButtonProps, ISortTableButtonProps>(
   withTheme
 )(
   ({
-    state,
     dispatch,
-    sortFunction,
-    style,
-    options,
-    theme,
     isDisabled = false,
+    options,
+    sortFunction,
+    state,
+    style,
+    theme,
   }) => {
     const uiState = uiStateReduce(state.sortSelection, options);
 
     return (
       <Dropdown
         autoclose={false}
-        isDisabled={isDisabled}
-        button={
-          <Tooltip Component={<span>Sort Table</span>}>
-            <Button style={style} disabled={isDisabled}>
+        button={(
+          <Tooltip Component={<span>{t('global.tables.actions.sort')}</span>}>
+            <Button disabled={isDisabled} style={style}>
               <SortIcon />
-              <Hidden>Sort Table</Hidden>
+              <Hidden>{t('global.tables.actions.sort')}</Hidden>
             </Button>
           </Tooltip>
-        }
-        dropdownStyle={{ top: '100%', marginTop: 5, whiteSpace: 'nowrap' }}
-      >
+        )}
+        dropdownStyle={{
+          top: '100%',
+          marginTop: 5,
+          whiteSpace: 'nowrap',
+        }}
+        isDisabled={isDisabled}
+        >
         {options.map(({ id, name }: { id: string; name: string }) => {
           const dispatchAction = (
             sType: TSortActionNames,
@@ -190,61 +197,61 @@ const SortTableButton = compose<ICSortTableButtonProps, ISortTableButtonProps>(
                     : 'transparent'}`,
                 },
               }}
-            >
+              >
               <Row flex="1 1 auto" style={{ padding: '0.3rem 0.6rem' }}>
                 <div
-                  style={{
-                    width: '100%',
-                    color: 'rgb(0, 80, 131)',
-                  }}
                   onClick={() =>
                     dispatchAction(
                       'toggleSortKey',
                       id,
                       uiState[id].asc ? 'asc' : 'desc'
-                    )}
-                >
+                  )}
+                  style={{
+                    width: '100%',
+                    color: 'rgb(0, 80, 131)',
+                  }}
+                  >
                   <input
+                    aria-label={t(`global.tables.columns.${id}`)}
+                    checked={uiState[id].selected}
+                    name={t(`global.tables.columns.${id}`)}
                     readOnly
                     style={{ pointerEvents: 'none' }}
                     type="checkbox"
-                    checked={uiState[id].selected}
-                    name={name}
-                    aria-label={name}
-                  />
-                  <label htmlFor={name} style={{ marginLeft: '0.3rem' }}>
-                    {name}
+                    />
+                  <label htmlFor={t(`global.tables.columns.${id}`)} style={{ marginLeft: '0.3rem' }}>
+                    {t(`global.tables.columns.${id}`)}
                   </label>
                 </div>
               </Row>
               <RadioRow>
                 <div
-                  style={{ width: '100%' }}
                   onClick={() =>
                     dispatchAction('changeSortDirection', id, 'asc')}
-                >
+                  style={{ width: '100%' }}
+                  >
                   <ArrowDownIcon />
                   <input
-                    readOnly
-                    type="radio"
+                    aria-label="sort-ascending"
                     checked={uiState[id].asc}
+                    readOnly
                     style={{ pointerEvents: 'none' }}
-                    aria-label={'sort-ascending'}
-                  />
+                    type="radio"
+                    />
                 </div>
                 <div
-                  style={{ width: '100%' }}
                   onClick={() =>
                     dispatchAction('changeSortDirection', id, 'desc')}
-                >
+                  style={{ width: '100%' }}
+                  >
                   <ArrowUpIcon />
                   <input
-                    readOnly
-                    type="radio"
+                    aria-label="sort-descending"
                     checked={uiState[id].desc}
+                    readOnly
                     style={{ pointerEvents: 'none' }}
-                    aria-label={'sort-descending'}
-                  />
+                    type="radio"
+                    />
                 </div>
               </RadioRow>
             </DropdownItem>

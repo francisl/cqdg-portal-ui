@@ -2,25 +2,31 @@
 
 import React from 'react';
 import { uniq } from 'lodash';
-import { Th, Td, TdNum, ThNum } from '@ncigdc/uikit/Table';
+import {
+  Th, Td, TdNum, ThNum,
+} from '@ncigdc/uikit/Table';
 import CaseLink from '@ncigdc/components/Links/CaseLink';
 import ProjectLink from '@ncigdc/components/Links/ProjectLink';
 import { RepositoryCasesLink } from '@ncigdc/components/Links/RepositoryLink';
 import FileLink from '@ncigdc/components/Links/FileLink';
 import { makeFilter } from '@ncigdc/utils/filters';
 import FileSize from '@ncigdc/components/FileSize';
+import t from '@ncigdc/locales/intl';
 
 const filesTableModel = [
   {
-    name: 'File UUID',
+    name: t('global.tables.columns.file.uuid'),
     id: 'file_id',
-    th: () => <Th>File UUID</Th>,
+    th: () => <Th>{t('global.tables.columns.file.uuid')}</Th>,
     td: ({ node }) => (
       <Td>
         <FileLink
+          style={{
+            whiteSpace: 'pre-line',
+            wordBreak: 'break-all',
+          }}
           uuid={node.file_id}
-          style={{ whiteSpace: 'pre-line', wordBreak: 'break-all' }}
-        >
+          >
           {node.file_id}
         </FileLink>
       </Td>
@@ -43,7 +49,7 @@ const filesTableModel = [
           style={{
             marginLeft: '0.3rem',
           }}
-        >
+          >
           {node.access}
         </span>
       </Td>
@@ -58,9 +64,12 @@ const filesTableModel = [
     td: ({ node }) => (
       <Td>
         <FileLink
+          style={{
+            whiteSpace: 'pre-line',
+            wordBreak: 'break-all',
+          }}
           uuid={node.file_id}
-          style={{ whiteSpace: 'pre-line', wordBreak: 'break-all' }}
-        >
+          >
           {node.file_name}
         </FileLink>
       </Td>
@@ -71,18 +80,23 @@ const filesTableModel = [
     id: 'cases.case_id',
     th: () => <ThNum>Cases</ThNum>,
     td: ({
-      node: { cases: { hits: { total = 0, edges: cases } }, file_id: fileId },
+      node: { cases: { hits: { edges: cases, total = 0 } }, file_id: fileId },
     }) => (
       <TdNum>
         {total > 1 && (
           <RepositoryCasesLink
             query={{
               filters: makeFilter(
-                [{ field: 'files.file_id', value: [fileId] }],
+                [
+                  {
+                    field: 'files.file_id',
+                    value: [fileId],
+                  },
+                ],
                 false,
               ),
             }}
-          >
+            >
             {total.toLocaleString()}
           </RepositoryCasesLink>
         )}

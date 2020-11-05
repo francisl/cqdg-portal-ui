@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withState, pure, lifecycle } from 'recompose';
+import {
+  compose, withState, pure, lifecycle,
+} from 'recompose';
 import ArrangeIcon from 'react-icons/lib/fa/bars';
 import { IThemeProps } from '@ncigdc/theme/versions/active';
 import { Row } from '@ncigdc/uikit/Flex';
@@ -12,6 +14,7 @@ import {
 } from '@ncigdc/dux/tableColumns';
 import styled from '@ncigdc/theme/styled';
 import { IColumnProps } from '@ncigdc/tableModels/utils';
+import t from '@ncigdc/locales/intl';
 
 const SortRow = styled(Row, {
   alignItems: 'center',
@@ -61,11 +64,11 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
       },
     ) => ({
       localTableColumns: state.tableColumns[props.entityType].filter(
-        (t: IColumnProps<boolean>) => !(props.hideColumns || []).includes(t.id)
+        (tc: IColumnProps<boolean>) => !(props.hideColumns || []).includes(tc.id)
       ),
       filteredTableColumns: state.tableColumns[props.entityType].filter(
-        (t: IColumnProps<boolean>) =>
-          !(props.hideColumns || []).includes(t.id) && !t.subHeading
+        (tc: IColumnProps<boolean>) =>
+          !(props.hideColumns || []).includes(tc.id) && !tc.subHeading
       ),
     })
   ),
@@ -77,7 +80,7 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
       if (nextProps.localTableColumns !== this.props.localTableColumns) {
         nextProps.setState({
           filteredTableColumns: this.props.localTableColumns.filter(
-            (t: IColumnProps<boolean>) => !t.subHeading
+            (tc: IColumnProps<boolean>) => !tc.subHeading
           ),
         });
       }
@@ -87,25 +90,29 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
 )(
   ({
     dispatch,
-    localTableColumns,
+    entityType,
     filteredTableColumns,
+    hideColumns,
+    localTableColumns,
+    searchTerm,
     setState,
     state,
-    searchTerm,
-    entityType,
-    hideColumns,
   }) => {
     const subHeadings =
-      localTableColumns.filter((t: IColumnProps<boolean>) => t.subHeading) ||
+      localTableColumns.filter((tc: IColumnProps<boolean>) => tc.subHeading) ||
       [];
-
+    console.log('filtered ::: ', filteredTableColumns);
     return (
       <div className="test-arrange-columns">
         {filteredTableColumns.map(
           (column: IColumnProps<boolean>, i: number) => (
             <SortableItem
               className="test-column"
+              draggingIndex={state.draggingIndex}
+              items={filteredTableColumns}
               key={column.id}
+              outline="list"
+              sortId={i}
               updateState={(nextState: IState) => {
                 if (!nextState.items && state.items) {
                   let newItems = state.items.filter(
@@ -114,7 +121,7 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
                   if (subHeadings && subHeadings.length > 0) {
                     const index: number = filteredTableColumns.indexOf(
                       filteredTableColumns.filter(
-                        (t: IColumnProps<boolean>) => t.subHeadingIds
+                        (tc: IColumnProps<boolean>) => tc.subHeadingIds
                       )[0]
                     );
                     newItems = newItems
@@ -134,24 +141,15 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
                   ...nextState,
                 });
               }}
-              draggingIndex={state.draggingIndex}
-              items={filteredTableColumns}
-              sortId={i}
-              outline="list"
-            >
+              >
               <SortRow
                 style={
                   column.name.toLowerCase().includes(searchTerm.toLowerCase())
                     ? {}
                     : { display: 'none' }
                 }
-              >
+                >
                 <Row
-                  style={{
-                    width: '100%',
-                    cursor: 'pointer',
-                    alignItems: 'center',
-                  }}
                   onClick={() => {
                     if (column.subHeadingIds) {
                       localTableColumns.forEach(
@@ -160,7 +158,10 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
                             const index: number = localTableColumns.indexOf(
                               col
                             );
-                            dispatch(toggleColumn({ entityType, index }));
+                            dispatch(toggleColumn({
+                              entityType,
+                              index,
+                            }));
                           }
                         }
                       );
@@ -172,19 +173,27 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
                       })
                     );
                   }}
-                >
+                  style={{
+                    width: '100%',
+                    cursor: 'pointer',
+                    alignItems: 'center',
+                  }}
+                  >
                   <input
+                    aria-label={t(`global.tables.columns.${column.id}`)}
+                    checked={!filteredTableColumns[i].hidden}
                     readOnly
                     style={{ pointerEvents: 'none' }}
-                    aria-label={column.name}
                     type="checkbox"
-                    checked={!filteredTableColumns[i].hidden}
-                  />
-                  <span style={{ marginLeft: '0.3rem' }}>{column.name}</span>
+                    />
+                  <span style={{ marginLeft: '0.3rem' }}>{t(`global.tables.columns.${column.id}`)}</span>
                 </Row>
                 <ArrangeIcon
-                  style={{ marginLeft: 'auto', cursor: 'row-resize' }}
-                />
+                  style={{
+                    marginLeft: 'auto',
+                    cursor: 'row-resize',
+                  }}
+                  />
               </SortRow>
             </SortableItem>
           )

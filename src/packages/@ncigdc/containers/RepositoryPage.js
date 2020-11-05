@@ -16,11 +16,12 @@ import FilesTable from '@ncigdc/modern_components/FilesTable';
 import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
 import formatFileSize from '@ncigdc/utils/formatFileSize';
-import RepoCasesPies from '@ncigdc/components/TabPieCharts/RepoCasesPies';
 
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
+import t from '@ncigdc/locales/intl';
 import features from '../../../features';
+
 
 export type TProps = {
   push: Function,
@@ -81,92 +82,93 @@ const enhance = compose(
 );
 
 export const RepositoryPageComponent = (props: TProps) => {
+  const { filters, relay, viewer } = props;
+  const fileCount = viewer.File.hits.total;
+  const caseCount = viewer.Case.hits.total;
+  /* const fileSize = props.viewer.cart_summary.aggregations.fs.value; */
 
-  const fileCount = props.viewer.File.hits.total;
-  const caseCount = props.viewer.Case.hits.total;
-  /*const fileSize = props.viewer.cart_summary.aggregations.fs.value;*/
-  
   // PLA : hardcoding this to get page to load
-  //const caseCount = 1;
+  // const caseCount = 1;
   const fileSize = 0;
 
-  const facetTabs=[
-	{
-	    id: 'participants',
-	    text: 'Participants',
-	    component: <CaseAggregations relay={props.relay} />,
-	},
+  const facetTabs = [
+    {
+      id: 'participants',
+      text: t('global.participants'),
+      component: <CaseAggregations relay={relay} />,
+    },
     {
       id: 'files',
-      text: 'Files',
-      component: <FileAggregations relay={props.relay} />,
-    }
-   
+      text: t('global.files.title'),
+      component: <FileAggregations relay={relay} />,
+    },
   ];
 
   return (
     <div className="test-repository-page">
       <SearchPage
+        facetTabs={facetTabs}
         filtersLinkProps={{
           hideLinkOnEmpty: false,
           linkPathname: '/query',
-          linkText: 'Advanced Search',
+          linkText: t('search.advanced.search'),
         }}
-        facetTabs={facetTabs}
-        results={
+        results={(
           <span>
             <ActionsRow
+              filters={filters}
               totalCases={caseCount}
               totalFiles={fileCount}
-              filters={props.filters}
-            />
+              />
             <TabbedLinks
-              queryParam="searchTableTab"
               defaultIndex={0}
-              tabToolbar={
-                features.saveIcon && (
-                <Row spacing="2rem" style={{ alignItems: 'center' }}>
-                  <span style={{ flex: 'none' }}>
-                    <SaveIcon style={{ marginRight: 5 }} />{' '}
-                    <strong>{formatFileSize(fileSize)}</strong>
-                  </span>
-                </Row>)
-              }
               links={[
                 {
                   id: 'files',
-                  text: `Files (${fileCount.toLocaleString()})`,
-                  component: !!props.viewer.File.hits.total ? (
+                  text: t('repo.tabs.files', { count: fileCount.toLocaleString() }),
+                  component: viewer.File.hits.total ? (
                     <div>
                       <FilesTable />
                     </div>
                   ) : (
                     <NoResultsMessage>
-                      No results found using those filters.
+                      {t('search.no.results')}
                     </NoResultsMessage>
                   ),
                 },
-               {
-                 id: 'cases',
-                 text: `Cases (${caseCount.toLocaleString()})`,
-                 component: !!props.viewer.Case.hits.total ? (
-                   <div>
-                     {/*<RepoCasesPies*/}
-                     {/*  aggregations={props.viewer.File.pies}*/}
-                     {/*/>*/}
-                     <RepoCasesTable />
-                   </div>
+                {
+                  id: 'cases',
+                  text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
+                  component: viewer.Case.hits.total ? (
+                    <div>
+                      {/* <RepoCasesPies */}
+                      {/*  aggregations={props.viewer.File.pies} */}
+                      {/* /> */}
+                      <RepoCasesTable />
+                    </div>
                  ) : (
                    <NoResultsMessage>
-                     No results found using those filters.
+                     {t('search.no.results')}
                    </NoResultsMessage>
                  ),
-               },
+                },
               ]}
-            />
+              queryParam="searchTableTab"
+              tabToolbar={
+                features.saveIcon && (
+                  <Row spacing="2rem" style={{ alignItems: 'center' }}>
+                    <span style={{ flex: 'none' }}>
+                      <SaveIcon style={{ marginRight: 5 }} />
+                      {' '}
+                      <strong>{formatFileSize(fileSize)}</strong>
+                    </span>
+                  </Row>
+              )
+              }
+              />
           </span>
-        }
-      />
+        )}
+        />
     </div>
   );
 };
@@ -206,20 +208,20 @@ const RepositoryPage = Relay.createContainer(
 );
 
 export const repoPageCaseToFileFiltersMapping:Map = new Map([
-  ["gender", "cases.gender"],
-  ["ethnicity", "cases.ethnicity"],
-  ["age_at_recruitment", "cases.age_at_recruitment"],
-  ["vital_status", "cases.vital_status"]
-])
+  ['gender', 'cases.gender'],
+  ['ethnicity', 'cases.ethnicity'],
+  ['age_at_recruitment', 'cases.age_at_recruitment'],
+  ['vital_status', 'cases.vital_status'],
+]);
 
 export const repoPageFileToCaseFiltersMapping:Map = new Map([
-  ["data_category", "files.data_category"],
-  ["data_type", "files.data_type"],
-  ["file_format", "files.file_format"],
-  ["data_access", "files.data_access"],
-  ["platform", "files.platform"],
-  ["experimental_strategy", "files.experimental_strategy"],
-  ["is_harmonized", "files.is_harmonized"]
-])
+  ['data_category', 'files.data_category'],
+  ['data_type', 'files.data_type'],
+  ['file_format', 'files.file_format'],
+  ['data_access', 'files.data_access'],
+  ['platform', 'files.platform'],
+  ['experimental_strategy', 'files.experimental_strategy'],
+  ['is_harmonized', 'files.is_harmonized'],
+]);
 
 export default RepositoryPage;

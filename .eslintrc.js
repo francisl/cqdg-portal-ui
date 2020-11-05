@@ -93,6 +93,7 @@ module.exports = {
       commentPattern: 'break[\\s\\w]*omitted',
     }],
     'no-nested-ternary': 'off',
+    'no-param-reassign': 'off',
     'no-unneeded-ternary': 'warn',
     'no-unused-expressions': ['warn', {
       allowShortCircuit: true,

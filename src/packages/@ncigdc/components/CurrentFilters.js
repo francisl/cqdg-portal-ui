@@ -31,7 +31,9 @@ import GeneSymbol from '@ncigdc/modern_components/GeneSymbol';
 import SetId from '@ncigdc/components/SetId';
 import { parseJSONParam } from '@ncigdc/utils/uri/index';
 import { AWG } from '@ncigdc/utils/constants';
+import t from '@ncigdc/locales/intl';
 import features from '../../../features.json';
+
 /*----------------------------------------------------------------------------*/
 
 const Field = styled(Button, {
@@ -189,7 +191,7 @@ const CurrentFilters = (
           >
           <LeftArrow />
           <span style={{ marginLeft: '0.6rem' }}>
-            Start searching by selecting a facet
+            {t('repo.search.by.facet.title')}
           </span>
         </span>
     )}
@@ -313,7 +315,7 @@ const CurrentFilters = (
                 ),
                 op: 'and',
               },
-            }
+          }
           }
           >
           <Cogs style={{ marginRight: 5 }} />
