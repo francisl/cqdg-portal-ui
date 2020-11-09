@@ -3,8 +3,14 @@
     "files.title": "Fichiers",
     "files": "fichiers",
     "participants": "Participants",
+    "query": {
+      "IN": "DANS",
+      "IS": "EST",
+      "and": "et"
+    },
     "actions": {
-      "reset": "Réinitialiser"
+      "reset": "Réinitialiser",
+      "clear": "Enlever"
     },
     "tables": {
       "showing": "Affichage de <strong>${start}</strong> - <strong>${end}</strong> ${docType} sur <strong>${total}</strong>",
@@ -42,7 +48,7 @@
     "file_size": "Size",
     "is_harmonized": "Harmonized",
     "data_type": "Data Type",
-    "experimental_strategy": "Experimental Strategy",
+    "experimental_strategy": "Strategie Experimental",
     "platform": "Platform",
     "cases.hits.edges.submitter_donor_id": "Number of donors",
     "file": "Fichier",
@@ -67,7 +73,7 @@
     "pathological.report":"Pathological report",
     "gene.expression.quantification":"Gene expression quantification",
     "is_harmonized":"",
-    "experimental_strategy":"",
+    "experimental_strategy":"Strategie Experimental",
     "wgs":"WGS",
     "wxs":"WXS",
     "rna-seq":"RNA-Seq",

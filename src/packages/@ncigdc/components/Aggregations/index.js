@@ -2,6 +2,7 @@
 
 import { Row, Column } from '@ncigdc/uikit/Flex';
 import styled from '@ncigdc/theme/styled';
+import t from '@ncigdc/locales/intl';
 
 import Link from '@ncigdc/components/Links/Link';
 
@@ -19,14 +20,14 @@ export const InputLabel = styled.label({
 });
 
 export const GoLink = styled(Link, {
-  color: ({ theme, dark }) => (dark ? theme.greyScale1 : theme.greyScale2),
+  color: ({ dark, theme }) => (dark ? theme.greyScale1 : theme.greyScale2),
   textDecoration: 'none',
   border: ({ theme }) => `1px solid ${theme.greyScale4}`,
   borderLeft: 0,
   padding: '6px 4px 2px 4px',
   height: '3.4rem',
   borderRadius: '0 4px 4px 0',
-  ':link': ({ theme, dark }) => ({
+  ':link': ({ dark, theme }) => ({
     textDecoration: 'none',
     color: dark ? theme.greyScale1 : theme.greyScale2,
   }),
@@ -52,7 +53,7 @@ export const facetFieldDisplayMapper = field => {
     'genes.gene_id': 'Gene',
     'cases.case_id': 'Case',
   };
-  return map[field] || field;
+  return map[field] || t(`aggregation.${field}`);
 };
 
 export const BucketLink = styled(Link, {

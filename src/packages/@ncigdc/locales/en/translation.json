@@ -3,8 +3,14 @@
     "files.title": "Files",
     "files": "files",
     "participants": "Participants",
+    "query": {
+      "IN": "IN",
+      "IS": "IS",
+      "and": "and"
+    },
     "actions": {
-      "reset": "Reset"
+      "reset": "Reset",
+      "clear": "Clear"
     },
     "tables": {
       "showing": "Showing <strong>${start}</strong> - <strong>${end}</strong> of <strong>${total}</strong> ${docType}",

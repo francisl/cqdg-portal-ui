@@ -94,11 +94,11 @@ export const getDisplayOp = (op: string, value: Array<string>) => {
   if (op.toLowerCase() === 'in') {
     if (value.length === 1) {
       if (typeof value[0] === 'string' && value[0].includes('set_id')) {
-        return 'IN';
+        return t('global.query.IN');
       }
-      return 'IS';
+      return t('global.query.IS');
     }
-    return 'IN';
+    return t('global.query.IN');
   }
   return op;
 };
@@ -125,13 +125,13 @@ const enhance = compose(
           if (field === 'genes.gene_id') {
             return <GeneSymbol geneId={value} />;
           }
-          return value;
+          return t(`aggregation.${value}`);
         case 'boolean':
           return value ? 'true' : 'false';
         case 'number':
           return value;
         default:
-          return value;
+          return t(`aggregation.${value}`);
       }
     },
   })),
@@ -209,7 +209,7 @@ const CurrentFilters = (
               query={omit(query, 'filters')}
               style={styles.groupPadding}
               >
-              <Button leftIcon={<Undo />}>Clear</Button>
+              <Button leftIcon={<Undo />}>{t('global.actions.clear')}</Button>
             </NotUnderlinedLink>
           )}
 
@@ -315,7 +315,7 @@ const CurrentFilters = (
                 ),
                 op: 'and',
               },
-          }
+            }
           }
           >
           <Cogs style={{ marginRight: 5 }} />
