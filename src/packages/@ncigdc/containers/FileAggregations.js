@@ -29,17 +29,64 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 import { withTheme } from '@ncigdc/theme';
 import FileIcon from '@ncigdc/theme/icons/File';
 import { Row } from '@ncigdc/uikit/Flex';
+import t from '@ncigdc/locales/intl';
+
 
 const presetFacets = [
-  { title: 'File', field: 'file_id', full: 'file_id', type: 'keyword' },
-  { field: 'data_category', full: 'data_category', type: 'keyword' },
-  { field: 'data_type', full: 'data_type', type: 'keyword' },
-  { field: 'experimental_strategy', full: 'experimental_strategy', type: 'keyword' },
-  { field: 'file_format', full: 'file_format', type: 'keyword' },
-  { field: 'is_harmonized', full: 'is_harmonized', type: 'boolean' },
-  { field: 'platform', full: 'platform', type: 'keyword' },
-  { field: 'data_access', full: 'data_access', type: 'keyword' },
-  { field: 'sample_id', full: 'sample_id', type: 'keyword'}
+  {
+    title: t('facet.File'),
+    field: 'file_id',
+    full: 'file_id',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.data_category'),
+    field: 'data_category',
+    full: 'data_category',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.data_type'),
+    field: 'data_type',
+    full: 'data_type',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.experimental_strategy'),
+    field: 'experimental_strategy',
+    full: 'experimental_strategy',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.file_format'),
+    field: 'file_format',
+    full: 'file_format',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.is_harmonized'),
+    field: 'is_harmonized',
+    full: 'is_harmonized',
+    type: 'boolean',
+  },
+  {
+    title: t('facet.platform'),
+    field: 'platform',
+    full: 'platform',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.data_access'),
+    field: 'data_access',
+    full: 'data_access',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.sample_id'),
+    field: 'sample_id',
+    full: 'sample_id',
+    type: 'keyword',
+  },
 ];
 
 const presetFacetFields = presetFacets.map(x => x.field);
@@ -134,67 +181,74 @@ export const FileAggregationsComponent = (props: TProps) => (
         padding: '10px 15px',
         borderBottom: `1px solid ${props.theme.greyScale5}`,
       }}
-    >
+      >
       {!!props.userSelectedFacets.length && (
         <span>
           <a onClick={props.handleResetFacets} style={styles.link}>
             Reset
-          </a>{' '}
+          </a>
+          {' '}
           &nbsp;|&nbsp;
         </span>
       )}
       <a
         onClick={() => props.setShouldShowFacetSelection(true)}
         style={styles.link}
-      >
+        >
         Add a File Filter
       </a>
     </div>
     <Modal
       isOpen={props.shouldShowFacetSelection}
-      style={{ content: { border: 0, padding: '15px' } }}
-    >
+      style={{
+        content: {
+          border: 0,
+          padding: '15px',
+        },
+      }}
+      >
       <FacetSelection
-        title="Add a File Filter"
-        docType="files"
-        onSelect={props.handleSelectFacet}
-        onRequestClose={() => props.setShouldShowFacetSelection(false)}
-        excludeFacetsBy={props.facetExclusionTest}
         additionalFacetData={props.parsedFacets}
-      />
+        docType="files"
+        excludeFacetsBy={props.facetExclusionTest}
+        onRequestClose={() => props.setShouldShowFacetSelection(false)}
+        onSelect={props.handleSelectFacet}
+        title="Add a File Filter"
+        />
     </Modal>
 
-    {props.userSelectedFacets.map(facet => (
-      <FacetWrapper
-        isRemovable
-        relayVarName="filesCustomFacetFields"
-        key={facet.full}
-        facet={facet}
-        aggregation={props.parsedFacets[facet.field]}
-        relay={props.relay}
-        onRequestRemove={() => props.handleRequestRemoveFacet(facet)}
-        style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
-      />
-    ))}
+    {props.userSelectedFacets.map(facet => {
+      return (
+        <FacetWrapper
+          aggregation={props.parsedFacets[facet.field]}
+          facet={facet}
+          isRemovable
+          key={facet.full}
+          onRequestRemove={() => props.handleRequestRemoveFacet(facet)}
+          relay={props.relay}
+          relayVarName="filesCustomFacetFields"
+          style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
+          />
+      );
+    })}
     <FacetHeader
-      title="File"
-      field="file_id"
       collapsed={props.fileIdCollapsed}
-      setCollapsed={props.setFileIdCollapsed}
       description="Enter File UUID or name"
-    />
-    <SuggestionFacet
+      field="file_id"
+      setCollapsed={props.setFileIdCollapsed}
       title="File"
+      />
+    <SuggestionFacet
       collapsed={props.fileIdCollapsed}
       doctype="files"
-      fieldNoDoctype="file_id"
-      placeholder="e.g. 142682.bam, 4f6e2e7a-b..."
-      hits={props.suggestions}
-      setAutocomplete={props.setAutocomplete}
-      style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
       dropdownItem={x => (
         <Row>
-          <FileIcon style={{ paddingRight: '1rem', paddingTop: '1rem' }} />
+          <FileIcon
+            style={{
+              paddingRight: '1rem',
+              paddingTop: '1rem',
+            }}
+            />
           <div>
             <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
             <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
@@ -202,18 +256,26 @@ export const FileAggregationsComponent = (props: TProps) => (
           </div>
         </Row>
       )}
-    />
-    {_.reject(presetFacets, { full: 'file_id' }).map(facet => (
-      <FacetWrapper
-        key={facet.full}
-        facet={facet}
-        title={facet.title}
-        aggregation={props.aggregations[escapeForRelay(facet.field)]}
-        relay={props.relay}
-        style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
-        additionalProps={facet.additionalProps}
+      fieldNoDoctype="file_id"
+      hits={props.suggestions}
+      placeholder="e.g. 142682.bam, 4f6e2e7a-b..."
+      setAutocomplete={props.setAutocomplete}
+      style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
+      title="File"
       />
-    ))}
+    {_.reject(presetFacets, { full: 'file_id' }).map(facet => {
+      return (
+        <FacetWrapper
+          additionalProps={facet.additionalProps}
+          aggregation={props.aggregations[escapeForRelay(facet.field)]}
+          facet={facet}
+          key={facet.full}
+          relay={props.relay}
+          style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
+          title={facet.title}
+          />
+      );
+    })}
   </div>
 );
 

@@ -15,9 +15,9 @@ import t from '@ncigdc/locales/intl';
 
 const filesTableModel = [
   {
-    name: t('global.tables.columns.file.uuid'),
+    name: t('facet.file.uuid'),
     id: 'file_id',
-    th: () => <Th>{t('global.tables.columns.file.uuid')}</Th>,
+    th: () => <Th>{t('facet.file.uuid')}</Th>,
     td: ({ node }) => (
       <Td>
         <FileLink

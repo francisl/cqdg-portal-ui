@@ -101,7 +101,6 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
     const subHeadings =
       localTableColumns.filter((tc: IColumnProps<boolean>) => tc.subHeading) ||
       [];
-    console.log('filtered ::: ', filteredTableColumns);
     return (
       <div className="test-arrange-columns">
         {filteredTableColumns.map(
@@ -180,13 +179,13 @@ const ArrangeColumns = compose<IArrangeColumnsProps, JSX.Element>(
                   }}
                   >
                   <input
-                    aria-label={t(`global.tables.columns.${column.id}`)}
+                    aria-label={t(`facet.${column.id}`)}
                     checked={!filteredTableColumns[i].hidden}
                     readOnly
                     style={{ pointerEvents: 'none' }}
                     type="checkbox"
                     />
-                  <span style={{ marginLeft: '0.3rem' }}>{t(`global.tables.columns.${column.id}`)}</span>
+                  <span style={{ marginLeft: '0.3rem' }}>{t(`facet.${column.id}`)}</span>
                 </Row>
                 <ArrangeIcon
                   style={{

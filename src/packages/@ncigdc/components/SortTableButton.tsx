@@ -205,22 +205,22 @@ const SortTableButton = compose<ICSortTableButtonProps, ISortTableButtonProps>(
                       'toggleSortKey',
                       id,
                       uiState[id].asc ? 'asc' : 'desc'
-                  )}
+                    )}
                   style={{
                     width: '100%',
                     color: 'rgb(0, 80, 131)',
                   }}
                   >
                   <input
-                    aria-label={t(`global.tables.columns.${id}`)}
+                    aria-label={t(`facet.${id}`)}
                     checked={uiState[id].selected}
-                    name={t(`global.tables.columns.${id}`)}
+                    name={t(`facet.${id}`)}
                     readOnly
                     style={{ pointerEvents: 'none' }}
                     type="checkbox"
                     />
-                  <label htmlFor={t(`global.tables.columns.${id}`)} style={{ marginLeft: '0.3rem' }}>
-                    {t(`global.tables.columns.${id}`)}
+                  <label htmlFor={t(`facet.${id}`)} style={{ marginLeft: '0.3rem' }}>
+                    {t(`facet.${id}`)}
                   </label>
                 </div>
               </Row>
