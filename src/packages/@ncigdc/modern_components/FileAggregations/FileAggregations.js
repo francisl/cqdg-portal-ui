@@ -26,11 +26,12 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 import { withTheme } from '@ncigdc/theme';
 import FileIcon from '@ncigdc/theme/icons/File';
 import { Row } from '@ncigdc/uikit/Flex';
+import t from '@ncigdc/locales/intl';
 import features from '../../../../features';
 
 const presetFacets = [
   {
-    title: 'File',
+    title: t('facet.file'),
     field: 'file_id',
     full: 'file_id',
     type: 'keyword',
@@ -69,7 +70,7 @@ const presetFacets = [
     field: 'data_access',
     full: 'data_access',
     type: 'keyword',
-  }
+  },
 ];
 
 const presetFacetFields = presetFacets.map(x => x.field);
@@ -87,8 +88,8 @@ const enhance = compose(
   withPropsOnChange(['viewer'], ({ viewer }) => ({
     parsedFacets: viewer.File.facets
       ? tryParseJSON(viewer.File.facets, {})
-      : {},
-  })),
+        : {},
+  }))
 );
 
 const styles = {
@@ -147,33 +148,33 @@ const FileAggregations = ({
   shouldShowFacetSelection,
   theme,
   userSelectedFacets,
-  viewer: {  File: { aggregations  } },
+  viewer: { File: { aggregations } },
 }: TProps) => (
   <div className="test-file-aggregations">
     {features.fileFilter && (
-    <div
-      className="text-right"
-      style={{
-        padding: '10px 15px',
-        borderBottom: `1px solid ${theme.greyScale5}`,
-      }}
-      >
-      {!!userSelectedFacets.length && (
-        <span>
-          <a onClick={handleResetFacets} style={styles.link}>
-            Reset
-          </a>
-          {' '}
-          &nbsp;|&nbsp;
-        </span>
-      )}
-      <a
-        onClick={() => setShouldShowFacetSelection(true)}
-        style={styles.link}
+      <div
+        className="text-right"
+        style={{
+          padding: '10px 15px',
+          borderBottom: `1px solid ${theme.greyScale5}`,
+        }}
         >
+        {!!userSelectedFacets.length && (
+          <span>
+            <a onClick={handleResetFacets} style={styles.link}>
+            Reset
+            </a>
+            {' '}
+          &nbsp;|&nbsp;
+          </span>
+        )}
+        <a
+          onClick={() => setShouldShowFacetSelection(true)}
+          style={styles.link}
+          >
         Add a File Filter
-      </a>
-    </div>
+        </a>
+      </div>
     )}
     <Modal
       isOpen={shouldShowFacetSelection}
@@ -210,52 +211,55 @@ const FileAggregations = ({
         />
     ))}
     {features.filesearch && (
-	    <FacetHeader
-	      collapsed={fileIdCollapsed}
-	      description="Enter File UUID or name"
-	      field="file_id"
-	      setCollapsed={setFileIdCollapsed}
-	      title="File"
-	      />
+      <FacetHeader
+        collapsed={fileIdCollapsed}
+        description="Enter File UUID or name"
+        field="file_id"
+        setCollapsed={setFileIdCollapsed}
+        title="File"
+        />
     )}
     {features.filesearch && (
-	    <SuggestionFacet
-	      collapsed={fileIdCollapsed}
-	      doctype="files"
-	      dropdownItem={x => (
-	        <Row>
-	          <FileIcon style={{
+      <SuggestionFacet
+        collapsed={fileIdCollapsed}
+        doctype="files"
+        dropdownItem={x => (
+          <Row>
+            <FileIcon
+              style={{
 	            paddingRight: '1rem',
 	            paddingTop: '1rem',
-	          }}
-	          />
-	          <div>
-	            <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
-	            <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
-	            {x.file_name}
-	          </div>
-	        </Row>
-	      )}
-	      fieldNoDoctype="file_id"
-	      placeholder="e.g. 142682.bam, 4f6e2e7a-b..."
-	      queryType="file"
-	      style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
-	      title="File"
-	      />
+              }}
+              />
+            <div>
+              <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
+              <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
+              {x.file_name}
+            </div>
+          </Row>
+        )}
+        fieldNoDoctype="file_id"
+        placeholder="e.g. 142682.bam, 4f6e2e7a-b..."
+        queryType="file"
+        style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
+        title="File"
+        />
     )}
-    {_.reject(presetFacets, { full: 'file_id' }).map(facet => (
-      <FacetWrapper
-        additionalProps={facet.additionalProps}
-        aggregation={
+    {_.reject(presetFacets, { full: 'file_id' }).map(facet => {
+      return (
+        <FacetWrapper
+          additionalProps={facet.additionalProps}
+          aggregation={
           aggregations[escapeForRelay(facet.field)]
         }
-        facet={facet}
-        key={facet.full}
-        relay={relay}
-        style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
-        title={facet.title}
-        />
-    ))}
+          facet={facet}
+          key={facet.full}
+          relay={relay}
+          style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
+          title={facet.title || t(`facet.${facet.field}`)}
+          />
+      );
+    })}
   </div>
 );
 

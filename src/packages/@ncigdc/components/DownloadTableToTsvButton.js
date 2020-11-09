@@ -7,6 +7,7 @@ import Button from '@ncigdc/uikit/Button';
 import { visualizingButton } from '@ncigdc/theme/mixins';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import { track } from '@ncigdc/utils/analytics';
+import t from '@ncigdc/locales/intl';
 
 type TProps = {
   selector: string,
@@ -20,11 +21,13 @@ const getSingleHeader = (headThs: Array<NodeList>) => reduce(
   []
 );
 
-export const downloadToTSV = ({ excludedColumns = [
-  'Add all files to cart',
-  'Remove all files from cart',
-  'Select column',
-], filename, selector }) => {
+export const downloadToTSV = ({
+  excludedColumns = [
+    'Add all files to cart',
+    'Remove all files from cart',
+    'Select column',
+  ], filename, selector,
+}) => {
   const tableEl = document.querySelector(selector);
   const headTrs = tableEl.querySelector('thead').querySelectorAll('tr');
   const headThs = map(headTrs, h => h.querySelectorAll('th'));
@@ -86,7 +89,7 @@ const DownloadTableToTsvButton =
     leftIcon,
     style = {},
   }: TProps) => (
-    <Tooltip Component="Export current view">
+    <Tooltip Component={t('global.tables.actions.export')}>
       <Button
         leftIcon={leftIcon}
         onClick={() => downloadToTSV({

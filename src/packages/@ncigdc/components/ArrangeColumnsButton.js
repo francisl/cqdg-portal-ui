@@ -12,6 +12,7 @@ import Dropdown from '@ncigdc/uikit/Dropdown';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import Hidden from '@ncigdc/components/Hidden';
 import styled from '@ncigdc/theme/styled';
+import t from '@ncigdc/locales/intl';
 
 const SearchIcon = styled(SI, {
   backgroundColor: ({ theme }) => theme.greyScale5,
@@ -36,6 +37,7 @@ const ArrangeColumnsButton = compose(
 )(
   class extends React.Component {
     searchInput;
+
     render() {
       const {
         searchTerm,
@@ -47,35 +49,39 @@ const ArrangeColumnsButton = compose(
       } = this.props;
       return (
         <Dropdown
-          className="test-arrange-columns-button"
           autoclose={false}
-          button={
-            <Tooltip Component={<span>Arrange Columns</span>}>
+          button={(
+            <Tooltip Component={<span>{t('global.tables.actions.arrange')}</span>}>
               <Button style={style}>
                 <ArrangeIcon />
-                <Hidden>Sort Table</Hidden>
+                <Hidden>{t('global.tables.actions.sort')}</Hidden>
               </Button>
             </Tooltip>
-          }
-          dropdownStyle={{ top: '100%', marginTop: 5, whiteSpace: 'nowrap' }}
-        >
+          )}
+          className="test-arrange-columns-button"
+          dropdownStyle={{
+            top: '100%',
+            marginTop: 5,
+            whiteSpace: 'nowrap',
+          }}
+          >
           <Column style={{ minWidth: '22rem' }}>
             <Row>
               <SearchIcon />
               <input
+                aria-label={t('global.tables.actions.filter.columns')}
                 className="test-filter-columns"
+                onChange={() => setSearchTerm(() => this.searchInput.value)}
+                placeholder={t('global.tables.actions.filter.columns')}
+                ref={node => {
+                  this.searchInput = node;
+                }}
                 style={{
                   width: '100%',
                   padding: '0.3rem 0.5rem',
                 }}
                 type="text"
-                aria-label="Filter Columns"
-                placeholder="Filter Columns"
-                ref={node => {
-                  this.searchInput = node;
-                }}
-                onChange={() => setSearchTerm(() => this.searchInput.value)}
-              />
+                />
             </Row>
             <RestoreDefaults
               className="test-restore-defaults"
@@ -84,14 +90,14 @@ const ArrangeColumnsButton = compose(
                 setSearchTerm(() => '');
                 this.searchInput.value = '';
               }}
-            >
-              Restore Defaults
+              >
+              {t('global.tables.actions.restore.defaults')}
             </RestoreDefaults>
             <ArrangeColumns
               entityType={entityType}
-              searchTerm={searchTerm}
               hideColumns={hideColumns}
-            />
+              searchTerm={searchTerm}
+              />
           </Column>
         </Dropdown>
       );

@@ -19,6 +19,7 @@ import {
   getLowerAgeYears,
   getUpperAgeYears,
 } from '@ncigdc/utils/ageDisplay';
+import t from '@ncigdc/locales/intl';
 
 import {
   Container,
@@ -53,10 +54,10 @@ const convertMaxMin = ({
   selectedUnit,
   setState,
 }) => {
-  setState(state => Object.assign(
-    {},
-    state,
-    convertDays && selectedUnit === 'years'
+  setState(state => ({
+
+    ...state,
+    ...(convertDays && selectedUnit === 'years'
       ? {
         maxDisplayed: Math.ceil((max + 1 - DAYS_IN_YEAR) / DAYS_IN_YEAR),
         minDisplayed: Math.floor(min / DAYS_IN_YEAR),
@@ -64,8 +65,8 @@ const convertMaxMin = ({
       : {
         maxDisplayed: max || 0,
         minDisplayed: min || 0,
-      },
-  ));
+      }),
+  }));
 };
 
 const inputChanged = ({
@@ -75,14 +76,12 @@ const inputChanged = ({
   setState,
   to,
 }) => {
-  setState(state => Object.assign(
-    {},
-    state,
-    {
-      fromDisplayed: from || '',
-      toDisplayed: to || '',
-    },
-    !convertDays || selectedUnit === 'days'
+  setState(state => ({
+
+    ...state,
+    fromDisplayed: from || '',
+    toDisplayed: to || '',
+    ...(!convertDays || selectedUnit === 'days'
       ? {
         from: from || undefined,
         to: to || undefined,
@@ -90,15 +89,15 @@ const inputChanged = ({
       : {
         from: from ? Math.floor(from * DAYS_IN_YEAR) : undefined,
         to: to ? Math.floor(to * DAYS_IN_YEAR + DAYS_IN_YEAR - 1) : undefined,
-      },
-  ));
+      }),
+  }));
 };
 
 const convertInputs = ({
   from,
-  to,
   selectedUnit,
   setState,
+  to,
 }) => {
   if (selectedUnit === 'days') {
     setState(s => ({
@@ -142,13 +141,13 @@ const enhance = compose(
   lifecycle({
     componentDidMount(): void {
       const {
+        convertDays,
         field,
-        query,
         max,
         min,
-        convertDays,
-        state: { selectedUnit },
+        query,
         setState,
+        state: { selectedUnit },
       } = this.props;
       const thisFieldCurrent = getCurrentFromAndTo({
         field,
@@ -202,9 +201,9 @@ const enhance = compose(
         )
       ) {
         const {
-          field, query, max, min,
+          field, max, min, query,
         } = nextProps;
-        const { state: { selectedUnit }, setState, convertDays } = this.props;
+        const { convertDays, setState, state: { selectedUnit } } = this.props;
         const thisFieldCurrent = getCurrentFromAndTo({
           field,
           query,
@@ -249,12 +248,12 @@ const enhance = compose(
     },
   }),
   mapProps(({
-    setState, max, min, convertDays, ...rest
+    convertDays, max, min, setState, ...rest
   }) => ({
     convertDays,
     handleFromChanged: e => {
       const v = e.target.value;
-      const { state: { toDisplayed, selectedUnit } } = rest;
+      const { state: { selectedUnit, toDisplayed } } = rest;
       inputChanged({
         convertDays,
         from: v,
@@ -377,7 +376,7 @@ const RangeFacet = ({
       className="test-range-facet"
       style={{
         ...style,
-        paddingBottom: collapsed ? 0 : 10
+        paddingBottom: collapsed ? 0 : 10,
       }}
       >
       {collapsed || (
@@ -426,7 +425,7 @@ const RangeFacet = ({
                   borderRight: 0,
                 }}
                 >
-                From:
+                {`${t('facet.range.from')}:`}
               </InputLabel>
               <Input
                 id={`from-${dotField}`}
@@ -451,7 +450,7 @@ const RangeFacet = ({
                   borderRight: 0,
                 }}
                 >
-                To:
+                {`${t('facet.range.to')}:`}
               </InputLabel>
               <Input
                 id={`to-${dotField}`}
@@ -467,7 +466,7 @@ const RangeFacet = ({
                 title={`Max value: ${maxDisplayed}`}
                 type="number"
                 value={toDisplayed || ''}
-              />
+                />
 
               <GoLink
                 dark={!!innerContent.length}
@@ -475,30 +474,30 @@ const RangeFacet = ({
                 query={innerContent.length ? query : null}
                 style={innerContent.length ? null : { color: '#6F6F6F' }}
                 >
-                Go!
+                {`${t('facet.actions.go')}!`}
               </GoLink>
             </Row>
 
             {title === 'Age At Diagnosis' && (
               from >= warningDays ||
               to >= warningDays
-              ) && (
-                <WarningRow>
-                  <span>
-                    <ExclamationTriangle style={{ paddingRight: '5px' }} />
-                    {`For health information privacy concerns, individuals over 89
+            ) && (
+              <WarningRow>
+                <span>
+                  <ExclamationTriangle style={{ paddingRight: '5px' }} />
+                  {`For health information privacy concerns, individuals over 89
                     will all appear as 90 years old. For more information, click `}
-                    <a
-                      href="https://gdc.cancer.gov/about-gdc/gdc-faqs#collapsible-item-618-question"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      >
+                  <a
+                    href="https://gdc.cancer.gov/about-gdc/gdc-faqs#collapsible-item-618-question"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >
                       here
-                    </a>
+                  </a>
                     .
-                  </span>
-                </WarningRow>
-              )}
+                </span>
+              </WarningRow>
+            )}
           </Column>
         </React.Fragment>
       )}

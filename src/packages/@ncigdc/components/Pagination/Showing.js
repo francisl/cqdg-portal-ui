@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Row } from '@ncigdc/uikit/Flex';
+import t from '@ncigdc/locales/intl';
 
 export type TProps = {
   docType: string,
@@ -22,14 +23,17 @@ const Sizes = (props: TProps) => {
   );
 
   return (
-    <Row spacing="0.5rem" className="test-showing">
-      <span>Showing</span>
-      <strong>{start.toLocaleString()}</strong>
-      <span>-</span>
-      <strong>{end.toLocaleString()}</strong>
-      <span>of</span>
-      <strong>{props.total.toLocaleString()}</strong>
-      <span>{props.docType}</span>
+    <Row className="test-showing" spacing="0.5rem">
+      <span
+        dangerouslySetInnerHTML={{
+          __html: t('global.tables.showing', {
+            start: start.toLocaleString(),
+            end: end.toLocaleString(),
+            total: props.total.toLocaleString(),
+            docType: t(`global.${props.docType}`),
+          }),
+        }}
+        />
     </Row>
   );
 };

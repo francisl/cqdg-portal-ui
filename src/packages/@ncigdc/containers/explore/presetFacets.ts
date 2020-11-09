@@ -43,7 +43,7 @@ export const presetFacets = [
     type: 'keyword',
   },
   {
-    title: 'Experimental Strategy',
+    title: 'Experimental Strategy 2',
     field: 'summary.experimental_strategies.experimental_strategy',
     full: 'cases.summary.experimental_strategies.experimental_strategy',
     doc_type: 'cases',
@@ -211,11 +211,11 @@ const clinicalFacetSortingDictionary = {
     'radon_exposure',
     'tobacco_smoking_status',
   ],
-}
+};
 
 export const customSorting = (field: string = ''): object | number => {
   const fieldPath: string[] = field.split('.');
   const ordersArray = clinicalFacetSortingDictionary[fieldPath.slice(0, -1).join('.')];
   const position = ordersArray && ordersArray.indexOf(fieldPath.slice(-1)[0]);
-  return position > -1 ? - ordersArray.length + position : 0;
+  return position > -1 ? -ordersArray.length + position : 0;
 };

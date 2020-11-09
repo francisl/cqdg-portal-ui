@@ -19,6 +19,7 @@ import Input from '@ncigdc/uikit/Form/Input';
 import OverflowTooltippedLabel from '@ncigdc/uikit/OverflowTooltippedLabel';
 
 import { internalHighlight } from '@ncigdc/uikit/Highlight';
+import t from '@ncigdc/locales/intl';
 import { Container, BucketLink } from '.';
 
 import { IBucket } from './types';
@@ -62,7 +63,8 @@ export const BottomRow = styled(Row, {
 let input;
 const TermAggregation = (props: TProps) => {
   const dotField = props.field.replace(/__/g, '.');
-  const { filteredBuckets, maxShowing, filter } = props;
+  const { filter, filteredBuckets, maxShowing } = props;
+
 
   return (
     <LocationSubscriber>
@@ -71,18 +73,24 @@ const TermAggregation = (props: TProps) => {
           ((ctx.query &&
             parseFilterParam((ctx.query || {}).filters, {}).content) ||
           [])
-          .map(filter => ({
-            ...filter,
-            content: {
-              ...filter.content,
-              value: typeof filter.content.value === 'string'
+            .map(filter => ({
+              ...filter,
+              content: {
+                ...filter.content,
+                value: typeof filter.content.value === 'string'
                 ? filter.content.value.toLowerCase()
-                : filter.content.value.map(val => val.toLowerCase())
+                : filter.content.value.map(val => val.toLowerCase()),
               },
             }
-          ));
+            ));
         return (
-          <Container className="test-term-aggregation" style={{...props.style, paddingBottom: props.collapsed ? 0 : 10}}>
+          <Container
+            className="test-term-aggregation"
+            style={{
+              ...props.style,
+              paddingBottom: props.collapsed ? 0 : 10,
+            }}
+            >
             {!props.collapsed && props.showingValueSearch && (
               <Row>
                 <Input
@@ -122,6 +130,7 @@ const TermAggregation = (props: TProps) => {
                   .map(b => ({
                     ...b,
                     name: b.key_as_string || b.key,
+                    id: b.key.trim().toLowerCase().split(' ').join('.'),
                   }))
                   .map(bucket => (
                     <BucketRow key={bucket.name}>
@@ -185,7 +194,7 @@ const TermAggregation = (props: TProps) => {
                                 backgroundColor: '#FFFF00',
                               },
                             )
-                            : bucket.name}
+                            : t(`aggregation.${bucket.id}`)}
                         </OverflowTooltippedLabel>
                       </BucketLink>
                       <CountBubble className="bucket-count">
@@ -209,8 +218,8 @@ const TermAggregation = (props: TProps) => {
                 {filteredBuckets.length === 0 && (
                   <span>
                     {(input || { value: '' }).value
-                      ? 'No matching values'
-                      : 'No data for this field'}
+                      ? t('no.matching.values')
+                      : t('no.data.for.field')}
                   </span>
                 )}
               </Column>
@@ -232,7 +241,7 @@ const enhance = compose(
       'searchValue',
     ],
     ({
-      buckets, filter, searchValue = '', isMatchingSearchValue,
+      buckets, filter, isMatchingSearchValue, searchValue = '',
     }) => ({
       filteredBuckets: buckets.filter(
         b => b.key !== '_missing' &&
