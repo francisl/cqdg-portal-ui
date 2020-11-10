@@ -53,7 +53,7 @@ export const facetFieldDisplayMapper = field => {
     'genes.gene_id': 'Gene',
     'cases.case_id': 'Case',
   };
-  return map[field] || t(`aggregation.${field}`);
+  return map[field] || t(`aggregation.${field}`) || field;
 };
 
 export const BucketLink = styled(Link, {
