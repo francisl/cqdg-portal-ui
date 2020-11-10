@@ -47,3 +47,5 @@ __generated__
 
 #OncoJS development
 /src/packages/@oncojs
+
+.env
