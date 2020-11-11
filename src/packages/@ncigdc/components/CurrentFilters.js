@@ -263,7 +263,7 @@ const CurrentFilters = (
                     }}
                     >
                     <Value>
-                      {getDisplayValue(filter.content.field, value)}
+                      {getDisplayValue(filter.content.field, value.trim().toLowerCase().split(' ').join('.'))}
                     </Value>
                   </NotUnderlinedLink>
                 ))}
