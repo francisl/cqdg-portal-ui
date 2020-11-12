@@ -17,7 +17,7 @@ import FacetHeader from '@ncigdc/components/Aggregations/FacetHeader';
 import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
 
 import { IBucket } from '@ncigdc/components/Aggregations/types';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import features from '../../../../features';
 
 export type TProps = {

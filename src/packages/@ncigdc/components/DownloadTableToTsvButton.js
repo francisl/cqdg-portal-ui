@@ -7,7 +7,7 @@ import Button from '@ncigdc/uikit/Button';
 import { visualizingButton } from '@ncigdc/theme/mixins';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import { track } from '@ncigdc/utils/analytics';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 type TProps = {
   selector: string,

@@ -31,7 +31,7 @@ import GeneSymbol from '@ncigdc/modern_components/GeneSymbol';
 import SetId from '@ncigdc/components/SetId';
 import { parseJSONParam } from '@ncigdc/utils/uri/index';
 import { AWG } from '@ncigdc/utils/constants';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import features from '../../../features.json';
 
 /*----------------------------------------------------------------------------*/

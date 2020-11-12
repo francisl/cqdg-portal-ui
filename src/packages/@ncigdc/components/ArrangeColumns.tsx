@@ -14,7 +14,7 @@ import {
 } from '@ncigdc/dux/tableColumns';
 import styled from '@ncigdc/theme/styled';
 import { IColumnProps } from '@ncigdc/tableModels/utils';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 const SortRow = styled(Row, {
   alignItems: 'center',

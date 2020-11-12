@@ -11,7 +11,7 @@ import { RepositoryCasesLink } from '@ncigdc/components/Links/RepositoryLink';
 import FileLink from '@ncigdc/components/Links/FileLink';
 import { makeFilter } from '@ncigdc/utils/filters';
 import FileSize from '@ncigdc/components/FileSize';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 const filesTableModel = [
   {

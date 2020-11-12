@@ -12,7 +12,7 @@ import FileLink from '@ncigdc/components/Links/FileLink';
 import { makeFilter } from '@ncigdc/utils/filters';
 import FileSize from '@ncigdc/components/FileSize';
 import CopyToClipboardButton from '@ncigdc/modern_components/CopyToClipboardButton/CopyToClipboardButton';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import features from '../../../../features';
 
 const filesTableModel = [

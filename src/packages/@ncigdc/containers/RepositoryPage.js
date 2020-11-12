@@ -19,7 +19,7 @@ import formatFileSize from '@ncigdc/utils/formatFileSize';
 
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import features from '../../../features';
 
 

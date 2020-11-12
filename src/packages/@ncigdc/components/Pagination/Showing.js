@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Row } from '@ncigdc/uikit/Flex';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 export type TProps = {
   docType: string,

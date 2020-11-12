@@ -19,7 +19,7 @@ import {
   getLowerAgeYears,
   getUpperAgeYears,
 } from '@ncigdc/utils/ageDisplay';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 import {
   Container,
