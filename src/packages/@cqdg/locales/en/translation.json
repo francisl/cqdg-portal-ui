@@ -3,6 +3,7 @@
     "files.title": "Files",
     "files": "files",
     "participants": "Participants",
+    "login": "Login",
     "query": {
       "IN": "IN",
       "IS": "IS",
@@ -26,6 +27,10 @@
         "restore.defaults": "Restore Defaults"
       }
     }
+  },
+  "nav": {
+    "file.repo": "Files Repository",
+    "studies": "Studies"
   },
   "facet": {
     "study.name": "Study Name",

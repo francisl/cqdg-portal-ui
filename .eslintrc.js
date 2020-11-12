@@ -10,6 +10,7 @@ module.exports = {
     'airbnb',
     'plugin:react/recommended',
     'plugin:import/typescript',
+    'plugin:react/recommended'
     // 'plugin:@typescript-eslint/recommended', // Allows for TypeScript-specific linting rules to run.
   ],
   globals: {
@@ -43,6 +44,7 @@ module.exports = {
     }],
     'arrow-body-style': 'off',
     'arrow-parens': 'off',
+    'react/button-has-type': 'off',
     'camelcase': ['warn', {
       allow: ["^UNSAFE_", "doc_count", "^active_"],
     }],
@@ -187,6 +189,12 @@ module.exports = {
     'react/sort-comp': 'warn',
     'react/sort-prop-types': 'error',
     'react/prop-types': 'off', // Disable prop-types as TS is used for type checking.
+    "react/jsx-props-no-spreading": [<enabled>, {
+      "html": "ignore" | "enforce",
+      "custom": "ignore" | "enforce",
+      "explicitSpread": "ignore" | "enforce",
+      "exceptions": [<string>]
+    }],
     'sort-destructure-keys/sort-destructure-keys': ['warn', {
       caseSensitive: false,
     }],

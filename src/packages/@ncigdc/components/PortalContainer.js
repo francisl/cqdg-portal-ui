@@ -11,7 +11,7 @@ import {
 } from 'recompose';
 import { isEqual } from 'lodash';
 
-import Header from '@ncigdc/components/Header';
+import Header from '@cqdg/components/header/Header';
 import AWGHeader from '@ncigdc/components/AWGHeader';
 import Footer from '@ncigdc/components/Footer';
 import NotificationContainer from '@ncigdc/components/NotificationContainer';
@@ -63,7 +63,7 @@ const PortalContainer = ({
       role="main"
       style={{
         paddingBottom: '120px',
-        paddingTop: `calc(51px + ${notifications.filter(n => !n.dismissed)
+        paddingTop: `calc(72px + ${notifications.filter(n => !n.dismissed)
           .length * 40}px)`,
         transition: 'padding 0.25s ease',
       }}
@@ -84,14 +84,6 @@ export default compose(
   connect(store => ({ notifications: store.bannerNotification })),
   lifecycle({
     componentDidMount(): void {
-    // Cookies.get(FIRST_TIME_KEY) || this.props.dispatch(setModal(
-    //     <AtlasContentNote
-    //       onClose={() => {
-    //         Cookies.set(FIRST_TIME_KEY, true);
-    //       }}
-    //       />,
-    //     false,
-    // ));
       let lastPathname = this.props.location.pathname;
       this.removeListen = this.props.history.listen(location => {
         if (location.pathname !== lastPathname) {
