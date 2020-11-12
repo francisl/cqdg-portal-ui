@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { Row } from '@ncigdc/uikit/Flex';
 import { withTheme } from '@ncigdc/theme';
 
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import PaginationButton from './PaginationButton';
 import PaginationLink from './PaginationLink';
 import Sizes from './Sizes';

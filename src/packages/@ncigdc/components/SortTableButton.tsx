@@ -15,7 +15,7 @@ import { ITheme, withTheme } from '@ncigdc/theme';
 import { Row } from '@ncigdc/uikit/Flex';
 import { SortIcon } from '@ncigdc/theme/icons';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 const RadioRow = styled(Row, {
   padding: '0.3rem 0.6rem',
@@ -205,7 +205,7 @@ const SortTableButton = compose<ICSortTableButtonProps, ISortTableButtonProps>(
                       'toggleSortKey',
                       id,
                       uiState[id].asc ? 'asc' : 'desc'
-                    )}
+                  )}
                   style={{
                     width: '100%',
                     color: 'rgb(0, 80, 131)',

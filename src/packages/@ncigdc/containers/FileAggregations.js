@@ -29,7 +29,7 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 import { withTheme } from '@ncigdc/theme';
 import FileIcon from '@ncigdc/theme/icons/File';
 import { Row } from '@ncigdc/uikit/Flex';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 
 const presetFacets = [

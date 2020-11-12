@@ -2,7 +2,7 @@
 
 import { Row, Column } from '@ncigdc/uikit/Flex';
 import styled from '@ncigdc/theme/styled';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 import Link from '@ncigdc/components/Links/Link';
 

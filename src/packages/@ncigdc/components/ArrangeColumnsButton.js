@@ -12,7 +12,7 @@ import Dropdown from '@ncigdc/uikit/Dropdown';
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import Hidden from '@ncigdc/components/Hidden';
 import styled from '@ncigdc/theme/styled';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 const SearchIcon = styled(SI, {
   backgroundColor: ({ theme }) => theme.greyScale5,

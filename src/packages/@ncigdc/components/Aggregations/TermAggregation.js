@@ -19,7 +19,7 @@ import Input from '@ncigdc/uikit/Form/Input';
 import OverflowTooltippedLabel from '@ncigdc/uikit/OverflowTooltippedLabel';
 
 import { internalHighlight } from '@ncigdc/uikit/Highlight';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 import { Container, BucketLink } from '.';
 
 import { IBucket } from './types';

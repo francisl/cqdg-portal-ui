@@ -11,7 +11,7 @@ import { makeFilter } from '@ncigdc/utils/filters';
 import ageDisplay from '@ncigdc/utils/ageDisplay';
 import withRouter from '@ncigdc/utils/withRouter';
 import { createDataCategoryColumns } from '@ncigdc/tableModels/utils';
-import t from '@ncigdc/locales/intl';
+import t from '@cqdg/locales/intl';
 
 const youngestDiagnosis = (
   p: { age_at_diagnosis: number },
