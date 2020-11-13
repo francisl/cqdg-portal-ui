@@ -3,6 +3,7 @@
     "files.title": "Fichiers",
     "files": "fichiers",
     "participants": "Participants",
+    "login": "Connexion",
     "query": {
       "IN": "DANS",
       "IS": "EST",
@@ -28,6 +29,10 @@
       "columns": {
       }
     }
+  },
+  "nav": {
+    "file.repo": "Répertoire de fichiers",
+    "studies": "Études"
   },
   "facet": {
     "study.name": "Nom de l'étude",

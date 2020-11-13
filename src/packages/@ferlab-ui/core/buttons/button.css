@@ -1,0 +1,57 @@
+button {
+  align-items: center;
+  background: #F8F9FC;
+  border: 1px solid #D8E1EB;
+  box-sizing: border-box;
+  color: #18486B;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 6px;
+
+  height: 32px;
+
+  /* flex-direction: row; */
+  padding: 0px 8px 0px 8px;
+  
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+}
+
+button.focus, .button:hover {
+  border: 1px solid #18486B;
+  color: #18486B;
+}
+
+button[type=link] {
+  background-color: inherit;
+  color: #486F90;
+  border: none;
+  font-size: 12px;
+}
+
+button[type=link] .link-icon{
+  font-size: 9px;
+}
+
+button[type=link]:hover {
+  border: none;
+  text-decoration: underline;
+}
+
+/* Shape */
+button.circle {
+  border-radius: 50%;
+  box-sizing: border-box;
+  font-size: 12px;
+  height: 26px;
+  width: 26px;
+  padding: 0;
+}

@@ -18,7 +18,7 @@ import withRouter from '@ncigdc/utils/withRouter';
 import { withTheme } from '@ncigdc/theme';
 import DatabaseIcon from '@ncigdc/theme/icons/Database';
 
-import './Header.css';
+import '@cqdg/components/header/Header.css';
 
 const styles = {
   activeNavLink: theme => ({
