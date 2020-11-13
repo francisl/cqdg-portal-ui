@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #003457;
+    --secondary-color: #18486B;
+}
+
+.home-main {
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    letter-spacing: 0.16px;  
+}
+
+section.hero {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-gap: 71px;
+    padding: 80px 142px 286px;
+    align-items: center;
+
+    background: url(/img/pills_bg.svg) no-repeat,linear-gradient(268deg,#28aae2,#006095 98%);
+    background-size: cover;
+    background-position: 50%;
+}
+
+section.hero .description {
+    color: #fff;
+}
+
+section.hero .description h2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0;
+}
+
+section.hero .description h1 {
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 46px;
+    margin: 0 0 16px 0;
+}
+
+section.hero .description p {
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0 0 16px 0;
+}
+
+section.hero .buttons {
+    display: flex;
+}
+
+section.hero .buttons > *  {
+    margin-right: 12px;
+}
+
+section.hero .data {
+    max-width: 400px;
+}
+
+section.hero .data .header {
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    letter-spacing: 0.16px;  
+}
+
+section.hero .data .header h2 {
+    color: var(--primary-color);
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+section.hero .data .header span {
+    font-family: IBM Plex Mono;
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: 20px;
+}
+
+section.graphs {
+    display: grid;
+    padding: 0 24px;
+    grid-auto-flow: column;
+    grid-gap: 24px;
+    margin-bottom: 80px;
+    justify-items: center;
+    margin-top: -170px;
+}
+
+section.graphs h3, .bottom-links-cards h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+section.graphs .graph {
+    max-width: 448px;
+}
+
+.bottom-links-text h2 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 0 8px 0;
+    color: var(--secondary-color);
+}
+
+.bottom-links-text {
+    text-align: center;
+}
+
+.bottom-links-text p {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    color: var(--secondary-color);
+    max-width: 740px;
+}
+
+section.bottom-links {
+    display: grid;
+    grid-auto-flow: row;
+    justify-items: center;
+    grid-gap: 40px;
+    margin-bottom: 80px;
+}
+
+section.bottom-links .bottom-links-cards {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 48px;
+}
+
+section.bottom-links .bottom-links-cards .card-container {
+    max-width: 260px;
+}
+
+section.bottom-links .bottom-links-cards .card-container p {
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0;
+    color: #486F90;
+    text-align: center;
+}

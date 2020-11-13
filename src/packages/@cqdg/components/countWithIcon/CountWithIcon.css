@@ -1,0 +1,27 @@
+.countwithicon-container {
+    display: flex;
+}
+
+.countwithicon-desc {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    letter-spacing: 0.16px;  
+    color: #18486B;
+}
+
+.countwithicon-count {
+    line-height: 24px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.countwithicon-label {
+    line-height: 22px;
+    font-weight: 400;
+    font-size: 14px;
+}
