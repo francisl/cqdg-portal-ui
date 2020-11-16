@@ -17,28 +17,28 @@ const HomePage = () => {
         <section className="hero">
           <div>
             <div className="description">
-              <h2>Le centre québécois de données génomiques</h2>
-              <h1>Portail de données</h1>
-              <p>Le Centre québécois de données génomiques est une plateforme d'harmonisation et de diffusion des données génomiques générées par les études cliniques et de recherche du Québec.</p>
+              <h2>{t('home.hero.subtitle')}</h2>
+              <h1>{t('home.hero.title')}</h1>
+              <p>{t('home.hero.text')}</p>
             </div>
             <div className="buttons">
-              <Button>Connexion <IoArrowForward/></Button>
-              <Button>Créer un compte</Button>
+              <Button>{t('home.hero.buttons.connection')} <IoArrowForward/></Button>
+              <Button>{t('home.hero.buttons.account')}</Button>
             </div>
           </div>
           <div className="data">
             <CardContainerNotched>
               <CardContent cardType="header2Column">
                 <div className="header">
-                  <h2>Résumé des donées</h2>
-                  <span>Publication des donées 3.0 | 7 octobre, 2020</span>
+                  <h2>{t('home.hero.data.header')}</h2>
+                  <span>{t('home.hero.data.subtitle')}</span>
                 </div>
-                <CountWithIcon count="3" label="Études" iconType="studie" />
-                <CountWithIcon count="3" label="Doneurs" iconType="donor" />
-                <CountWithIcon count="3" label="Génomes" iconType="genome" />
-                <CountWithIcon count="3" label="Exomes" iconType="exome" />
-                <CountWithIcon count="3" label="Fichiers" iconType="file" />
-                <CountWithIcon count="3" label="TB" iconType="storage" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.study')} iconType="study" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.donor')} iconType="donor" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.genome')} iconType="genome" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.exome')} iconType="exome" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.file')} iconType="file" />
+                <CountWithIcon count="3" label={t('home.hero.data.groups.size')} iconType="storage" />
               </CardContent>
             </CardContainerNotched>
           </div>
@@ -46,35 +46,35 @@ const HomePage = () => {
         <section className="graphs">
           <CardContainerNotched type="hovered" className="graph">
             <CardContent cardType="stack">
-              <h3>Donneurs par type de maladie</h3>
+              <h3>{t('home.graphs.graph1.title')}</h3>
               <img src="/img/horizontal_bar_chart.png" />
             </CardContent>
           </CardContainerNotched>
           <CardContainerNotched type="hovered" className="graph">
             <CardContent cardType="stack">
-              <h3>Donneurs par type de maladie</h3>
+              <h3>{t('home.graphs.graph2.title')}</h3>
               <img src="/img/pie_chart.png" />
             </CardContent>
           </CardContainerNotched>
           <CardContainerNotched type="hovered" className="graph">
             <CardContent cardType="stack">
-              <h3>Donneurs par type de maladie</h3>
+              <h3>{t('home.graphs.graph3.title')}</h3>
               <img src="/img/bar_chart.png" />
             </CardContent>
           </CardContainerNotched>
         </section>
         <section className="bottom-links">
           <div className="bottom-links-text">
-            <h2>Données cliniques et moléculaires harmonisées</h2>
-            <p>Les données soumises au portail doivent respecter des formats et des restrictions spécifiques définis dans le dictionnaire de données.</p>
+            <h2>{t('home.cards.text.block.title')}</h2>
+            <p>{t('home.cards.text.block.text')}</p>
           </div>
           <div className="bottom-links-cards">
             <a target="_blank" href="https://docs.qa.cqdg.ferlab.bio/">
               <CardContainerNotched type="hover" className="card-container">
                 <CardContent cardType="stack-center">
                   <img src="/img/doc_icon.svg" alt="Cloud Icon" />
-                  <h3>Donneurs par type de maladie</h3>
-                  <p>Centre de documentation pour les différents services du CQDG</p>
+                  <h3>{t('home.cards.card1.title')}</h3>
+                  <p>{t('home.cards.card1.text')}</p>
                 </CardContent>
               </CardContainerNotched>
             </a>
@@ -82,8 +82,8 @@ const HomePage = () => {
               <CardContainerNotched type="hover" className="card-container">
                 <CardContent cardType="stack-center">
                   <img src="/img/data_icon.svg" alt="Cloud Icon" />
-                  <h3>Donneurs par type de maladie</h3>
-                  <p>Normes pour le formatage des fichiers de données cliniques</p>
+                  <h3>{t('home.cards.card2.title')}</h3>
+                  <p>{t('home.cards.card2.text')}</p>
                 </CardContent>
               </CardContainerNotched>
             </a>
@@ -91,8 +91,8 @@ const HomePage = () => {
               <CardContainerNotched type="hover" className="card-container">
                 <CardContent cardType="stack-center">
                   <img src="/img/cloud_icon.svg" alt="Cloud Icon" />
-                  <h3>Donneurs par type de maladie</h3>
-                  <p>Guide pour la soumissionde données</p>
+                  <h3>{t('home.cards.card3.title')}</h3>
+                  <p>{t('home.cards.card3.text')}</p>
                 </CardContent>
               </CardContainerNotched>
             </a>
