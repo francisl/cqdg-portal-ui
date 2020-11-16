@@ -194,7 +194,8 @@ const TermAggregation = (props: TProps) => {
                                 backgroundColor: '#FFFF00',
                               },
                             )
-                            : t(`aggregation.${bucket.id}`)}
+                            : t(`aggregation.${bucket.id}`) || bucket.name
+                          }
                         </OverflowTooltippedLabel>
                       </BucketLink>
                       <CountBubble className="bucket-count">

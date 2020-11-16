@@ -96,9 +96,10 @@
     "no-data":"no-data",
     "germline":"Germline",
     "somatic":"Somatic",
-    
-    "cag":"CaG",
-    "cqgc":"CQGC",
+    "st1":"Étude 1",
+    "st2":"Étude 2",
+    "st3":"Étude 3",
+    "st4":"Étude 4",
     "rare.cancers":"Rare Cancers",
     "procure":"Procure",
     "general.health":"General Health",
