@@ -1,10 +1,17 @@
 import React from 'react'
+import get from 'lodash/get';
 
 import './CardContainerNotched.css';
 
-const CardContainerNotched = ({children, className = ''}) => {
+const CardContainerNotched = ({children, type = '', className = ''}) => {
+    const containerType = {
+        hovered: 'card--notched-hovered',
+        hover: 'card--notched-hover'
+    };
+
+    const cardTypeClassName = get(containerType, type, '');
     return (
-        <div className={`card--notched ${className}`}>
+        <div className={`card--notched ${cardTypeClassName} ${className}`}>
             <div className="notch-top" aria-hidden="true">
                 <svg className="notch notch--top" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0)">

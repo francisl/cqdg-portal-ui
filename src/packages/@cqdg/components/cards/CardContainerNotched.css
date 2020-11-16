@@ -73,7 +73,13 @@
   fill: var(--component-border);
 }
 
-.card--notched-hover {
+.card--notched-hovered {
+  --component-border: #91dcf8;
+  -webkit-filter: drop-shadow(0px 6px 12px rgba(0, 174, 239, 0.2));
+          filter: drop-shadow(0px 6px 12px rgba(0, 174, 239, 0.2));
+}
+
+.card--notched-hover:hover {
   --component-border: #91dcf8;
   -webkit-filter: drop-shadow(0px 6px 12px rgba(0, 174, 239, 0.2));
           filter: drop-shadow(0px 6px 12px rgba(0, 174, 239, 0.2));

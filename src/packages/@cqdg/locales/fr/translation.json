@@ -34,6 +34,14 @@
     "file.repo": "Répertoire de fichiers",
     "studies": "Études"
   },
+  "footer": {
+    "title": "Vous ne trouvez pas ce que vous chercher?",
+    "info": "Pour plus d'informations contactez:",
+    "logo": {
+      "genome.link" : "http://www.genomequebec.com/accueil/",
+      "chusj.link" : "https://recherche.chusj.org/fr/accueil"
+    }
+  },
   "facet": {
     "study.name": "Nom de l'étude",
     "study.domain": "Domain d'étude",

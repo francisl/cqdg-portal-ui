@@ -1,0 +1,49 @@
+.nav-footer {
+    background: #f8f8fb;
+    border-top: 1px solid #dcdde1;
+    padding: 0px;
+    color: 'black';
+}
+  
+.footerWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+}
+  
+.footerTextWrapper {
+    display: flex;
+    flex-direction: column;
+}
+  
+.footerMoreInfo{
+    margin: auto 0 0 0;
+    color: #486f90;
+    font-size:14px;
+	font-family:IBM Plex Sans;
+	font-weight:normal;
+	line-height:20px;
+}
+
+.footerMoreInfo button {
+    display: inline-grid;
+}
+  
+.footerTitle {
+    font-size:16px;
+	font-family:IBM Plex Sans;
+	font-weight:600;
+	line-height:24px;
+    color: #486f90;
+    margin: 0;
+}
+
+.footerLogos {
+    display: flex;
+}
+
+.footerLogos button {
+    margin: 0 20px;
+}
+
+  

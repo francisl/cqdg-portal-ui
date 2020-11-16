@@ -3,23 +3,43 @@
     --secondary-color: #18486B;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .home-main {
     font-family: IBM Plex Sans;
     font-style: normal;
     letter-spacing: 0.16px;  
 }
 
+.contentWrapper {
+    max-width: 1566px;
+    margin: 0 auto;
+}
+
 section.hero {
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 65% 35%;
-    grid-gap: 71px;
-    padding: 80px 142px 286px;
+    grid-gap: 72px;
+    padding: 80px 204px 286px;
     align-items: center;
+    position: relative;
+    z-index: 0;
+}
 
-    background: url(/img/pills_bg.svg) no-repeat,linear-gradient(268deg,#28aae2,#006095 98%);
+section.hero:before {
+    content: "";
+    position: absolute;
+    z-index: -1; /* behind parent */
+    top: 0;
+    bottom: 0;
+    background: url(/img/pills_bg.svg) no-repeat, linear-gradient(268deg,#28aae2,#006095 98%);
     background-size: cover;
     background-position: 50%;
+    width: 200%;
+    left: -50%;
 }
 
 section.hero .description {
@@ -81,11 +101,9 @@ section.hero .data .header span {
 
 section.graphs {
     display: grid;
-    padding: 0 24px;
     grid-auto-flow: column;
-    grid-gap: 24px;
     margin-bottom: 80px;
-    justify-items: center;
+    justify-content: space-evenly;
     margin-top: -170px;
 }
 
@@ -95,10 +113,6 @@ section.graphs h3, .bottom-links-cards h3 {
     line-height: 24px;
     color: var(--primary-color);
     margin: 0;
-}
-
-section.graphs .graph {
-    max-width: 448px;
 }
 
 .bottom-links-text h2 {
@@ -111,6 +125,8 @@ section.graphs .graph {
 
 .bottom-links-text {
     text-align: center;
+    max-width: 862px;
+    margin: 0 auto 40px;
 }
 
 .bottom-links-text p {
@@ -118,21 +134,22 @@ section.graphs .graph {
     line-height: 24px;
     margin: 0;
     color: var(--secondary-color);
-    max-width: 740px;
+
 }
 
 section.bottom-links {
-    display: grid;
-    grid-auto-flow: row;
-    justify-items: center;
-    grid-gap: 40px;
     margin-bottom: 80px;
 }
 
 section.bottom-links .bottom-links-cards {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 48px;
+    justify-content: space-evenly;
+}
+
+section.bottom-links .bottom-links-cards a {
+    text-decoration: none;
+    display: inline-grid;
 }
 
 section.bottom-links .bottom-links-cards .card-container {
