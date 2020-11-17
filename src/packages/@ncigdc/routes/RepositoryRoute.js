@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { parse } from 'query-string';
 
 import { handleStateChange } from '@ncigdc/dux/relayProgress';
-import RepositoryPage, {repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping} from '@ncigdc/containers/RepositoryPage';
+import RepositoryPage, { repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping } from '@ncigdc/containers/RepositoryPage';
 import {
   parseIntParam,
   parseFilterParam,
@@ -15,7 +15,7 @@ import {
 } from '@ncigdc/utils/uri';
 
 import { viewerQuery } from './queries';
-import {mapFilter} from "../utils/filters";
+import { mapFilter } from '../utils/filters';
 
 class RepositoryRoute extends Relay.Route {
   static routeName = 'RepositoryRoute';
@@ -25,11 +25,11 @@ class RepositoryRoute extends Relay.Route {
   static prepareParams = ({ location: { search } }) => {
     const q = parse(search);
 
-    let fileFilters = parseFilterParam(q.filters, null)
-    let caseFilters = parseFilterParam(q.filters, null)
+    const fileFilters = parseFilterParam(q.filters, null);
+    const caseFilters = parseFilterParam(q.filters, null);
 
-    mapFilter(fileFilters, repoPageCaseToFileFiltersMapping)
-    mapFilter(caseFilters, repoPageFileToCaseFiltersMapping)
+    mapFilter(fileFilters, repoPageCaseToFileFiltersMapping);
+    mapFilter(caseFilters, repoPageFileToCaseFiltersMapping);
 
     return {
       cases_offset: parseIntParam(q.cases_offset, 0),
@@ -38,8 +38,8 @@ class RepositoryRoute extends Relay.Route {
       files_offset: parseIntParam(q.files_offset, 0),
       files_size: parseIntParam(q.files_size, 20),
       files_sort: parseJSONParam(q.files_sort, null),
-      caseFilters: caseFilters,
-      fileFilters: fileFilters
+      caseFilters,
+      fileFilters,
     };
   };
 }
@@ -47,8 +47,8 @@ class RepositoryRoute extends Relay.Route {
 export default connect()((props: mixed) => (
   <Relay.Renderer
     Container={RepositoryPage}
-    queryConfig={new RepositoryRoute(props)}
     environment={Relay.Store}
     onReadyStateChange={handleStateChange(props)}
-  />
+    queryConfig={new RepositoryRoute(props)}
+    />
 ));

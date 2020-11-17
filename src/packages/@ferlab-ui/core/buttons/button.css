@@ -16,38 +16,38 @@ button {
   box-sizing: border-box;
   border-radius: 2px;
 
-  font-family: IBM Plex Sans;
+
+  white-space: nowrap;
+}
+
+button.navigation {
+  background: #F8F9FC;
+  border-color: #D8E1EB;
+  color: #18486B;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.16px;
-  white-space: nowrap;
 }
 
-button.focus, .button:hover {
+button.navigation:hover {
+background-color: #FFFFFF;
+}
+
+button.navigation.focus {
   border: 1px solid #18486B;
-  color: #18486B;
 }
 
-button[type=link] {
-  background-color: inherit;
-  color: #486F90;
-  border: none;
-  font-size: 12px;
-}
-
-button[type=link] .link-icon{
-  font-size: 9px;
-}
-
-button[type=link]:hover {
-  border: none;
-  text-decoration: underline;
+button.navigation.active {
+  background-color: #F8F9FC;
+  border: 1px solid #008FC7;
+  color: #008FC7;
 }
 
 /* Shape */
 button.circle {
+  background-color: #FFFFFF;
   border-radius: 50%;
   box-sizing: border-box;
   font-size: 12px;

@@ -15,7 +15,6 @@ import ManageSetsRoute from '@ncigdc/routes/ManageSetsRoute';
 import SmartSearchRoute from '@ncigdc/routes/SmartSearchRoute';
 import ImageViewerRoute from '@ncigdc/routes/ImageViewerRoute';
 import RedirectRoute from '@ncigdc/routes/RedirectRoute';
-import { Routes as CqdgRoutes } from '@cqdg/routes/relay_routes'
 
 const CartRoute = LoadableWithLoading({
   loader: () => import('@ncigdc/routes/CartRoute'),
@@ -43,7 +42,6 @@ const Routes = () => (
       {({ location: { pathname } }) => <Head title={pathname.split('/')[1]} />}
     </Route>
     <Switch>
-      <CqdgRoutes />
       <Route component={RedirectRoute} exact path="/" />
       <Route component={CartRoute} exact path="/cart" />
       <Route component={RepositoryRoute} exact path="/repository" />

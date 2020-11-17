@@ -4,15 +4,16 @@
   border-bottom: 1px solid #e7e7e7;
 
   display: inline-grid;
-  grid-template-columns: [logo] 146px [nav] 1fr [actions] auto;
+  grid-template-columns: [logo] auto [nav] 2fr [actions] auto;
   grid-gap: 42px;
   justify-content: center;
   justify-items: center;
 
+  margin: 0;
   margin-bottom: 30px;
   min-height: 72px;
 
-  padding: 0px 20px 0px 20px;
+  padding: 0px;
   position: fixed;
   top: 0;
 
@@ -24,14 +25,27 @@
 #header .logo {
   height: 40px;
   grid-column: 1 / 2;
-  margin-right: 20px;
   justify-self: flex-start;
+}
+
+#header >:first-child {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#header >:last-child {
+  margin-right: 30px;
 }
 
 #header .nav, .actions {
   align-items: center;
   display: flex;
   justify-self: flex-start;
+}
+
+#header .actions {
+  gap: 10px;
+  justify-self: flex-end;
 }
 
 #header .nav > * {
@@ -41,8 +55,8 @@
 .separator { 
   width: 1px;
   background: #FFB600;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   height: 24px;
 }
 
@@ -53,6 +67,10 @@
     grid-gap: 22px;
     padding-bottom: 32px;
     transition: height 1s ease;
+  }
+
+  #header .actions > *:not(:last-child) {
+    margin-bottom: 12px;
   }
 
   #header .nav > *:not(:last-child) {
@@ -89,6 +107,12 @@
 @media (max-width: 860px) {
   .separator {
     height: 1px;
+    margin-left: 0px;
     width: 100%;
   }
+}
+
+#header .big {
+  font-size: 14px;
+  line-height: 22px;
 }

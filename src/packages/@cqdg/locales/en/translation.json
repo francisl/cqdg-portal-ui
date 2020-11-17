@@ -26,11 +26,16 @@
         "filter.columns": "Filter Columns",
         "restore.defaults": "Restore Defaults"
       }
+    },
+    "app": {
+      "description": "The Quebec Genomic Data Center is a data harmonization and sharing platform for clinical and genomic datasets produced by Québec’s clinical and research studies."
     }
   },
   "nav": {
+    "home": "Home",
     "file.repo": "Files Repository",
-    "studies": "Studies"
+    "studies": "Studies",
+    "connexion": "Login"
   },
   "footer": {
     "title": "Can't find what you are looking for?",

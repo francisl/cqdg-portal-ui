@@ -28,11 +28,16 @@
       },
       "columns": {
       }
+    },
+    "app": {
+      "description": "Le Centre québécois de données génomiques est une plateforme d'harmonisation et de diffusion des données génomiques générées par les études cliniques et de recherche du Québec."
     }
   },
   "nav": {
+    "home": "Acceuil",
     "file.repo": "Répertoire de fichiers",
-    "studies": "Études"
+    "studies": "Études",
+    "connexion": "Connexion"
   },
   "footer": {
     "title": "Vous ne trouvez pas ce que vous chercher?",

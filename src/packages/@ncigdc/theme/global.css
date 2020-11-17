@@ -265,14 +265,7 @@ body {
   color: #333333;
   background-color: #fff;
 }
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
+
 figure {
   margin: 0;
 }
