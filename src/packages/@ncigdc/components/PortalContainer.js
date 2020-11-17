@@ -18,7 +18,7 @@ import NotificationContainer from '@ncigdc/components/NotificationContainer';
 import RelayLoadingContainer from '@ncigdc/components/RelayLoadingContainer';
 import ProgressContainer from '@ncigdc/components/ProgressContainer';
 import ModalContainer from '@ncigdc/components/ModalContainer';
-import Routes from '@ncigdc/routes';
+import Routes from '@cqdg/routes';
 import AWGRoutes from '@ncigdc/routes/AWGRoutes';
 import withRouter from '@ncigdc/utils/withRouter';
 import { GlobalTooltip } from '@ncigdc/uikit/Tooltip';
@@ -46,7 +46,7 @@ const SkipLink = styled.a({
 const PortalContainer = ({
   notifications,
 }: {
-  notifications: Array<{ dismissed: string }>,
+  notifications: Array<{ dismissed: string }>;
 }) => (
   <div
     style={{

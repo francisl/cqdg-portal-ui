@@ -4,25 +4,19 @@ import FiExternalLink from 'react-icons/lib/fa/external-link';
 import './button.css';
 
 const Button = ({
+  active,
   children,
   defaultIcon = true,
   disabled = false,
-  href,
-  mode = '',
-  onclick,
+  onClick,
   shape = 'rect',
-  type = 'button',
+  type = 'normal',
 }) => {
-  const inputType = href ? 'link' : type;
   const buttonAttr = {
-    className: `button ${mode} ${shape}`,
+    className: `${type} ${shape} ${active ? 'active' : ''}`,
     disabled,
-    type: inputType,
+    onClick,
   };
-  if (href) {
-    buttonAttr.onClick = () => window.open(href);
-    type = 'link';
-  }
 
   return (
     <button {...buttonAttr}>

@@ -1,0 +1,18 @@
+
+a {
+  background-color: inherit;
+  color: #486F90; /* gray-7 */
+  border: none;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+a .link-icon{
+  font-size: 9px;
+}
+
+a:hover {
+  border: none;
+  text-decoration: underline;
+}
+
