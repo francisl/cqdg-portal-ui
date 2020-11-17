@@ -77,6 +77,26 @@ const StyledDropdownLink = styled(Link, {
   textDecoration: 'none',
 });
 
+const extractResults = (obj) => {
+  const list = _.get(obj, "results");
+  const nodes = extractNodes(list);
+  return nodes;
+};
+
+const extractNodes = (obj) => {
+  const nodes = [];
+  if(obj){
+    Object.keys(obj).forEach((key, index) => {
+      if(key === 'node'){
+        nodes.push(obj[key])
+      }else{
+        nodes.push(...extractNodes(obj[key]));
+      }
+    });
+  }
+  return nodes;
+}
+
 const SuggestionFacet = compose(
   withDropdown,
   withState('inputValue', 'setInputValue', ''),
@@ -100,15 +120,16 @@ const SuggestionFacet = compose(
   renameProp('facetSearchHits', 'results'),
   withHandlers({
     // TODO: use router push
-    handleSelectItem: () => item =>
-      document.querySelector(`[data-link-id="${item.id}"]`).click(),
+    handleSelectItem: () => item => {
+      document.querySelector(`[data-link-id="${item.file_id}"]`).click()
+    },
   }),
   namespace(
     'selectableList',
     withSelectableList(
       {
         keyHandlerName: 'handleKeyEvent',
-        listSourcePropPath: 'results',
+        listSourcePropPath: extractResults,
       },
       {
         onSelectItem: (item, { handleSelectItem }) => handleSelectItem(item),
@@ -175,6 +196,7 @@ const SuggestionFacet = compose(
             currentFilters,
             dotField: `${doctype}.${fieldNoDoctype}`,
           }) || { content: { value: [] } };
+
           return (
             <Container style={style} className="test-suggestion-facet">
               {!collapsed && (
@@ -213,6 +235,7 @@ const SuggestionFacet = compose(
                       style={{ borderRadius: '0 4px 4px 0' }}
                       id={fieldNoDoctype}
                       name={fieldNoDoctype}
+                      autoComplete="off"
                       onChange={e => {
                         const value = e.target.value;
                         setInputValue(value);
@@ -249,24 +272,25 @@ const SuggestionFacet = compose(
                         }}
                         onClick={e => e.stopPropagation()}
                       >
-                        {((results && results[doctype]) || []).map(x => (
+                        {
+                          get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
                           <Row
-                            key={x.id}
+                            key={x.node.file_id}
                             style={{ alignItems: 'center' }}
                             onClick={() => {
                               setInputValue('');
                               setActive(false);
                             }}
-                            onMouseOver={() => selectableList.setFocusedItem(x)}
+                            onMouseOver={() => selectableList.setFocusedItem(x.node)}
                           >
                             <StyledDropdownLink
                               merge="add"
-                              query={query(x[fieldNoDoctype])}
-                              id={x[fieldNoDoctype]}
-                              data-link-id={x.id}
-                              linkIsActive={selectableList.focusedItem === x}
+                              query={query(x.node[fieldNoDoctype])}
+                              id={x.node[fieldNoDoctype]}
+                              data-link-id={x.node.file_id}
+                              linkIsActive={selectableList.focusedItem === x.node}
                             >
-                              {dropdownItem(x)}
+                              {dropdownItem(x.node)}
                             </StyledDropdownLink>
                           </Row>
                         ))}

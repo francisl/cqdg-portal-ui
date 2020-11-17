@@ -212,6 +212,7 @@ export const repoPageCaseToFileFiltersMapping:Map = new Map([
   ['ethnicity', 'cases.ethnicity'],
   ['age_at_recruitment', 'cases.age_at_recruitment'],
   ['vital_status', 'cases.vital_status'],
+  ['files.file_id', 'file_id']
 ]);
 
 export const repoPageFileToCaseFiltersMapping:Map = new Map([
@@ -222,6 +223,7 @@ export const repoPageFileToCaseFiltersMapping:Map = new Map([
   ['platform', 'files.platform'],
   ['experimental_strategy', 'files.experimental_strategy'],
   ['is_harmonized', 'files.is_harmonized'],
+  ['file_id','files.file_id']
 ]);
 
 export default RepositoryPage;
