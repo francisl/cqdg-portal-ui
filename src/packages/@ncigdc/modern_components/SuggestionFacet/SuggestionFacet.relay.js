@@ -12,16 +12,44 @@ export default (Component: ReactClass<*>) => compose(
     ({ facetSearch, queryType }) => {
       const showCases = queryType === 'case';
       const showFiles = queryType === 'file';
-      const showProjects = queryType === 'project';
-      const showGenes = queryType === 'gene_centric';
+      const wildFacetSearch = facetSearch + "*";
+      const fields = [];
+
+      if(showCases){
+        fields.push("files.file_name_keyword");
+        fields.push("files.file_id");
+        fields.push("submitter_donor_id");
+      }
+
+      if(showFiles){
+        fields.push("file_name_keyword");
+        fields.push("file_id");
+        fields.push("cases.submitter_donor_id");
+      }
+
+      const content = []
+      fields.forEach(field => {
+        content.push(
+          {
+            "op": "in",
+            "content": {
+              "field": field,
+              "value": [wildFacetSearch]
+            }
+          }
+        )
+      });
+
+      const filters = {
+        "op": "or",
+        "content": content
+      }
+
       return {
         variables: {
-          query: trim(facetSearch),
-          queryType: [queryType],
+          filters: filters,
           showCases,
-          showFiles,
-          showGenes,
-          showProjects,
+          showFiles
         },
       };
     },
@@ -32,53 +60,57 @@ export default (Component: ReactClass<*>) => compose(
         Component={Component}
         parentProps={props}
         query={graphql`
-          query SuggestionFacet_relayQuery(
-            $query: String
-            $queryType: [String]
-            $showCases: Boolean!
-            $showFiles: Boolean!
-            $showGenes: Boolean!
-            $showProjects: Boolean!
-          ) {
-            facetSearchHits: query(query: $query, types: $queryType) {
-              files: hits @include(if: $showFiles) {
-                id
-                ... on FileNode {
-                  file_id
-                  submitter_donor_id
-                  file_name
-                }
-              }
-              cases: hits @include(if: $showCases) {
-                id
-                ... on CaseNode {
-                  donor_id
-                  study {
-                    hits(first: 1){
-                        edges{
-                            node{
-                                study_id
+          query SuggestionFacet_relayQuery($filters: JSON!, $showFiles: Boolean!, $showCases: Boolean!){
+            facetSearchHits: viewer {  
+              files: viewer @include(if: $showFiles) {
+                File{
+                  hits(filters: $filters, first: 10){
+                    edges{
+                      node{
+                        file_id
+                        file_name
+                        cases{
+                          hits(first: 10){
+                            edges{
+                              node{
+                                submitter_donor_id
+                              }
                             }
+                          }
                         }
+                      }
                     }
                   }
-                  submitter_donor_id
                 }
               }
-              projects: hits @include(if: $showProjects) {
-                id
-                ... on Project {
-                  project_id
-                  name
-                  primary_site
-                }
-              }
-              genes: hits @include(if: $showGenes) {
-                id
-                ...on Gene {
-                  symbol
-                  name
-                  gene_id
+              cases: viewer @include(if: $showCases) {
+                Case{
+                  hits(filters: $filters, first: 10){
+                    edges{
+                      node{
+                        submitter_donor_id
+                        study{
+                          hits(first: 10){
+                            edges{
+                              node{
+                                study_id
+                              }
+                            }
+                          }
+                        }
+                        files{
+                          hits(first: 10){
+                            edges{
+                              node{
+                                file_id
+                                file_name
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }

@@ -16,7 +16,7 @@ const withKeyboardSelection = (
     withState('focusedItem', 'setFocusedItem', undefined),
     withState('selectedItem', 'setSelectedItem', undefined),
     withProps(props => ({
-      list: _.get(props, listSourcePropPath),
+      list: ((typeof listSourcePropPath) === 'string') ? _.get(props, listSourcePropPath) : listSourcePropPath(props)
     })),
     withProps(
       ({ list, focusedItem, setFocusedItem, setSelectedItem, ...props }) => ({
@@ -27,7 +27,7 @@ const withKeyboardSelection = (
         },
         focusNextItem: () => {
           if (_.isEmpty(list)) return;
-          const nextFocus = getNextItem(list, focusedItem);
+          const nextFocus = !focusedItem ? list[0] : getNextItem(list, focusedItem);
           setFocusedItem(nextFocus);
         },
         selectItem: item => {

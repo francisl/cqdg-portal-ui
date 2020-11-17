@@ -43,7 +43,6 @@ const Routes = () => (
       {({ location: { pathname } }) => <Head title={pathname.split('/')[1]} />}
     </Route>
     <Switch>
-      <CqdgRoutes />
       <Route component={RedirectRoute} exact path="/" />
       <Route component={CartRoute} exact path="/cart" />
       <Route component={RepositoryRoute} exact path="/repository" />
