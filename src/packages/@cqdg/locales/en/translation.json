@@ -32,6 +32,66 @@
     "file.repo": "Files Repository",
     "studies": "Studies"
   },
+  "footer": {
+    "title": "Can't find what you are looking for?",
+    "info": "For more informations contact:",
+    "logo": {
+      "genome.link" : "http://www.genomequebec.com/en/home/",
+      "chusj.link" : "https://research.chusj.org/en/Home"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Portail de données",
+      "subtitle": "Le centre québécois de données génomiques",
+      "text": "Le Centre québécois de données génomiques est une plateforme d'harmonisation et de diffusion des données génomiques générées par les études cliniques et de recherche du Québec.",
+      "buttons": {
+        "connection" : "Connexion",
+        "account" : "Créer un compte"
+      },
+      "data": {
+        "header": "Résumé des donées",
+        "subtitle": "Publication des donées 3.0 | 7 octobre, 2020",
+        "groups": {
+          "study": "Études",
+          "donor": "Doneurs",
+          "genome": "Génomes",
+          "exome": "Éxomes",
+          "file": "Fichiers",
+          "size": "TB"
+        }
+      }
+    },
+    "graphs": {
+      "graph1": {
+        "title": "Donneurs par type de maladie"
+      },
+      "graph2": {
+        "title": "Répartition de la population"
+      },
+      "graph3": {
+        "title": "Donneurs par catégorie de phénotype"
+      }
+    },
+    "cards": {
+      "text.block": {
+        "title": "Données cliniques et moléculaires harmonisées",
+        "text": "Les données soumises au portail doivent respecter des formats et des restrictions spécifiques définis dans le dictionnaire de données."
+      },
+      "card1": {
+        "title": "Documentation",
+        "text": "Centre de documentation pour les différents services du CQDG"
+      },
+      "card2": {
+        "title": "Dictionnaire des données",
+        "text": "Normes pour le formatage des fichiers de données cliniques"
+      },
+      "card3": {
+        "title": "Soumettre des données",
+        "text": "Guide pour la soumissionde données"
+      }
+    }
+  },
   "facet": {
     "study.name": "Study Name",
     "study.domain": "Study Domain",

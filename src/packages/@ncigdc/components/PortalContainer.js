@@ -13,7 +13,7 @@ import { isEqual } from 'lodash';
 
 import Header from '@cqdg/components/header/Header';
 import AWGHeader from '@ncigdc/components/AWGHeader';
-import Footer from '@ncigdc/components/Footer';
+import Footer from '@cqdg/components/footer/Footer';
 import NotificationContainer from '@ncigdc/components/NotificationContainer';
 import RelayLoadingContainer from '@ncigdc/components/RelayLoadingContainer';
 import ProgressContainer from '@ncigdc/components/ProgressContainer';

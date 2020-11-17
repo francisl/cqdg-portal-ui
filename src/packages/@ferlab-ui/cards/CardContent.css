@@ -1,0 +1,20 @@
+.stack, .stack-center {
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: row;
+}
+
+.stack-center {
+    justify-items: center;
+}
+
+.header2Column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 0 8px;
+}
+
+.header2Column > :first-child {
+    grid-column: 1 / -1;
+}
