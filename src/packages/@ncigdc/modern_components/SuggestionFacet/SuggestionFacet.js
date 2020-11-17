@@ -2,7 +2,7 @@
 
 // Vendor
 import React from 'react';
-import _, { get, trim } from 'lodash';
+import { get, trim } from 'lodash';
 import {
   compose,
   pure,
@@ -272,7 +272,8 @@ const SuggestionFacet = compose(
                         }}
                         onClick={e => e.stopPropagation()}
                       >
-                        {((results && results[doctype] && results[doctype][Object.keys(results[doctype])[0]].hits.edges) || []).map(x => (
+                        {
+                          get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
                           <Row
                             key={x.node.file_id}
                             style={{ alignItems: 'center' }}
