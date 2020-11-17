@@ -43,8 +43,8 @@ const Header = ({
           {t('global.login')}
         </Link>
         <div className="separator" />
-        <Link href="https://docs.qa.cqdg.ferlab.bio/">Documentation</Link>
-        <Link href="https://cqdg.ca/en.html">Site Web</Link>
+        <Link href="https://docs.qa.cqdg.ferlab.bio/">{t('global.documentation')}</Link>
+        <Link href="https://cqdg.ca/en.html">{t('nav.website')}</Link>
         <Button shape="circle">EN</Button>
       </div>
     </header>

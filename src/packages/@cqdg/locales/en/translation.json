@@ -1,5 +1,6 @@
 {
   "global": {
+    "documentation": "Documentation",
     "files.title": "Files",
     "files": "files",
     "participants": "Participants",
@@ -35,7 +36,8 @@
     "home": "Home",
     "file.repo": "Files Repository",
     "studies": "Studies",
-    "connexion": "Login"
+    "connexion": "Login",
+    "website": "Website"
   },
   "footer": {
     "title": "Can't find what you are looking for?",
