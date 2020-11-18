@@ -8,9 +8,9 @@ import { parse } from 'query-string';
 
 import { handleStateChange } from '@ncigdc/dux/relayProgress';
 import RepositoryPage from '@cqdg/pages/FileRepository/FileRepositoryPage';
-import { 
-  repoPageCaseToFileFiltersMapping, 
-  repoPageFileToCaseFiltersMapping 
+import {
+  repoPageCaseToFileFiltersMapping,
+  repoPageFileToCaseFiltersMapping,
 } from '@cqdg/pages/FileRepository/FilterMapping';
 import {
   parseIntParam,
@@ -18,8 +18,8 @@ import {
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 
+import { mapFilter } from '@ncigdc/utils/filters';
 import { viewerQuery } from '../../../@ncigdc/routes/queries';
-import { mapFilter } from '../../../@ncigdc/utils/filters';
 
 class RepositoryRoute extends Relay.Route {
   static routeName = 'RepositoryRoute';
