@@ -223,7 +223,7 @@ const SuggestionFacet = compose(
                         style={{
                           ...dropdown,
                           marginTop: 0,
-                          top: '35px',
+                          top: '49px',
                           width: '300px',
                           wordBreak: 'break-word',
                         }}

@@ -67,6 +67,7 @@ export default (Component: ReactClass<*>) => compose(
                   hits(filters: $filters, first: 10){
                     edges{
                       node{
+                        id
                         file_id
                         file_name
                         cases{
@@ -88,6 +89,7 @@ export default (Component: ReactClass<*>) => compose(
                   hits(filters: $filters, first: 10){
                     edges{
                       node{
+                        id
                         submitter_donor_id
                         study{
                           hits(first: 10){

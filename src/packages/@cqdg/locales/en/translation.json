@@ -116,6 +116,8 @@
     "data_category": "Data Category",
     "file_format": "Data Format",
     "file_size": "Size",
+    "case_suggest_placeholder": "eg.: Patient ID, File UUID, File name",
+    "file_suggest_placeholder": "eg.: Patient ID, File UUID, File name",
     "is_harmonized": "Harmonized",
     "data_type": "Data Type",
     "experimental_strategy": "Experimental Strategy",

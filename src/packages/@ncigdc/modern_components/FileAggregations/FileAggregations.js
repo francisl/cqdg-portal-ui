@@ -239,7 +239,7 @@ const FileAggregations = ({
           </Row>
         )}
         fieldNoDoctype="file_id"
-        placeholder="e.g. 142682.bam, 4f6e2e7a-b..."
+        placeholder={t(`facet.file_suggest_placeholder`)}
         queryType="file"
         style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
         title="File"

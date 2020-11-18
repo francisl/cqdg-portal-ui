@@ -42,7 +42,7 @@ const Header = (props) => {
         <div className="separator" />
         <Link href="https://docs.qa.cqdg.ferlab.bio/">{t('global.documentation')}</Link>
         <Link href="https://cqdg.ca/en.html">{t('nav.website')}</Link>
-        <Button onClick={() => { setLanguage(intl.langCode === 'fr' ? 'en' : 'fr'); }} shape="circle">{intl.langCode.toUpperCase()}</Button>
+        <Button onClick={() => { setLanguage(intl.langCode === 'fr' ? 'en' : 'fr'); }} shape="circle">{intl.langCode === 'fr' ? 'EN' : 'FR'}</Button>
       </div>
     </header>
   );
