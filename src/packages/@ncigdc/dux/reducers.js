@@ -2,6 +2,7 @@
 
 import { tooltipReducer as tooltip } from '@ncigdc/uikit/Tooltip';
 
+import intl from '@cqdg/store/intl';
 import modal from './modal';
 import relayLoading from './relayLoading';
 import cart from './cart';
@@ -37,4 +38,5 @@ export default {
   analysis,
   backLocation,
   facetsExpandedStatus,
+  intl,
 };
