@@ -44,8 +44,8 @@ const MagnifyingGlass = styled(SearchIcon, {
   backgroundColor: ({ theme }) => theme.greyScale5,
   color: ({ theme }) => theme.greyScale2,
   padding: '0.8rem',
-  width: '3.4rem',
-  height: '3.4rem',
+  width: '1.4rem',
+  height: '1.25rem',
   borderRadius: '4px 0 0 4px',
   border: ({ theme }) => `1px solid ${theme.greyScale4}`,
   borderRight: 'none',
@@ -80,7 +80,8 @@ const StyledDropdownLink = styled(Link, {
 const extractResults = (obj) => {
   const list = _.get(obj, "results");
   const nodes = extractNodes(list);
-  return nodes;
+
+  return nodes || 'results';
 };
 
 const extractNodes = (obj) => {
@@ -121,7 +122,7 @@ const SuggestionFacet = compose(
   withHandlers({
     // TODO: use router push
     handleSelectItem: () => item => {
-      document.querySelector(`[data-link-id="${item.file_id}"]`).click()
+      document.querySelector(`[data-link-id="${item.id}"]`).click()
     },
   }),
   namespace(
@@ -265,7 +266,7 @@ const SuggestionFacet = compose(
                         style={{
                           ...dropdown,
                           marginTop: 0,
-                          top: '35px',
+                          top: '49px',
                           left: 1,
                           width: '100%',
                           wordBreak: 'break-word',
@@ -275,7 +276,7 @@ const SuggestionFacet = compose(
                         {
                           get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
                           <Row
-                            key={x.node.file_id}
+                            key={x.node.id}
                             style={{ alignItems: 'center' }}
                             onClick={() => {
                               setInputValue('');
@@ -287,7 +288,7 @@ const SuggestionFacet = compose(
                               merge="add"
                               query={query(x.node[fieldNoDoctype])}
                               id={x.node[fieldNoDoctype]}
-                              data-link-id={x.node.file_id}
+                              data-link-id={x.node.id}
                               linkIsActive={selectableList.focusedItem === x.node}
                             >
                               {dropdownItem(x.node)}

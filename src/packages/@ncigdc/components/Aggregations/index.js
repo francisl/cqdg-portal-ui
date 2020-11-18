@@ -15,7 +15,7 @@ export const InputLabel = styled.label({
   backgroundColor: ({ theme }) => theme.greyScale5,
   color: ({ theme }) => theme.greyScale2,
   padding: '0.8rem',
-  height: '3.4rem',
+  height: '1.25rem',
   border: ({ theme }) => `1px solid ${theme.greyScale4}`,
 });
 
@@ -25,7 +25,7 @@ export const GoLink = styled(Link, {
   border: ({ theme }) => `1px solid ${theme.greyScale4}`,
   borderLeft: 0,
   padding: '6px 4px 2px 4px',
-  height: '3.4rem',
+  height: '2.35rem',
   borderRadius: '0 4px 4px 0',
   ':link': ({ dark, theme }) => ({
     textDecoration: 'none',
