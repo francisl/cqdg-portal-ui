@@ -12,7 +12,7 @@ const CartRoute = LoadableWithLoading({
 });
 
 const RepositoryRoute = LoadableWithLoading({
-  loader: () => import('@ncigdc/routes/RepositoryRoute'),
+  loader: () => import('@cqdg/pages/FileRepository/RelayRoute'),
 });
 
 const ProjectsRoute = LoadableWithLoading({

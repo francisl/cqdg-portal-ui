@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 /* @flow */
-/* eslint fp/no-class:0 */
 
 import React from 'react';
 import { graphql } from 'react-relay';
@@ -12,15 +14,17 @@ import {
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 import Query from '@ncigdc/modern_components/Query';
-import {mapFilter} from "../../utils/filters";
-import {repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping} from "../../containers/RepositoryPage";
+import { repoPageFileToCaseFiltersMapping } from '@cqdg/pages/FileRepository/FilterMapping';
+import { mapFilter } from '@ncigdc/utils/filters';
 
 export default (Component: React.Class<*>) =>
   compose(
     withRouter,
     withPropsOnChange(
       ['location', 'defaultFilters'],
-      ({ location, filters = null, defaultSize = 10 }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line no-unused-vars
+      ({ defaultSize = 10, filters = null, location }) => {
         const q = parse(location.search);
 
         return {
@@ -33,19 +37,17 @@ export default (Component: React.Class<*>) =>
         };
       },
     ),
-  )((props: Object) => {
-
-    if(props && props.variables && props.variables.filters){
-      mapFilter(props.variables.filters, repoPageFileToCaseFiltersMapping)
+  )((props) => {
+    if (props && props.variables && props.variables.filters) {
+      mapFilter(props.variables.filters, repoPageFileToCaseFiltersMapping);
     }
 
     return (
       <Query
-        parentProps={props}
-        name="RepoCasesTable"
-        minHeight={387}
-        variables={props.variables}
         Component={Component}
+        minHeight={387}
+        name="RepoCasesTable"
+        parentProps={props}
         query={graphql`
           query RepoCasesTable_relayQuery(
             $cases_size: Int
@@ -125,6 +127,7 @@ export default (Component: React.Class<*>) =>
               }
             }
         `}
-      />
+        variables={props.variables}
+        />
     );
   });

@@ -1,5 +1,8 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* @flow */
-/* eslint fp/no-class:0 */
 
 import React from 'react';
 import { graphql } from 'react-relay';
@@ -12,15 +15,15 @@ import {
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 import Query from '@ncigdc/modern_components/Query';
-import {mapFilter} from "../../utils/filters";
-import {repoPageCaseToFileFiltersMapping} from "../../containers/RepositoryPage";
+import { repoPageCaseToFileFiltersMapping } from '@cqdg/pages/FileRepository/FilterMapping';
+import { mapFilter } from '../../../../../features.json';
 
 export default (Component: ReactClass<*>) =>
   compose(
     withRouter,
     withPropsOnChange(
       ['location', 'filters'],
-      ({ location, filters = null, defaultSize = 10 }) => {
+      ({ defaultSize = 10, filters = null, location }) => {
         const q = parse(location.search);
         return {
           variables: {
@@ -32,18 +35,17 @@ export default (Component: ReactClass<*>) =>
         };
       },
     ),
-  )((props: Object) => {
-    if(props && props.variables && props.variables.filters){
-      mapFilter(props.variables.filters, repoPageCaseToFileFiltersMapping)
+  )((props) => {
+    if (props && props.variables && props.variables.filters) {
+      mapFilter(props.variables.filters, repoPageCaseToFileFiltersMapping);
     }
 
     return (
       <Query
-        parentProps={props}
-        name="FilesTable"
-        minHeight={387}
-        variables={props.variables}
         Component={Component}
+        minHeight={387}
+        name="FilesTable"
+        parentProps={props}
         query={graphql`
           query FilesTable_relayQuery(
             $files_size: Int
@@ -90,6 +92,7 @@ export default (Component: ReactClass<*>) =>
             }
           }
         `}
-      />
+        variables={props.variables}
+        />
     );
   });

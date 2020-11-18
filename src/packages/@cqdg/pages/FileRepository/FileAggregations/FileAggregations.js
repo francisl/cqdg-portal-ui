@@ -27,7 +27,7 @@ import { withTheme } from '@ncigdc/theme';
 import FileIcon from '@ncigdc/theme/icons/File';
 import { Row } from '@ncigdc/uikit/Flex';
 import t from '@cqdg/locales/intl';
-import features from '../../../../features';
+import features from '../../../../../features.json';
 
 const presetFacets = [
   {

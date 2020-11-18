@@ -7,15 +7,19 @@ import { connect } from 'react-redux';
 import { parse } from 'query-string';
 
 import { handleStateChange } from '@ncigdc/dux/relayProgress';
-import RepositoryPage, { repoPageCaseToFileFiltersMapping, repoPageFileToCaseFiltersMapping } from '@ncigdc/containers/RepositoryPage';
+import RepositoryPage from '@cqdg/pages/FileRepository/FileRepositoryPage';
+import { 
+  repoPageCaseToFileFiltersMapping, 
+  repoPageFileToCaseFiltersMapping 
+} from '@cqdg/pages/FileRepository/FilterMapping';
 import {
   parseIntParam,
   parseFilterParam,
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 
-import { viewerQuery } from './queries';
-import { mapFilter } from '../utils/filters';
+import { viewerQuery } from '../../../@ncigdc/routes/queries';
+import { mapFilter } from '../../../@ncigdc/utils/filters';
 
 class RepositoryRoute extends Relay.Route {
   static routeName = 'RepositoryRoute';

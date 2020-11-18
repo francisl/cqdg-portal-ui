@@ -1,19 +1,17 @@
+/* eslint-disable sort-keys */
+/* eslint-disable react/no-multi-comp */
+/* eslint-disable react/display-name */
 // @flow
 
 import React from 'react';
-import { uniq } from 'lodash';
 import {
   Th, Td, TdNum, ThNum,
 } from '@ncigdc/uikit/Table';
-import CaseLink from '@ncigdc/components/Links/CaseLink';
-import ProjectLink from '@ncigdc/components/Links/ProjectLink';
-import { RepositoryCasesLink } from '@ncigdc/components/Links/RepositoryLink';
 import FileLink from '@ncigdc/components/Links/FileLink';
-import { makeFilter } from '@ncigdc/utils/filters';
 import FileSize from '@ncigdc/components/FileSize';
 import CopyToClipboardButton from '@ncigdc/modern_components/CopyToClipboardButton/CopyToClipboardButton';
 import t from '@cqdg/locales/intl';
-import features from '../../../../features';
+import features from '../../../../../features.json';
 
 const filesTableModel = [
   {
@@ -148,13 +146,13 @@ const filesTableModel = [
     hidden: false,
   },
   {
-	  name: 'Number of donors',
-	  id: 'cases.hits.edges.submitter_donor_id',
-	  th: () => <Th>{t('facet.cases.hits.edges.submitter_donor_id')}</Th>,
-	  td: ({ node }) => <Td style={{ textAlign: 'center' }}>{node.cases.hits.total}</Td>,
-	  sortable: false,
-	  downloadable: true,
-	  hidden: false,
+    name: 'Number of donors',
+    id: 'cases.hits.edges.submitter_donor_id',
+    th: () => <Th>{t('facet.cases.hits.edges.submitter_donor_id')}</Th>,
+    td: ({ node }) => <Td style={{ textAlign: 'center' }}>{node.cases.hits.total}</Td>,
+    sortable: false,
+    downloadable: true,
+    hidden: false,
   },
 ];
 

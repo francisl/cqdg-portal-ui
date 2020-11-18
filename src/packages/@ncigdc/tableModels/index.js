@@ -4,10 +4,10 @@ import exploreCases from '@ncigdc/modern_components/ExploreCasesTable/ExploreCas
 import projects from '@ncigdc/modern_components/ProjectsTable/ProjectsTable.model';
 import genes from '@ncigdc/modern_components/GenesTable/GenesTable.model';
 import ssms from '@ncigdc/modern_components/SsmsTable/SsmsTable.model';
-import files from '@ncigdc/modern_components/FilesTable/FilesTable.model';
-import cases from '@ncigdc/modern_components/RepoCasesTable/RepoCasesTable.model';
-import annotations from './annotationsTableModel';
+import files from '@cqdg/pages/FileRepository/FilesTable/FilesTable.model';
+import cases from '@cqdg/pages/FileRepository//RepoCasesTable/RepoCasesTable.model';
 import projectPrimarySites from '@ncigdc/modern_components/ProjectPrimarySitesTable/ProjectPrimarySitesTable.model';
+import annotations from './annotationsTableModel';
 
 export default {
   projects,

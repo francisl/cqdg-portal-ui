@@ -18,7 +18,7 @@ import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
 
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 import t from '@cqdg/locales/intl';
-import features from '../../../../features';
+import features from '../../../../../features.json';
 
 export type TProps = {
   caseIdCollapsed: boolean,
