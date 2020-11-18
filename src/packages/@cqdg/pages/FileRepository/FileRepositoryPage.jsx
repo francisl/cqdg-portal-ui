@@ -22,6 +22,7 @@ import ActionsRow from '@ncigdc/components/ActionsRow';
 import t from '@cqdg/locales/intl';
 import features from '../../../../features.json';
 
+import './FileRepositoryPage.css';
 
 export type TProps = {
   push: Function;
@@ -105,7 +106,7 @@ export const RepositoryPageComponent = (props: TProps) => {
   ];
 
   return (
-    <div className="repository-page">
+    <div id="RepositoryPage">
       <SearchPage
         facetTabs={facetTabs}
         filtersLinkProps={{
@@ -160,7 +161,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                       <strong>{formatFileSize(fileSize)}</strong>
                     </span>
                   </Row>
-              )
+                )
               }
               />
           </span>
