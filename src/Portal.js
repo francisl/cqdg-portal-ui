@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Relay from 'react-relay/classic';
-import PortalContainer from '@ncigdc/components/PortalContainer';
+import CQDGPortal from '@cqdg/App';
 
 // import '@ncigdc/theme/global.css';
 import './style/themes/default/main.css';
@@ -18,6 +18,6 @@ const PortalQuery = {
   },
 };
 
-const Portal = Relay.createContainer(PortalContainer, PortalQuery);
+const Portal = Relay.createContainer(CQDGPortal, PortalQuery);
 
 export default Portal;

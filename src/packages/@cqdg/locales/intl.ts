@@ -1,5 +1,4 @@
-import * as frLocale from './fr/translation.json';
-import * as enLocale from './en/translation.json';
+import { store } from '../../../Root';
 
 const interpolate = (str: string, obj: object) => {
   const [keys, values] = [Object.keys(obj), Object.values(obj)];
@@ -20,11 +19,14 @@ const flatLocale = (locale: object, path: string[] = [], data = {}) => {
 };
 
 const getDictionary = () => {
-  const locale = navigator.languages;
-  return locale[0].split('-')[0] === 'fr'
-  ? flatLocale(frLocale)
-  : flatLocale(enLocale);
+  const { intl } = store.getState();
+  return flatLocale(intl.strings);
 };
+
+export const fetchTranslations = (langCode = 'fr') =>
+  import(`@cqdg/locales/${langCode}/translation.json`).then((strings) => strings);
+
+export const getBrowserLanguage = () => navigator.languages[0].split('-')[0];
 
 // translate string
 const t = (key: string, values: object | null = null) => {
