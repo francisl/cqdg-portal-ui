@@ -15,7 +15,7 @@ import formatFileSize from '@ncigdc/utils/formatFileSize';
 import { getAuthCounts } from '@ncigdc/utils/auth';
 import { Row, Column } from '@ncigdc/uikit/Flex';
 import { withTheme } from '@ncigdc/theme';
-import FilesTable from '@ncigdc/modern_components/FilesTable';
+import FilesTable from '@cqdg/pages/FileRepository/FilesTable';
 import MetadataDownloadButton from '@ncigdc/components/MetadataDownloadButton';
 import SampleSheetDownloadButton from '@ncigdc/components/SampleSheetDownloadButton';
 import SummaryCard from '@ncigdc/components/SummaryCard';

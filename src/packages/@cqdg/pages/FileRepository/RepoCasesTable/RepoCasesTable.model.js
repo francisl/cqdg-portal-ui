@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import _ from 'lodash';
 import { RepositoryCasesLink, RepositoryFilesLink } from '@ncigdc/components/Links/RepositoryLink';
 import ProjectLink from '@ncigdc/components/Links/ProjectLink';
 import CaseLink from '@ncigdc/components/Links/CaseLink';
@@ -91,7 +90,7 @@ const casesTableModel = [
     ),
     td: ({ node }) => (
       <Td key="gender">
-        {_.capitalize(node.gender) || '--'}
+        {node.gender || '--'}
       </Td>
     ),
   },

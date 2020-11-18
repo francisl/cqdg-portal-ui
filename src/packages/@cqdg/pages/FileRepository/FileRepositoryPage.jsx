@@ -8,11 +8,11 @@ import { Row } from '@ncigdc/uikit/Flex';
 import SearchPage from '@ncigdc/components/SearchPage';
 import TabbedLinks from '@ncigdc/components/TabbedLinks';
 import NoResultsMessage from '@ncigdc/components/NoResultsMessage';
-import RepoCasesTable from '@ncigdc/modern_components/RepoCasesTable';
-import CaseAggregations from '@ncigdc/modern_components/CaseAggregations';
-import FileAggregations from '@ncigdc/modern_components/FileAggregations';
+import RepoCasesTable from '@cqdg/pages/FileRepository/RepoCasesTable';
+import CaseAggregations from '@cqdg/pages/FileRepository/CaseAggregations';
+import FileAggregations from '@cqdg/pages/FileRepository/FileAggregations';
 
-import FilesTable from '@ncigdc/modern_components/FilesTable';
+import FilesTable from '@cqdg/pages/FileRepository/FilesTable';
 import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
 import formatFileSize from '@ncigdc/utils/formatFileSize';
@@ -20,58 +20,58 @@ import formatFileSize from '@ncigdc/utils/formatFileSize';
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
 import t from '@cqdg/locales/intl';
-import features from '../../../features';
+import features from '../../../../features.json';
 
 
 export type TProps = {
-  push: Function,
-  relay: Object,
-  dispatch: Function,
-  filters: any,
-  cases_sort: any,
+  push: Function;
+  relay: Record<string, any>;
+  dispatch: Function;
+  filters: any;
+  cases_sort: any;
   viewer: {
     autocomplete_case: {
-      hits: Array<Object>,
-    },
+      hits: Array<Record<string, any>>;
+    };
     autocomplete_file: {
-      hits: Array<Object>,
-    },
+      hits: Array<Record<string, any>>;
+    };
     cart_summary: {
       aggregations: {
         fs: {
-          value: number,
-        },
-      },
-    },
+          value: number;
+        };
+      };
+    };
     repository: {
       customCaseFacets: {
         facets: {
-          facets: string,
-        },
-      },
+          facets: string;
+        };
+      };
       customFileFacets: {
         facets: {
-          facets: string,
-        },
-      },
+          facets: string;
+        };
+      };
       cases: {
-        aggregations: {},
-        pies: {},
+        aggregations: {};
+        pies: {};
         hits: {
-          total: number,
-        },
-      },
+          total: number;
+        };
+      };
       files: {
-        aggregations: {},
-        pies: {},
+        aggregations: {};
+        pies: {};
         hits: {
-          total: number,
-        },
-      },
-    },
-  },
-  showFacets: boolean,
-  setShowFacets: Function,
+          total: number;
+        };
+      };
+    };
+  };
+  showFacets: boolean;
+  setShowFacets: Function;
 };
 
 const enhance = compose(
@@ -105,7 +105,7 @@ export const RepositoryPageComponent = (props: TProps) => {
   ];
 
   return (
-    <div className="test-repository-page">
+    <div className="repository-page">
       <SearchPage
         facetTabs={facetTabs}
         filtersLinkProps={{
@@ -141,9 +141,6 @@ export const RepositoryPageComponent = (props: TProps) => {
                   text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
                   component: viewer.Case.hits.total ? (
                     <div>
-                      {/* <RepoCasesPies */}
-                      {/*  aggregations={props.viewer.File.pies} */}
-                      {/* /> */}
                       <RepoCasesTable />
                     </div>
                  ) : (
@@ -206,24 +203,5 @@ const RepositoryPage = Relay.createContainer(
   enhance(RepositoryPageComponent),
   RepositoryPageQuery,
 );
-
-export const repoPageCaseToFileFiltersMapping:Map = new Map([
-  ['gender', 'cases.gender'],
-  ['ethnicity', 'cases.ethnicity'],
-  ['age_at_recruitment', 'cases.age_at_recruitment'],
-  ['vital_status', 'cases.vital_status'],
-  ['files.file_id', 'file_id']
-]);
-
-export const repoPageFileToCaseFiltersMapping:Map = new Map([
-  ['data_category', 'files.data_category'],
-  ['data_type', 'files.data_type'],
-  ['file_format', 'files.file_format'],
-  ['data_access', 'files.data_access'],
-  ['platform', 'files.platform'],
-  ['experimental_strategy', 'files.experimental_strategy'],
-  ['is_harmonized', 'files.is_harmonized'],
-  ['file_id','files.file_id']
-]);
 
 export default RepositoryPage;
