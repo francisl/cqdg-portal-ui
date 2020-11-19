@@ -1,19 +1,15 @@
 import React from 'react';
-import { compose, withStateHandlers } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import GoThreeBar from 'react-icons/lib/go/three-bars';
 import Button from '@ferlab-ui/core/buttons/button';
 import './SidePanel.css';
 
-type SidePanelProps = {
-  children: React.children;
-  collapsedStatus: boolean;
-  toggleCollapseStatus: () => {};
-}
-
-const SidePanel = ({ children, collapsedStatus, toggleCollapseStatus }: SidePanelProps) => {
+const SidePanel = ({
+  children, collapsedStatus, onRef, toggleCollapseStatus,
+}) => {
   return (
-    <div className={`side-panel ${collapsedStatus ? 'side-panel-collapsed' : ''}`}>
+    <div className={`side-panel ${collapsedStatus() ? 'side-panel-collapsed' : ''}`} ref={onRef}>
       <div className="side-panel-header">
         <Button onClick={() => toggleCollapseStatus()} type="text">
           <GoThreeBar />
@@ -25,14 +21,16 @@ const SidePanel = ({ children, collapsedStatus, toggleCollapseStatus }: SidePane
 };
 
 export default compose(
-  withStateHandlers(
-    (props) => ({
-      collapsedStatus: props.isCollapsed || false,
-    }),
-    {
-      toggleCollapseStatus: ({ collapsedStatus }) => () => ({
-        collapsedStatus: !collapsedStatus,
-      }),
-    }
-  )
+  withHandlers((props) => {
+    let myRef = null;
+    let isCollapsed = props.isCollapsed || false;
+    return {
+      onRef: () => (ref) => { myRef = ref; },
+      collapsedStatus: () => () => isCollapsed,
+      toggleCollapseStatus: () => () => {
+        isCollapsed = !isCollapsed;
+        myRef.classList.toggle('side-panel-collapsed');
+      },
+    };
+  })
 )(SidePanel);

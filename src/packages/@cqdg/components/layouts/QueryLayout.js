@@ -7,7 +7,7 @@ import {
   withState,
 } from 'recompose';
 
-import { Row, Column } from '@ncigdc/uikit/Flex';
+import { Row } from '@ncigdc/uikit/Flex';
 import styled from '@ncigdc/theme/styled';
 import CurrentFilters from '@ncigdc/components/CurrentFilters';
 import TabbedLinks from '@ncigdc/components/TabbedLinks';
@@ -18,19 +18,6 @@ import SidePanel from '@ferlab-ui/core/panels/SidePanel';
 import './QueryLayout.css';
 
 const sidePadding = '2.5rem';
-
-const FacetsPanel = styled(Column, {
-  flex: 'none',
-  marginRight: '18px',
-  width: ({ theme }) => theme.facetsPanelWidth,
-});
-
-const Content = styled(Column, {
-  flex: 1,
-  width: 0,
-  transition: 'margin-left .5s',
-  padding: '16px',
-});
 
 const ShowFacetsButton = styled.button({
   backgroundColor: ({ theme }) => theme.white,
@@ -66,7 +53,7 @@ const QueryLayout = (
     filtersLinkProps,
   }: TProps = {},
 ) => (
-  <div className={`${className} query-page`}>
+  <div className={`${className} query-layout`}>
     <SidePanel>
       <TabbedLinks
         defaultIndex={0}
@@ -90,7 +77,7 @@ const QueryLayout = (
         )}
         />
     </SidePanel>
-    <Content>
+    <div className="query-layout-content">
       <Row style={{ marginBottom: '2rem' }}>
         {showFacets || (
           <ShowFacetsButton onClick={() => setShowFacets(!showFacets)}>
@@ -100,7 +87,7 @@ const QueryLayout = (
         <CurrentFilters style={{ flex: 1 }} {...filtersLinkProps} />
       </Row>
       {results}
-    </Content>
+    </div>
   </div>
 );
 

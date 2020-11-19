@@ -1,4 +1,9 @@
-.query-page {
+.query-layout {
   display: flex;
   flex-direction: row;
 }
+  
+  .query-layout-content {
+    flex: 1;
+    padding: 16px;
+  }

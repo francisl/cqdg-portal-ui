@@ -6,7 +6,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 12px 17px;
-  transition: 0.5s;
+  transition: width 0.6s;
   width: 312px;
   z-index: 1;
 }
@@ -16,25 +16,21 @@
 }
 
 .side-panel-collapsed {
-  max-width: 64px;
+  width: 64px;
   overflow: hidden;
 }
 
 .side-panel-header {
   height: 24px;
   flex-grow: 0;
-  font-size: 12px;
   display: flex;
   justify-content: start;
   align-items: center;
+  transition: 2s;
 }
 
 .side-panel-content {
   font-size: 12px;
-}
-
-.side-panel-collapsed .side-panel-header {
-  justify-content: center;
 }
 
 .side-panel-collapsed .side-panel-content {
