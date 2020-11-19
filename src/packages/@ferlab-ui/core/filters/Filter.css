@@ -1,0 +1,31 @@
+.Filter {
+  background: #FFD261;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  margin-right: 4px;
+}
+
+.Filter .FilterType {
+  color: #453700;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.Filter .FilterSeparator{
+  color: #453700;
+  font-size: 18px;
+}
+
+.Filter .AggregatedContainer{
+  margin: 0 6px;
+}
+
+.Filter .CloseIcon {
+  fill: #453700;
+}
+
+.Filter .CloseIcon:hover {
+  cursor: pointer;
+}

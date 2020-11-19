@@ -1,0 +1,16 @@
+.AggregatedFilter {
+  background: #FFFBF2;
+  border-radius: 2px;
+  display: inline-flex;
+}
+
+.AggregatedFilter .WrapperContainer{
+  padding: 0 8px;
+}
+
+.AggregatedFilter .FilterName {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #453700;
+}

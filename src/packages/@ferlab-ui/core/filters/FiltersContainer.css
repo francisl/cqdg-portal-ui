@@ -1,0 +1,26 @@
+.FiltersContainer {
+  background: #fff;
+  padding: 18px 14px;
+}
+
+.FiltersContainer .WrapperContainer{
+  display: flex;
+  align-items: center;
+}
+
+.FiltersContainer .WrapperFilters{
+  display: flex;
+  margin-left: 18px;
+  flex-wrap: wrap;
+  height: 24px;
+}
+
+.FiltersContainer .close-icon {
+  width: 20px;
+  height: 20px;
+  fill: #90A9C1;
+}
+
+.FiltersContainer .close-icon:hover {
+  cursor: pointer;
+}
