@@ -13,12 +13,11 @@ import CurrentFilters from '@ncigdc/components/CurrentFilters';
 import TabbedLinks from '@ncigdc/components/TabbedLinks';
 import UnstyledButton from '@ncigdc/uikit/UnstyledButton';
 import { DoubleArrowLeftIcon, DoubleArrowRightIcon } from '@ncigdc/theme/icons';
+import SidePanel from '@ferlab-ui/core/panels/SidePanel';
+
+import './QueryLayout.css';
 
 const sidePadding = '2.5rem';
-
-const Container = styled(Row, {
-  padding: `2rem ${sidePadding} 13rem`,
-});
 
 const FacetsPanel = styled(Column, {
   flex: 'none',
@@ -29,6 +28,8 @@ const FacetsPanel = styled(Column, {
 const Content = styled(Column, {
   flex: 1,
   width: 0,
+  transition: 'margin-left .5s',
+  padding: '16px',
 });
 
 const ShowFacetsButton = styled.button({
@@ -55,9 +56,9 @@ const enhance = compose(
   withState('showFacets', 'setShowFacets', true)
 );
 
-const SearchPage = (
+const QueryLayout = (
   {
-    className,
+    className = '',
     facetTabs = [],
     results = <span />,
     showFacets,
@@ -65,32 +66,30 @@ const SearchPage = (
     filtersLinkProps,
   }: TProps = {},
 ) => (
-  <Container className={`${className} test-search-page`}>
-    {showFacets && (
-      <FacetsPanel>
-        <TabbedLinks
-          defaultIndex={0}
-          hideTabs={facetTabs.length <= 1}
-          links={facetTabs}
-          linkStyle={{
-            paddingLeft: '1.2rem',
-            paddingRight: '1.2rem',
-          }}
-          queryParam="facetTab"
-          tabToolbar={(
-            <UnstyledButton
-              aria-label="Toggle Facet Panel Visibility"
-              onClick={() => {
-                setShowFacets(!showFacets);
-              }}
-              style={{ minHeight: 46 }}
-              >
-              <DoubleArrowLeftIcon />
-            </UnstyledButton>
-          )}
-          />
-      </FacetsPanel>
-    )}
+  <div className={`${className} query-page`}>
+    <SidePanel>
+      <TabbedLinks
+        defaultIndex={0}
+        hideTabs={facetTabs.length <= 1}
+        links={facetTabs}
+        linkStyle={{
+          paddingLeft: '1.2rem',
+          paddingRight: '1.2rem',
+        }}
+        queryParam="facetTab"
+        tabToolbar={(
+          <UnstyledButton
+            aria-label="Toggle Facet Panel Visibility"
+            onClick={() => {
+              setShowFacets(!showFacets);
+            }}
+            style={{ minHeight: 46 }}
+            >
+            <DoubleArrowLeftIcon />
+          </UnstyledButton>
+        )}
+        />
+    </SidePanel>
     <Content>
       <Row style={{ marginBottom: '2rem' }}>
         {showFacets || (
@@ -102,7 +101,7 @@ const SearchPage = (
       </Row>
       {results}
     </Content>
-  </Container>
+  </div>
 );
 
-export default enhance(SearchPage);
+export default enhance(QueryLayout);

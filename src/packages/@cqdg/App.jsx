@@ -41,17 +41,11 @@ class CqdgApp extends React.PureComponent {
 
   render() {
     return (
-      <div
-        style={{
-          minHeight: '100vh',
-          minWidth: 1024,
-          position: 'relative',
-        }}
-        >
+      <div className="Main">
         <ProgressContainer />
         <Header />
         <div
-          id="skip"
+          id="Content"
           role="main"
           style={{
             paddingBottom: '120px',

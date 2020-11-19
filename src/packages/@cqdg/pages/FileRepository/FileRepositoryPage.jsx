@@ -5,7 +5,7 @@ import Relay from 'react-relay/classic';
 import { connect } from 'react-redux';
 import { compose, setDisplayName } from 'recompose';
 import { Row } from '@ncigdc/uikit/Flex';
-import SearchPage from '@ncigdc/components/SearchPage';
+import QueryLayout from '@cqdg/components/layouts/QueryLayout';
 import TabbedLinks from '@ncigdc/components/TabbedLinks';
 import NoResultsMessage from '@ncigdc/components/NoResultsMessage';
 import RepoCasesTable from '@cqdg/pages/FileRepository/RepoCasesTable';
@@ -107,7 +107,7 @@ export const RepositoryPageComponent = (props: TProps) => {
 
   return (
     <div id="RepositoryPage">
-      <SearchPage
+      <QueryLayout
         facetTabs={facetTabs}
         filtersLinkProps={{
           hideLinkOnEmpty: false,
