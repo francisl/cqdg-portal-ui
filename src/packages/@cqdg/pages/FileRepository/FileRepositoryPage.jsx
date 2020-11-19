@@ -12,6 +12,8 @@ import RepoCasesTable from '@cqdg/pages/FileRepository/RepoCasesTable';
 import CaseAggregations from '@cqdg/pages/FileRepository/CaseAggregations';
 import FileAggregations from '@cqdg/pages/FileRepository/FileAggregations';
 
+import FiltersContainer from '@ferlab-ui/core/filters/FiltersContainer';
+
 import FilesTable from '@cqdg/pages/FileRepository/FilesTable';
 import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
