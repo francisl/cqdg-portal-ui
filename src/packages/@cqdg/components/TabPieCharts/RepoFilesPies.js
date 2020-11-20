@@ -3,7 +3,7 @@ import React from 'react';
 import Relay from 'react-relay/classic';
 import _ from 'lodash';
 import { compose, withState } from 'recompose';
-
+import t from '@cqdg/locales/intl';
 import withSize from '@ncigdc/utils/withSize';
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 import withRouter from '@ncigdc/utils/withRouter';
@@ -14,7 +14,7 @@ import {
   BottomBorderedBox,
   PieTitle,
   SelfFilteringPie,
-} from './';
+} from './index';
 
 export type TProps = {
   push: Function,
@@ -22,9 +22,8 @@ export type TProps = {
   aggregations: {
     data_category: { buckets: [IBucket] },
     data_type: { buckets: [IBucket] },
-    experimental_strategy: { buckets: [IBucket] },
-    data_format: { buckets: [IBucket] },
-    access: { buckets: [IBucket] },
+    study__short_name_keyword: { buckets: [IBucket] },
+    file_format: { buckets: [IBucket] },
   },
   setShowingMore: Function,
   showingMore: boolean,
@@ -46,7 +45,7 @@ const RepoFilesPiesComponent = ({
   const currentFilters =
     (query && parseFilterParam((query || {}).filters, {}).content) || [];
   const currentFieldNames = currentFilters.map(f => f.content.field);
-  const pieColMinWidth = width / 5;
+  const pieColMinWidth = width / 4;
   return (
     <div className="test-repo-files-pies">
       <BottomBorderedBox>
@@ -55,13 +54,13 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-primary-site-pie"
           >
-            <PieTitle>Study</PieTitle>
+            <PieTitle>{t('pies.study')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(
                 aggregations,
                 'study__short_name_keyword.buckets'
               )}
-              fieldName="files.study.short_name_keyword"
+              fieldName="study.short_name_keyword"
               docTypeSingular="file"
               currentFieldNames={currentFieldNames}
               currentFilters={currentFilters}
@@ -76,7 +75,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-category-pie"
           >
-            <PieTitle>Data Category</PieTitle>
+            <PieTitle>{t('pies.data_category')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_category.buckets')}
               fieldName="data_category"
@@ -94,7 +93,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-type"
           >
-            <PieTitle>Data Type</PieTitle>
+            <PieTitle>{t('pies.data_type')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_type.buckets')}
               fieldName="data_type"
@@ -112,7 +111,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-file-format"
           >
-            <PieTitle>Data Format</PieTitle>
+            <PieTitle>{t('pies.file_format')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'file_format.buckets')}
               fieldName="file_format"

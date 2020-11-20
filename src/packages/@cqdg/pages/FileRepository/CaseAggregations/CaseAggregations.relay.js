@@ -115,6 +115,12 @@ export default (Component: ReactClass<*>) =>
                         key
                       }
                     }
+                    diagnoses__mondo_term_keyword{
+                      buckets{
+                        doc_count
+                        key
+                      }
+                    }
                   }
                 }
               }

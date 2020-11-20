@@ -17,8 +17,8 @@ import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
 import formatFileSize from '@ncigdc/utils/formatFileSize';
 
-import RepoCasesPies from '@ncigdc/components/TabPieCharts/RepoCasesPies';
-import RepoFilesPies from '@ncigdc/components/TabPieCharts/RepoFilesPies';
+import RepoCasesPies from '@cqdg/components/TabPieCharts/RepoCasesPies';
+import RepoFilesPies from '@cqdg/components/TabPieCharts/RepoFilesPies';
 
 
 import withRouter from '@ncigdc/utils/withRouter';
@@ -140,9 +140,9 @@ export const RepositoryPageComponent = (props: TProps) => {
                   text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
                   component: viewer.Case.hits.total ? (
                     <div>
-                      {/* <RepoCasesPies */}
-                      {/*  aggregations={props.viewer.repository.cases.pies} */}
-                      {/* /> */}
+                      <RepoCasesPies
+                        aggregations={viewer.Case.pies}
+                      />
 
                       <RepoCasesTable />
                     </div>
@@ -214,9 +214,12 @@ export const RepositoryPageQuery = {
             }
           }
           Case {
-              hits(first: $files_size offset: $files_offset, filters: $caseFilters, sort: $files_sort) {
-                  total
-              }
+            pies: aggregations(filters: $caseFilters, aggregations_filter_themselves: true) {
+                ${RepoCasesPies.getFragment('aggregations')}
+            }
+            hits(first: $files_size offset: $files_offset, filters: $caseFilters, sort: $files_sort) {
+              total
+            }
           }
       }
     `,

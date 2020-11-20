@@ -101,6 +101,16 @@
       }
     }
   },
+  "pies":{
+    "study": "Étude",
+    "data_category": "Catégorie de données",
+    "data_type": "Type de données",
+    "file_format": "Format de fichiers",
+    "disease_type": "Type de maladie",
+    "phenotype_category": "Catégorie de phénotype",
+    "gender": "Genre",
+    "ethnicity": "Ethnicité"
+  },
   "facet": {
     "study.name": "Nom de l'étude",
     "study.domain": "Domain d'étude",
@@ -112,6 +122,7 @@
     "icd.category": "Categorie ICD",
     "hpo.category": "Category HPO",
     "hpo.term": "Terme HPO",
+    "mondo.term": "Terme Mondo",
     "file_id": "UUID du Fichier",
     "data_access": "Access",
     "file_name_keyword": "Nom de fichier",
