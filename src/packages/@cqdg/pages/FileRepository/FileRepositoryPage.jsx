@@ -140,9 +140,9 @@ export const RepositoryPageComponent = (props: TProps) => {
                   text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
                   component: viewer.Case.hits.total ? (
                     <div>
-                      {/* <RepoCasesPies */}
-                      {/*  aggregations={props.viewer.repository.cases.pies} */}
-                      {/* /> */}
+                      <RepoCasesPies
+                        aggregations={viewer.Case.pies}
+                      />
 
                       <RepoCasesTable />
                     </div>
@@ -214,9 +214,12 @@ export const RepositoryPageQuery = {
             }
           }
           Case {
-              hits(first: $files_size offset: $files_offset, filters: $caseFilters, sort: $files_sort) {
-                  total
-              }
+            pies: aggregations(filters: $caseFilters, aggregations_filter_themselves: true) {
+                ${RepoCasesPies.getFragment('aggregations')}
+            }
+            hits(first: $files_size offset: $files_offset, filters: $caseFilters, sort: $files_sort) {
+              total
+            }
           }
       }
     `,

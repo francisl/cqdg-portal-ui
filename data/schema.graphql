@@ -657,9 +657,10 @@ type CaseDiagnosesAggregations {
   age_at_diagnosis: NumericAggregations
   icd_category: Aggregations
   icd_category_keyword: Aggregations
-  icd_code: Aggregations
   icd_term: Aggregations
   icd_term_keyword: Aggregations
+  mondo_term: Aggregations
+  mondo_term_keyword: Aggregations
 }
 
 type CaseDiagnosesConnection {
@@ -677,9 +678,10 @@ type CaseDiagnosesNode {
   age_at_diagnosis: Float
   icd_category: String
   icd_category_keyword: String
-  icd_code: String
   icd_term: String
   icd_term_keyword: String
+  mondo_term: String
+  mondo_term_keyword: String
 }
 
 type CasePhenotypesConnection {
@@ -780,9 +782,10 @@ type CaseAggregations {
   #diagnoses__age_at_diagnosis: NumericAggregations
   diagnoses__icd_category: Aggregations
   diagnoses__icd_category_keyword: Aggregations
-  diagnoses__icd_code: Aggregations
   diagnoses__icd_term: Aggregations
   diagnoses__icd_term_keyword: Aggregations
+  diagnoses__mondo_term: Aggregations
+  diagnoses__mondo_term_keyword: Aggregations
   donor_id: Aggregations
   ethnicity: Aggregations
   files__data_access: Aggregations
@@ -5631,9 +5634,10 @@ type FileAggregations {
     diagnoses__age_at_diagnosis: Aggregations
     diagnoses__icd_category: Aggregations
     diagnoses__icd_category_keyword: Aggregations
-    diagnoses__icd_code: Aggregations
     diagnoses__icd_term: Aggregations
     diagnoses__icd_term_keyword: Aggregations
+    diagnoses__mondo_term: Aggregations
+    diagnoses__mondo_term_keyword: Aggregations
     cases__age_at_recruitment: Aggregations
     cases__ethnicity: Aggregations
     cases__gender: Aggregations

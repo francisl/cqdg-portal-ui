@@ -41,6 +41,7 @@ export type TProps = {
     diagnoses__icd_category_keyword: { buckets: [IBucket] };
     phenotypes__hpo_category_keyword: { buckets: [IBucket] };
     phenotypes__hpo_term_keyword: { buckets: [IBucket] };
+    diagnoses___mondo_term_keyword: { buckets: [IBucket] };
   };
   setAutocomplete: Function;
   theme: Record<string, any>;
@@ -115,6 +116,12 @@ const presetFacets = [
     title: t('facet.icd.category'),
     field: 'diagnoses.icd_category_keyword',
     full: 'diagnoses.icd_category_keyword',
+    type: 'keyword',
+  },
+  {
+    title: t('facet.mondo.term'),
+    field: 'diagnoses.mondo_term_keyword',
+    full: 'diagnoses.mondo_term_keyword',
     type: 'keyword',
   },
   {

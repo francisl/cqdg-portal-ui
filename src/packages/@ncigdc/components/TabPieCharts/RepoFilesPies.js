@@ -22,9 +22,8 @@ export type TProps = {
   aggregations: {
     data_category: { buckets: [IBucket] },
     data_type: { buckets: [IBucket] },
-    experimental_strategy: { buckets: [IBucket] },
-    data_format: { buckets: [IBucket] },
-    access: { buckets: [IBucket] },
+    study__short_name_keyword: { buckets: [IBucket] },
+    file_format: { buckets: [IBucket] },
   },
   setShowingMore: Function,
   showingMore: boolean,
@@ -46,7 +45,7 @@ const RepoFilesPiesComponent = ({
   const currentFilters =
     (query && parseFilterParam((query || {}).filters, {}).content) || [];
   const currentFieldNames = currentFilters.map(f => f.content.field);
-  const pieColMinWidth = width / 5;
+  const pieColMinWidth = width / 4;
   return (
     <div className="test-repo-files-pies">
       <BottomBorderedBox>
@@ -61,7 +60,7 @@ const RepoFilesPiesComponent = ({
                 aggregations,
                 'study__short_name_keyword.buckets'
               )}
-              fieldName="files.study.short_name_keyword"
+              fieldName="study.short_name_keyword"
               docTypeSingular="file"
               currentFieldNames={currentFieldNames}
               currentFilters={currentFilters}

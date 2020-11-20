@@ -110,6 +110,7 @@
     "icd.category": "ICD Category",
     "hpo.category": "HPO Category",
     "hpo.term": "HPO Term",
+    "mondo.term": "Mondo Term",
     "file_id": "File UUID",
     "data_access": "Access",
     "file_name_keyword": "File Name",

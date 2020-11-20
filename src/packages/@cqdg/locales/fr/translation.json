@@ -112,6 +112,7 @@
     "icd.category": "Categorie ICD",
     "hpo.category": "Category HPO",
     "hpo.term": "Terme HPO",
+    "mondo.term": "Terme Mondo",
     "file_id": "UUID du Fichier",
     "data_access": "Access",
     "file_name_keyword": "Nom de fichier",
