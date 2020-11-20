@@ -17,6 +17,10 @@ import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
 import formatFileSize from '@ncigdc/utils/formatFileSize';
 
+import RepoCasesPies from '@ncigdc/components/TabPieCharts/RepoCasesPies';
+import RepoFilesPies from '@ncigdc/components/TabPieCharts/RepoFilesPies';
+
+
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
 import t from '@cqdg/locales/intl';
@@ -132,11 +136,15 @@ export const RepositoryPageComponent = (props: TProps) => {
               defaultIndex={0}
               links={[
                 {
-                  id: 'files',
-                  text: t('repo.tabs.files', { count: fileCount.toLocaleString() }),
-                  component: viewer.File.hits.total ? (
+                  id: 'cases',
+                  text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
+                  component: viewer.Case.hits.total ? (
                     <div>
-                      <FilesTable />
+                      {/*<RepoCasesPies*/}
+                      {/*  aggregations={props.viewer.repository.cases.pies}*/}
+                      {/*/>*/}
+
+                      <RepoCasesTable />
                     </div>
                   ) : (
                     <NoResultsMessage>
@@ -145,17 +153,21 @@ export const RepositoryPageComponent = (props: TProps) => {
                   ),
                 },
                 {
-                  id: 'cases',
-                  text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
-                  component: viewer.Case.hits.total ? (
+                  id: 'files',
+                  text: t('repo.tabs.files', { count: fileCount.toLocaleString() }),
+                  component: viewer.File.hits.total ? (
                     <div>
-                      <RepoCasesTable />
+                      <RepoFilesPies
+                        aggregations={viewer.File.pies}
+                      />
+
+                      <FilesTable />
                     </div>
-                 ) : (
-                   <NoResultsMessage>
-                     {t('search.no.results')}
-                   </NoResultsMessage>
-                 ),
+                  ) : (
+                    <NoResultsMessage>
+                      {t('search.no.results')}
+                    </NoResultsMessage>
+                  ),
                 },
               ]}
               queryParam="searchTableTab"
@@ -194,6 +206,9 @@ export const RepositoryPageQuery = {
     viewer: () => Relay.QL`
       fragment on Root {
           File {
+            pies: aggregations(filters: $fileFilters, aggregations_filter_themselves: true) {
+                ${RepoFilesPies.getFragment('aggregations')}
+            }              
             hits(first: $files_size offset: $files_offset, filters: $fileFilters, sort: $files_sort) {
               total
             }
