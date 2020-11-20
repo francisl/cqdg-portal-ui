@@ -45,6 +45,11 @@ button.navigation.active {
   color: #008FC7;
 }
 
+button.text {
+  border: none;
+  background-color: transparent;
+}
+
 /* Shape */
 button.circle {
   background-color: #FFFFFF;

@@ -18,6 +18,14 @@ const Button = ({
     onClick,
   };
 
+  if (type === 'text') {
+    return (
+      <button {...buttonAttr}>
+        {children}
+      </button>
+    );
+  }
+
   return (
     <button {...buttonAttr}>
       {children}

@@ -7,8 +7,7 @@ import t from '@cqdg/locales/intl';
 import Link from '@ncigdc/components/Links/Link';
 
 export const Container = styled(Column, {
-  padding: '0 1.2rem 1rem 1.2rem',
-  backgroundColor: 'white',
+  padding: '0 10px',
 });
 
 export const InputLabel = styled.label({
@@ -65,5 +64,5 @@ export const BucketLink = styled(Link, {
     textDecoration: 'none',
     color: ({ theme }) => theme.greyScale1,
   },
-  marginBottom: '0.5rem',
+  marginBottom: '0',
 });

@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
   compose,
@@ -17,6 +17,8 @@ import withRouter from '@ncigdc/utils/withRouter';
 import { GlobalTooltip } from '@ncigdc/uikit/Tooltip';
 import { setLanguageAction } from '@cqdg/store/intl';
 import { getBrowserLanguage } from '@cqdg/locales/intl';
+
+import './App.css';
 
 class CqdgApp extends React.PureComponent {
   constructor(props) {
@@ -41,17 +43,11 @@ class CqdgApp extends React.PureComponent {
 
   render() {
     return (
-      <div
-        style={{
-          minHeight: '100vh',
-          minWidth: 1024,
-          position: 'relative',
-        }}
-        >
+      <Fragment>
         <ProgressContainer />
         <Header />
         <div
-          id="skip"
+          id="Content"
           role="main"
           style={{
             paddingBottom: '120px',
@@ -67,7 +63,7 @@ class CqdgApp extends React.PureComponent {
         <NotificationContainer />
         <ModalContainer />
         <GlobalTooltip />
-      </div>
+      </Fragment>
     );
   }
 }

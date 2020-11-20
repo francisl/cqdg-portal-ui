@@ -5,7 +5,7 @@ import Relay from 'react-relay/classic';
 import { connect } from 'react-redux';
 import { compose, setDisplayName } from 'recompose';
 import { Row } from '@ncigdc/uikit/Flex';
-import SearchPage from '@ncigdc/components/SearchPage';
+import QueryLayout from '@cqdg/components/layouts/QueryLayout';
 import TabbedLinks from '@ncigdc/components/TabbedLinks';
 import NoResultsMessage from '@ncigdc/components/NoResultsMessage';
 import RepoCasesTable from '@cqdg/pages/FileRepository/RepoCasesTable';
@@ -20,6 +20,8 @@ import formatFileSize from '@ncigdc/utils/formatFileSize';
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
 import t from '@cqdg/locales/intl';
+import Tabs from '@ferlab-ui/core/containers/tabs';
+
 import features from '../../../../features.json';
 
 import './FileRepositoryPage.css';
@@ -71,8 +73,6 @@ export type TProps = {
       };
     };
   };
-  showFacets: boolean;
-  setShowFacets: Function;
 };
 
 const enhance = compose(
@@ -92,7 +92,7 @@ export const RepositoryPageComponent = (props: TProps) => {
   // const caseCount = 1;
   const fileSize = 0;
 
-  const facetTabs = [
+  const facetTabPanes = [
     {
       id: 'participants',
       text: t('global.participants'),
@@ -105,10 +105,17 @@ export const RepositoryPageComponent = (props: TProps) => {
     },
   ];
 
+  const SidePanelComponent = (
+    <Tabs
+      defaultIndex={0}
+      panes={facetTabPanes}
+      queryParam="facetTab"
+      />
+  );
+
   return (
     <div id="RepositoryPage">
-      <SearchPage
-        facetTabs={facetTabs}
+      <QueryLayout
         filtersLinkProps={{
           hideLinkOnEmpty: false,
           linkPathname: '/query',
@@ -161,11 +168,12 @@ export const RepositoryPageComponent = (props: TProps) => {
                       <strong>{formatFileSize(fileSize)}</strong>
                     </span>
                   </Row>
-                )
+              )
               }
               />
           </span>
         )}
+        sidePanelComponent={SidePanelComponent}
         />
     </div>
   );

@@ -1,0 +1,41 @@
+.side-panel {
+  background-color: #f8f9fc; /* gray-2 */
+  border-right: thin solid #d8e1eb;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px 17px;
+  transition: width 0.2s;
+  width: 312px;
+  z-index: 1;
+}
+
+.side-panel > :first-child {
+  margin-bottom: 17px;
+}
+
+.side-panel-collapsed {
+  width: 64px;
+  overflow: hidden;
+}
+
+.side-panel-header {
+  height: 24px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  transition: 2s;
+}
+.side-panel-header button {
+  padding: 0;
+}
+
+.side-panel-content {
+  font-size: 12px;
+}
+
+.side-panel-collapsed .side-panel-content {
+  display: none;
+}

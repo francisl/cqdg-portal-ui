@@ -43,11 +43,11 @@ const ShowFacetsButton = styled.button({
 });
 
 type TProps = {
-  facetTabs?: Array<Object>,
-  results?: mixed,
-  showFacets: boolean,
-  setShowFacets: Function,
-  showRepositoryQuery: boolean,
+  facetTabs?: Array<Record<string, any>>;
+  results?: mixed;
+  showFacets: boolean;
+  setShowFacets: Function;
+  showRepositoryQuery: boolean;
 };
 
 const enhance = compose(
