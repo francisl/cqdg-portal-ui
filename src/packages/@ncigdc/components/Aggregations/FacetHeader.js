@@ -25,11 +25,9 @@ import { IRawQuery } from '@ncigdc/utils/uri/types';
 
 const Header = styled(Row, {
   color: ({ theme }) => theme.primary,
-  fontSize: '1.7rem',
   cursor: 'pointer',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '1rem 1.2rem 0.5rem 1.2rem',
   backgroundColor: 'white',
 });
 
@@ -76,7 +74,7 @@ const FacetHeader = ({
   title,
 }) => (
   <LocationSubscriber>
-    {(ctx: { pathname: string, query: IRawQuery }) => {
+    {(ctx: { pathname: string; query: IRawQuery }) => {
       const currentFilters =
           ctx.query && parseFilterParam((ctx.query || {}).filters, {});
       const spanStyle = { cursor: 'pointer' };

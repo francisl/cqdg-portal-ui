@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import _, {get} from 'lodash';
+import _, { get } from 'lodash';
 import {
   compose, setDisplayName, withPropsOnChange, withState,
 } from 'recompose';
@@ -24,42 +24,42 @@ import t from '@cqdg/locales/intl';
 import features from '../../../../../features.json';
 
 export type TProps = {
-  caseIdCollapsed: boolean,
-  setCaseIdCollapsed: Function,
-  relay: Object,
-  facets: { facets: string },
-  parsedFacets: Object,
+  caseIdCollapsed: boolean;
+  setCaseIdCollapsed: Function;
+  relay: Record<string, any>;
+  facets: { facets: string };
+  parsedFacets: Record<string, any>;
   aggregations: {
-    study__short_name_keyword: { buckets: [IBucket] },
-    study__study_id_keyword: { buckets: [IBucket] },
-    study__domain: { buckets: [IBucket] },
-    gender: { buckets: [IBucket] },
-    ethnicity: { buckets: [IBucket] },
-    age_at_recruitment: { buckets: [IBucket] },
-    diagnoses__age_at_diagnosis: { buckets: [IBucket] },
-    vital_status: { buckets: [IBucket] },
-    diagnoses__icd_category_keyword: { buckets: [IBucket] },
-    phenotypes__hpo_category_keyword: { buckets: [IBucket] },
-    phenotypes__hpo_term_keyword: { buckets: [IBucket] },
-  },
-  setAutocomplete: Function,
-  theme: Object,
-  suggestions: Array<Object>,
+    study__short_name_keyword: { buckets: [IBucket] };
+    study__study_id_keyword: { buckets: [IBucket] };
+    study__domain: { buckets: [IBucket] };
+    gender: { buckets: [IBucket] };
+    ethnicity: { buckets: [IBucket] };
+    age_at_recruitment: { buckets: [IBucket] };
+    diagnoses__age_at_diagnosis: { buckets: [IBucket] };
+    vital_status: { buckets: [IBucket] };
+    diagnoses__icd_category_keyword: { buckets: [IBucket] };
+    phenotypes__hpo_category_keyword: { buckets: [IBucket] };
+    phenotypes__hpo_term_keyword: { buckets: [IBucket] };
+  };
+  setAutocomplete: Function;
+  theme: Record<string, any>;
+  suggestions: Array<Record<string, any>>;
 
   userSelectedFacets: Array<{
-    description: String,
-    doc_type: String,
-    field: String,
-    full: String,
-    type: 'id' | 'string' | 'long',
-  }>,
-  handleSelectFacet: Function,
-  handleResetFacets: Function,
-  handleRequestRemoveFacet: Function,
-  presetFacetFields: Array<String>,
-  shouldShowFacetSelection: Boolean,
-  facetExclusionTest: Function,
-  setShouldShowFacetSelection: Function,
+    description: string;
+    doc_type: string;
+    field: string;
+    full: string;
+    type: 'id' | 'string' | 'long';
+  }>;
+  handleSelectFacet: Function;
+  handleResetFacets: Function;
+  handleRequestRemoveFacet: Function;
+  presetFacetFields: Array<string>;
+  shouldShowFacetSelection: boolean;
+  facetExclusionTest: Function;
+  setShouldShowFacetSelection: Function;
 };
 
 const presetFacets = [
@@ -226,35 +226,37 @@ const CaseAggregationsComponent = (props: TProps) => (
         title="Case"
         />
     )}
-     { features.searchByCaseId &&
+    { features.searchByCaseId && (
       <SuggestionFacet
         collapsed={props.caseIdCollapsed}
         doctype="cases"
         dropdownItem={x => (
           <Row>
-            <CaseIcon style={{
-              paddingRight: '1rem',
-              paddingTop: '1rem',
-            }}/>
+            <CaseIcon
+              style={{
+                paddingRight: '1rem',
+                paddingTop: '1rem',
+              }}
+              />
             <div>
               <div style={{ fontWeight: 'bold' }}>{x.submitter_donor_id}</div>
               <div style={{ fontSize: '80%' }}>
                 {
-                    _.get(x, 'files.hits.edges', []).map(f => f.node.file_name).join(", ")
+                    _.get(x, 'files.hits.edges', []).map(f => f.node.file_name).join(', ')
                 }
               </div>
               {
-                _.get(x, 'study.hits.edges', []).map(s => s.node.study_id).join(" | ")
+                _.get(x, 'study.hits.edges', []).map(s => s.node.study_id).join(' | ')
               }
             </div>
           </Row>
         )}
         fieldNoDoctype="submitter_donor_id"
-        placeholder={t(`facet.file_suggest_placeholder`)}
+        placeholder={t('facet.file_suggest_placeholder')}
         queryType="case"
         title="Case"
         />
-     }
+    )}
     { features.uploadCaseSet && (
       <UploadSetButton
         defaultQuery={{

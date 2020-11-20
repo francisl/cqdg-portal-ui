@@ -65,3 +65,14 @@ body {
 pre, code {
   font-family: 'IBM Plex Mono', Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
+
+/* ****************************
+INPUT
+** ************************** */
+input[type="checkbox"] {
+  color: #B5C6D8;
+}
+
+label {
+  color: #18486B; /* gray-8 */
+}

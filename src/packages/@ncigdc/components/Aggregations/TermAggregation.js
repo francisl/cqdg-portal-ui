@@ -25,18 +25,18 @@ import { Container, BucketLink } from '.';
 import { IBucket } from './types';
 
 type TProps = {
-  buckets: [IBucket],
-  field: string,
-  filteredBuckets: Array<Object>,
-  style: Object,
-  title: string,
-  showingValueSearch: boolean,
-  collapsed: boolean,
-  setShowingMore: Function,
-  showingMore: boolean,
-  maxShowing: number,
-  searchValue: string,
-  isMatchingSearchValue: boolean,
+  buckets: [IBucket];
+  field: string;
+  filteredBuckets: Array<Record<string, any>>;
+  style: Record<string, any>;
+  title: string;
+  showingValueSearch: boolean;
+  collapsed: boolean;
+  setShowingMore: Function;
+  showingMore: boolean;
+  maxShowing: number;
+  searchValue: string;
+  isMatchingSearchValue: boolean;
 };
 
 export const ToggleMoreLink = styled.div({
@@ -53,11 +53,12 @@ export const ToggleMoreLink = styled.div({
 });
 
 const BucketRow = styled(Row, {
-  padding: '0.3rem 0',
+  padding: '0',
+  height: '32px',
 });
 
 export const BottomRow = styled(Row, {
-  padding: '0.5rem',
+  padding: '0',
 });
 
 let input;
@@ -68,7 +69,7 @@ const TermAggregation = (props: TProps) => {
 
   return (
     <LocationSubscriber>
-      {(ctx: { pathname: string, query: IRawQuery }) => {
+      {(ctx: { pathname: string; query: IRawQuery }) => {
         const currentFilters =
           ((ctx.query &&
             parseFilterParam((ctx.query || {}).filters, {}).content) ||
@@ -86,10 +87,6 @@ const TermAggregation = (props: TProps) => {
         return (
           <Container
             className="test-term-aggregation"
-            style={{
-              ...props.style,
-              paddingBottom: props.collapsed ? 0 : 10,
-            }}
             >
             {!props.collapsed && props.showingValueSearch && (
               <Row>
@@ -194,8 +191,7 @@ const TermAggregation = (props: TProps) => {
                                 backgroundColor: '#FFFF00',
                               },
                             )
-                            : t(`aggregation.${bucket.id}`) || bucket.name
-                          }
+                            : t(`aggregation.${bucket.id}`) || bucket.name}
                         </OverflowTooltippedLabel>
                       </BucketLink>
                       <CountBubble className="bucket-count">
