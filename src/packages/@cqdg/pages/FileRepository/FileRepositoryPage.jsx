@@ -17,8 +17,8 @@ import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
 import formatFileSize from '@ncigdc/utils/formatFileSize';
 
-import RepoCasesPies from '@ncigdc/components/TabPieCharts/RepoCasesPies';
-import RepoFilesPies from '@ncigdc/components/TabPieCharts/RepoFilesPies';
+import RepoCasesPies from '@cqdg/components/TabPieCharts/RepoCasesPies';
+import RepoFilesPies from '@cqdg/components/TabPieCharts/RepoFilesPies';
 
 
 import withRouter from '@ncigdc/utils/withRouter';

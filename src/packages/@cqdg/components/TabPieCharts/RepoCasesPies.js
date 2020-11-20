@@ -14,7 +14,7 @@ import {
   BottomBorderedBox,
   PieTitle,
   SelfFilteringPie,
-} from './';
+} from './index';
 
 export type TProps = {
   push: Function,
