@@ -101,6 +101,16 @@
       }
     }
   },
+  "pies":{
+    "study": "Étude",
+    "data_category": "Catégorie de données",
+    "data_type": "Type de données",
+    "file_format": "Format de fichiers",
+    "disease_type": "Type de maladie",
+    "phenotype_category": "Catégorie de phénotype",
+    "gender": "Genre",
+    "ethnicity": "Ethnicité"
+  },
   "facet": {
     "study.name": "Nom de l'étude",
     "study.domain": "Domain d'étude",

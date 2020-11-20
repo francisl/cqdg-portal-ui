@@ -99,6 +99,16 @@
       }
     }
   },
+  "pies":{
+    "study": "Study",
+    "data_category": "Data category",
+    "data_type": "Data type",
+    "file_format": "File format",
+    "disease_type": "Disease type",
+    "phenotype_category": "Phenotype category",
+    "gender": "Gender",
+    "ethnicity": "Ethnicity"
+  },
   "facet": {
     "study.name": "Study Name",
     "study.domain": "Study Domain",

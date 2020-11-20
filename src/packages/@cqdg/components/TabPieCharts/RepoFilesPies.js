@@ -3,7 +3,7 @@ import React from 'react';
 import Relay from 'react-relay/classic';
 import _ from 'lodash';
 import { compose, withState } from 'recompose';
-
+import t from '@cqdg/locales/intl';
 import withSize from '@ncigdc/utils/withSize';
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 import withRouter from '@ncigdc/utils/withRouter';
@@ -54,7 +54,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-primary-site-pie"
           >
-            <PieTitle>Study</PieTitle>
+            <PieTitle>{t('pies.study')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(
                 aggregations,
@@ -75,7 +75,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-category-pie"
           >
-            <PieTitle>Data Category</PieTitle>
+            <PieTitle>{t('pies.data_category')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_category.buckets')}
               fieldName="data_category"
@@ -93,7 +93,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-type"
           >
-            <PieTitle>Data Type</PieTitle>
+            <PieTitle>{t('pies.data_type')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_type.buckets')}
               fieldName="data_type"
@@ -111,7 +111,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-file-format"
           >
-            <PieTitle>Data Format</PieTitle>
+            <PieTitle>{t('pies.file_format')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'file_format.buckets')}
               fieldName="file_format"

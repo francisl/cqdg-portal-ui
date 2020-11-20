@@ -15,6 +15,7 @@ import {
   PieTitle,
   SelfFilteringPie,
 } from './index';
+import t from "../../locales/intl";
 
 export type TProps = {
   push: Function,
@@ -42,7 +43,7 @@ const RepoCasesPiesComponent = ({ aggregations, query, push, size: { width }, }:
       <BottomBorderedBox>
         <WrappedRow style={{ maxWidth: `${width}px`, width: '100%' }}>
           <ColumnCenter style={{ minWidth: `${pieColMinWidth}px` }} className="test-primary-site-pie">
-            <PieTitle>Study</PieTitle>
+            <PieTitle>{t('pies.study')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(
                 aggregations,
@@ -60,7 +61,7 @@ const RepoCasesPiesComponent = ({ aggregations, query, push, size: { width }, }:
             />
           </ColumnCenter>
           <ColumnCenter style={{ minWidth: `${pieColMinWidth}px` }} className="test-project-pie">
-            <PieTitle>Gender</PieTitle>
+            <PieTitle>{t('pies.gender')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'gender.buckets')}
               fieldName="gender"
@@ -75,7 +76,7 @@ const RepoCasesPiesComponent = ({ aggregations, query, push, size: { width }, }:
             />
           </ColumnCenter>
           <ColumnCenter style={{ minWidth: `${pieColMinWidth}px` }} className="test-disease-type-pie">
-            <PieTitle>Ethnicity</PieTitle>
+            <PieTitle>{t('pies.ethnicity')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'ethnicity.buckets')}
               fieldName="ethnicity"
@@ -90,7 +91,7 @@ const RepoCasesPiesComponent = ({ aggregations, query, push, size: { width }, }:
             />
           </ColumnCenter>
           <ColumnCenter style={{ minWidth: `${pieColMinWidth}px` }} className="test-gender-pie">
-            <PieTitle>Disease Type</PieTitle>
+            <PieTitle>{t('pies.disease_type')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'diagnoses__mondo_term_keyword.buckets')}
               fieldName="diagnoses.mondo_term_keyword"
@@ -105,7 +106,7 @@ const RepoCasesPiesComponent = ({ aggregations, query, push, size: { width }, }:
             />
           </ColumnCenter>
           <ColumnCenter style={{ minWidth: `${pieColMinWidth}px` }} className="test-vital-status-pie">
-            <PieTitle>Phenotype Category</PieTitle>
+            <PieTitle>{t('pies.phenotype_category')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'phenotypes__hpo_category_keyword.buckets')}
               fieldName="phenotypes.hpo_category_keyword"
