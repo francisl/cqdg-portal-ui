@@ -1,31 +1,27 @@
-.Filter {
+.filter {
   background: #FFD261;
   border-radius: 2px;
   display: inline-flex;
   align-items: center;
   padding: 0 6px;
-  margin-right: 4px;
+  margin: 4px;
 }
 
-.Filter .FilterType {
+.filter .filter-type {
   color: #453700;
   font-weight: 600;
   margin-right: 6px;
 }
 
-.Filter .FilterSeparator{
+.filter .filter-separator{
   color: #453700;
   font-size: 18px;
 }
 
-.Filter .AggregatedContainer{
-  margin: 0 6px;
+.filter .aggregated-container{
+  margin: 2px 6px;
 }
 
-.Filter .CloseIcon {
+.filter .inner-close-icon {
   fill: #453700;
-}
-
-.Filter .CloseIcon:hover {
-  cursor: pointer;
 }

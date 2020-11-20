@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import CurrentFilters from '@ncigdc/components/CurrentFilters';
+import QueryBuilder from '@cqdg/components/queryBuilder/QueryBuilder';
 import SidePanel from '@ferlab-ui/core/panels/SidePanel';
 
 import './QueryLayout.css';
@@ -25,14 +25,7 @@ const QueryLayout = (
       {sidePanelComponent}
     </SidePanel>
     <div className="query-layout-content">
-      <CurrentFilters
-        style={{
-          backgroundColor: '#D8E1EB',
-          color: '#18486B',
-          fontSize: '14px',
-          flex: 1,
-          padding: '0px 10px',
-        }}
+      <QueryBuilder
         {...filtersLinkProps}
         />
       {results}
