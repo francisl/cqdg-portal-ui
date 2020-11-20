@@ -12,8 +12,6 @@ import RepoCasesTable from '@cqdg/pages/FileRepository/RepoCasesTable';
 import CaseAggregations from '@cqdg/pages/FileRepository/CaseAggregations';
 import FileAggregations from '@cqdg/pages/FileRepository/FileAggregations';
 
-import FiltersContainer from '@ferlab-ui/core/filters/FiltersContainer';
-
 import FilesTable from '@cqdg/pages/FileRepository/FilesTable';
 import { SaveIcon } from '@ncigdc/theme/icons';
 import withFilters from '@ncigdc/utils/withFilters';
@@ -142,9 +140,9 @@ export const RepositoryPageComponent = (props: TProps) => {
                   text: t('repo.tabs.cases', { count: caseCount.toLocaleString() }),
                   component: viewer.Case.hits.total ? (
                     <div>
-                      {/*<RepoCasesPies*/}
-                      {/*  aggregations={props.viewer.repository.cases.pies}*/}
-                      {/*/>*/}
+                      {/* <RepoCasesPies */}
+                      {/*  aggregations={props.viewer.repository.cases.pies} */}
+                      {/* /> */}
 
                       <RepoCasesTable />
                     </div>
@@ -161,7 +159,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                     <div>
                       <RepoFilesPies
                         aggregations={viewer.File.pies}
-                      />
+                        />
 
                       <FilesTable />
                     </div>
@@ -182,7 +180,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                       <strong>{formatFileSize(fileSize)}</strong>
                     </span>
                   </Row>
-              )
+                )
               }
               />
           </span>
