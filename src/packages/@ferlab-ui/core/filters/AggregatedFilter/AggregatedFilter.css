@@ -1,0 +1,31 @@
+.aggregated-filter {
+  background: #FFFBF2;
+  border-radius: 2px;
+  display: inline-flex;
+}
+
+.aggregated-filter .aggregated-wrapper-container{
+  display: flex;
+  padding: 0 8px;
+}
+
+.aggregated-filter .filter-name {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #453700;
+}
+
+.aggregated-filter .aggregated-filter-expand {
+  margin-left: 4px;
+  font-weight: 600;
+  color: #453700;
+}
+
+.aggregated-filter .aggregated-filter-expand:hover {
+  cursor: pointer;
+}
+
+.aggregated-filter .aggregated-filter-expand > svg {
+  fill: #453700;
+}

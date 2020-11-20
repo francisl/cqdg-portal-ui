@@ -1,0 +1,43 @@
+.query-builder {
+  padding: 18px 14px;
+}
+
+.query-builder--with-filters {
+  background: #fff;
+}
+
+.query-builder--no-filters {
+  background: #D8E1EB;
+}
+
+.query-builder .wrapper-builder{
+  display: flex;
+}
+
+.query-builder .wrapper-filters{
+  display: flex;
+  margin: -6px -6px -6px 12px;
+  flex-wrap: wrap;
+}
+
+.query-builder .close-icon {
+  width: 20px;
+  height: 20px;
+  fill: #90A9C1;
+}
+
+.query-builder .close-icon:hover {
+  cursor: pointer;
+}
+
+.query-builder .left-arrow {
+  fill: #18486B;
+  width: 14px;
+  height: 14px;
+}
+
+.query-builder .no-filters-text {
+  margin-left: 15px;
+  color: #18486B;
+  font-size: 14px;
+}
