@@ -14,8 +14,8 @@ import {
 import Modal from '@ncigdc/uikit/Modal';
 import SuggestionFacet from '@ncigdc/modern_components/SuggestionFacet';
 import FacetSelection from '@ncigdc/modern_components/FacetSelection';
-import FacetWrapper from '@ncigdc/components/FacetWrapper';
-import FacetHeader from '@ncigdc/components/Aggregations/FacetHeader';
+import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
+import Header from '@ferlab-ui/core/containers/filters/FilterContainerHeader';
 
 import withFacetSelection from '@ncigdc/utils/withFacetSelection';
 import escapeForRelay from '@ncigdc/utils/escapeForRelay';
@@ -25,8 +25,9 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 
 import { withTheme } from '@ncigdc/theme';
 import FileIcon from '@ncigdc/theme/icons/File';
-import { Row } from '@ncigdc/uikit/Flex';
 import t from '@cqdg/locales/intl';
+import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+
 import features from '../../../../../features.json';
 
 const presetFacets = [
@@ -100,39 +101,39 @@ const styles = {
 };
 
 export type TProps = {
-  relay: Object,
-  fileIdCollapsed: boolean,
-  setFileIdCollapsed: Function,
-  facets: { facets: string },
-  parsedFacets: Object,
+  relay: Record<string, any>;
+  fileIdCollapsed: boolean;
+  setFileIdCollapsed: Function;
+  facets: { facets: string };
+  parsedFacets: Record<string, any>;
   aggregations: {
-    data_access: { buckets: [IBucket] },
-    data_category: { buckets: [IBucket] },
-    file_format: { buckets: [IBucket] },
-    data_type: { buckets: [IBucket] },
-    experimental_strategy: { buckets: [IBucket] },
-    is_harmonized: { buckets: [IBucket] },
-    workflow_type: { buckets: [IBucket] },
-    platform: { buckets: [IBucket] },
-  },
-  theme: Object,
-  suggestions: Array<Object>,
-  setAutocomplete: Function,
+    data_access: { buckets: [IBucket] };
+    data_category: { buckets: [IBucket] };
+    file_format: { buckets: [IBucket] };
+    data_type: { buckets: [IBucket] };
+    experimental_strategy: { buckets: [IBucket] };
+    is_harmonized: { buckets: [IBucket] };
+    workflow_type: { buckets: [IBucket] };
+    platform: { buckets: [IBucket] };
+  };
+  theme: Record<string, any>;
+  suggestions: Array<Record<string, any>>;
+  setAutocomplete: Function;
 
   userSelectedFacets: Array<{
-    description: String,
-    doc_type: String,
-    field: String,
-    full: String,
-    type: 'id' | 'string' | 'long',
-  }>,
-  handleSelectFacet: Function,
-  handleResetFacets: Function,
-  handleRequestRemoveFacet: Function,
-  presetFacetFields: Array<String>,
-  shouldShowFacetSelection: Boolean,
-  facetExclusionTest: Function,
-  setShouldShowFacetSelection: Function,
+    description: string;
+    doc_type: string;
+    field: string;
+    full: string;
+    type: 'id' | 'string' | 'long';
+  }>;
+  handleSelectFacet: Function;
+  handleResetFacets: Function;
+  handleRequestRemoveFacet: Function;
+  presetFacetFields: Array<string>;
+  shouldShowFacetSelection: boolean;
+  facetExclusionTest: Function;
+  setShouldShowFacetSelection: Function;
 };
 
 const FileAggregations = ({
@@ -150,7 +151,7 @@ const FileAggregations = ({
   userSelectedFacets,
   viewer: { File: { aggregations } },
 }: TProps) => (
-  <div className="test-file-aggregations">
+  <div className="file-aggregations">
     {features.fileFilter && (
       <div
         className="text-right"
@@ -200,7 +201,7 @@ const FileAggregations = ({
     </Modal>
 
     {userSelectedFacets.map(facet => (
-      <FacetWrapper
+      <FilterContainer
         aggregation={parsedFacets[facet.field]}
         facet={facet}
         isRemovable
@@ -211,7 +212,7 @@ const FileAggregations = ({
         />
     ))}
     {features.filesearch && (
-      <FacetHeader
+      <Header
         collapsed={fileIdCollapsed}
         description="Enter File UUID or name"
         field="file_id"
@@ -224,7 +225,7 @@ const FileAggregations = ({
         collapsed={fileIdCollapsed}
         doctype="files"
         dropdownItem={x => (
-          <Row>
+          <StackLayout>
             <FileIcon
               style={{
 	            paddingRight: '1rem',
@@ -236,10 +237,10 @@ const FileAggregations = ({
               <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
               {x.file_name}
             </div>
-          </Row>
+          </StackLayout>
         )}
         fieldNoDoctype="file_id"
-        placeholder={t(`facet.file_suggest_placeholder`)}
+        placeholder={t('facet.file_suggest_placeholder')}
         queryType="file"
         style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
         title="File"
@@ -247,7 +248,7 @@ const FileAggregations = ({
     )}
     {_.reject(presetFacets, { full: 'file_id' }).map(facet => {
       return (
-        <FacetWrapper
+        <FilterContainer
           additionalProps={facet.additionalProps}
           aggregation={
           aggregations[escapeForRelay(facet.field)]

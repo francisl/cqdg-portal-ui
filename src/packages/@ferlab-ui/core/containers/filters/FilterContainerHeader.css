@@ -1,0 +1,20 @@
+.fui-filters-container-header {
+  align-items: center;
+  border-bottom: thin solid #D8E1EB; /* gray-4 */
+  display: flex;
+  flex-grow: 0;
+  font-size: 14px;
+  font-weight: 600;
+  height: 32px;
+  justify-content: start;
+  line-height: 22px;
+  transition: 2s;
+}
+
+.fui-filters-container-header.collapsed {
+  border-bottom: none;
+} 
+
+.fui-filters-container-header button {
+  padding: 0;
+}

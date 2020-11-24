@@ -57,6 +57,7 @@
 body { 
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
   font-size: 12px;
+  font-weight: 400;
   line-height: 20px;
   margin: 0;
   padding: 0;
@@ -75,4 +76,9 @@ input[type="checkbox"] {
 
 label {
   color: #18486B; /* gray-8 */
+}
+
+input[type="checkbox" i] {
+  margin: 0;
+  padding: 0;
 }
