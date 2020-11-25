@@ -6,6 +6,7 @@
     "participants": "Participants",
     "login": "Connexion",
     "total": "Total",
+    "more": "Étendre",
     "less": "Réduire",
     "query": {
       "IN": "DANS",
@@ -103,13 +104,13 @@
       }
     }
   },
-  "pies":{
+  "charts":{
     "study": "Étude",
     "data_category": "Catégorie de données",
     "data_type": "Type de données",
     "file_format": "Format de fichiers",
-    "disease_type": "Type de maladie",
-    "phenotype_category": "Catégorie de phénotype",
+    "disease_type": "Donneurs par type de maladie",
+    "phenotype_category": "Donneurs par catégorie de phénotype",
     "gender": "Genre",
     "ethnicity": "Ethnicité"
   },
