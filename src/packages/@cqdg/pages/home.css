@@ -167,8 +167,6 @@ section.bottom-links .bottom-links-cards .card-container p {
     border-top: 1px solid #dcdde1;
     padding: 0px;
     color: 'black';
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
   

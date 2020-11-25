@@ -10,13 +10,9 @@
   justify-items: center;
 
   margin: 0;
-  margin-bottom: 30px;
   min-height: 72px;
 
   padding: 0px;
-  position: fixed;
-  top: 0;
-
   transition: height 1s ease;
   width: 100%;
   z-index: 100;

@@ -1,12 +1,12 @@
 import React from 'react';
-import './StackLayout.css';
+import './ScrollView.css';
 
 export enum StackOrientation {
   Vertical = 'vertical',
   Horizontal = 'horizontal',
 }
 
-interface IStackLayout {
+interface IScrollView {
   orientation?: StackOrientation;
   vertical?: boolean;
   horizontal?: boolean;
@@ -14,17 +14,18 @@ interface IStackLayout {
   className: string;
 }
 
-const StackLayout = ({
+const ScrollView = ({
   children, className, horizontal, orientation, vertical,
-}: IStackLayout) => {
+}: IScrollView) => {
+  // default to Vertical
   const definedOrientation = vertical
   ? StackOrientation.Vertical
   : horizontal
     ? StackOrientation.Horizontal
-    : orientation || StackOrientation.Horizontal;
+    : orientation || StackOrientation.Vertical;
   return (
-    <div className={`fui-stack-layout ${definedOrientation} ${className || ''}`}>{children}</div>
+    <div className={`fui-scroll-view ${definedOrientation} ${className || ''}`}>{children}</div>
   );
 };
 
-export default StackLayout;
+export default ScrollView;

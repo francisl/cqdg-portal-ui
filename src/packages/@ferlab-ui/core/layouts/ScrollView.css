@@ -1,0 +1,15 @@
+.fui-scroll-view {
+  display: flex;
+}
+
+.fui-scroll-view.vertical {
+  overflow: auto;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.fui-scroll-view.horizontal {
+  overflow: auto;
+  flex-direction: row;
+  overflow-y: hidden;
+}

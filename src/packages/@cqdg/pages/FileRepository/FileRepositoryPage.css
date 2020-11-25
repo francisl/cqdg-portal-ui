@@ -1,4 +1,8 @@
 #RepositoryPage {
   background-color: #F0F3F8;
+  overflow: hidden;
 }
 
+/* #RepositoryPage * {
+  overflow: hidden;
+} */

@@ -3,6 +3,7 @@ import { compose, withHandlers } from 'recompose';
 
 import GoThreeBar from 'react-icons/lib/go/three-bars';
 import Button from '@ferlab-ui/core/buttons/button';
+
 import './SidePanel.css';
 
 const SidePanel = ({
