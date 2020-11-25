@@ -4,6 +4,9 @@
     "files.title": "Files",
     "files": "files",
     "participants": "Participants",
+    "less": "Less",
+    "more": "More",
+    "show": "Show",
     "login": "Login",
     "total": "Total",
     "less": "Less",
@@ -101,13 +104,13 @@
       }
     }
   },
-  "pies":{
+  "charts":{
     "study": "Study",
     "data_category": "Data category",
     "data_type": "Data type",
     "file_format": "File format",
-    "disease_type": "Disease type",
-    "phenotype_category": "Phenotype category",
+    "disease_type": "Donors per disease type",
+    "phenotype_category": "Donors per phenotype category",
     "gender": "Gender",
     "ethnicity": "Ethnicity"
   },

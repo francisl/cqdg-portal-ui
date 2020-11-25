@@ -4,6 +4,9 @@
     "files.title": "Fichiers",
     "files": "fichiers",
     "participants": "Participants",
+    "less": "Moins",
+    "more": "Plus",
+    "show": "Montrer",
     "login": "Connexion",
     "total": "Total",
     "less": "Réduire",
@@ -103,13 +106,13 @@
       }
     }
   },
-  "pies":{
+  "charts":{
     "study": "Étude",
     "data_category": "Catégorie de données",
     "data_type": "Type de données",
     "file_format": "Format de fichiers",
-    "disease_type": "Type de maladie",
-    "phenotype_category": "Catégorie de phénotype",
+    "disease_type": "Donneurs par type de maladie",
+    "phenotype_category": "Donneurs par catégorie de phénotype",
     "gender": "Genre",
     "ethnicity": "Ethnicité"
   },

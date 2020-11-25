@@ -54,7 +54,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-primary-site-pie"
           >
-            <PieTitle>{t('pies.study')}</PieTitle>
+            <PieTitle>{t('charts.study')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(
                 aggregations,
@@ -75,7 +75,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-category-pie"
           >
-            <PieTitle>{t('pies.data_category')}</PieTitle>
+            <PieTitle>{t('charts.data_category')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_category.buckets')}
               fieldName="data_category"
@@ -93,7 +93,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-data-type"
           >
-            <PieTitle>{t('pies.data_type')}</PieTitle>
+            <PieTitle>{t('charts.data_type')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'data_type.buckets')}
               fieldName="data_type"
@@ -111,7 +111,7 @@ const RepoFilesPiesComponent = ({
             style={{ minWidth: `${pieColMinWidth}px` }}
             className="test-file-format"
           >
-            <PieTitle>{t('pies.file_format')}</PieTitle>
+            <PieTitle>{t('charts.file_format')}</PieTitle>
             <SelfFilteringPie
               buckets={_.get(aggregations, 'file_format.buckets')}
               fieldName="file_format"

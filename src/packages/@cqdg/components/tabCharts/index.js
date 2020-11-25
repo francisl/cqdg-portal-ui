@@ -10,6 +10,7 @@ import PieChart from '@ncigdc/components/Charts/PieChart';
 import { Row, Column } from '@ncigdc/uikit/Flex';
 import { stringifyJSONParam } from '@ncigdc/utils/uri';
 import removeEmptyKeys from '@ncigdc/utils/removeEmptyKeys';
+import HorizontalBarChart from "../charts/HorizontalBarChart";
 
 const toPieData = (clickHandler, docTypeSingular) => bucket => ({
   id: bucket.key,
@@ -94,7 +95,7 @@ export const SelfFilteringPie = ({
 }) => (
   <PieChart
     data={(buckets || [])
-      .filter(bucket => bucket.key !== '_missing')
+      .filter(bucket => bucket.key !== '__missing__')
       .filter(
         bucket =>
           currentFieldNames.includes(fieldName)
@@ -108,6 +109,40 @@ export const SelfFilteringPie = ({
       .map(
         toPieData(
           ({ data }) => addFilter(query, push)(fieldName, data.id),
+          docTypeSingular,
+        ),
+      )}
+    {...props}
+  />
+);
+
+export const SelfFilteringBars = ({
+                                   docTypeSingular,
+                                   buckets,
+                                   query,
+                                   push,
+                                   fieldName,
+                                   currentFieldNames,
+                                   currentFilters,
+                                   ...props
+                                 }) => (
+  <HorizontalBarChart
+    data={(buckets || [])
+      .filter(bucket => bucket.key !== '__missing__')
+      .filter(
+        bucket =>
+          currentFieldNames.includes(fieldName)
+            ? inCurrentFilters({
+              key: bucket.key,
+              dotField: fieldName,
+              currentFilters,
+            })
+            : true,
+      )
+      .slice(0, 10)
+      .map(
+        toPieData(
+          (data) => addFilter(query, push)(fieldName, data.id),
           docTypeSingular,
         ),
       )}
