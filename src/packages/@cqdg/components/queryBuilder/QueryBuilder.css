@@ -12,6 +12,10 @@
 
 .query-builder .wrapper-builder{
   display: flex;
+  align-items: flex-start;
+}
+
+.query-builder.query-builder--no-filters .wrapper-builder {
   align-items: center;
 }
 
