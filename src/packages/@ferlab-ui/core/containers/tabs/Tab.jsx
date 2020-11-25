@@ -5,7 +5,7 @@
 import React from 'react';
 import { withTheme } from '@ncigdc/theme';
 import Link from '@ncigdc/components/Links/Link';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import ScrollView from '@ferlab-ui/core/layouts/ScrollView';
 
 import './Tab.css';
 
@@ -39,9 +39,9 @@ const Tabs = ({
       })}
       {tabToolbar && <span style={{ marginLeft: 'auto' }}>{tabToolbar}</span>}
     </div>
-    <StackLayout>
+    <ScrollView>
       {children}
-    </StackLayout>
+    </ScrollView>
   </div>
 );
 

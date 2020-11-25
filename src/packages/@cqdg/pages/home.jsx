@@ -8,12 +8,13 @@ import CardContainerNotched from '@cqdg/components/cards/CardContainerNotched';
 import Button from '@ferlab-ui/core/buttons/button';
 import Link from '@ferlab-ui/core/buttons/link';
 import CardContent from '@ferlab-ui/cards/CardContent';
+import ScrollView from '@ferlab-ui/core/layouts/ScrollView';
 
 import './home.css';
 
 const HomePage = () => {
   return (
-    <React.Fragment>
+    <ScrollView>
       <main className="home-main">
         <div className="contentWrapper">
           <section className="hero">
@@ -126,7 +127,7 @@ const HomePage = () => {
           </div>
         </div>
       </footer>
-    </React.Fragment>
+    </ScrollView>
   );
 };
 

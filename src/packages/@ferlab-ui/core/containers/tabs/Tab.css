@@ -1,6 +1,7 @@
 .containers-tab-layout {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .containers-tab-nav {

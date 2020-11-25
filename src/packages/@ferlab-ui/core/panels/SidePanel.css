@@ -53,6 +53,7 @@
 
 .side-panel-content {
   font-size: 12px;
+  overflow: hidden;
 }
 
 .side-panel-collapsed .side-panel-content {

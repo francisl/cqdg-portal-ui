@@ -45,18 +45,7 @@ class CqdgApp extends React.PureComponent {
       <Fragment>
         <ProgressContainer />
         <Header />
-        <div
-          id="Content"
-          role="main"
-          style={{
-            paddingBottom: '120px',
-            paddingTop: `calc(72px + ${this.notifications.filter(n => !n.dismissed)
-              .length * 40}px)`,
-            transition: 'padding 0.25s ease',
-          }}
-          >
-          <Routes />
-        </div>
+        <Routes />
         <RelayLoadingContainer />
         <NotificationContainer />
         <ModalContainer />

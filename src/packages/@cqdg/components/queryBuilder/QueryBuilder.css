@@ -12,6 +12,7 @@
 
 .query-builder .wrapper-builder{
   display: flex;
+  align-items: center;
 }
 
 .query-builder .wrapper-filters{
