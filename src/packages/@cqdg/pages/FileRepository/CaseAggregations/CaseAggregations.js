@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
-import _, { get } from 'lodash';
+import get from 'lodash/get';
+import reject from 'lodash/reject';
 import {
   compose, setDisplayName, withPropsOnChange, withState,
 } from 'recompose';
@@ -8,60 +9,20 @@ import {
 import Modal from '@ncigdc/uikit/Modal';
 import SuggestionFacet from '@ncigdc/modern_components/SuggestionFacet';
 import FacetSelection from '@ncigdc/modern_components/FacetSelection';
-import FacetWrapper from '@ncigdc/components/FacetWrapper';
+import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
 import UploadSetButton from '@ncigdc/components/UploadSetButton';
 import { withTheme } from '@ncigdc/theme';
 import withFacetSelection from '@ncigdc/utils/withFacetSelection';
 import escapeForRelay from '@ncigdc/utils/escapeForRelay';
 import tryParseJSON from '@ncigdc/utils/tryParseJSON';
-import FacetHeader from '@ncigdc/components/Aggregations/FacetHeader';
-import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
-import { Row } from '@ncigdc/uikit/Flex';
-import CaseIcon from '@ncigdc/theme/icons/Case';
+import Header from '@ferlab-ui/core/containers/filters/FilterContainerHeader';
 
-import { IBucket } from '@ncigdc/components/Aggregations/types';
+import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
+import CaseIcon from '@ncigdc/theme/icons/Case';
+import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+
 import t from '@cqdg/locales/intl';
 import features from '../../../../../features.json';
-
-export type TProps = {
-  caseIdCollapsed: boolean;
-  setCaseIdCollapsed: Function;
-  relay: Record<string, any>;
-  facets: { facets: string };
-  parsedFacets: Record<string, any>;
-  aggregations: {
-    study__short_name_keyword: { buckets: [IBucket] };
-    study__study_id_keyword: { buckets: [IBucket] };
-    study__domain: { buckets: [IBucket] };
-    gender: { buckets: [IBucket] };
-    ethnicity: { buckets: [IBucket] };
-    age_at_recruitment: { buckets: [IBucket] };
-    diagnoses__age_at_diagnosis: { buckets: [IBucket] };
-    vital_status: { buckets: [IBucket] };
-    diagnoses__icd_category_keyword: { buckets: [IBucket] };
-    phenotypes__hpo_category_keyword: { buckets: [IBucket] };
-    phenotypes__hpo_term_keyword: { buckets: [IBucket] };
-    diagnoses___mondo_term_keyword: { buckets: [IBucket] };
-  };
-  setAutocomplete: Function;
-  theme: Record<string, any>;
-  suggestions: Array<Record<string, any>>;
-
-  userSelectedFacets: Array<{
-    description: string;
-    doc_type: string;
-    field: string;
-    full: string;
-    type: 'id' | 'string' | 'long';
-  }>;
-  handleSelectFacet: Function;
-  handleResetFacets: Function;
-  handleRequestRemoveFacet: Function;
-  presetFacetFields: Array<string>;
-  shouldShowFacetSelection: boolean;
-  facetExclusionTest: Function;
-  setShouldShowFacetSelection: Function;
-};
 
 const presetFacets = [
   {
@@ -163,19 +124,33 @@ const styles = {
   },
 };
 
-const CaseAggregationsComponent = (props: TProps) => (
-  <div className="test-case-aggregations">
+const CaseAggregationsComponent = ({
+  caseIdCollapsed,
+  facetExclusionTest,
+  handleRequestRemoveFacet,
+  handleResetFacets,
+  handleSelectFacet,
+  parsedFacets,
+  relay,
+  setCaseIdCollapsed,
+  setShouldShowFacetSelection,
+  shouldShowFacetSelection,
+  theme,
+  userSelectedFacets,
+  viewer,
+}) => (
+  <div className="case-aggregations">
     { features.caseAggregations && (
       <div
         className="text-right"
         style={{
           padding: '10px 15px',
-          borderBottom: `1px solid ${props.theme.greyScale5}`,
+          borderBottom: `1px solid ${theme.greyScale5}`,
         }}
         >
-        {!!props.userSelectedFacets.length && (
+        {!!userSelectedFacets.length && (
           <span>
-            <a onClick={props.handleResetFacets} style={styles.link}>
+            <a onClick={handleResetFacets} style={styles.link}>
             Reset
             </a>
             {' '}
@@ -183,7 +158,7 @@ const CaseAggregationsComponent = (props: TProps) => (
           </span>
         )}
         <a
-          onClick={() => props.setShouldShowFacetSelection(true)}
+          onClick={() => setShouldShowFacetSelection(true)}
           style={styles.link}
           >
           Add a Case/Biospecimen Filter
@@ -192,7 +167,7 @@ const CaseAggregationsComponent = (props: TProps) => (
     )}
     { features.caseAggregations && (
       <Modal
-        isOpen={props.shouldShowFacetSelection}
+        isOpen={shouldShowFacetSelection}
         style={{
           content: {
             border: 0,
@@ -202,43 +177,43 @@ const CaseAggregationsComponent = (props: TProps) => (
         }}
         >
         <FacetSelection
-          additionalFacetData={props.parsedFacets}
+          additionalFacetData={parsedFacets}
           docType="cases"
-          excludeFacetsBy={props.facetExclusionTest}
+          excludeFacetsBy={facetExclusionTest}
           isCaseInsensitive
-          onRequestClose={() => props.setShouldShowFacetSelection(false)}
-          onSelect={props.handleSelectFacet}
+          onRequestClose={() => setShouldShowFacetSelection(false)}
+          onSelect={handleSelectFacet}
           title="Add a Case/Biospecimen Filter"
           />
       </Modal>
     )}
-    {props.userSelectedFacets && props.userSelectedFacets.map(facet => (
-      <FacetWrapper
-        aggregation={props.parsedFacets[facet.field]}
+    {userSelectedFacets && userSelectedFacets.map(facet => (
+      <FilterContainer
+        aggregation={parsedFacets[facet.field]}
         facet={facet}
         isRemovable
         key={facet.full}
-        onRequestRemove={() => props.handleRequestRemoveFacet(facet)}
+        onRequestRemove={() => handleRequestRemoveFacet(facet)}
         relayVarName="repoCaseCustomFacetFields"
-        style={{ borderBottom: `1px solid ${props.theme.greyScale5}` }}
+        style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
         />
     ))}
 
     { features.searchByCaseId && (
-      <FacetHeader
-        collapsed={props.caseIdCollapsed}
+      <Header
+        collapsed={caseIdCollapsed}
         description="Enter UUID or ID of Case, Sample, Portion, Slide, Analyte or Aliquot"
         field="cases.case_id"
-        setCollapsed={props.setCaseIdCollapsed}
+        setCollapsed={setCaseIdCollapsed}
         title="Case"
         />
     )}
     { features.searchByCaseId && (
       <SuggestionFacet
-        collapsed={props.caseIdCollapsed}
+        collapsed={caseIdCollapsed}
         doctype="cases"
         dropdownItem={x => (
-          <Row>
+          <StackLayout>
             <CaseIcon
               style={{
                 paddingRight: '1rem',
@@ -249,14 +224,14 @@ const CaseAggregationsComponent = (props: TProps) => (
               <div style={{ fontWeight: 'bold' }}>{x.submitter_donor_id}</div>
               <div style={{ fontSize: '80%' }}>
                 {
-                    _.get(x, 'files.hits.edges', []).map(f => f.node.file_name).join(', ')
+                    get(x, 'files.hits.edges', []).map(f => f.node.file_name).join(', ')
                 }
               </div>
               {
-                _.get(x, 'study.hits.edges', []).map(s => s.node.study_id).join(' | ')
+                get(x, 'study.hits.edges', []).map(s => s.node.study_id).join(' | ')
               }
             </div>
-          </Row>
+          </StackLayout>
         )}
         fieldNoDoctype="submitter_donor_id"
         placeholder={t('facet.file_suggest_placeholder')}
@@ -273,7 +248,7 @@ const CaseAggregationsComponent = (props: TProps) => (
         idField="cases.case_id"
         style={{
           width: '100%',
-          borderBottom: `1px solid ${props.theme.greyScale5}`,
+          borderBottom: `1px solid ${theme.greyScale5}`,
           padding: '0 1.2rem 1rem',
         }}
         type="case"
@@ -282,17 +257,17 @@ const CaseAggregationsComponent = (props: TProps) => (
         Upload Case Set
       </UploadSetButton>
     )}
-    {_.reject(presetFacets, { full: 'donor_id' }).map(facet => (
-      <FacetWrapper
+    {reject(presetFacets, { full: 'donor_id' }).map(facet => (
+      <FilterContainer
         additionalProps={facet.additionalProps}
         aggregation={
-          props.viewer.Case.aggregations[
+          viewer.Case.aggregations[
             escapeForRelay(facet.field)
         ]
         }
         facet={facet}
         key={facet.full}
-        relay={props.relay}
+        relay={relay}
         title={facet.title}
         />
     ))}

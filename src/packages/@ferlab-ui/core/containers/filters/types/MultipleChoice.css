@@ -1,0 +1,24 @@
+.fui-filters-types-mc-footer {
+  color: #008FC7; /* blue-7 */
+  text-decoration: underline;
+}
+
+
+.fui-mc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  flex: auto 0;
+}
+
+.fui-mc-item:last-child {
+  margin-bottom: 0px;
+}
+
+.fui-mc-item .fui-mv-item-checkbox {
+  align-items: center;    
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

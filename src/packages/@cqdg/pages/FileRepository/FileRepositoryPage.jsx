@@ -20,7 +20,6 @@ import formatFileSize from '@ncigdc/utils/formatFileSize';
 import RepoCasesPies from '@cqdg/components/TabPieCharts/RepoCasesPies';
 import RepoFilesPies from '@cqdg/components/TabPieCharts/RepoFilesPies';
 
-
 import withRouter from '@ncigdc/utils/withRouter';
 import ActionsRow from '@ncigdc/components/ActionsRow';
 import t from '@cqdg/locales/intl';
@@ -96,16 +95,17 @@ export const RepositoryPageComponent = (props: TProps) => {
   // const caseCount = 1;
   const fileSize = 0;
 
-  const facetTabPanes = [
+
+  const facetTabPanes: TabPanes = [
     {
+      component: <CaseAggregations relay={relay} />,
       id: 'participants',
       text: t('global.participants'),
-      component: <CaseAggregations relay={relay} />,
     },
     {
+      component: <FileAggregations relay={relay} />,
       id: 'files',
       text: t('global.files.title'),
-      component: <FileAggregations relay={relay} />,
     },
   ];
 
@@ -142,7 +142,7 @@ export const RepositoryPageComponent = (props: TProps) => {
                     <div>
                       <RepoCasesPies
                         aggregations={viewer.Case.pies}
-                      />
+                        />
 
                       <RepoCasesTable />
                     </div>
@@ -190,7 +190,6 @@ export const RepositoryPageComponent = (props: TProps) => {
     </div>
   );
 };
-
 export const RepositoryPageQuery = {
   initialVariables: {
     cases_offset: null,

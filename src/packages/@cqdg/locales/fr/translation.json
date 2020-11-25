@@ -5,6 +5,8 @@
     "files": "fichiers",
     "participants": "Participants",
     "login": "Connexion",
+    "total": "Total",
+    "less": "Réduire",
     "query": {
       "IN": "DANS",
       "IS": "EST",
@@ -297,6 +299,7 @@
     "small.cell.lung.carcinoma":" Small cell lung carcinoma"
   },
   "search": {
+    "search": "Recherche ...",
     "advanced.search": "Advanced Search",
     "no.results": "No results found using those filters."
   },
