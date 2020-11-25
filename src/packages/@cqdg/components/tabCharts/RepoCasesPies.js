@@ -158,7 +158,7 @@ const RepoCasesPiesComponent = ({ aggregations,
       </BottomBorderedBox>
       <RowCenter style={{ marginTop: '-1.5rem' }}>
         <ShowToggleBox onClick={() => setShowingMore(!showingMore)}>
-          {t('global.show')} {showingMore ? t('global.less') : t('global.more')}
+          {showingMore ? t('global.less') : t('global.more')}
         </ShowToggleBox>
       </RowCenter>
     </div>

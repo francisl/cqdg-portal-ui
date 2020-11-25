@@ -4,11 +4,9 @@
     "files.title": "Files",
     "files": "files",
     "participants": "Participants",
-    "less": "Less",
-    "more": "More",
-    "show": "Show",
     "login": "Login",
     "total": "Total",
+    "more": "More",
     "less": "Less",
     "query": {
       "IN": "IN",

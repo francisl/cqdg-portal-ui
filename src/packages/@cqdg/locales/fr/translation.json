@@ -4,11 +4,9 @@
     "files.title": "Fichiers",
     "files": "fichiers",
     "participants": "Participants",
-    "less": "Moins",
-    "more": "Plus",
-    "show": "Montrer",
     "login": "Connexion",
     "total": "Total",
+    "more": "Étendre",
     "less": "Réduire",
     "query": {
       "IN": "DANS",
