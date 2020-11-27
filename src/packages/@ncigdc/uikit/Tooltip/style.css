@@ -11,12 +11,11 @@
   position: relative;
   bottom: 12px;
   left: -50%;
-  padding: 6px;
-  color: rgb(61, 61, 61);
-  background: #ffffff;
-  font-size: 10px;
-  border: 2px solid #DEDEDE;
-  border-radius: 6px;
+  padding: 6px 10px;
+  color: #003457;
+  background: #FFC431;
+  font-size: 14px;
+  border-radius: 2px;
   transform: translate(0, -100%);
 }
 
@@ -24,20 +23,9 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -12px;
+  margin-left: -6px;
   width: 0; height: 0;
-  border-top: 12px solid #DEDEDE;
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-}
-
-.global-tooltip>.wrapper>.point2 {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -8px;
-  width: 0; height: 0;
-  border-top: 8px solid #FFFFFF;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
+  border-top: 6px solid #FFC431;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
 }

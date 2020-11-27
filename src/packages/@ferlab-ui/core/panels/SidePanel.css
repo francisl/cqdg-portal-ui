@@ -4,7 +4,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   padding: 12px 17px;
   transition: width 0.2s;
   width: 312px;

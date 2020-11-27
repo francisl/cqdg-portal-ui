@@ -10,10 +10,10 @@ ReactModal.setAppElement('#root');
 
 const modalStyles = {
   content: {
-    background: 'rgb(255, 255, 255)',
-    border: '1px solid rgb(204, 204, 204)',
-    borderRadius: '4px',
-    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 5px 15px',
+    backgroundColor: '#FFC431',
+    border: 'none',
+    borderRadius: '2px',
+    color: '#003457',
     margin: '30px auto',
     maxWidth: '800px',
     padding: '0px',
@@ -36,14 +36,14 @@ const Modal = ({
   children, isOpen, onRequestClose, style,
 }) => (
   <ReactModal
-      className="test-modal"
-      contentLabel="Modal"
-      isOpen={isOpen}
-      onRequestClose={onRequestClose || (() => { })}
-      style={{ ..._.merge({}, modalStyles, style) }}
-      >
-      {Children.map(children, child => cloneElement(child, { ...child.props }))}
-    </ReactModal>
+    className="test-modal"
+    contentLabel="Modal"
+    isOpen={isOpen}
+    onRequestClose={onRequestClose || (() => { })}
+    style={{ ..._.merge({}, modalStyles, style) }}
+    >
+    {Children.map(children, child => cloneElement(child, { ...child.props }))}
+  </ReactModal>
 );
 
 export default Modal;

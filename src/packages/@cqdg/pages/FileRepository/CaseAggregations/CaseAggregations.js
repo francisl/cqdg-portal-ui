@@ -234,7 +234,7 @@ const CaseAggregationsComponent = ({
           </StackLayout>
         )}
         fieldNoDoctype="submitter_donor_id"
-        placeholder={t('facet.file_suggest_placeholder')}
+        placeholder={t('facet.case_suggest_placeholder')}
         queryType="case"
         title="Case"
         />
