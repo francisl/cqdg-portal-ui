@@ -3,12 +3,17 @@ import React from 'react';
 import get from 'lodash/get';
 import reject from 'lodash/reject';
 import {
-  compose, setDisplayName, withPropsOnChange, withState,
+  compose,
+  setDisplayName,
+  withPropsOnChange,
+  withState,
 } from 'recompose';
 
 import Modal from '@ncigdc/uikit/Modal';
 import SuggestionFacet from '@ncigdc/modern_components/SuggestionFacet';
 import FacetSelection from '@ncigdc/modern_components/FacetSelection';
+import FilterSearchInput from '@cqdg/components/inputs/FilterSearchInput';
+
 import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
 import UploadSetButton from '@ncigdc/components/UploadSetButton';
 import { withTheme } from '@ncigdc/theme';
@@ -99,7 +104,7 @@ const presetFacets = [
   },
 ];
 
-const presetFacetFields = presetFacets.map(x => x.field);
+const presetFacetFields = presetFacets.map((x) => x.field);
 const entityType = 'Cases';
 
 const enhance = compose(
@@ -111,10 +116,8 @@ const enhance = compose(
   withTheme,
   withState('caseIdCollapsed', 'setCaseIdCollapsed', false),
   withPropsOnChange(['viewer'], ({ viewer }) => ({
-    parsedFacets: viewer.File
-      ? tryParseJSON(viewer.File, {})
-      : {},
-  })),
+    parsedFacets: viewer.File ? tryParseJSON(viewer.File, {}) : {},
+  }))
 );
 
 const styles = {
@@ -140,7 +143,7 @@ const CaseAggregationsComponent = ({
   viewer,
 }) => (
   <div className="case-aggregations">
-    { features.caseAggregations && (
+    {features.caseAggregations && (
       <div
         className="text-right"
         style={{
@@ -151,10 +154,10 @@ const CaseAggregationsComponent = ({
         {!!userSelectedFacets.length && (
           <span>
             <a onClick={handleResetFacets} style={styles.link}>
-            Reset
+              Reset
             </a>
             {' '}
-          &nbsp;|&nbsp;
+            &nbsp;|&nbsp;
           </span>
         )}
         <a
@@ -165,7 +168,7 @@ const CaseAggregationsComponent = ({
         </a>
       </div>
     )}
-    { features.caseAggregations && (
+    {features.caseAggregations && (
       <Modal
         isOpen={shouldShowFacetSelection}
         style={{
@@ -187,19 +190,20 @@ const CaseAggregationsComponent = ({
           />
       </Modal>
     )}
-    {userSelectedFacets && userSelectedFacets.map(facet => (
-      <FilterContainer
-        aggregation={parsedFacets[facet.field]}
-        facet={facet}
-        isRemovable
-        key={facet.full}
-        onRequestRemove={() => handleRequestRemoveFacet(facet)}
-        relayVarName="repoCaseCustomFacetFields"
-        style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
-        />
-    ))}
+    {userSelectedFacets &&
+      userSelectedFacets.map((facet) => (
+        <FilterContainer
+          aggregation={parsedFacets[facet.field]}
+          facet={facet}
+          isRemovable
+          key={facet.full}
+          onRequestRemove={() => handleRequestRemoveFacet(facet)}
+          relayVarName="repoCaseCustomFacetFields"
+          style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
+          />
+      ))}
 
-    { features.searchByCaseId && (
+    {features.searchByCaseId && (
       <Header
         collapsed={caseIdCollapsed}
         description="Enter UUID or ID of Case, Sample, Portion, Slide, Analyte or Aliquot"
@@ -208,11 +212,11 @@ const CaseAggregationsComponent = ({
         title="Case"
         />
     )}
-    { features.searchByCaseId && (
-      <SuggestionFacet
+    {features.searchByCaseId && (
+      <FilterSearchInput
         collapsed={caseIdCollapsed}
         doctype="cases"
-        dropdownItem={x => (
+        dropdownItem={(x) => (
           <StackLayout>
             <CaseIcon
               style={{
@@ -223,23 +227,24 @@ const CaseAggregationsComponent = ({
             <div>
               <div style={{ fontWeight: 'bold' }}>{x.submitter_donor_id}</div>
               <div style={{ fontSize: '80%' }}>
-                {
-                    get(x, 'files.hits.edges', []).map(f => f.node.file_name).join(', ')
-                }
+                {get(x, 'files.hits.edges', [])
+                  .map((f) => f.node.file_name)
+                  .join(', ')}
               </div>
-              {
-                get(x, 'study.hits.edges', []).map(s => s.node.study_id).join(' | ')
-              }
+              {get(x, 'study.hits.edges', [])
+                .map((s) => s.node.study_id)
+                .join(' | ')}
             </div>
           </StackLayout>
         )}
         fieldNoDoctype="submitter_donor_id"
-        placeholder={t('facet.case_suggest_placeholder')}
+        placeholder={t('facet.search')}
         queryType="case"
         title="Case"
+        tooltip={t('facet.search_suggest_tooltip')}
         />
     )}
-    { features.uploadCaseSet && (
+    {features.uploadCaseSet && (
       <UploadSetButton
         defaultQuery={{
           pathname: '/repository',
@@ -257,14 +262,10 @@ const CaseAggregationsComponent = ({
         Upload Case Set
       </UploadSetButton>
     )}
-    {reject(presetFacets, { full: 'donor_id' }).map(facet => (
+    {reject(presetFacets, { full: 'donor_id' }).map((facet) => (
       <FilterContainer
         additionalProps={facet.additionalProps}
-        aggregation={
-          viewer.Case.aggregations[
-            escapeForRelay(facet.field)
-        ]
-        }
+        aggregation={viewer.Case.aggregations[escapeForRelay(facet.field)]}
         facet={facet}
         key={facet.full}
         relay={relay}
@@ -272,7 +273,6 @@ const CaseAggregationsComponent = ({
         />
     ))}
   </div>
-
 );
 
 export default enhance(CaseAggregationsComponent);
