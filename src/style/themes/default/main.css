@@ -74,6 +74,18 @@ input[type="checkbox"] {
   color: #B5C6D8;
 }
 
+input[type="text"] {
+  border: 1px solid #90A9C1;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: #90A9C1;
+  height: 32px;
+}
+
+input[type="text"]:focus{
+  border-color:#31BDF2;
+}
+
 label {
   color: #18486B; /* gray-8 */
 }

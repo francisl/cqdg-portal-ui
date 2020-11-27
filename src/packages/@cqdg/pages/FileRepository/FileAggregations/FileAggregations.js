@@ -12,7 +12,7 @@ import {
 } from 'recompose';
 
 import Modal from '@ncigdc/uikit/Modal';
-import SuggestionFacet from '@ncigdc/modern_components/SuggestionFacet';
+import FilterSearchInput from '@cqdg/components/inputs/FilterSearchInput';
 import FacetSelection from '@ncigdc/modern_components/FacetSelection';
 import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
 import Header from '@ferlab-ui/core/containers/filters/FilterContainerHeader';
@@ -221,10 +221,10 @@ const FileAggregations = ({
         />
     )}
     {features.filesearch && (
-      <SuggestionFacet
+      <FilterSearchInput
         collapsed={fileIdCollapsed}
         doctype="files"
-        dropdownItem={x => (
+        dropdownItem={(x) => (
           <StackLayout>
             <FileIcon
               style={{
@@ -234,16 +234,17 @@ const FileAggregations = ({
               />
             <div>
               <div style={{ fontWeight: 'bold' }}>{x.file_id}</div>
-              <div style={{ fontSize: '80%' }}>{x.submitter_donor_id}</div>
+              <div style={{ fontSize: '180%' }}>{x.submitter_donor_id}</div>
               {x.file_name}
+              {' >>>> '}
             </div>
           </StackLayout>
         )}
         fieldNoDoctype="file_id"
-        placeholder={t('facet.file_suggest_placeholder')}
+        placeholder={t('facet.search')}
         queryType="file"
-        style={{ borderBottom: `1px solid ${theme.greyScale5}` }}
         title="File"
+        tooltip={t('facet.file_suggest_tooltip')}
         />
     )}
     {_.reject(presetFacets, { full: 'file_id' }).map(facet => {

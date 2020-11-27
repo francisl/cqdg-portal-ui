@@ -1,0 +1,25 @@
+.fui-input-search {
+  position: relative;
+}
+
+.fui-input-search .extra {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  align-self: center;
+  justify-content: center;
+  height: 100%;
+  color: #90A9C1;
+}
+
+.fui-input-search .extra.search {
+  left: 10px;
+}
+
+.fui-input-search .extra.tooltip {
+  right: 10px;
+}
+.fui-input-search .extra .tooltip-icon {
+  font-size: 16px;
+  height: 100%;
+}
