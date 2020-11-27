@@ -244,7 +244,7 @@ const FileAggregations = ({
         placeholder={t('facet.search')}
         queryType="file"
         title="File"
-        tooltip={t('facet.file_suggest_tooltip')}
+        tooltip={t('facet.search_suggest_tooltip')}
         />
     )}
     {_.reject(presetFacets, { full: 'file_id' }).map(facet => {

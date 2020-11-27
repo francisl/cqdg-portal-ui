@@ -139,10 +139,8 @@
     "data_category": "Catégorie de données",
     "file_format": "Format de données",
     "file_size": "Taille",
-    "case_suggest_placeholder": "ex.: ID Patient, UUID Fichier, Nom du fichier",
     "search": "Recherche",
-    "file_suggest_tooltip": "ex.: ID Patient, UUID Fichier, Nom du fichier",
-  
+    "search_suggest_tooltip": "ex.: ID Patient, UUID Fichier, Nom du fichier",
     "is_harmonized": "Données Harmonizés",
     "data_type": "Type de données",
     "experimental_strategy": "Strategie Experimental",

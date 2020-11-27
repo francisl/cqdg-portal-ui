@@ -25,9 +25,11 @@ const Search = ({
       ref={getNode}
       type="text"
       />
-    <Tooltip className="extra tooltip" Component={<div>{tooltip}</div>}>
-      <IoIosInformationCircleOutline className="tooltip-icon" />
-    </Tooltip>
+    {tooltip && (
+      <Tooltip className="extra tooltip" Component={<div>{tooltip}</div>}>
+        <IoIosInformationCircleOutline className="tooltip-icon" />
+      </Tooltip>
+    )}
   </div>
 );
 
