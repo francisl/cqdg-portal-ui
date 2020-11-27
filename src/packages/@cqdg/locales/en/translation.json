@@ -51,6 +51,9 @@
       "chusj.link" : "https://research.chusj.org/en/Home"
     }
   },
+  "short_footer": {
+    "info": "Info"
+  },
   "home": {
     "hero": {
       "title": "Portail de données",

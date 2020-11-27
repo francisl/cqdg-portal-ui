@@ -3,6 +3,8 @@ import { compose, withHandlers } from 'recompose';
 
 import GoThreeBar from 'react-icons/lib/go/three-bars';
 import Button from '@ferlab-ui/core/buttons/button';
+import t from '@cqdg/locales/intl';
+import Link from '@ferlab-ui/core/buttons/link';
 
 import './SidePanel.css';
 
@@ -17,6 +19,17 @@ const SidePanel = ({
         </Button>
       </div>
       <div className="side-panel-content">{children}</div>
+      <div className="side-panel-footer">
+        <Link defaultIcon={false} href="mailto:support@cqdg.ca">{t('short_footer.info')}</Link>
+        <div className="spacer" />
+        <Link defaultIcon={false} href={t('footer.logo.genome.link')} target="_blank">
+          Genome Québec
+        </Link>
+        <div className="spacer" />
+        <Link defaultIcon={false} href={t('footer.logo.chusj.link')} target="_blank">
+          CHU Sainte-Justine
+        </Link>
+      </div>
     </div>
   );
 };

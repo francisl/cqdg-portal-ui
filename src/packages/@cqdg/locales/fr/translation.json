@@ -53,6 +53,9 @@
       "chusj.link" : "https://recherche.chusj.org/fr/accueil"
     }
   },
+  "short_footer": {
+    "info": "Info"
+  },
   "home": {
     "hero": {
       "title": "Portail de données",
