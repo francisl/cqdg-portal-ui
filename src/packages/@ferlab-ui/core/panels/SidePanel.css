@@ -4,7 +4,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 12px 17px;
   transition: width 0.2s;
   width: 312px;
   z-index: 1;
@@ -26,6 +25,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  padding: 12px 17px;
   transition: 2s;
 }
 
@@ -53,8 +53,31 @@
 .side-panel-content {
   font-size: 12px;
   overflow: hidden;
+  padding: 0px 17px
+ }
+
+ .side-panel-collapsed .side-panel-content {
+  display: none;
 }
 
-.side-panel-collapsed .side-panel-content {
-  display: none;
+.side-panel-footer {
+  align-items: center;
+  border-top: thin solid #D8E1EB;
+  color: #486F90;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+}
+
+.side-panel-footer a {
+  text-decoration: underline;
+}
+
+.side-panel-footer .spacer {
+  border-left: thin solid #90A9C1;
+  height: 10px;
+  margin: 0 5px;
+  width: 1px;
 }
