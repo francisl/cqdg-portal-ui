@@ -127,11 +127,10 @@ export const RepositoryPageComponent = (props: TProps) => {
         }}
         results={(
           <div>
-
             {
-              (Object.keys(query).length === 0 || query.searchTableTab === 'files') && caseCount ? <RepoFilesCharts aggregations={viewer.File.pies} />
-              : query.searchTableTab === 'cases' && fileCount ? <RepoCasesCharts aggregations={viewer.Case.pies} />
-              : <div />
+              query.searchTableTab === 'cases' && caseCount ? <RepoCasesCharts aggregations={viewer.Case.pies} />
+                : fileCount ? <RepoFilesCharts aggregations={viewer.File.pies} />
+                : <div />
             }
             <Tabs
               defaultIndex={0}
