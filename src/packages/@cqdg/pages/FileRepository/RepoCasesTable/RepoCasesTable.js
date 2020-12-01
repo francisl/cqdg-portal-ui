@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import MdPeople from 'react-icons/lib/md/people';
 
+import { get } from 'lodash';
 import { theme } from '@ncigdc/theme';
 import withSelectIds from '@ncigdc/utils/withSelectIds';
 import timestamp from '@ncigdc/utils/timestamp';
@@ -18,12 +19,25 @@ import Table from '@cqdg/components/table/Table';
 import Tr from '@cqdg/components/table/Tr';
 
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import {addAllFilesInCart, toggleFilesInCart} from "@ncigdc/dux/cart";
+import Button from "@ferlab-ui/core/buttons/button";
+import CartIcon from "@cqdg/components/icons/CartIcon";
 
 import './CasesTable.css';
+import Td from "@cqdg/components/table/Td";
+import Th from "@cqdg/components/table/Th";
+import t from '@cqdg/locales/intl';
+
+export const CART_NO_MATCH = "NO_MATCH";
+export const CART_PARTIAL_MATCH = "PARTIAL";
+export const CART_EXACT_MATCH = "EXACT";
 
 export default compose(
   setDisplayName('RepoCasesTablePresentation'),
-  connect(state => ({ tableColumns: state.tableColumns.cases })),
+  connect(state => ({
+    tableColumns: state.tableColumns.cases,
+    cartFiles: state.cart.files
+  })),
   withPropsOnChange(['variables'], ({ variables: { cases_size } }) => ({
     resetScroll: !(cases_size > 20),
   })),
@@ -36,6 +50,8 @@ export default compose(
   withSelectIds
 )(
   ({
+    dispatch,
+    cartFiles,
     entityType = 'cases',
     resetScroll,
     selectedIds,
@@ -44,7 +60,11 @@ export default compose(
     variables,
     viewer: { Case: { hits } },
   }) => {
+
     const tableInfo = tableColumns.slice().filter(x => !x.hidden);
+
+    const getNbFilesMatchInCart= (files) => cartFiles.filter(cartFile => files.map(f => f.file_id).includes(cartFile.file_id)).length;
+    const getCartState = (count, files) => count === files.length ? CART_EXACT_MATCH : count > 0 ? CART_PARTIAL_MATCH : CART_NO_MATCH;
 
     return (
       <div className="cases-table">
@@ -73,8 +93,12 @@ export default compose(
           <Table
             body={(
               <tbody>
-                {hits.edges.map((e, i) => (
-                  <Tr
+                {hits.edges.map((e, i) => {
+                  const fileHits = get(e.node, 'files.hits.edges', []).map(e => e.node);
+                  const nbOfFilesMatchInCart = getNbFilesMatchInCart(fileHits);
+                  const cartState = getCartState(nbOfFilesMatchInCart, fileHits);
+
+                  return (<Tr
                     index={i}
                     key={e.node.id}
                     style={{
@@ -82,34 +106,44 @@ export default compose(
                         backgroundColor: theme.tableHighlight,
                       }),
                     }}
-                    >
-                    {tableInfo
-                      .filter(x => x.td)
-                      .map(x => (
-                        <x.td
-                          edges={hits.edges}
-                          index={i}
-                          key={x.id}
-                          node={e.node}
-                          selectedIds={selectedIds}
-                          setSelectedIds={setSelectedIds}
-                          total={hits.total}
+                  >
+                    {[
+                      <Td key="add_to_cart">
+                        <Button onClick={() => dispatch(cartState === CART_PARTIAL_MATCH ? addAllFilesInCart(fileHits) : toggleFilesInCart(fileHits))}
+                                active={cartState !== CART_NO_MATCH}
+                                className={`cases-table-cart-btn ${cartState === CART_PARTIAL_MATCH ? 'partial-match' : ''}`}>
+                          <CartIcon/>
+                        </Button>
+                      </Td>,
+                      ...tableInfo
+                        .filter(x => x.td)
+                        .map(x => (
+                          <x.td
+                            edges={hits.edges}
+                            index={i}
+                            key={x.id}
+                            node={e.node}
+                            selectedIds={selectedIds}
+                            setSelectedIds={setSelectedIds}
+                            total={hits.total}
                           />
-                      ))}
-                  </Tr>
-                ))}
+                        ))]}
+                  </Tr>);
+                })}
               </tbody>
             )}
-            headings={tableInfo
-              .filter(x => !x.subHeading)
-              .map(x => (
-                <x.th
-                  key={x.id}
-                  nodes={hits.edges}
-                  selectedIds={selectedIds}
-                  setSelectedIds={setSelectedIds}
-                  />
-              ))}
+            headings={[
+              <Th key="cart-toggle-all" className="table-th">{t('global.cart')}</Th>,
+              ...tableInfo
+                .filter(x => !x.subHeading)
+                .map(x => (
+                  <x.th
+                    key={x.id}
+                    nodes={hits.edges}
+                    selectedIds={selectedIds}
+                    setSelectedIds={setSelectedIds}
+                    />
+                ))]}
             id="repository-cases-table"
             subheadings={tableInfo
               .filter(x => x.subHeading)
