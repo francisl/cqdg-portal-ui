@@ -51,12 +51,17 @@
 }
 
 .side-panel-content {
+  flex-grow: 1;
   font-size: 12px;
   overflow: hidden;
   padding: 0px 17px
  }
 
  .side-panel-collapsed .side-panel-content {
+  display: none;
+}
+
+.side-panel-collapsed .side-panel-footer {
   display: none;
 }
 
@@ -77,6 +82,7 @@
 
 .side-panel-footer .spacer {
   border-left: thin solid #90A9C1;
+  flex-grow: 0;
   height: 10px;
   margin: 0 5px;
   width: 1px;
