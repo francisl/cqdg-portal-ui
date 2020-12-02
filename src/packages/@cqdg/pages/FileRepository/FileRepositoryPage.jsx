@@ -25,8 +25,6 @@ import t from '@cqdg/locales/intl';
 import Tabs from '@ferlab-ui/core/containers/tabs';
 import ScrollView from '@ferlab-ui/core/layouts/ScrollView';
 
-import features from '../../../../features.json';
-
 import './FileRepositoryPage.css';
 
 export type TProps = {
@@ -91,10 +89,6 @@ export const RepositoryPageComponent = (props: TProps) => {
   } = props;
   const fileCount = viewer.File.hits.total;
   const caseCount = viewer.Case.hits.total;
-
-  // PLA : hardcoding this to get page to load
-  /* const fileSize = props.viewer.cart_summary.aggregations.fs.value; */
-  const fileSize = 0;
 
   const facetTabPanes: TabPanes = [
     {
