@@ -21,8 +21,8 @@ import CaseIcon from '@ncigdc/theme/icons/Case';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 
 import t from '@cqdg/locales/intl';
+import presetFacets from '@cqdg/pages/FileRepository/CaseAggregations/CaseAggregationsFilters';
 import features from '../../../../../features.json';
-import presetFacets from './CaseAggregationsFilters';
 
 import '../Aggregations.css';
 
