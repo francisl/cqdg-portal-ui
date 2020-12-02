@@ -6,76 +6,12 @@ import PropTypes from 'prop-types';
 import {
   compose, withState, shouldUpdate, mapProps,
 } from 'recompose';
+
 import CloseIcon from 'react-icons/lib/md/close';
 
-// Custom
-import { center, zDepth1 } from '@ncigdc/theme/mixins';
+import './Notification.css';
 
 /*----------------------------------------------------------------------------*/
-
-const styles = {
-  wrapper: {
-    position: 'fixed',
-    top: 0,
-    width: '100vw',
-    zIndex: 100,
-    pointerEvents: 'none',
-    textAlign: 'left',
-    wordBreak: 'break-word',
-    overflow: 'hidden',
-    ...center,
-  },
-  container: {
-    margin: '1rem 0',
-    transition: 'transform 0.25s ease',
-  },
-  inactive: {
-    transform: 'translateY(-150px)',
-  },
-  active: {
-    transform: 'translateY(0)',
-  },
-  info: {
-    color: '#5C5151',
-    backgroundColor: '#EDF8FB',
-    border: '1px solid #B4CCD4',
-  },
-  add: {
-    color: '#575A00',
-    backgroundColor: '#EAEBC2',
-    boxShadow: '0px 4px 12px rgba(47, 94, 125, 0.18)',
-    borderRadius: '2px',
-  },
-  remove: {
-    color: '#735A00',
-    backgroundColor: '#FFEEC2',
-    boxShadow: '0px 4px 12px rgba(47, 94, 125, 0.18)',
-    borderRadius: '2px',
-  },
-  warning: {
-    color: '#86291B',
-    backgroundColor: '#F1D4CF',
-    boxShadow: '0px 4px 12px rgba(47, 94, 125, 0.18)',
-    borderRadius: '2px',
-  },
-  toast: {
-    position: 'relative',
-    padding: '8px 16px',
-    width: '40rem',
-    borderRadius: '10px',
-    pointerEvents: 'all',
-    ...zDepth1,
-  },
-  closeIcon: {
-    position: 'absolute',
-    top: '5px',
-    right: '5px',
-    cursor: 'pointer',
-    ':hover': {
-      color: 'red',
-    },
-  },
-};
 
 const Notification = ({
   action,
@@ -86,23 +22,18 @@ const Notification = ({
   style,
   visible,
 }) => (
-  <div className={className} style={styles.wrapper}>
+  <div className={`notification-wrapper ${className}`}>
     <div
-      className="test-notification"
+      className={`notification-container ${visible && !closed ? 'active' : 'inactive'}`}
       role="complementary"
       style={{
-        ...styles.container,
-        ...(visible && !closed ? styles.active : styles.inactive),
         ...style,
       }}
       >
       <div
-        style={{
-          ...styles.toast,
-          ...(styles[action] || styles.add),
-        }}
+        className={`notification-inner-wrapper notification-${action}`}
         >
-        <CloseIcon onClick={close} style={styles.closeIcon} />
+        <CloseIcon className="notification-close" onClick={close} />
         {children}
       </div>
     </div>
@@ -112,11 +43,17 @@ const Notification = ({
 Notification.propTypes = {
   action: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   close: PropTypes.func,
   delay: PropTypes.number,
   id: PropTypes.string,
   style: PropTypes.object,
   visible: PropTypes.bool,
+};
+
+Notification.defaultProps = {
+  action: 'add',
+  className: '',
 };
 
 let timeoutId;
