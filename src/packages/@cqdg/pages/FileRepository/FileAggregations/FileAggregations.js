@@ -83,7 +83,6 @@ const enhance = compose(
     presetFacetFields,
     validFacetDocTypes: ['files'],
   }),
-  withState('fileIdCollapsed', 'setFileIdCollapsed', false),
   withPropsOnChange(['viewer'], ({ viewer }) => ({
     parsedFacets: viewer.File.facets
       ? tryParseJSON(viewer.File.facets, {})
@@ -93,7 +92,6 @@ const enhance = compose(
 
 export type TProps = {
   relay: Record<string, any>;
-  fileIdCollapsed: boolean;
   facets: { facets: string };
   parsedFacets: Record<string, any>;
   aggregations: {
@@ -122,7 +120,6 @@ export type TProps = {
 };
 
 const FileAggregations = ({
-  fileIdCollapsed,
   handleRequestRemoveFacet,
   parsedFacets,
   relay,
@@ -143,7 +140,6 @@ const FileAggregations = ({
       ))}
       {features.filesearch && (
         <FilterSearchInput
-          collapsed={fileIdCollapsed}
           doctype="files"
           dropdownItem={(x) => (
             <StackLayout>

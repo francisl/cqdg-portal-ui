@@ -398,7 +398,6 @@ const RangeFacet = ({
           />
       </StackLayout>
 
-
       <StackLayout className="fui-rf-actions" horizontal>
         <Link
           query={newQuery}
