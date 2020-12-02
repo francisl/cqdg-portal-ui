@@ -28,8 +28,8 @@ const StyledLink = styled(Link, {
 });
 
 const FacetResetButton = ({
-  field,
   currentFilters,
+  field,
   query,
   style,
   ...props
@@ -40,6 +40,7 @@ const FacetResetButton = ({
     offset: 0,
     filters: newFilters,
   };
+
   const inCurrent = fieldInCurrentFilters({
     currentFilters: currentFilters.content || [],
     field,
@@ -47,11 +48,14 @@ const FacetResetButton = ({
   return (
     inCurrent && (
       <StyledLink
-        className="test-facet-reset-button"
-        style={{ display: inCurrent ? 'inline' : 'none', ...style }}
-        query={newQuery}
         aria-label="reset"
-      >
+        className="test-facet-reset-button"
+        query={newQuery}
+        style={{
+          display: inCurrent ? 'inline' : 'none',
+          ...style,
+        }}
+        >
         <ShadowedUndoIcon />
       </StyledLink>
     )

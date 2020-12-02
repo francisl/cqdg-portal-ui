@@ -1,20 +1,30 @@
 .fui-filters-container-header {
   align-items: center;
   border-bottom: thin solid #D8E1EB; /* gray-4 */
+  box-sizing: border-box;
   display: flex;
   flex-grow: 0;
   font-size: 14px;
   font-weight: 600;
   height: 32px;
-  justify-content: start;
+  justify-content: space-between;
   line-height: 22px;
   transition: 2s;
+  cursor: pointer;
+  background-color: white
 }
 
+.fui-filters-container-header > .fui-stack-layout:first-child { 
+  width: 100%;
+}
 .fui-filters-container-header.collapsed {
   border-bottom: none;
 } 
 
 .fui-filters-container-header button {
   padding: 0;
+}
+
+.fui-filters-container-header .close-icon:hover::before { 
+  padding-left: '2px';
 }

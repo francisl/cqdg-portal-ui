@@ -9,11 +9,9 @@ import {
   withState,
 } from 'recompose';
 import { isEqual } from 'lodash';
-
-import AngleDown from 'react-icons/lib/fa/angle-down';
+import { parseFilterParam } from '@cqdg/utils/uri';
 
 import withRouter from '@ncigdc/utils/withRouter';
-import { parseFilterParam } from '@ncigdc/utils/uri';
 import Input from '@ncigdc/uikit/Form/Input';
 import {
   DAYS_IN_YEAR,
@@ -25,12 +23,15 @@ import t from '@cqdg/locales/intl';
 import Link from '@ncigdc/components/Links/Link';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 import Button from '@ferlab-ui/core/buttons/button';
-import { requestQuery } from '@cqdg/routes/query';
+import {
+  getCurrentQuery, updateQuery, resetQuery,
+} from '@cqdg/store/query';
 
 import './RangeFilter.css';
 
-const getCurrentFromAndTo = ({ field, query }) => {
+const getCurrentFromAndTo = ({ field }) => {
   const dotField = field.replace(/__/g, '.');
+  const query = getCurrentQuery();
   const currentFilters =
     (query && parseFilterParam((query || {}).filters, {}).content) || [];
 
@@ -137,13 +138,11 @@ const enhance = compose(
         field,
         max,
         min,
-        query,
         setState,
         state: { selectedUnit },
       } = this.props;
       const thisFieldCurrent = getCurrentFromAndTo({
         field,
-        query,
       });
       const opToWord = {
         '<=': 'to',
@@ -193,12 +192,11 @@ const enhance = compose(
         )
       ) {
         const {
-          field, max, min, query,
+          field, max, min,
         } = nextProps;
         const { convertDays, setState, state: { selectedUnit } } = this.props;
         const thisFieldCurrent = getCurrentFromAndTo({
           field,
-          query,
         });
         const opToWord = {
           '<=': 'to',
@@ -363,6 +361,8 @@ const RangeFacet = ({
   };
   if (collapsed) return null;
 
+  const newQuery = resetQuery(field);
+
   return (
     <StackLayout className="fui-rf-container" vertical>
       <StackLayout className="fui-rf-grouped-inputs" horizontal>
@@ -370,9 +370,7 @@ const RangeFacet = ({
           <select className="fui-rf-range-target-select" onChange={handleUnitChanged} value={selectedUnit}>
             <option value="years">{t('facet.range.years')}</option>
             <option disabled={!convertDays} value="days">{t('facet.range.days')}</option>
-            <AngleDown />
           </select>
-
         </div>
         <Input
           id={`from-${dotField}`}
@@ -402,20 +400,19 @@ const RangeFacet = ({
 
 
       <StackLayout className="fui-rf-actions" horizontal>
-        <Button
-          onClick={handleToChanged}
-          type="text"
+        <Link
+          query={newQuery}
           >
-          {t('facet.actions.reset')}
-        </Button>
+          <Button type="text">
+            {t('facet.actions.reset')}
+          </Button>
+        </Link>
         <Link
           merge="replace"
           query={innerContent.length ? query : null}
           >
           <Button
-            onClick={() => {
-              requestQuery(history, query);
-            }}
+            onClick={() => {}}
             >
             {t('facet.actions.apply')}
           </Button>
