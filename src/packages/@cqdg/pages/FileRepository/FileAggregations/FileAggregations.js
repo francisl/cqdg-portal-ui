@@ -2,12 +2,10 @@
 /* eslint jsx-a11y/no-static-element-interactions: 0, max-len: 1 */
 
 import React from 'react';
-
 import reject from 'lodash/reject';
 
 import {
   compose,
-  withState,
   setDisplayName,
   withPropsOnChange,
 } from 'recompose';
@@ -26,52 +24,9 @@ import t from '@cqdg/locales/intl';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 
 import features from '../../../../../features.json';
+import presetFacets from './FileAggregationsFilters';
 
 import '../Aggregations.css';
-
-const presetFacets = [
-  {
-    title: t('facet.file'),
-    field: 'file_id',
-    full: 'file_id',
-    type: 'keyword',
-  },
-  {
-    field: 'data_category',
-    full: 'data_category',
-    type: 'keyword',
-  },
-  {
-    field: 'data_type',
-    full: 'data_type',
-    type: 'keyword',
-  },
-  {
-    field: 'is_harmonized',
-    full: 'is_harmonized',
-    type: 'keyword',
-  },
-  {
-    field: 'experimental_strategy',
-    full: 'experimental_strategy',
-    type: 'keyword',
-  },
-  {
-    field: 'file_format',
-    full: 'file_format',
-    type: 'keyword',
-  },
-  {
-    field: 'platform',
-    full: 'platform',
-    type: 'keyword',
-  },
-  {
-    field: 'data_access',
-    full: 'data_access',
-    type: 'keyword',
-  },
-];
 
 const presetFacetFields = presetFacets.map(x => x.field);
 const entityType = 'Files';
