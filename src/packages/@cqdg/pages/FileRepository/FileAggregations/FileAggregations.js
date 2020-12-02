@@ -23,8 +23,8 @@ import FileIcon from '@ncigdc/theme/icons/File';
 import t from '@cqdg/locales/intl';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 
+import presetFacets from '@cqdg/pages/FileRepository/FileAggregations/FileAggregationsFilters';
 import features from '../../../../../features.json';
-import presetFacets from './FileAggregationsFilters';
 
 import '../Aggregations.css';
 
