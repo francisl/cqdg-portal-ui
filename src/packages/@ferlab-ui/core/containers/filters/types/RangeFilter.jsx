@@ -403,12 +403,7 @@ const RangeFacet = ({
         <Link
           query={newQuery}
           >
-          <Button
-            onClick={() => {
-              // requestQuery(history, resetQuery(field, {}, query));
-            }}
-            type="text"
-            >
+          <Button type="text">
             {t('facet.actions.reset')}
           </Button>
         </Link>
@@ -417,9 +412,7 @@ const RangeFacet = ({
           query={innerContent.length ? query : null}
           >
           <Button
-            onClick={() => {
-              updateQuery(history, query);
-            }}
+            onClick={() => {}}
             >
             {t('facet.actions.apply')}
           </Button>

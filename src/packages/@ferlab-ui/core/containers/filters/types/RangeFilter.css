@@ -45,6 +45,10 @@
   padding: 8px 14px;
 }
 
+.fui-rf-actions a {
+  text-decoration: none;
+}
+
 .fui-rf-actions > * {
   margin-left: 8px;
 }
