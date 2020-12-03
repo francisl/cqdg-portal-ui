@@ -10,6 +10,12 @@
   width: 100%;
 }
 
+.containers-tab-link {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
 .containers-tab-link:hover {
   text-decoration: none;
 }
@@ -25,24 +31,42 @@
   border-bottom: 2px solid #008FC7;
 }
 
-.containers-tab-nav.default > .containers-tab.active > .containers-tab-link {
-  color: #008FC7; /* blue-7 */
-}
-
-.default .containers-tab {
-  padding-bottom: 7px;
-}
-
 .default .containers-tab:not(:last-child) {
   margin-right: 32px;
 }
 
 .default .containers-tab-link {
-  color: #18486B; /* gray-8 */
   font-size: 14px;
-  padding-bottom: 7px;
-  height: 28px;
+  height: 36px;
   text-decoration: none;
+}
+
+/* active */
+.default > .containers-tab.active > .containers-tab-link {
+  color: #008FC7; /* blue-7 */
+}
+.default > .containers-tab.active > .containers-tab-link:hover {
+  color: #547785;
+}
+.default > .containers-tab.active > .containers-tab-link:active {
+  color: #005673;
+}
+
+/* inactive */
+.default .containers-tab-link {
+  color: #18486B; /* gray-8 */
+}
+
+.default .containers-tab-link:hover {
+  color: #0075A2;
+}
+
+.default .containers-tab-link:active {
+  color: #005673;
+}
+
+.default .containers-tab-link:disabled {
+  color: #90A9C1;
 }
 
 /* Card Type tabs */

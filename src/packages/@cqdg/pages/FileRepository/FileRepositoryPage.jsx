@@ -94,12 +94,20 @@ export const RepositoryPageComponent = (props: TProps) => {
     {
       component: <ScrollView><FileAggregations relay={relay} /></ScrollView>,
       id: 'files',
-      text: t('global.files.title'),
+      text: (
+        <React.Fragment>
+          <FaFile className="tabs-icon" />
+          {t('global.files.title')}
+        </React.Fragment>),
     },
     {
       component: <ScrollView><CaseAggregations relay={relay} /></ScrollView>,
       id: 'participants',
-      text: t('global.donors'),
+      text: (
+        <React.Fragment>
+          <MdPeople className="tabs-icon" />
+          {t('global.donors')}
+        </React.Fragment>),
     },
   ];
 
