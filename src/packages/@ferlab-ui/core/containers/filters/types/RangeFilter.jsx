@@ -24,7 +24,7 @@ import Link from '@ncigdc/components/Links/Link';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 import Button from '@ferlab-ui/core/buttons/button';
 import {
-  getCurrentQuery, updateQuery, resetQuery,
+  getCurrentQuery, resetQuery,
 } from '@cqdg/store/query';
 
 import './RangeFilter.css';

@@ -1,0 +1,63 @@
+.fui-button-group-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 24px;
+}
+
+.fui-button-group-container .fui-button-radio-button {
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0 8px;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #B5C6D8;
+}
+
+.fui-button-group-container .fui-button-radio-button.active {
+  border: 1px solid #008FC7;
+  z-index: 2;
+}
+
+.fui-button-group-container .fui-button-radio-button:first-child {
+  border-radius: 2px 0px 0px 2px;
+}
+
+.fui-button-group-container .fui-button-radio-button:last-child {
+  border-radius: 0px 2px 2px 0px;
+  margin-left: -1px;
+}
+
+.fui-button-group-container .fui-button-radio-button:only-child {
+  border-radius: 2px;
+  margin-left: 0;
+}
+
+.fui-button-group-container .fui-button-radio-button:hover {
+  border-color: #31BDF2;
+  color: #31BDF2;
+  z-index: 2;
+}
+
+/* .fui-button-group-container .fui-button-radio-button:not(:first-child):not(:last-child) {
+  border-radius: 2px;
+  margin-left: 0; 
+} */
+
+.fui-button-group-container .fui-button-radio-button > *:hover {
+  text-decoration: none;
+}
+
+.fui-button-group-container .fui-button-radio-button > *:not(:first-child) {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fui-button-input {
+  display: none;
+}

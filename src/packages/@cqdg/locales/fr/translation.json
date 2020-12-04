@@ -210,6 +210,7 @@
   },
   "aggregation": {
     "0":"Faux","1":"Vrai",
+    "true": "vrai", "false": "faux",
     "data_category":"",
     "sequencing.reads":"Sequencing reads",
     "simple.nucleotide.variation":"Simple nucleotide variation",
