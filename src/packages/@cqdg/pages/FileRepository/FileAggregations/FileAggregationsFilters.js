@@ -20,7 +20,7 @@ const presetFilters = [
   {
     field: 'is_harmonized',
     full: 'is_harmonized',
-    type: 'keyword',
+    type: 'choice',
   },
   {
     field: 'experimental_strategy',

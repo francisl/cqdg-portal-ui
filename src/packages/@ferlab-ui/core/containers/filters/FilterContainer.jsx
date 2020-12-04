@@ -20,6 +20,7 @@ import Header from '@ferlab-ui/core/containers/filters/FilterContainerHeader';
 import DateFacet from '@ncigdc/components/Aggregations/DateFacet';
 import ExactMatchFacet from '@ncigdc/components/Aggregations/ExactMatchFacet';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import SingleChoice from '@ferlab-ui/core/containers/filters/types/SingleChoice';
 import MultipleChoice from '@ferlab-ui/core/containers/filters/types/MultipleChoice';
 import RangeFilter from '@ferlab-ui/core/containers/filters/types/RangeFilter';
 
@@ -55,15 +56,21 @@ const fieldNameToTitle = fieldName => fieldName
   .join(' ');
 
 const getFacetType = facet => {
+  if (facet.type === 'choice') {
+    return 'choice';
+  }
   if (includes(facet.field, 'datetime')) {
     return 'datetime';
-  } if (facet.type === 'terms') {
+  }
+  if (facet.type === 'terms') {
     // on Annotations & Repo pages project_id is a terms facet
     // need a way to force an *_id field to return terms
     return 'terms';
-  } if (facet.type === 'exact') {
+  }
+  if (facet.type === 'exact') {
     return 'exact';
-  } if (
+  }
+  if (
     some([
       '_id',
       '_uuid',
@@ -72,7 +79,8 @@ const getFacetType = facet => {
     ], idSuffix => includes(facet.field, idSuffix))
   ) {
     return 'exact';
-  } if (facet.type === 'long' || facet.type === 'float') {
+  }
+  if (facet.type === 'long' || facet.type === 'float') {
     return 'range';
   }
   return 'terms';
@@ -102,6 +110,19 @@ export const WrapperComponent = compose(withTheme)(({
   };
 
   const facetComponent = {
+    choice: () => (
+      <SingleChoice
+        {...commonProps}
+        buckets={(aggregation || { buckets: [] }).buckets}
+        doctype={facet.doc_type}
+        field={facet.full}
+        fieldNoDoctype={facet.field}
+        placeholder={
+        facet.placeholder ? facet.placeholder : `Enter ${commonProps.title}`
+      }
+        {...additionalProps}
+        />
+    ),
     exact: () => (
       <ExactMatchFacet
         {...commonProps}

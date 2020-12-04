@@ -208,6 +208,7 @@
   },
   "aggregation": {
     "0":"False","1":"True",
+    "true": "true", "false": "false",
     "data_category":"",
     "sequencing.reads":"Sequencing reads",
     "simple.nucleotide.variation":"Simple nucleotide variation",

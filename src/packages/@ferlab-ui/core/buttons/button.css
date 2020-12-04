@@ -49,6 +49,7 @@ button.navigation.active {
 button.text {
   border: none;
   background-color: transparent;
+  text-transform: capitalize;
 }
 
 button.primary {
