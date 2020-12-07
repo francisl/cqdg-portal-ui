@@ -209,7 +209,7 @@
   },
   "aggregation": {
     "0":"False","1":"True",
-    "true": "true", "false": "false",
+    "true": "Yes", "false": "No",
     "data_category":"Data Category",
     "sequencing.reads":"Sequencing reads",
     "simple.nucleotide.variation":"Simple nucleotide variation",
