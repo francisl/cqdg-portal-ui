@@ -83,18 +83,15 @@ const SingleChoice = (props: TProps) => {
                 }))
                 .map(bucket => {
                   const filterToReset = currentFilters.reduce((acc, f) => {
-                    const otherFilterValue = f.content.value.find((v) => v !== bucket.name);
-                    return otherFilterValue ? acc.concat(otherFilterValue) : acc;
+                    if (f.content.field === field) {
+                      const otherFilterValue = f.content.value.find((v) => v !== bucket.name);
+                      return otherFilterValue ? acc.concat(otherFilterValue) : acc;
+                    }
+                    return acc;
                   }, []).concat(bucket.name);
 
-                      // console.log('B>> ', bucket.name, ' >> ', filterToReset);
                   return (
                     <Radio.Button
-                          // checked={inCurrentFilters({
-                          //   key: bucket.name.toLowerCase(),
-                          //   dotField,
-                          //   currentFilters,
-                          // })}
                       key={bucket.id}
                       value={bucket.name}
                       >
