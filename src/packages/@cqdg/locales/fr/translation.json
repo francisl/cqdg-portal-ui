@@ -212,8 +212,8 @@
   "aggregation": {
     "0":"Faux",
     "1":"Vrai",
-    "true": "vrai",
-    "false": "faux",
+    "true": "Oui",
+    "false": "Non",
     "data_category":"Catégorie de données",
     "sequencing.reads":"Sequencing reads",
     "simple.nucleotide.variation":"Simple nucleotide variation",
