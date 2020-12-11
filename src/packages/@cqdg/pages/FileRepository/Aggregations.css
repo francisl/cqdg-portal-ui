@@ -5,8 +5,13 @@
 
 .aggregations-search-id {
   font-weight: bold;
+  white-space: pre-wrap;
 }
 
 .aggregations-search-donor {
   font-size: 14px;
+}
+
+.aggregations-search-container {
+  overflow: hidden;
 }

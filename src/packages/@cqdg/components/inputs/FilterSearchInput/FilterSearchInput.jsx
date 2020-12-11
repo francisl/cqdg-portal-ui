@@ -191,6 +191,7 @@ const FilterSearchInput = compose(
                   {[].concat(currentValues.content.value || []).map(v => (
                     // added search items
                     <CheckedLink
+                      className="filter-search-selected-item"
                       key={v}
                       merge="toggle"
                       query={{
@@ -208,6 +209,7 @@ const FilterSearchInput = compose(
                           ],
                         },
                       }}
+                      title={v}
                       >
                       <CheckCircleOIcon style={{ paddingRight: '0.5rem' }} />
                       {getCheckedValue(v)}
@@ -258,7 +260,7 @@ const FilterSearchInput = compose(
                         >
                         {
                           get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
-                            <Row
+                            <StackLayout
                               key={x.node.id}
                               onClick={() => {
                                 setInputValue('');
@@ -266,8 +268,10 @@ const FilterSearchInput = compose(
                               }}
                               onMouseOver={() => selectableList.setFocusedItem(x.node)}
                               style={{ alignItems: 'center' }}
+                              vertical
                               >
                               <StyledDropdownLink
+                                className="filter-search-results-list"
                                 data-link-id={x.node.id}
                                 id={x.node[fieldNoDoctype]}
                                 linkIsActive={selectableList.focusedItem === x.node}
@@ -276,7 +280,7 @@ const FilterSearchInput = compose(
                                 >
                                 {dropdownItem(x.node)}
                               </StyledDropdownLink>
-                            </Row>
+                            </StackLayout>
                           ))
 }
                         {!(results[doctype] || []).length &&

@@ -83,7 +83,7 @@ const CaseAggregationsComponent = ({
         placeholder={t('facet.search')}
         queryType="case"
         title="Case"
-        tooltip={t('facet.search_suggest_tooltip')}
+        tooltip={t('facet.search_suggest_tooltip_donors')}
         />
     )}
     {features.uploadCaseSet && (
