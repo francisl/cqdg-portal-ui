@@ -101,7 +101,7 @@ const FileAggregations = ({
               <FileIcon
                 className="aggregations-search-icon"
                 />
-              <div>
+              <div className="aggregations-search-container">
                 <div className="aggregations-search-id">{x.file_id}</div>
                 <div className="aggregations-search-donor">{x.submitter_donor_id}</div>
                 {x.file_name}
@@ -112,7 +112,7 @@ const FileAggregations = ({
           placeholder={t('facet.search')}
           queryType="file"
           title="File"
-          tooltip={t('facet.search_suggest_tooltip')}
+          tooltip={t('facet.search_suggest_tooltip_files')}
           />
       )}
       {reject(presetFacets, { full: 'file_id' }).map(facet => {
