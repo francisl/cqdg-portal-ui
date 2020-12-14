@@ -7,7 +7,7 @@ import t from '@cqdg/locales/intl';
 import withSize from '@ncigdc/utils/withSize';
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 import withRouter from '@ncigdc/utils/withRouter';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import {
   PieTitle,
   SelfFilteringPie,

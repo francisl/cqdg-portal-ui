@@ -4,7 +4,7 @@ import { compose, withState } from 'recompose';
 import ArrangeColumnsButton from '@cqdg/components/table/button/ArrangeColumnsButton';
 import timestamp from '@ncigdc/utils/timestamp';
 import withRouter from '@ncigdc/utils/withRouter';
-import { mergeQuery } from '@ncigdc/utils/filters';
+import { mergeQuery } from '@cqdg/utils/filters';
 import { Row } from '@ncigdc/uikit/Flex';
 import { parseJSONParam, stringifyJSONParam } from '@ncigdc/utils/uri';
 import { visualizingButton } from '@ncigdc/theme/mixins';

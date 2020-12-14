@@ -18,7 +18,7 @@ import {
   parseJSONParam,
 } from '@ncigdc/utils/uri';
 
-import { mapFilter } from '@ncigdc/utils/filters';
+import { mapFilter } from '@cqdg/utils/filters';
 import { viewerQuery } from '../../../@ncigdc/routes/queries';
 
 class RepositoryRoute extends Relay.Route {

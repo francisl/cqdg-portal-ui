@@ -12,7 +12,7 @@ import { toggleAddAllToCart } from '@ncigdc/dux/cart';
 import CloseIcon from '@ncigdc/theme/icons/CloseIcon';
 import LocationSubscriber from '@ncigdc/components/LocationSubscriber';
 import { IRawQuery } from '@ncigdc/utils/uri/types';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import { inCurrentFilters } from '@ncigdc/utils/filters';
 import Input from '@ncigdc/uikit/Form/Input';
 import OverflowTooltippedLabel from '@ncigdc/uikit/OverflowTooltippedLabel';
@@ -164,10 +164,10 @@ const MultipleChoice = (props: TProps) => {
                   </Link>
                 </StackLayout>
                 {filteredBuckets.sort((a, b) => {
-                    return (a.key === "__missing__") ? Number.MIN_VALUE :
-                      b.key === "__missing__" ? Number.MAX_VALUE :
-                      b.doc_count - a.doc_count;
-                  })
+                  return (a.key === '__missing__') ? Number.MIN_VALUE
+                      : b.key === '__missing__' ? Number.MAX_VALUE
+                      : b.doc_count - a.doc_count;
+                })
                   .slice(0, props.showingMore ? Infinity : maxShowing)
                   .map(b => ({
                     ...b,

@@ -9,7 +9,7 @@ import MdLockOutline from 'react-icons/lib/md/lock-outline';
 import MdLockOpen from 'react-icons/lib/md/lock-open';
 
 import { RepositoryCasesLink } from '@ncigdc/components/Links/RepositoryLink';
-import { makeFilter } from '@ncigdc/utils/filters';
+import { makeFilter } from '@cqdg/utils/filters';
 
 import Th from '@cqdg/components/table/Th';
 import Td from '@cqdg/components/table/Td';

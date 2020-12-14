@@ -4,7 +4,7 @@ import {
   mergeQuery,
   makeFilter,
   inCurrentFilters,
-} from '@ncigdc/utils/filters';
+} from '@cqdg/utils/filters';
 import PieChart from '@cqdg/components/charts/PieChart';
 import { Row, Column } from '@ncigdc/uikit/Flex';
 import { stringifyJSONParam } from '@ncigdc/utils/uri';

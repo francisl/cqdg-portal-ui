@@ -11,7 +11,7 @@ import {
 import { toggleAddAllToCart } from '@ncigdc/dux/cart';
 import LocationSubscriber from '@ncigdc/components/LocationSubscriber';
 import { IRawQuery } from '@ncigdc/utils/uri/types';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import Link from '@ncigdc/components/Links/Link';
 
 import t from '@cqdg/locales/intl';

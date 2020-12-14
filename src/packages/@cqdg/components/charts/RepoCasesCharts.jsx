@@ -10,7 +10,7 @@ import MinusSign from 'react-icons/lib/go/dash';
 import withSize from '@ncigdc/utils/withSize';
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 import withRouter from '@ncigdc/utils/withRouter';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import { withTheme } from '@ncigdc/theme';
 import Column from '@ncigdc/uikit/Flex/Column';
 import Row from '@ncigdc/uikit/Flex/Row';

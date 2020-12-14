@@ -6,10 +6,10 @@ import { compose, withPropsOnChange } from 'recompose';
 import { connect } from 'react-redux';
 import { parse } from 'query-string';
 import Query from '@ncigdc/modern_components/Query';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import withRouter from '@ncigdc/utils/withRouter';
 import { repoPageFileToCaseFiltersMapping } from '@cqdg/pages/FileRepository/FilterMapping';
-import { mapFilter } from '@ncigdc/utils/filters';
+import { mapFilter } from '@cqdg/utils/filters';
 
 const entityType = 'Files';
 export default (Component: ReactClass<*>) =>

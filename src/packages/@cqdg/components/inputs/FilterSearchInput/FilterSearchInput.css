@@ -1,5 +1,34 @@
+.filter-search-dropdown {
+  margin-top: 0;
+  top: 49px;
+  left: 1;
+  width: 100%;
+  word-break: break-word;
+  position: absolute;
+  z-index: 200;
+  min-width: 165px;
+  background-color: white;
+  text-align: left;
+  right: 0;
+  border-radius: 2px;
+}
+
 .filter-search-results-list {
   box-sizing: border-box;
+  padding: 1rem;
+  color: #486F90;
+  width: 100%;  
+  text-decoration: none;
+}
+
+.filter-search-results-list:link {
+  text-decoration: none;
+  color: #486F90;
+}
+
+.filter-search-results-list:visited {
+  text-decoration: none;
+  color: #486F90;
 }
 
 .filter-search-selected-item {
