@@ -17,7 +17,8 @@ import withRouter from '@ncigdc/utils/withRouter';
 import Link from '@ncigdc/components/Links/Link';
 
 import { facetFieldDisplayMapper } from '@ncigdc/components/Aggregations';
-import { parseJSONParam } from '@ncigdc/utils/uri/index';
+import { parseJSONParam } from '@cqdg/utils/uri';
+
 import t from '@cqdg/locales/intl';
 
 import IoIosCloseCircleOutline from 'react-icons/lib/io/ios-close-outline';
@@ -97,7 +98,10 @@ const QueryBuilder = (
                 return (
                   <Filter
                     filters={value}
-                    filterType={humanify({ term: facetFieldDisplayMapper(filter.content.field), capitalize: false })}
+                    filterType={humanify({
+                      term: facetFieldDisplayMapper(filter.content.field),
+                      capitalize: false,
+                    })}
                     isFilterExpanded={isFilterExpanded(filter)}
                     key={`${filter.content.field}.${filter.op}.${value.join()}`}
                     onClick={() => {

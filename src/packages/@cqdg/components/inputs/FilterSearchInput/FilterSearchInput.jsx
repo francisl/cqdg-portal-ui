@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-// @flow
 
 // Vendor
 import React, { Fragment } from 'react';
-import { get, trim } from 'lodash';
+import get from 'lodash/get';
+import trim from 'lodash/trim';
 import {
   compose,
   pure,
@@ -16,53 +17,28 @@ import {
 import LocationSubscriber from '@ncigdc/components/LocationSubscriber';
 import fetchFileHistory from '@ncigdc/utils/fetchFileHistory';
 // Custom
-import { parseFilterParam } from '@ncigdc/utils/uri';
-import { getFilterValue } from '@ncigdc/utils/filters';
-import { Row, Column } from '@ncigdc/uikit/Flex';
+import { parseFilterParam } from '@cqdg/utils/uri';
+import { getFilterValue } from '@cqdg/utils/filters';
 import withDropdown from '@ncigdc/uikit/withDropdown';
-import styled from '@ncigdc/theme/styled';
-import { dropdown } from '@ncigdc/theme/mixins';
 import Link from '@ncigdc/components/Links/Link';
-import CheckCircleOIcon from '@ncigdc/theme/icons/CheckCircleOIcon';
 import withSelectableList from '@ncigdc/utils/withSelectableList';
 import namespace from '@ncigdc/utils/namespace';
 import GeneSymbol from '@ncigdc/modern_components/GeneSymbol';
 import SetId from '@ncigdc/components/SetId';
-import FileIcon from '@ncigdc/theme/icons/File';
 import { isUUID } from '@ncigdc/utils/string';
 import {
   CheckedLink,
 } from '@ncigdc/components/Aggregations/';
 
+
+// Icons
+import CheckCircleOIcon from 'react-icons/lib/fa/check';
+import FileIcon from 'react-icons/lib/fa/file';
+
+
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 import SearchInput from '@ferlab-ui/core/input/Search';
 import './FilterSearchInput.css';
-
-const StyledDropdownRow = styled(Row, {
-  color: ({ theme }) => theme.greyScale4,
-  padding: '1rem',
-  textDecoration: 'none',
-  fontStyle: 'italic',
-});
-
-const StyledDropdownLink = styled(Link, {
-  padding: '1rem',
-  color: ({ theme }) => theme.greyScale2,
-  ':link': {
-    textDecoration: 'none',
-    color: ({ linkIsActive, theme }) =>
-      (linkIsActive ? 'white' : theme.primary),
-  },
-  ':visited': {
-    textDecoration: 'none',
-    color: ({ linkIsActive, theme }) =>
-      (linkIsActive ? 'white' : theme.primary),
-  },
-  backgroundColor: ({ linkIsActive }) =>
-    (linkIsActive ? 'rgb(31, 72, 108)' : 'inherit'),
-  width: '100%',
-  textDecoration: 'none',
-});
 
 const extractNodes = (obj) => {
   const nodes = [];
@@ -246,17 +222,11 @@ const FilterSearchInput = compose(
                       }}
                       />
                     {active && (
-                      <Column
+                      <StackLayout
+                        className="filter-search-dropdown"
                         id={`${fieldNoDoctype}-options`}
                         onClick={e => e.stopPropagation()}
-                        style={{
-                          ...dropdown,
-                          marginTop: 0,
-                          top: '49px',
-                          left: 1,
-                          width: '100%',
-                          wordBreak: 'break-word',
-                        }}
+                        vertical
                         >
                         {
                           get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
@@ -270,7 +240,7 @@ const FilterSearchInput = compose(
                               style={{ alignItems: 'center' }}
                               vertical
                               >
-                              <StyledDropdownLink
+                              <Link
                                 className="filter-search-results-list"
                                 data-link-id={x.node.id}
                                 id={x.node[fieldNoDoctype]}
@@ -279,7 +249,7 @@ const FilterSearchInput = compose(
                                 query={query(x.node[fieldNoDoctype])}
                                 >
                                 {dropdownItem(x.node)}
-                              </StyledDropdownLink>
+                              </Link>
                             </StackLayout>
                           ))
 }
@@ -288,7 +258,7 @@ const FilterSearchInput = compose(
                           historyResults
                             .filter(result => result.file_change === 'released')
                             .map((result) => (
-                              <Row
+                              <StackLayout
                                 key={result.uuid}
                                 onClick={() => {
                                   setInputValue('');
@@ -297,8 +267,10 @@ const FilterSearchInput = compose(
                                 onMouseOver={() =>
                                   selectableList.setFocusedItem(result)}
                                 style={{ alignItems: 'center' }}
+                                vertical
                                 >
-                                <StyledDropdownLink
+                                <Link
+                                  className="filter-search-results-list"
                                   data-link-id={result.uuid}
                                   id={result.uuid}
                                   linkIsActive={
@@ -323,16 +295,16 @@ const FilterSearchInput = compose(
                                   </span>
                                   {' '}
                                   was updated
-                                </StyledDropdownLink>
-                              </Row>
+                                </Link>
+                              </StackLayout>
                             ))}
                         {(!!results && get(results, doctype, [])).length === 0 &&
                           historyResults.length === 0 && (
-                            <StyledDropdownRow>
+                            <div>
                               {loading ? 'Loading' : 'No matching items found'}
-                            </StyledDropdownRow>
+                            </div>
                         )}
-                      </Column>
+                      </StackLayout>
                     )}
                   </Fragment>
                 </Fragment>

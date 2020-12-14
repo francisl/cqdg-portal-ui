@@ -16,7 +16,7 @@ import {
 } from '@ncigdc/utils/uri';
 import Query from '@ncigdc/modern_components/Query';
 import { repoPageCaseToFileFiltersMapping } from '@cqdg/pages/FileRepository/FilterMapping';
-import { mapFilter } from '@ncigdc/utils/filters';
+import { mapFilter } from '@cqdg/utils/filters';
 
 export default (Component: ReactClass<*>) =>
   compose(

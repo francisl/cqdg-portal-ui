@@ -5,10 +5,10 @@ import { graphql } from 'react-relay';
 import { compose, withPropsOnChange } from 'recompose';
 import { connect } from 'react-redux';
 import Query from '@ncigdc/modern_components/Query';
-import { parseFilterParam } from '@ncigdc/utils/uri';
+import { parseFilterParam } from '@cqdg/utils/uri';
 import withRouter from '@ncigdc/utils/withRouter';
 import { parse } from 'query-string';
-import { mapFilter } from '@ncigdc/utils/filters';
+import { mapFilter } from '@cqdg/utils/filters';
 import { repoPageCaseToFileFiltersMapping } from '@cqdg/pages/FileRepository/FilterMapping';
 
 const entityType = 'Files';

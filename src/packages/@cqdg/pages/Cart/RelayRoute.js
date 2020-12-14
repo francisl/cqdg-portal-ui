@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import { handleStateChange } from '@ncigdc/dux/relayProgress';
 import { parseIntParam, parseJSONParam } from '@ncigdc/utils/uri';
-import { setFilter } from '@ncigdc/utils/filters';
+import { setFilter } from '@cqdg/utils/filters';
 import CartPage from './CartPage';
 
 class CartRoute extends Relay.Route {
