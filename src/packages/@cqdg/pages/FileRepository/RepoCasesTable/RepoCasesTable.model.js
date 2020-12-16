@@ -4,7 +4,7 @@
 
 // @flow
 import React from 'react';
-import { RepositoryFilesLink } from '@ncigdc/components/Links/RepositoryLink';
+import { RepositoryFilesLink } from '@cqdg/components/Links/RepositoryLink';
 import { makeFilter } from '@cqdg/utils/filters';
 
 import t from '@cqdg/locales/intl';

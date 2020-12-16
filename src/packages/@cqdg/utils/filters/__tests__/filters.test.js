@@ -1,4 +1,4 @@
-import { stringifyJSONParam, parseFilterParam } from '@ncigdc/utils/uri/index';
+import { stringifyJSONParam, parseFilterParam } from '@cqdg/utils/uri/index';
 import { addInFilters, toggleFilters, mergeQuery, removeFilter } from '../';
 
 const baseFilter = {

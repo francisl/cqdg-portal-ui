@@ -8,14 +8,14 @@ import MdLock from 'react-icons/lib/md/lock';
 import MdLockOutline from 'react-icons/lib/md/lock-outline';
 import MdLockOpen from 'react-icons/lib/md/lock-open';
 
-import { RepositoryCasesLink } from '@ncigdc/components/Links/RepositoryLink';
+import { RepositoryCasesLink } from '@cqdg/components/Links/RepositoryLink';
 import { makeFilter } from '@cqdg/utils/filters';
 
 import Th from '@cqdg/components/table/Th';
 import Td from '@cqdg/components/table/Td';
 import TdNum from '@cqdg/components/table/TdNum';
 import ThNum from '@cqdg/components/table/ThNum';
-import FileLink from '@ncigdc/components/Links/FileLink';
+import FileLink from '@cqdg/components/Links/FileLink';
 import FileSize from '@ncigdc/components/FileSize';
 import CopyToClipboardButton from '@ncigdc/modern_components/CopyToClipboardButton/CopyToClipboardButton';
 

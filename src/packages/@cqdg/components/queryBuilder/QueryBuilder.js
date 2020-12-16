@@ -14,7 +14,7 @@ import {
 import { humanify } from '@ncigdc/utils/string';
 import withRouter from '@ncigdc/utils/withRouter';
 
-import Link from '@ncigdc/components/Links/Link';
+import Link from '@cqdg/components/Links/Link';
 
 import { facetFieldDisplayMapper } from '@ncigdc/components/Aggregations';
 import { parseJSONParam } from '@cqdg/utils/uri';

@@ -1,0 +1,3 @@
+import { makeIDLink } from './utils';
+
+export default makeIDLink({ pathname: '/files' });

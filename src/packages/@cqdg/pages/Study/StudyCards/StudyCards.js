@@ -6,7 +6,7 @@ import MdPeople from 'react-icons/lib/md/people';
 import MdAssignment from 'react-icons/lib/md/assignment';
 import FiExternalLink from 'react-icons/lib/fa/external-link';
 
-import Link from '@ncigdc/components/Links/Link';
+import Link from '@cqdg/components/Links/Link';
 
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 import InlineCount from '@cqdg/components/countWithIcon/InlineCount';
