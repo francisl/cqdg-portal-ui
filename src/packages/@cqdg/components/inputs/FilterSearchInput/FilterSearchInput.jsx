@@ -14,27 +14,24 @@ import {
   withPropsOnChange,
 } from 'recompose';
 
-import LocationSubscriber from '@ncigdc/components/LocationSubscriber';
 import fetchFileHistory from '@ncigdc/utils/fetchFileHistory';
 // Custom
-import { parseFilterParam } from '@cqdg/utils/uri';
 import { getFilterValue } from '@cqdg/utils/filters';
 import withDropdown from '@ncigdc/uikit/withDropdown';
-import Link from '@ncigdc/components/Links/Link';
+import Link from '@cqdg/components/Links/Link';
 import withSelectableList from '@ncigdc/utils/withSelectableList';
 import namespace from '@ncigdc/utils/namespace';
 import GeneSymbol from '@ncigdc/modern_components/GeneSymbol';
 import SetId from '@ncigdc/components/SetId';
 import { isUUID } from '@ncigdc/utils/string';
-import {
-  CheckedLink,
-} from '@ncigdc/components/Aggregations/';
-
 
 // Icons
 import CheckCircleOIcon from 'react-icons/lib/fa/check';
 import FileIcon from 'react-icons/lib/fa/file';
 
+import {
+  getCurrentFilters,
+} from '@cqdg/store/query';
 
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 import SearchInput from '@ferlab-ui/core/input/Search';
@@ -148,171 +145,162 @@ const FilterSearchInput = compose(
       }
       return v;
     };
+    const currentFilters = getCurrentFilters({ content: [] }).content;
+    const currentValues = getFilterValue({
+      currentFilters,
+      dotField: `${doctype}.${fieldNoDoctype}`,
+    }) || { content: { value: [] } };
 
     return (
-      <LocationSubscriber>
-        {(ctx) => {
-          const { filters } = ctx.query || {};
-          const currentFilters = parseFilterParam(filters, { content: [] })
-            .content;
-          const currentValues = getFilterValue({
-            currentFilters,
-            dotField: `${doctype}.${fieldNoDoctype}`,
-          }) || { content: { value: [] } };
-
-          return (
-            <StackLayout className="filter-search-input" vertical>
-              {!collapsed && (
-                <Fragment>
-                  {[].concat(currentValues.content.value || []).map(v => (
-                    // added search items
-                    <CheckedLink
-                      className="filter-search-selected-item"
-                      key={v}
-                      merge="toggle"
-                      query={{
-                        offset: 0,
-                        filters: {
-                          op: 'and',
-                          content: [
-                            {
-                              op: 'in',
-                              content: {
-                                field: `${doctype}.${fieldNoDoctype}`,
-                                value: [v],
-                              },
-                            },
-                          ],
+      <StackLayout className="filter-search-input" vertical>
+        {!collapsed && (
+          <Fragment>
+            {[].concat(currentValues.content.value || []).map(v => (
+              // added search items
+              <Link
+                className="filter-search-selected-item"
+                key={v}
+                merge="toggle"
+                query={{
+                  offset: 0,
+                  filters: {
+                    op: 'and',
+                    content: [
+                      {
+                        op: 'in',
+                        content: {
+                          field: `${doctype}.${fieldNoDoctype}`,
+                          value: [v],
                         },
-                      }}
-                      title={v}
-                      >
-                      <CheckCircleOIcon style={{ paddingRight: '0.5rem' }} />
-                      {getCheckedValue(v)}
-                    </CheckedLink>
-                  ))}
-                  <Fragment>
-                    <SearchInput
-                      aria-activedescendant={
-                        active
-                          ? get(
-                            selectableList,
-                              `focusedItem.${fieldNoDoctype}`,
-                          )
-                          : null // false gets stringify, so value needs to be `null` or `undefined`
-                      }
-                      autoComplete="off"
-                      id={fieldNoDoctype}
-                      name={fieldNoDoctype}
-                      onChange={e => {
-                        const { value } = e.target;
-                        setInputValue(value);
-                        setActive(!!value);
-                        if (value) {
-                          setFacetSearch(value);
-                        }
-                      }}
-                      onKeyDown={selectableList.handleKeyEvent}
-                      placeholder={placeholder}
-                      position="topRight"
-                      tooltip={tooltip}
-                      value={inputValue}
-                      {...active && {
-                        'aria-owns': `${fieldNoDoctype}-options`,
-                      }}
-                      />
-                    {active && (
+                      },
+                    ],
+                  },
+                }}
+                title={v}
+                >
+                <CheckCircleOIcon style={{ paddingRight: '0.5rem' }} />
+                {getCheckedValue(v)}
+              </Link>
+            ))}
+            <Fragment>
+              <SearchInput
+                aria-activedescendant={
+                  active
+                    ? get(
+                      selectableList,
+                        `focusedItem.${fieldNoDoctype}`,
+                    )
+                    : null // false gets stringify, so value needs to be `null` or `undefined`
+                }
+                autoComplete="off"
+                id={fieldNoDoctype}
+                name={fieldNoDoctype}
+                onChange={e => {
+                  const { value } = e.target;
+                  setInputValue(value);
+                  setActive(!!value);
+                  if (value) {
+                    setFacetSearch(value);
+                  }
+                }}
+                onKeyDown={selectableList.handleKeyEvent}
+                placeholder={placeholder}
+                position="topRight"
+                tooltip={tooltip}
+                value={inputValue}
+                {...active && {
+                  'aria-owns': `${fieldNoDoctype}-options`,
+                }}
+                />
+              {active && (
+                <StackLayout
+                  className="filter-search-dropdown"
+                  id={`${fieldNoDoctype}-options`}
+                  onClick={e => e.stopPropagation()}
+                  vertical
+                  >
+                  {
+                    get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
                       <StackLayout
-                        className="filter-search-dropdown"
-                        id={`${fieldNoDoctype}-options`}
-                        onClick={e => e.stopPropagation()}
+                        key={x.node.id}
+                        onClick={() => {
+                          setInputValue('');
+                          setActive(false);
+                        }}
+                        onMouseOver={() => selectableList.setFocusedItem(x.node)}
+                        style={{ alignItems: 'center' }}
                         vertical
                         >
-                        {
-                          get(results, `[${doctype}][${Object.keys(results[doctype])[0]}].hits.edges`, []).map(x => (
-                            <StackLayout
-                              key={x.node.id}
-                              onClick={() => {
-                                setInputValue('');
-                                setActive(false);
-                              }}
-                              onMouseOver={() => selectableList.setFocusedItem(x.node)}
-                              style={{ alignItems: 'center' }}
-                              vertical
-                              >
-                              <Link
-                                className="filter-search-results-list"
-                                data-link-id={x.node.id}
-                                id={x.node[fieldNoDoctype]}
-                                linkIsActive={selectableList.focusedItem === x.node}
-                                merge="add"
-                                query={query(x.node[fieldNoDoctype])}
-                                >
-                                {dropdownItem(x.node)}
-                              </Link>
-                            </StackLayout>
-                          ))
-}
-                        {!(results[doctype] || []).length &&
-                          !!(historyResults || []).length &&
-                          historyResults
-                            .filter(result => result.file_change === 'released')
-                            .map((result) => (
-                              <StackLayout
-                                key={result.uuid}
-                                onClick={() => {
-                                  setInputValue('');
-                                  setActive(false);
-                                }}
-                                onMouseOver={() =>
-                                  selectableList.setFocusedItem(result)}
-                                style={{ alignItems: 'center' }}
-                                vertical
-                                >
-                                <Link
-                                  className="filter-search-results-list"
-                                  data-link-id={result.uuid}
-                                  id={result.uuid}
-                                  linkIsActive={
-                                    selectableList.focusedItem === result
-                                  }
-                                  merge="add"
-                                  query={query(result.uuid)}
-                                  >
-                                  <FileIcon
-                                    style={{
-                                      paddingRight: '1rem',
-                                      paddingTop: '1rem',
-                                    }}
-                                    />
-                                  {result.uuid}
-                                  <br />
-                                  File version
-                                  {' '}
-                                  {' '}
-                                  <span style={{ fontWeight: 'bold' }}>
-                                    {facetSearch}
-                                  </span>
-                                  {' '}
-                                  was updated
-                                </Link>
-                              </StackLayout>
-                            ))}
-                        {(!!results && get(results, doctype, [])).length === 0 &&
-                          historyResults.length === 0 && (
-                            <div>
-                              {loading ? 'Loading' : 'No matching items found'}
-                            </div>
-                        )}
+                        <Link
+                          className="filter-search-results-list"
+                          data-link-id={x.node.id}
+                          id={x.node[fieldNoDoctype]}
+                          linkIsActive={selectableList.focusedItem === x.node}
+                          merge="add"
+                          query={query(x.node[fieldNoDoctype])}
+                          >
+                          {dropdownItem(x.node)}
+                        </Link>
                       </StackLayout>
-                    )}
-                  </Fragment>
-                </Fragment>
+                    ))
+                  }
+                  {!(results[doctype] || []).length &&
+                    !!(historyResults || []).length &&
+                    historyResults
+                      .filter(result => result.file_change === 'released')
+                      .map((result) => (
+                        <StackLayout
+                          key={result.uuid}
+                          onClick={() => {
+                            setInputValue('');
+                            setActive(false);
+                          }}
+                          onMouseOver={() =>
+                            selectableList.setFocusedItem(result)}
+                          style={{ alignItems: 'center' }}
+                          vertical
+                          >
+                          <Link
+                            className="filter-search-results-list"
+                            data-link-id={result.uuid}
+                            id={result.uuid}
+                            linkIsActive={
+                              selectableList.focusedItem === result
+                            }
+                            merge="add"
+                            query={query(result.uuid)}
+                            >
+                            <FileIcon
+                              style={{
+                                paddingRight: '1rem',
+                                paddingTop: '1rem',
+                              }}
+                              />
+                            {result.uuid}
+                            <br />
+                            File version
+                            {' '}
+                            {' '}
+                            <span style={{ fontWeight: 'bold' }}>
+                              {facetSearch}
+                            </span>
+                            {' '}
+                            was updated
+                          </Link>
+                        </StackLayout>
+                      ))}
+                  {(!!results && get(results, doctype, [])).length === 0 &&
+                    historyResults.length === 0 && (
+                      <div>
+                        {loading ? 'Loading' : 'No matching items found'}
+                      </div>
+                  )}
+                </StackLayout>
               )}
-            </StackLayout>
-          );
-        }}
-      </LocationSubscriber>
+            </Fragment>
+          </Fragment>
+        )}
+      </StackLayout>
     );
   },
 );

@@ -7,8 +7,7 @@ import {
 import PieChart from '@cqdg/components/charts/PieChart';
 import { stringifyJSONParam } from '@cqdg/utils/uri';
 
-import removeEmptyKeys from '@ncigdc/utils/removeEmptyKeys';
-
+import { removeEmptyKeys } from '@cqdg/utils/object';
 import HorizontalBarChart from './HorizontalBarChart';
 
 const toPieData = (clickHandler, docTypeSingular) => bucket => ({
@@ -79,7 +78,7 @@ export const SelfFilteringPie = ({
           ({ data }) => addFilter(query, push)(fieldName, data.id),
           docTypeSingular,
         ),
-    )}
+      )}
     {...props}
     />
 );
@@ -113,7 +112,7 @@ export const SelfFilteringBars = ({
           (data) => addFilter(query, push)(fieldName, data.id),
           docTypeSingular,
         ),
-    )}
+      )}
     {...props}
     />
 );

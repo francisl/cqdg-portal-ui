@@ -9,9 +9,9 @@ export const updateQuery = (history, query) => {
 
 export const getCurrentQuery = () => parse(window.location.search);
 
-export const getCurrentFilters = () => {
+export const getCurrentFilters = (defaultValue = {}) => {
   const query = getCurrentQuery();
-  return query && parseFilterParam((query || {}).filters, {});
+  return query && parseFilterParam((query || {}).filters, defaultValue);
 };
 
 export const removeFilter = (field, query) => {

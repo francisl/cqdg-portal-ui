@@ -16,7 +16,7 @@ import {
   parseIntParam,
   parseFilterParam,
   parseJSONParam,
-} from '@ncigdc/utils/uri';
+} from '@cqdg/utils/uri';
 
 import { mapFilter } from '@cqdg/utils/filters';
 import { viewerQuery } from '../../../@ncigdc/routes/queries';
