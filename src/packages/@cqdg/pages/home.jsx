@@ -5,10 +5,10 @@ import IoArrowForward from 'react-icons/lib/io/arrow-right-c';
 import t from '@cqdg/locales/intl';
 import CountWithIcon from '@cqdg/components/countWithIcon/CountWithIcon';
 import CardContainerNotched from '@cqdg/components/cards/CardContainerNotched';
-import Button from '@ferlab-ui/core/buttons/button';
-import Link from '@ferlab-ui/core/buttons/link';
-import CardContent from '@ferlab-ui/cards/CardContent';
-import ScrollView from '@ferlab-ui/core/layouts/ScrollView';
+import Button from 'cqdg-ui/core/buttons/button';
+import Link from 'cqdg-ui/core/buttons/link';
+import CardContent from 'cqdg-ui/cards/CardContent';
+import ScrollView from 'cqdg-ui/core/layouts/ScrollView';
 
 import './home.css';
 

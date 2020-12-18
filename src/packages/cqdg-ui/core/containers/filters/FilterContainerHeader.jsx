@@ -14,7 +14,7 @@ import CloseIcon from 'react-icons/lib/md/close';
 
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import { internalHighlight } from '@ncigdc/uikit/Highlight';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import './FilterContainerHeader.css';
 

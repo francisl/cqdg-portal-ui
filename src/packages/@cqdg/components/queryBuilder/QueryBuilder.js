@@ -24,7 +24,7 @@ import t from '@cqdg/locales/intl';
 import IoIosCloseCircleOutline from 'react-icons/lib/io/ios-close-outline';
 import LeftArrow from 'react-icons/lib/fa/angle-left';
 
-import Filter from '@ferlab-ui/core/filters/Filter';
+import Filter from 'cqdg-ui/core/filters/Filter';
 
 import './QueryBuilder.css';
 import { toggleAddAllToCart } from '@ncigdc/dux/cart';

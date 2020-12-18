@@ -21,8 +21,8 @@ import {
 import t from '@cqdg/locales/intl';
 
 import Link from '@ncigdc/components/Links/Link';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import Button from '@ferlab-ui/core/buttons/button';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import Button from 'cqdg-ui/core/buttons/button';
 import {
   getCurrentQuery, resetQuery,
 } from '@cqdg/store/query';

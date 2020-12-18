@@ -1,6 +1,6 @@
 import React from 'react';
 import t from '@cqdg/locales/intl';
-import Link from '@ferlab-ui/core/buttons/link';
+import Link from 'cqdg-ui/core/buttons/link';
 
 import './Footer.css';
 

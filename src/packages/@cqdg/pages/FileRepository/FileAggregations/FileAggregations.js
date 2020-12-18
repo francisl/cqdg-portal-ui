@@ -11,7 +11,7 @@ import {
 } from 'recompose';
 
 import FilterSearchInput from '@cqdg/components/inputs/FilterSearchInput';
-import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
+import FilterContainer from 'cqdg-ui/core/containers/filters/FilterContainer';
 
 import withFacetSelection from '@ncigdc/utils/withFacetSelection';
 import escapeForRelay from '@ncigdc/utils/escapeForRelay';
@@ -21,7 +21,7 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 
 import DriveFileIcon from 'react-icons/lib/md/insert-drive-file';
 import t from '@cqdg/locales/intl';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import presetFacets from '@cqdg/pages/FileRepository/FileAggregations/FileAggregationsFilters';
 import features from '../../../../../features.json';

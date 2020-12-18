@@ -1,5 +1,5 @@
 import React from 'react';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import './BorderedContainer.css';
 

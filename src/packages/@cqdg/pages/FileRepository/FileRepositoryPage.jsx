@@ -22,8 +22,8 @@ import RepoFilesCharts from '@cqdg/components/charts/RepoFilesCharts';
 
 import withRouter from '@ncigdc/utils/withRouter';
 import t from '@cqdg/locales/intl';
-import Tabs from '@ferlab-ui/core/containers/tabs';
-import ScrollView from '@ferlab-ui/core/layouts/ScrollView';
+import Tabs from 'cqdg-ui/core/containers/tabs';
+import ScrollView from 'cqdg-ui/core/layouts/ScrollView';
 import BorderedContainer from '@cqdg/components/container/BorderedContainer';
 
 import './FileRepositoryPage.css';

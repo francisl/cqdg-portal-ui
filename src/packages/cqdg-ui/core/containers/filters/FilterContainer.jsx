@@ -15,14 +15,14 @@ import {
 } from 'recompose';
 
 import { withTheme } from '@ncigdc/theme';
-import Header from '@ferlab-ui/core/containers/filters/FilterContainerHeader';
+import Header from 'cqdg-ui/core/containers/filters/FilterContainerHeader';
 
 import DateFacet from '@ncigdc/components/Aggregations/DateFacet';
 import ExactMatchFacet from '@ncigdc/components/Aggregations/ExactMatchFacet';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import SingleChoice from '@ferlab-ui/core/containers/filters/types/SingleChoice';
-import MultipleChoice from '@ferlab-ui/core/containers/filters/types/MultipleChoice';
-import RangeFilter from '@ferlab-ui/core/containers/filters/types/RangeFilter';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import SingleChoice from 'cqdg-ui/core/containers/filters/types/SingleChoice';
+import MultipleChoice from 'cqdg-ui/core/containers/filters/types/MultipleChoice';
+import RangeFilter from 'cqdg-ui/core/containers/filters/types/RangeFilter';
 
 import './FilterContainer.css';
 

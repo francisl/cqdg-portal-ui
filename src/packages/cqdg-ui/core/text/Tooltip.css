@@ -1,0 +1,50 @@
+.fui-tooltip svg {
+  height: 100%;
+}
+
+.fui-tooltip .fui-tooltip-wrapper {
+  visibility: hidden;
+
+  max-width: 220px;
+  background-color: #FFC431;
+  color: #003457;
+  border-radius: 2px;
+  padding: 5px 10px;
+  position: relative;
+  z-index: 1;
+  bottom: 38px;
+  right: -16px;
+  margin-right: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  width: max-content;
+}
+
+.fui-tooltip  .fui-tooltip-text {
+  position: relative;
+}
+
+.fui-tooltip .fui-tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #FFC431 transparent transparent transparent;
+}
+
+.fui-tooltip .fui-tooltip-text.topRight::after {
+  bottom: 34px;
+  right: 30px;
+}
+
+.fui-tooltip:hover .fui-tooltip-wrapper {
+  visibility: visible;
+  opacity: 1;
+}

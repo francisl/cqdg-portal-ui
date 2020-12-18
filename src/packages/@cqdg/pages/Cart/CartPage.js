@@ -24,8 +24,8 @@ import withRouter from '@ncigdc/utils/withRouter';
 import t from '@cqdg/locales/intl';
 import CardContainerNotched from '@cqdg/components/cards/CardContainerNotched';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import CardContent from '@ferlab-ui/cards/CardContent';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import CardContent from 'cqdg-ui/cards/CardContent';
 
 import './CartPage.css';
 

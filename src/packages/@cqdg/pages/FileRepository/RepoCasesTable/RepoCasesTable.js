@@ -19,9 +19,9 @@ import InlineCount from '@cqdg/components/countWithIcon/InlineCount';
 import Table from '@cqdg/components/table/Table';
 import Tr from '@cqdg/components/table/Tr';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 import { addAllFilesInCart, toggleFilesInCart } from '@ncigdc/dux/cart';
-import Button from '@ferlab-ui/core/buttons/button';
+import Button from 'cqdg-ui/core/buttons/button';
 import CartIcon from '@cqdg/components/icons/CartIcon';
 
 import './CasesTable.css';

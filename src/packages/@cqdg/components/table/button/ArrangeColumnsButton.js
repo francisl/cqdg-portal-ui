@@ -11,11 +11,11 @@ import { restoreColumns } from '@ncigdc/dux/tableColumns';
 import Dropdown from '@ncigdc/uikit/Dropdown';
 
 import t from '@cqdg/locales/intl';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import Link from '@ferlab-ui/core/buttons/link';
-import Button from '@ferlab-ui/core/buttons/button';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import Link from 'cqdg-ui/core/buttons/link';
+import Button from 'cqdg-ui/core/buttons/button';
 
-import SearchInput from '@ferlab-ui/core/input/Search';
+import SearchInput from 'cqdg-ui/core/input/Search';
 
 import './ArrangeColumnsButton.css';
 

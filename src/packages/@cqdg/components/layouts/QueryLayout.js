@@ -2,7 +2,7 @@
 import React from 'react';
 
 import QueryBuilder from '@cqdg/components/queryBuilder/QueryBuilder';
-import SidePanel from '@ferlab-ui/core/panels/SidePanel';
+import SidePanel from 'cqdg-ui/core/panels/SidePanel';
 
 import './QueryLayout.css';
 
