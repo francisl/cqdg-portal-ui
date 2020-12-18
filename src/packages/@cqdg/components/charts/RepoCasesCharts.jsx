@@ -11,7 +11,7 @@ import { IBucket } from '@ncigdc/components/Aggregations/types';
 import withRouter from '@ncigdc/utils/withRouter';
 import { parseFilterParam } from '@cqdg/utils/uri';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 import t from '@cqdg/locales/intl';
 import PieTitle from './PieTitle';
 import ShowToggleBox from './ShowToggleBox';

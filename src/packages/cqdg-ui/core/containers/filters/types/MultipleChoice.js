@@ -18,9 +18,9 @@ import t from '@cqdg/locales/intl';
 
 import CloseIcon from 'react-icons/lib/md/close';
 
-import Button from '@ferlab-ui/core/buttons/button';
-import Tag from '@ferlab-ui/core/text/Tag';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import Button from 'cqdg-ui/core/buttons/button';
+import Tag from 'cqdg-ui/core/text/Tag';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import './MultipleChoice.css';
 

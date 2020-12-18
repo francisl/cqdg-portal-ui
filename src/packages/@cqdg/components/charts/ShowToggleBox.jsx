@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@ferlab-ui/core/buttons/button';
+import Button from 'cqdg-ui/core/buttons/button';
 
 import './ShowToggleBox.css';
 

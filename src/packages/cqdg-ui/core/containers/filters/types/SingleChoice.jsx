@@ -19,9 +19,9 @@ import {
   resetQuery,
 } from '@cqdg/store/query';
 
-import Radio from '@ferlab-ui/core/buttons/RadioButton';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import Button from '@ferlab-ui/core/buttons/button';
+import Radio from 'cqdg-ui/core/buttons/RadioButton';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import Button from 'cqdg-ui/core/buttons/button';
 
 import './SingleChoice.css';
 

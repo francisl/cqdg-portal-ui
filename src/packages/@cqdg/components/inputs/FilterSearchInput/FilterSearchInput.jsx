@@ -33,8 +33,8 @@ import {
   getCurrentFilters,
 } from '@cqdg/store/query';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
-import SearchInput from '@ferlab-ui/core/input/Search';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
+import SearchInput from 'cqdg-ui/core/input/Search';
 import './FilterSearchInput.css';
 
 const extractNodes = (obj) => {

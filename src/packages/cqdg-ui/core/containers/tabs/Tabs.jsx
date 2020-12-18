@@ -2,9 +2,9 @@
 import React from 'react';
 
 import LocationSubscriber from '@ncigdc/components/LocationSubscriber';
-import { Tab } from '@ferlab-ui/core/containers/tabs';
+import { Tab } from 'cqdg-ui/core/containers/tabs';
 
-import '@ferlab-ui/core/containers/tabs/Tabs.css';
+import 'cqdg-ui/core/containers/tabs/Tabs.css';
 
 const Tabs: TTabbedLinks = ({
   defaultContent = <div>No Tabs</div>,

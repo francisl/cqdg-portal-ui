@@ -2,9 +2,9 @@ import React from 'react';
 import { compose, withHandlers } from 'recompose';
 
 import GoThreeBar from 'react-icons/lib/go/three-bars';
-import Button from '@ferlab-ui/core/buttons/button';
+import Button from 'cqdg-ui/core/buttons/button';
 import t from '@cqdg/locales/intl';
-import Link from '@ferlab-ui/core/buttons/link';
+import Link from 'cqdg-ui/core/buttons/link';
 
 import './SidePanel.css';
 

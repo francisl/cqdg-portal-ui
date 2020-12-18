@@ -8,10 +8,10 @@ import FiExternalLink from 'react-icons/lib/fa/external-link';
 
 import Link from '@cqdg/components/Links/Link';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 import InlineCount from '@cqdg/components/countWithIcon/InlineCount';
 import CardContainerNotched from '@cqdg/components/cards/CardContainerNotched';
-import CardContent from '@ferlab-ui/cards/CardContent';
+import CardContent from 'cqdg-ui/cards/CardContent';
 import CountWithIcon from '@cqdg/components/countWithIcon/CountWithIcon';
 
 import t from '@cqdg/locales/intl';

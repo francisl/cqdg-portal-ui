@@ -6,7 +6,7 @@ import withRouter from '@ncigdc/utils/withRouter';
 import { visualizingButton } from '@ncigdc/theme/mixins';
 import SortTableButton from '@ncigdc/components/SortTableButton';
 
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import { mergeQuery } from '@cqdg/utils/filters';
 import { parseJSONParam, stringifyJSONParam } from '@cqdg/utils/uri';

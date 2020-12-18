@@ -10,7 +10,7 @@ import {
 
 import FilterSearchInput from '@cqdg/components/inputs/FilterSearchInput';
 
-import FilterContainer from '@ferlab-ui/core/containers/filters/FilterContainer';
+import FilterContainer from 'cqdg-ui/core/containers/filters/FilterContainer';
 import UploadSetButton from '@ncigdc/components/UploadSetButton';
 import withFacetSelection from '@ncigdc/utils/withFacetSelection';
 import escapeForRelay from '@ncigdc/utils/escapeForRelay';
@@ -18,7 +18,7 @@ import tryParseJSON from '@ncigdc/utils/tryParseJSON';
 
 import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
 import PersonIcon from 'react-icons/lib/md/person';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import t from '@cqdg/locales/intl';
 import presetFacets from '@cqdg/pages/FileRepository/CaseAggregations/CaseAggregationsFilters';

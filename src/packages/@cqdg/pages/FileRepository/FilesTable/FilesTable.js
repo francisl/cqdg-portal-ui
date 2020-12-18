@@ -18,7 +18,7 @@ import Tr from '@cqdg/components/table/Tr';
 
 import TableActions from '@cqdg/components/table/TableActions';
 import InlineCount from '@cqdg/components/countWithIcon/InlineCount';
-import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
+import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import './FilesTable.css';
 import Td from '@cqdg/components/table/Td';
@@ -26,7 +26,7 @@ import {
   addAllFilesInCart, removeAllInCart, toggleFilesInCart, toggleAddAllToCart,
 } from '@ncigdc/dux/cart';
 import Th from '@cqdg/components/table/Th';
-import Button from '@ferlab-ui/core/buttons/button';
+import Button from 'cqdg-ui/core/buttons/button';
 import CartIcon from '@cqdg/components/icons/CartIcon';
 
 
