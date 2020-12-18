@@ -17,7 +17,7 @@ import escapeForRelay from '@ncigdc/utils/escapeForRelay';
 import tryParseJSON from '@ncigdc/utils/tryParseJSON';
 
 import { UploadCaseSet } from '@ncigdc/components/Modals/UploadSet';
-import CaseIcon from '@ncigdc/theme/icons/Case';
+import PersonIcon from 'react-icons/lib/md/person';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 
 import t from '@cqdg/locales/intl';
@@ -65,7 +65,7 @@ const CaseAggregationsComponent = ({
         doctype="cases"
         dropdownItem={(x) => (
           <StackLayout>
-            <CaseIcon className="aggregations-search-icon" />
+            <PersonIcon className="aggregations-search-icon" height="1.6em" width="1.6em" />
             <div>
               <div style={{ fontWeight: 'bold' }}>{x.submitter_donor_id}</div>
               <div style={{ fontSize: '80%' }}>

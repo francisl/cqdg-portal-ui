@@ -19,7 +19,7 @@ import tryParseJSON from '@ncigdc/utils/tryParseJSON';
 
 import { IBucket } from '@ncigdc/components/Aggregations/types';
 
-import FileIcon from '@ncigdc/theme/icons/File';
+import DriveFileIcon from 'react-icons/lib/md/insert-drive-file';
 import t from '@cqdg/locales/intl';
 import StackLayout from '@ferlab-ui/core/layouts/StackLayout';
 
@@ -98,8 +98,10 @@ const FileAggregations = ({
           doctype="files"
           dropdownItem={(x) => (
             <StackLayout>
-              <FileIcon
+              <DriveFileIcon
                 className="aggregations-search-icon"
+                height="1.6em"
+                width="1.6em"
                 />
               <div className="aggregations-search-container">
                 <div className="aggregations-search-id">{x.file_id}</div>
