@@ -7,10 +7,10 @@ import {
   setDisplayName,
 } from 'recompose';
 
-import CloseIcon from '@ncigdc/theme/icons/CloseIcon';
-import AngleIcon from '@ncigdc/theme/icons/AngleIcon';
-import QuestionIcon from '@ncigdc/theme/icons/Question';
+import AngleIcon from 'react-icons/lib/fa/angle-down';
 import GoSearch from 'react-icons/lib/go/search';
+import QuestionIcon from 'react-icons/lib/go/question';
+import CloseIcon from 'react-icons/lib/md/close';
 
 import { Tooltip } from '@ncigdc/uikit/Tooltip';
 import { internalHighlight } from '@ncigdc/uikit/Highlight';
@@ -51,7 +51,6 @@ const FacetHeader = ({
           {!angleIconRight && (
             <AngleIcon
               style={{
-                paddingRight: '0.25rem',
                 transform: `rotate(${collapsed ? 270 : 0}deg)`,
               }}
               />

@@ -53,3 +53,20 @@
   line-height: 22px;
   padding: 8px 16px;
 }
+
+.fui-mc-search-input {
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.fui-mc-search-reset-icon {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  transition: all 0.3s ease;
+  outline: 0;
+}
+
+.fui-mc-search-reset-icon:hover {
+  cursor: pointer;
+}

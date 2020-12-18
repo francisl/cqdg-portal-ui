@@ -165,17 +165,17 @@ export const WrapperComponent = compose(withTheme)(({
   const hasValueSearch =
     facetType === 'terms' &&
     (aggregation || { buckets: [] }).buckets.filter(b => b.key !== '_missing')
-      .length >= 20;
+      .length >= 10;
   return (
     <div className="filter-container">
       <StackLayout vertical>
         <Header
           collapsed={collapsed}
           DescriptionComponent={
-          DescriptionComponent &&
-          !searchValue &&
-          (facet.description || 'No description available')
-        }
+            DescriptionComponent &&
+            !searchValue &&
+            (facet.description || 'No description available')
+          }
           field={facet.full}
           handleRequestRemove={handleRequestRemove}
           hasValueSearch={!DescriptionComponent && hasValueSearch}
