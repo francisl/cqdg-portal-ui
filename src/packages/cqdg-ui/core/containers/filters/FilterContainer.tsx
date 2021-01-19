@@ -8,12 +8,16 @@ import FilterContainerHeader from 'cqdg-ui/core/containers/filters/FilterContain
 import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 import { FilterComponent, IFilter, IFilterGroup } from './Filters';
 import './FilterContainer.css';
+import { IDictionary } from './types/dictionary';
 
 interface IFilterContainerProps {
   facet: IFilterGroup;
+  dictionary: IDictionary;
   title: string;
   filters: IFilter[];
+  selectedFilters: any;
   onRemoveFilterContainer: () => void;
+  onChange: () => void;
   isRemovable: boolean;
   maxShowing: number;
   searchValue: string;
@@ -50,13 +54,16 @@ class FilterContainer
   render() {
     const {
       facet,
+      dictionary,
       title,
       filters = [],
       onRemoveFilterContainer = () => {},
       isRemovable = false,
       maxShowing = 5,
+      onChange,
       searchValue,
       searchEnabled,
+      selectedFilters,
     } = this.props;
 
     const {
@@ -84,11 +91,14 @@ class FilterContainer
             <div className="filter-container-content">
               <FilterComponent
                 collapsed={collapsed}
+                dictionary={dictionary}
                 filterGroup={facet}
                 filters={filters}
                 maxShowing={maxShowing}
+                onChange={onChange}
                 searchInputVisible={searchInputVisible}
                 searchValue={searchValue}
+                selectedFilters={selectedFilters}
                 title={title}
                 />
             </div>

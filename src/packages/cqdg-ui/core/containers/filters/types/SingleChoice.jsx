@@ -139,14 +139,14 @@ const enhance = compose(
   })),
   withPropsOnChange(
     [
-      'buckets',
+      'filters',
       'filter',
       'searchValue',
     ],
     ({
-      buckets, filter, isMatchingSearchValue, searchValue = '',
+      filter, filters, isMatchingSearchValue, searchValue = '',
     }) => ({
-      filteredBuckets: buckets.filter(
+      filteredBuckets: filters.filter(
         b => b.key !== '_missing' &&
           (b.key || '').length &&
           b.key.toLowerCase().includes(filter.toLowerCase()) &&

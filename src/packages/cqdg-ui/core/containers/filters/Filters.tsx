@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
 import ExactMatchFacet from 'cqdg-ui/core/containers/filters/types/ExactMatchFacet';
@@ -6,6 +7,7 @@ import SingleChoice from 'cqdg-ui/core/containers/filters/types/SingleChoice';
 import MultipleChoice from 'cqdg-ui/core/containers/filters/types/MultipleChoice';
 import RangeFilter from 'cqdg-ui/core/containers/filters/types/RangeFilter';
 import t from '@cqdg/locales/intl';
+import { IDictionary } from './types/dictionary';
 
 export interface IFilterGroup {
   'doc_type': string;
@@ -21,22 +23,40 @@ export interface IFilterGroup {
 export interface IFilter {
   doc_count: number;
   key: string;
+  name: string; // use for translated/todisplay string
+  id: string; //  dash (-) separated key
+}
+
+export interface IFiltersOnChange {
+  selectedFilter: IFilter[];
+  filterGroup: IFilterGroup;
 }
 
 interface IFiltersProps {
   filterGroup: IFilterGroup;
+  dictionary: IDictionary;
   collapsed: boolean;
   title: string;
   filters: IFilter[];
+  selectedFilters: any;
   searchInputVisible: boolean;
   maxShowing: number;
   searchValue: string;
+  onChange?: (obj: IFiltersOnChange) => void;
 }
 
 export const FilterComponent = ({
-  collapsed, filterGroup, filters, maxShowing, searchInputVisible, searchValue, title,
+  collapsed,
+  dictionary,
+  filterGroup,
+  filters,
+  maxShowing,
+  onChange,
+  searchInputVisible,
+  searchValue,
+  selectedFilters,
+  title,
 }: IFiltersProps) => {
-  const facet = filterGroup;
   const commonProps = {
     collapsed,
     title,
@@ -46,29 +66,29 @@ export const FilterComponent = ({
     case 'choice': return (
       <SingleChoice
         {...commonProps}
-        buckets={filters}
-        doctype={facet.doc_type}
-        field={facet.full}
-        fieldNoDoctype={facet.field}
+        doctype={filterGroup.doc_type}
+        field={filterGroup.full}
+        fieldNoDoctype={filterGroup.field}
+        filters={filters}
         placeholder={
-          facet.placeholder ? facet.placeholder : `Enter ${commonProps.title}`
+          filterGroup.placeholder ? filterGroup.placeholder : `Enter ${commonProps.title}`
         }
         />
     );
     case 'exact': return (
       <ExactMatchFacet
         {...commonProps}
-        doctype={facet.doc_type}
-        fieldNoDoctype={facet.field}
+        doctype={filterGroup.doc_type}
+        fieldNoDoctype={filterGroup.field}
         placeholder={
-          facet.placeholder ? facet.placeholder : `Enter ${commonProps.title}`
+          filterGroup.placeholder ? filterGroup.placeholder : `Enter ${commonProps.title}`
         }
         />
     );
     case 'range': return (
       <RangeFilter
         convertDays={false}
-        field={facet.full}
+        field={filterGroup.full}
         max={({ max: 0 }).max}
         min={({ min: 0 }).min}
         {...commonProps}
@@ -77,13 +97,16 @@ export const FilterComponent = ({
     case 'terms':
     default: return (
       <MultipleChoice
-        field={facet.full}
+        dictionary={dictionary}
+        filterGroup={filterGroup}
         {...commonProps}
-        buckets={filters}
+        filters={filters}
         maxShowing={maxShowing}
         noResultsText={t('facet.no.result')}
+        onChange={onChange}
         searchInputVisible={searchInputVisible}
         searchValue={searchValue}
+        selectedFilters={selectedFilters}
         />
     );
   }

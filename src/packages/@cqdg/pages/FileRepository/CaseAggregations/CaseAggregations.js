@@ -8,6 +8,7 @@ import {
   withPropsOnChange,
 } from 'recompose';
 import PersonIcon from 'react-icons/lib/md/person';
+import { withRouter } from 'react-router-dom';
 
 import FilterSearchInput from '@cqdg/components/inputs/FilterSearchInput';
 import FilterContainer from 'cqdg-ui/core/containers/filters/FilterContainer';
@@ -16,10 +17,15 @@ import escapeForRelay from '@cqdg/relay/escapeForRelay';
 import tryParseJSON from '@cqdg/utils/json/tryParseJSON';
 import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 import t from '@cqdg/locales/intl';
+import {
+  createLinkContext,
+  createSearchQuery,
+} from '@cqdg/components/Links/linkUtils';
+import { mergeQuery as mq } from '@cqdg/utils/filters';
 
 import facets from '@cqdg/pages/FileRepository/CaseAggregations/CaseAggregationsFilters';
-import { getFacetType } from '@cqdg/pages/FileRepository/filtersUtils';
-
+import { getFacetType, getFilters, getSelectedFilters } from '@cqdg/pages/FileRepository/filtersUtils';
+import translation from '../translation';
 import features from '../../../../../features.json';
 
 import '../Aggregations.css';
@@ -28,8 +34,33 @@ const presetFacets = facets.map(f => getFacetType(f));
 const presetFacetFields = presetFacets.map((x) => x.field);
 const entityType = 'Cases';
 
+const onFilterSelectionChange = (push, filterGroup, selectedFilters) => {
+  const pn = window.location.pathname;
+  const query = selectedFilters.length === 0
+                      ? {
+                        offset: 0,
+                        filters: {
+                          op: 'and',
+                          content: [
+                            {
+                              op: 'in',
+                              content: {
+                                field: filterGroup.field,
+                                value: selectedFilters,
+                              },
+                            },
+                          ],
+                        },
+                      }
+                    : {};
+  const contextQuery = createLinkContext(query, mq);
+  const searchQuery = createSearchQuery(contextQuery);
+  push(`${pn}?${searchQuery}`);
+};
+
 const enhance = compose(
   setDisplayName('RepoCaseAggregations'),
+  withRouter,
   withFacetSelection({
     entityType,
     presetFacetFields,
@@ -42,6 +73,7 @@ const enhance = compose(
 const CaseAggregationsComponent = ({
   handleRequestRemoveFacet,
   parsedFacets,
+  push,
   relay,
   userSelectedFacets,
   viewer,
@@ -86,17 +118,26 @@ const CaseAggregationsComponent = ({
         />
     )}
     {reject(presetFacets, { full: 'donor_id' }).map((facet) => {
-      const aggregation = viewer.Case.aggregations[escapeForRelay(facet.field)];
+      const filters = getFilters(
+        viewer.Case.aggregations[escapeForRelay(facet.field)]
+      );
+      const selectedFilters = getSelectedFilters(filters, facet);
       return (
         <FilterContainer
+          dictionary={translation()}
           facet={facet}
-          filters={aggregation && aggregation.buckets}
+          filters={filters}
           key={facet.full}
+          onChange={
+            (filterGroup, newSelectedFilters) =>
+              onFilterSelectionChange(push, filterGroup, newSelectedFilters)
+          }
           relay={relay}
           searchEnabled={facet.visualType === 'terms' &&
-            (aggregation || { buckets: [] }).buckets.filter(b => b.key !== '_missing')
+            filters.filter(b => b.key !== '_missing')
               .length >= 10}
-          title={t(facet.title) || t(`facet.${facet.field}`)}
+          selectedFilters={selectedFilters}
+          title={t(facet.title) || t(`facet.${facet.full}`)}
           />
       );
     })}
