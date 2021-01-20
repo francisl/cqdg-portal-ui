@@ -6,7 +6,6 @@ import ExactMatchFacet from 'cqdg-ui/core/containers/filters/types/ExactMatchFac
 import SingleChoice from 'cqdg-ui/core/containers/filters/types/SingleChoice';
 import MultipleChoice from 'cqdg-ui/core/containers/filters/types/MultipleChoice';
 import RangeFilter from 'cqdg-ui/core/containers/filters/types/RangeFilter';
-import t from '@cqdg/locales/intl';
 import { IDictionary } from './types/dictionary';
 
 export interface IFilterGroup {
@@ -66,13 +65,14 @@ export const FilterComponent = ({
     case 'choice': return (
       <SingleChoice
         {...commonProps}
-        doctype={filterGroup.doc_type}
-        field={filterGroup.full}
-        fieldNoDoctype={filterGroup.field}
+        dictionary={dictionary}
+        filterGroup={filterGroup}
         filters={filters}
+        onChange={onChange}
         placeholder={
           filterGroup.placeholder ? filterGroup.placeholder : `Enter ${commonProps.title}`
         }
+        selectedFilters={selectedFilters}
         />
     );
     case 'exact': return (
@@ -102,7 +102,6 @@ export const FilterComponent = ({
         {...commonProps}
         filters={filters}
         maxShowing={maxShowing}
-        noResultsText={t('facet.no.result')}
         onChange={onChange}
         searchInputVisible={searchInputVisible}
         searchValue={searchValue}

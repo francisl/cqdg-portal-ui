@@ -1,7 +1,6 @@
 import includes from 'lodash/includes';
 import some from 'lodash/some';
 
-import { inCurrentFilters } from '@cqdg/utils/filters';
 import { IFilterGroup, IFilter } from 'cqdg-ui/core/containers/filters/Filters';
 import { getCurrentFilters } from '@cqdg/store/query';
 import t from '@cqdg/locales/intl';
@@ -64,15 +63,16 @@ const getCurrentFilters3 = () => {
   ));
 };
 
-export const getSelectedFilters = (filters: IFilter[], filterGroup: IFilterGroup) => {
+interface IFilterExtended extends IFilter {
+  key_as_string: string;
+}
+
+export const getSelectedFilters = (filters: IFilterExtended[], filterGroup: IFilterGroup) => {
   const selectedSqon = getCurrentFilters3();
 
   return filters.reduce((acc: string[], v) => {
-    if (inCurrentFilters({
-      currentFilters: selectedSqon,
-      dotField: filterGroup.field,
-      key: v.key.toLowerCase(),
-    })) {
+    const isSelected = selectedSqon[0].content.field === filterGroup.field && selectedSqon[0].content.value.indexOf(v.key_as_string) >= 0;
+    if (isSelected) {
       acc.push(v.key);
     }
     return acc;

@@ -82,7 +82,7 @@ const CaseAggregationsComponent = ({
     {userSelectedFacets &&
       userSelectedFacets.map((facet) => (
         <FilterContainer
-          facet={facet}
+          filterGroup={facet}
           filters={parsedFacets[facet.field]}
           isRemovable
           key={facet.full}
@@ -125,7 +125,7 @@ const CaseAggregationsComponent = ({
       return (
         <FilterContainer
           dictionary={translation()}
-          facet={facet}
+          filterGroup={facet}
           filters={filters}
           key={facet.full}
           onChange={

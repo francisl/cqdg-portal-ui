@@ -94,7 +94,7 @@ const FileAggregations = ({
         const aggregation = parsedFacets[facet.field];
         return (
           <FilterContainer
-            facet={facet}
+            filterGroup={facet}
             filters={aggregation && aggregation.buckets}
             isRemovable
             key={facet.full}
@@ -136,7 +136,7 @@ const FileAggregations = ({
         return (
           <FilterContainer
             dictionary={translation()}
-            facet={facet}
+            filterGroup={facet}
             filters={filters}
             key={facet.full}
             onChange={

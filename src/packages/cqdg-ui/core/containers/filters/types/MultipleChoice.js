@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
+import CloseIcon from 'react-icons/lib/md/close';
 
 import {
   compose, withState, withPropsOnChange, pure,
@@ -9,33 +9,12 @@ import {
 
 import OverflowTooltippedLabel from '@cqdg/components/Tooltip/OverflowTooltippedLabel';
 import { internalHighlight } from '@cqdg/components/Highlight';
-import { inCurrentFilters } from '@cqdg/utils/filters';
-import { getCurrentFilters } from '@cqdg/store/query';
-
-import CloseIcon from 'react-icons/lib/md/close';
 
 import Button from 'cqdg-ui/core/buttons/button';
 import Tag from 'cqdg-ui/core/text/Tag';
 import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
 
 import './MultipleChoice.css';
-
-const getCurrentFilters3 = () => {
-  const currentFilters = getCurrentFilters([]).content;
-
-  if (!currentFilters || currentFilters.length === 0) return [];
-
-  return currentFilters.map(filter => ({
-    ...filter,
-    content: {
-      ...filter.content,
-      value: typeof filter.content.value === 'string'
-            ? filter.content.value.toLowerCase()
-            : filter.content.value.map(val => val.toLowerCase()),
-    },
-  }
-  ));
-};
 
 let input;
 const MultipleChoice = (props) => {
@@ -44,16 +23,12 @@ const MultipleChoice = (props) => {
     filterGroup,
     filters,
     maxShowing,
-    noResultsText,
     onChange,
     searchInputVisible,
     selectedFilters,
     setShowingMore,
     showingMore,
   } = props;
-
-  const dotField = filterGroup.field;
-  const currentFilters = getCurrentFilters3();
 
   return (
     <Fragment>
@@ -93,47 +68,36 @@ const MultipleChoice = (props) => {
           {filters
             .sort((a, b) => (b.doc_count - a.doc_count))
             .slice(0, showingMore ? Infinity : maxShowing)
-            .map(bucket => (
-              <StackLayout className="fui-mc-item" horizontal key={`${filterGroup.field}-${bucket.id}-${bucket.doc_count}`}>
-                <Button className="fui-mv-item-checkbox" onClick={() => onChange(filterGroup, [bucket.name])} type="text">
+            .map(filter => (
+              <StackLayout className="fui-mc-item" horizontal key={`${filterGroup.field}-${filter.id}-${filter.doc_count}`}>
+                <Button className="fui-mv-item-checkbox" onClick={() => onChange(filterGroup, [filter.name])} type="text">
                   <input
-                    checked={inCurrentFilters({
-                      key: bucket.key,
-                      dotField,
-                      currentFilters,
-                    })}
-                    id={`input-${props.title}-${bucket.key}`}
-                    name={`input-${props.title}-${bucket.id}`}
+                    checked={
+                      selectedFilters.indexOf(filter.key) >= 0
+                      }
+                    id={`input-${props.title}-${filter.key}`}
+                    name={`input-${props.title}-${filter.id}`}
                     readOnly
-                    style={{
-                      pointerEvents: 'none',
-                      marginRight: '5px',
-                      flexShrink: 0,
-                      verticalAlign: 'middle',
-                    }}
                     type="checkbox"
                     />
                   <OverflowTooltippedLabel
-                    htmlFor={`input-${props.title}-${bucket.id}`}
-                    style={{
-                      marginLeft: '0.3rem',
-                      verticalAlign: 'middle',
-                    }}
+                    className=".tooltip"
+                    htmlFor={`input-${props.title}-${filter.id}`}
                     >
                     {props.searchValue
                             ? internalHighlight(
                               props.searchValue,
-                              bucket.name,
+                              filter.name,
                               {
                                 backgroundColor: '#FFFF00',
                               },
                             )
-                            : bucket.name}
+                            : filter.name}
                   </OverflowTooltippedLabel>
 
                 </Button>
                 <Tag>
-                  {bucket.doc_count.toLocaleString()}
+                  {filter.doc_count.toLocaleString()}
                 </Tag>
               </StackLayout>
             ))}
@@ -152,19 +116,15 @@ const MultipleChoice = (props) => {
                       `${filters.length - 5} ${dictionary.actions.more}...`}
             </Button>
           )}
-
-          {filters.length === 0 && (
-            <span>
-              {(input || { value: '' }).value
-                      ? dictionary.messages.errorNotFound
-                      : dictionary.messages.errorNoData}
-            </span>
-          )}
         </StackLayout>
       )}
       {filters.length === 0 && (
         <StackLayout className="fui-no-filters" vertical>
-          <span className="no-results-text">{noResultsText}</span>
+          <span className="no-results-text">
+            {(input || { value: '' }).value
+                      ? dictionary.messages.errorNotFound
+                      : dictionary.messages.errorNoData}
+          </span>
         </StackLayout>
       )}
     </Fragment>
@@ -174,9 +134,6 @@ const MultipleChoice = (props) => {
 const enhance = compose(
   withState('showingMore', 'setShowingMore', false),
   withState('filter', 'setFilter', ''),
-  connect(state => ({
-    addAllToCart: state.cart.addAllToCart,
-  })),
   withPropsOnChange(
     [
       'filters',

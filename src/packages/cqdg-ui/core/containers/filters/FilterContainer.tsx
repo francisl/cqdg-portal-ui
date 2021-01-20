@@ -11,7 +11,7 @@ import './FilterContainer.css';
 import { IDictionary } from './types/dictionary';
 
 interface IFilterContainerProps {
-  facet: IFilterGroup;
+  filterGroup: IFilterGroup;
   dictionary: IDictionary;
   title: string;
   filters: IFilter[];
@@ -53,7 +53,7 @@ class FilterContainer
 
   render() {
     const {
-      facet,
+      filterGroup,
       dictionary,
       title,
       filters = [],
@@ -78,7 +78,7 @@ class FilterContainer
             collapsed={collapsed}
             isRemovable={isRemovable}
             mouseOverTooltip={
-              facet.description ? facet.description : null
+              filterGroup.description ? filterGroup.description : null
             }
             onClick={this.setCollapsed}
             onRemoveFilterContainer={onRemoveFilterContainer}
@@ -92,7 +92,7 @@ class FilterContainer
               <FilterComponent
                 collapsed={collapsed}
                 dictionary={dictionary}
-                filterGroup={facet}
+                filterGroup={filterGroup}
                 filters={filters}
                 maxShowing={maxShowing}
                 onChange={onChange}

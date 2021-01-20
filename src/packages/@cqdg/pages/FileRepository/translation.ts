@@ -6,7 +6,7 @@ const getTranslatedText = (): IDictionary => ({
   actions: {
     all: t('global.select.all'),
     apply: 'void',
-    clear: 'void',
+    clear: t('facet.actions.reset'),
     less: t('global.less'),
     more: t('global.more'),
     none: t('global.none'),
