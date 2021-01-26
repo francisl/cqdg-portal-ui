@@ -1,28 +1,23 @@
-import includes from 'lodash/includes';
-import some from 'lodash/some';
+import {
+  VisualType, IFilterGroup, IFilter, createDefaultRange,
+} from 'cqdg-ui/core/containers/filters/Filters';
 
-import { IFilterGroup, IFilter } from 'cqdg-ui/core/containers/filters/Filters';
 import { getCurrentFilters } from '@cqdg/store/query';
 import t from '@cqdg/locales/intl';
 
 export const getFacetType = (facet: IFilterGroup) => {
-  let type = 'terms';
+  let type = VisualType.Checkbox;
 
-  if (facet.type === 'choice' || facet.type === 'terms' || facet.type === 'exact') {
-    type = facet.type;
+  if (facet.type === 'choice') {
+    type = VisualType.Toggle;
+  } else if (facet.type === 'terms') {
+    type = VisualType.Checkbox;
   }
-
-  if (some([
-    '_id',
-    '_uuid',
-    'md5sum',
-    'file_name',
-  ], idSuffix => includes(facet.field, idSuffix))) {
-    type = 'exact';
-  }
-
   if (facet.type === 'long' || facet.type === 'float') {
-    type = 'range';
+    type = VisualType.Range;
+    if (!facet.range) {
+      facet.range = createDefaultRange();
+    }
   }
 
   facet.visualType = type;

@@ -28,6 +28,7 @@ import { getFacetType, getFilters, getSelectedFilters } from '@cqdg/pages/FileRe
 import translation from '../translation';
 import features from '../../../../../features.json';
 
+
 import '../Aggregations.css';
 
 const presetFacets = facets.map(f => getFacetType(f));
@@ -133,7 +134,7 @@ const CaseAggregationsComponent = ({
               onFilterSelectionChange(push, filterGroup, newSelectedFilters)
           }
           relay={relay}
-          searchEnabled={facet.visualType === 'terms' &&
+          searchEnabled={facet.visualType === 'checkbox' &&
             filters.filter(b => b.key !== '_missing')
               .length >= 10}
           selectedFilters={selectedFilters}

@@ -28,6 +28,7 @@ const MultipleChoice = (props) => {
     selectedFilters,
     setShowingMore,
     showingMore,
+    title,
   } = props;
 
   return (
@@ -63,7 +64,7 @@ const MultipleChoice = (props) => {
             </Button>
 
             <div className="separator" />
-            <Button className="fui-filters-links" onClick={() => onChange(filterGroup, [])} type="text">{dictionary.actions.none}</Button>
+            <Button className="fui-filters-links" onClick={() => onChange(filterGroup, selectedFilters)} type="text">{dictionary.actions.none}</Button>
           </StackLayout>
           {filters
             .sort((a, b) => (b.doc_count - a.doc_count))
@@ -75,14 +76,14 @@ const MultipleChoice = (props) => {
                     checked={
                       selectedFilters.indexOf(filter.key) >= 0
                       }
-                    id={`input-${props.title}-${filter.key}`}
-                    name={`input-${props.title}-${filter.id}`}
+                    id={`input-${title}-${filter.key}`}
+                    name={`input-${title}-${filter.id}`}
                     readOnly
                     type="checkbox"
                     />
                   <OverflowTooltippedLabel
                     className=".tooltip"
-                    htmlFor={`input-${props.title}-${filter.id}`}
+                    htmlFor={`input-${title}-${filter.id}`}
                     >
                     {props.searchValue
                             ? internalHighlight(

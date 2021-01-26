@@ -5,7 +5,7 @@ import t from '@cqdg/locales/intl';
 const getTranslatedText = (): IDictionary => ({
   actions: {
     all: t('global.select.all'),
-    apply: 'void',
+    apply: t('facet.actions.apply'),
     clear: t('facet.actions.reset'),
     less: t('global.less'),
     more: t('global.more'),
@@ -22,6 +22,10 @@ const getTranslatedText = (): IDictionary => ({
   },
   multiChoice: {
     searchPlaceholder: t('search.search'),
+  },
+  range: {
+    max: t('facet.range.max'),
+    min: t('facet.range.min'),
   },
 });
 

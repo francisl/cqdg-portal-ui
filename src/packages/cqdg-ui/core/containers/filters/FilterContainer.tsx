@@ -6,7 +6,9 @@ import React from 'react';
 import FilterContainerHeader from 'cqdg-ui/core/containers/filters/FilterContainerHeader';
 
 import StackLayout from 'cqdg-ui/core/layouts/StackLayout';
-import { FilterComponent, IFilter, IFilterGroup } from './Filters';
+import { FilterComponent } from './FilterContainerSelector';
+import { IFilterGroup, IFilter, onChangeType } from './Filters';
+
 import './FilterContainer.css';
 import { IDictionary } from './types/dictionary';
 
@@ -17,7 +19,7 @@ interface IFilterContainerProps {
   filters: IFilter[];
   selectedFilters: any;
   onRemoveFilterContainer: () => void;
-  onChange: () => void;
+  onChange: onChangeType;
   isRemovable: boolean;
   maxShowing: number;
   searchValue: string;
@@ -90,7 +92,6 @@ class FilterContainer
           { collapsed || (
             <div className="filter-container-content">
               <FilterComponent
-                collapsed={collapsed}
                 dictionary={dictionary}
                 filterGroup={filterGroup}
                 filters={filters}

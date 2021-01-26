@@ -1,3 +1,4 @@
+import t from '@cqdg/locales/intl';
 
 const filters = [
   {
@@ -20,10 +21,34 @@ const filters = [
   {
     full: 'age_at_recruitment',
     type: 'long',
+    range: {
+      rangeTypes: [
+        {
+          key: 'years',
+          name: t('facet.range.years'),
+        },
+        {
+          key: 'days',
+          name: t('facet.range.days'),
+        },
+      ],
+    },
   },
   {
     full: 'diagnoses.age_at_diagnosis',
     type: 'long',
+    range: {
+      rangeTypes: [
+        {
+          key: 'years',
+          name: t('facet.range.years'),
+        },
+        {
+          key: 'days',
+          name: t('facet.range.days'),
+        },
+      ],
+    },
   },
   {
     full: 'vital_status',

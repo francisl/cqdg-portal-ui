@@ -22,10 +22,14 @@ export interface IGlobalSearch{
 export interface IMultiChoice {
   searchPlaceholder: string;
 }
-
+export interface IRange {
+    max: string;
+    min: string;
+}
 export interface IDictionary {
   actions: IActions;
   globalSearch: IGlobalSearch;
   messages: IMessages;
   multiChoice: IMultiChoice;
+  range: IRange;
 }
